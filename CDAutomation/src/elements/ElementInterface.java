@@ -4,6 +4,6 @@ import org.openqa.selenium.WebElement;
 
 public interface ElementInterface {
 
-	WebElement signUpButton();
+	WebElement sign_up_button();
 	
 }

@@ -1,10 +1,8 @@
 package tools;
 
 import elements.Drivers;
-import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
-import org.openqa.selenium.Point;
 
 
 public class QuickAccountCreator extends Drivers{
@@ -12,8 +10,11 @@ public class QuickAccountCreator extends Drivers{
 	String account_pw = "onboarding001";
 	String account_email = "onboarding001@cyberdust.com";
 	
+	TouchAction action = new TouchAction(driver);
+	
 	@Test
 	public void onBoarding() throws Exception {
+		//Starts on boarding
 		sign_up_button().click();
 		pick_username().sendKeys(account_name);
 		sign_up_OK().click();
@@ -21,12 +22,20 @@ public class QuickAccountCreator extends Drivers{
 	    confirm_password().sendKeys(account_pw);
 	    password_OK().click();
 	    birthday().click();
-	    Point mylist = date().getLocation();
-	    System.out.println(mylist.x);
-	    System.out.println(mylist.y);
-	    TouchAction action = new TouchAction(driver); 
-	    action.longPress(mylist.x, mylist.y).release().perform(); 
+	    
+	    action.longPress(date().getLocation().x, date().getLocation().y, 3000).release().perform(); 
+        birthday_done().click();
+        birthday_OK().click();
 
+        // Enters email
+        email().sendKeys(account_email);
+        email_OK().click();
+        OK_button().click();
+
+        // Skips remaining on boarding
+        for(int i=0; i < 2; i++) {
+            skip_button().click();
+        done_button().click();
+        }
 	}
-//insert assertions here
 }
