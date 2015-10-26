@@ -1,31 +1,20 @@
 package elements;
 
 import java.net.URL;
-import java.io.File;
-
+import org.junit.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.interactions.TouchScreen;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteTouchScreen;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.junit.*;
-
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
 
 public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("platformVersion", "");
@@ -35,11 +24,15 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
-	private static WebDriverWait wait = new WebDriverWait(driver, 20);
+	public int waitTime(int x) {
+		return x;
+	}
+	
+	WebDriverWait wait = new WebDriverWait(driver, waitTime(20));
 	TouchAction action = new TouchAction(driver);
 	
 /// Common elements ///
-    public static WebElement name(String name) {
+    public WebElement name(String name) {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
     public WebElement OK_button() {

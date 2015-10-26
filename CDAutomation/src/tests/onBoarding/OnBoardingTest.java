@@ -6,10 +6,13 @@ import io.appium.java_client.TouchAction;
 import org.junit.*;
 
 
-public class OnBoardingTest extends Drivers{
+public class OnBoardingTest extends Drivers {
+	
+	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";
 	String account_pw = "onboarding001";
 	String account_email = "onboarding001@cyberdust.com";
+	/////////////////////////////////////////////////////
 	
 	TouchAction action = new TouchAction(driver);
 	AndroidCamera androidCamera = new AndroidCamera();
@@ -19,6 +22,7 @@ public class OnBoardingTest extends Drivers{
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
+			waitTime(5);
             sign_up_button();
             isLoggedOut = true;
         } catch (Exception e) {
@@ -111,7 +115,5 @@ public class OnBoardingTest extends Drivers{
         System.out.println("Deleting account");
         confirm().click();
         System.out.println("On boarding test completed");
-        
-        // End test
 	}
 }
