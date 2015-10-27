@@ -1,6 +1,3 @@
-
-//testing
-
 package tests.blasts;
 
 import elements.Drivers;
