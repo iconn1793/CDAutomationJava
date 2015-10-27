@@ -1,28 +1,41 @@
 package elements;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import elements.Drivers;
 
 public class LoginWith extends Drivers {
+	
+	WebDriverWait wait = new WebDriverWait(driver, 5);
+	
     public void user(String account, String password) {
-        boolean already_logged_in;
-        boolean logged_out;
+        boolean already_logged_in = false;
+        boolean logged_out = false;
 
         try {
-            login_button();  // Change webdriver wait time
-            logged_out = true;
+        	//login_button();
+        	if (new WebDriverWait(driver, 6).until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_login_button"))).isDisplayed()) {
+            	logged_out = true;
+            	already_logged_in = false;
+        	}
         } catch (Exception e) {
             logged_out = false;
         }
-
+      
         if (!logged_out) {
             more_button().click();
             try {
-                name(account);  // Change webdriver wait time
-                already_logged_in = true;
+            	//name(account);
+            	if (new WebDriverWait(driver, 2).until(ExpectedConditions.elementToBeClickable(By.name(account))).isDisplayed()) {
+            		already_logged_in = true;
+            	}
             } catch (Exception e) {
                 already_logged_in = false;
             }
-
+        }
+        
         if (already_logged_in && !logged_out) {
             System.out.println("Already logged in as " + account);
             back_button().click();
@@ -32,15 +45,14 @@ public class LoginWith extends Drivers {
             logout().click();
             confirm().click();
         }
-
-        if (!already_logged_in && logged_out) {
+        
+        if (logged_out && !already_logged_in) {
             System.out.println("Logging in as " + account);
             login_button().click();
             login_username().sendKeys(account);
             login_password().click();
             login_password().sendKeys(password);
             login_OK().click();
-        }
         }
     }
 }

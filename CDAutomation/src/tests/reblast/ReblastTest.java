@@ -4,7 +4,9 @@ import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ReblastTest extends Drivers {
 
 	//////////////////////////////////
@@ -21,11 +23,11 @@ public class ReblastTest extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 	
-	int sw = driver.manage().window().getSize().getHeight();
-	int sh = driver.manage().window().getSize().getWidth();
+	int sw = driver.manage().window().getSize().getWidth();
+	int sh = driver.manage().window().getSize().getHeight();
 	
 	@Test
-    public void send_text_with_loc () throws Exception {
+    public void test01_send_text_with_loc () throws Exception {
     	// Login to reblast test accounts
     	loginAs.user(account01, password01);
    
@@ -44,7 +46,7 @@ public class ReblastTest extends Drivers {
     }
 	
     @Test
-    public void send_text_no_loc () throws Exception {
+    public void test02_send_text_no_loc () throws Exception {
         System.out.println("Sending text blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -58,7 +60,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void send_photo_with_loc() throws Exception {
+    public void test03_send_photo_with_loc() throws Exception {
         System.out.println("Sending photo blasts with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -74,7 +76,7 @@ public class ReblastTest extends Drivers {
     }
     
     @Test
-    public void send_photo_no_loc() throws Exception {
+    public void test04_send_photo_no_loc() throws Exception {
         System.out.println("Sending photo blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -88,7 +90,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void send_giphy_with_loc() throws Exception {
+    public void test05_send_giphy_with_loc() throws Exception {
         System.out.println("Sending giphy with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -104,7 +106,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void send_giphy_no_loc() throws Exception {
+    public void test06_send_giphy_no_loc() throws Exception {
         System.out.println("Sending giphy without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -118,7 +120,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void send_video_with_loc() throws Exception {
+    public void test07_send_video_with_loc() throws Exception {
         System.out.println("Sending video blasts with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -135,7 +137,7 @@ public class ReblastTest extends Drivers {
     }
     
     @Test
-    public void send_video_no_loc() throws Exception {
+    public void test08_send_video_no_loc() throws Exception {
         System.out.println("Sending video blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
@@ -150,14 +152,15 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_setup() throws Exception {
+    public void test09_reblast_setup() throws Exception {
         System.out.println("Setting up reblast test");
         loginAs.user(account02, password02);
-        blast_lists().click(); wait(2000);
+        blast_lists().click(); 
+        Thread.sleep(2000);
         System.out.println("Creating a blast list");
         try {
             if (driver.findElementById("com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator").isDisplayed()) {
-                blast_list_expand();  // Doesn't need .click(); attribute
+                blast_list_expand();  // Doesn't need .click() attribute
                 blast_list_edit().click();
                 blast_list_more().click();
                 System.out.println("Deleting pre-existing blast list first");
@@ -166,6 +169,7 @@ public class ReblastTest extends Drivers {
                 blast_lists().click();
             }
         } catch (Exception e) {
+
         }
         blast_list_field().sendKeys("Reblast List");
         OK_button().click();
@@ -175,7 +179,7 @@ public class ReblastTest extends Drivers {
     }
     
     @Test
-    public void reblast_text_with_loc() throws Exception {
+    public void test10_reblast_text_with_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting text with location to all followers");
         swipe_view_reblast().click();
@@ -199,7 +203,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_text_no_loc() throws Exception {
+    public void test11_reblast_text_no_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting text blast without location to all followers");
         swipe_view_reblast().click();
@@ -223,7 +227,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_photo_with_loc() throws Exception {
+    public void test12_reblast_photo_with_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting photo blast with location to all followers");
         swipe_view_reblast().click();
@@ -247,7 +251,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_photo_no_loc() throws Exception {
+    public void test13_reblast_photo_no_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting photo blast without location to all followers");
         swipe_view_reblast().click();
@@ -271,7 +275,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_giphy_with_loc() throws Exception {
+    public void test14_reblast_giphy_with_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting giphy with location to all followers");
         swipe_view_reblast().click();
@@ -295,7 +299,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_giphy_no_loc() throws Exception {
+    public void test15_reblast_giphy_no_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting giphy without location to all followers");
         swipe_view_reblast().click();
@@ -319,7 +323,7 @@ public class ReblastTest extends Drivers {
     }
     
     @Test
-    public void reblast_video_with_loc() throws Exception {
+    public void test16_reblast_video_with_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting video blast with location to all followers");
         swipe_view_reblast().click();
@@ -343,7 +347,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void reblast_video_no_loc() throws Exception {
+    public void test17_reblast_video_no_loc() throws Exception {
         username(account01).click();
         System.out.println("Reblasting video blast without location to all followers");
         swipe_view_reblast().click();
@@ -367,7 +371,7 @@ public class ReblastTest extends Drivers {
     }
 
     @Test
-    public void check_reblast_count() throws Exception {
+    public void test18_check_reblast_count() throws Exception {
         loginAs.user(account03, password03);
         try {
             if (name("24").isDisplayed()) {

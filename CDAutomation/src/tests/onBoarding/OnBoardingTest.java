@@ -4,8 +4,9 @@ import elements.Drivers;
 import tests.onBoarding.AndroidCamera;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
+import org.junit.runners.MethodSorters;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnBoardingTest extends Drivers {
 	
 	/////////////////////////////////////////////////////
@@ -18,18 +19,17 @@ public class OnBoardingTest extends Drivers {
 	AndroidCamera androidCamera = new AndroidCamera();
 	
 	@Test
-	public void checkIfLoggedOut() throws Exception {
+	public void test01_checkIfLoggedOut() throws Exception {
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
-			waitTime(5);
             sign_up_button();
             isLoggedOut = true;
         } catch (Exception e) {
             isLoggedOut = false;
         }
-		if (isLoggedOut) {
-            more_button().click(); wait(1000);
+		if (!isLoggedOut) {
+            more_button().click(); Thread.sleep(1000);
             action.press(followers()).moveTo(back_button()).release().perform();
             // try this: driver.scrollTo("Logout");
             logout().click();
@@ -39,7 +39,7 @@ public class OnBoardingTest extends Drivers {
 	}
 	
 	@Test
-	public void signUp() throws Exception {
+	public void test02_signUp() throws Exception {
 		// Create new account and check if special characters can be used
 	    sign_up_button().click();
 	    pick_username().sendKeys(account_name + "!@//$");
@@ -54,7 +54,7 @@ public class OnBoardingTest extends Drivers {
 	    create_password().sendKeys(account_pw);
 	    confirm_password().sendKeys(account_pw);
 	    password_OK().click();
-	    birthday().click(); wait(2000);
+	    birthday().click(); Thread.sleep(2000);
 	    		
         // Sets birthday
         System.out.println("Entering birthday");
@@ -70,10 +70,10 @@ public class OnBoardingTest extends Drivers {
 	}
 	
 	@Test
-	public void takeProfilePic() throws Exception {
+	public void test03_takeProfilePic() throws Exception {
 		// Takes a picture with camera and sets as profile picture
-        profile_picture().click();
-        camera_button().click(); wait(3000);
+        sign_up_profile_pic().click();
+        camera_button().click(); Thread.sleep(3000);
         System.out.println("Taking a photo and setting it as the profile picture");
         androidCamera.takePhoto();
         System.out.println("Skipping checking contacts and sending text message");
@@ -84,21 +84,21 @@ public class OnBoardingTest extends Drivers {
 	}
 	
 	@Test
-    public void test_updating_profile_picture() throws Exception {
+    public void test04_updating_profile_picture() throws Exception {
         // Changes profile picture
         more_button().click();
         profile_picture().click();
         change_profile_picture().click();
         System.out.println("Changing profile picture");
-        camera_button().click(); wait(3000);
+        camera_button().click(); Thread.sleep(3000);
         androidCamera.takePhoto();
         System.out.println("Profile picture updated");
 	}
 	
 	@Test
-    public void loginLogout() throws Exception {
+    public void test05_loginLogout() throws Exception {
         // Logout and login test
-        System.out.println("Testing System.out.printlnout and System.out.printlnin");
+        System.out.println("Login and logout");
         action.press(followers()).moveTo(back_button()).release().perform();
         logout().click();
         confirm().click();
@@ -109,7 +109,7 @@ public class OnBoardingTest extends Drivers {
         System.out.println("Username is not case sensitive");
 
         // Deletes account
-        more_button().click(); wait(1000);
+        more_button().click(); Thread.sleep(1000);
         action.press(followers()).moveTo(back_button()).release().perform();
         delete_account().click();
         System.out.println("Deleting account");

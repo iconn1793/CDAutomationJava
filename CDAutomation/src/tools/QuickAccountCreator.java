@@ -4,11 +4,10 @@ import elements.Drivers;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
 
-
 public class QuickAccountCreator extends Drivers{
-	String account_name = "onboarding001";
-	String account_pw = "onboarding001";
-	String account_email = "onboarding001@cyberdust.com";
+	String account_name = "onboarding999";
+	String account_pw = "onboarding999";
+	String account_email = "onboarding999@cyberdust.com";
 	
 	TouchAction action = new TouchAction(driver);
 	

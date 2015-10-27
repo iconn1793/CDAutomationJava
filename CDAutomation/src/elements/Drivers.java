@@ -123,7 +123,7 @@ public class Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("GROUPS")));
 	}
 	public WebElement groups_title_field() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/custom")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText")));
 	}
 	public WebElement card_view() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/card_view")));
@@ -204,7 +204,7 @@ public class Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_friends_button_plus")));
 	}
 	public WebElement create_blast_list() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Create blasts List")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Create Blast List")));
 	}
 	public WebElement send_to_blast_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/action_check")));
@@ -394,10 +394,13 @@ public class Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_3_date_edit_text")));
     }
     public WebElement birthday_done() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("androidid/button1")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button1")));
     }
     public WebElement email() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_4_email_edit_text")));
+    }
+    public WebElement sign_up_profile_pic() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_screen_4_1_profile_pic_layout")));
     }
     public WebElement sign_up_OK() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_1_ok_button")));

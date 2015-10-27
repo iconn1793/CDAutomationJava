@@ -9,15 +9,15 @@ public class AndroidCamera extends Drivers {
 	
 	public void takePhoto() throws Exception {
 		// Tries to take a photo with several different kinds of android phones
-        driver.pressKeyCode(25); wait(1000); driver.pressKeyCode(27); wait(5000);
+        driver.pressKeyCode(25); Thread.sleep(1000); driver.pressKeyCode(27); Thread.sleep(5000);
         
         try {
-        	driver.findElementById("comotorola.camera:id/review_approve").click();  // For Moto phones
+        	driver.findElementById("com.motorola.camera:id/review_approve").click();  // For Moto phones
         } catch (Exception e) {
         	
         }
         try {
-        	driver.findElementById("coandroid.camera:id/select_this").click();  // For older HTC one phones
+        	driver.findElementById("com.android.camera:id/select_this").click();  // For older HTC one phones
         } catch (Exception e) {
         	
         }
@@ -32,17 +32,21 @@ public class AndroidCamera extends Drivers {
         	
         }
         try {
-        	driver.findElementById("coandroid.camera2:id/done_button").click();  // For Nexus phones
+        	driver.findElementById("com.android.camera2:id/done_butto").click();  // For Nexus phones
         } catch (Exception e) {
         	
         }
         try {
-        	profile_picture_done().click(); wait(3000);
+        	profile_picture_done().click(); Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println("Could not take a photo, going back");
             for (int i = 0; i < 2; i++) {
-                driver.pressKeyCode(4); wait(1000);  // If none of the above works, go back
-            skip_button().click();
+                driver.pressKeyCode(4); Thread.sleep(3000);  // If none of the above works, go back
+            try {
+                skip_button().click();
+            } catch (Exception f) {
+      	
+            }
             }
         }
 		

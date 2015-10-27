@@ -3,8 +3,10 @@ package tests.messagePinning;
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
-import org.junit.*;;
+import org.junit.*;
+import org.junit.runners.MethodSorters;;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MessagePinningTest extends Drivers {
 
 	///////////////////////////////////////////////
@@ -17,23 +19,23 @@ public class MessagePinningTest extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 
-	int sw = driver.manage().window().getSize().getHeight();
-	int sh = driver.manage().window().getSize().getWidth();
+	int sw = driver.manage().window().getSize().getWidth();
+	int sh = driver.manage().window().getSize().getHeight();
 
 	@Test
-	public void test_pinning_messages() throws Exception {
+	public void test01_pinning_messages() throws Exception {
 		// Logs into existing testing account
 		loginAs.user(account_name, account_pw);
 
 		action_menu().click();
 		action_menu_dust().click();
-		wait(5000);
+		Thread.sleep(5000);
 		// chat_room_first_friend().click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		chat_room_send_button().click();
 		System.out.println("Sent a dust");
-		wait(5000);
+		Thread.sleep(5000);
 		sent_text_blast().click();
 		
 		try {
@@ -85,7 +87,7 @@ public class MessagePinningTest extends Drivers {
 		} catch (Exception e) {
 			System.out.println("Unable to unpin");
 		}
-		wait(16000);
+		Thread.sleep(16000);
 
 		try {
 			if (sent_text_blast().isDisplayed()) {

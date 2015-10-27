@@ -3,8 +3,10 @@ package tests.accountManagement;
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
-import org.junit.*;;
+import org.junit.*;
+import org.junit.runners.MethodSorters;;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AccountManagementTest extends Drivers {
 
 	/////////////////////////////////////////////////////
@@ -19,7 +21,7 @@ public class AccountManagementTest extends Drivers {
 	LoginWith loginAs = new LoginWith();
 
 	@Test
-	public void test_changing_password() throws Exception {
+	public void test01_changing_password() throws Exception {
 		// Logs into existing testing account
 		loginAs.user(account_name, account_pw);
 		System.out.println("Logged In");
@@ -48,7 +50,7 @@ public class AccountManagementTest extends Drivers {
 	}
 
 	@Test
-	public void test_changing_email() throws Exception {
+	public void test02_changing_email() throws Exception {
 		change_email_address().click();
 		new_email_text_box().sendKeys(account_new_email);
 		change_password_ok_button().click();
@@ -68,7 +70,7 @@ public class AccountManagementTest extends Drivers {
 	}
 
 	@Test
-	public void test_account_deleting() throws Exception {
+	public void test03_account_deleting() throws Exception {
 		System.out.println("Deleting");
 		more_button().click();
 		action.press(change_email_address()).moveTo(back_button()).release().perform();
@@ -96,7 +98,7 @@ public class AccountManagementTest extends Drivers {
 		confirm_password().sendKeys(account_pw);
 		password_OK().click();
 		birthday().click();
-		wait(2000);
+		Thread.sleep(2000);
 
 		System.out.println("Entering birthday");
 		action.longPress(date().getLocation().x, date().getLocation().y, 3000).release().perform();
