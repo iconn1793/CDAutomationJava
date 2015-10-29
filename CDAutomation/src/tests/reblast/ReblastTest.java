@@ -377,8 +377,8 @@ public class ReblastTest extends Drivers {
             if (name("24").isDisplayed()) {
                 System.out.println("Blast count correct");
                 blast_more_button().click();
-                System.out.println("Deleting blasts");
                 blast_more_delete().click();
+                System.out.println("Deleting blasts");
             }
         } catch (Exception e) {
             System.out.println("Blast count incorrect");

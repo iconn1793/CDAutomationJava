@@ -28,7 +28,7 @@ public class Drivers {
 		return x;
 	}
 	
-	WebDriverWait wait = new WebDriverWait(driver, waitTime(20));
+	WebDriverWait wait = new WebDriverWait(driver, 20);
 	TouchAction action = new TouchAction(driver);
 	
 /// Common elements ///
@@ -74,17 +74,20 @@ public class Drivers {
 	public WebElement blasts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("BLASTS")));
 	}
-	public WebElement blast_preview_card() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/preview_text")));
+	public WebElement blast01() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
+	}
+	public WebElement blast02() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
 	}
 	public WebElement blast_more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']")));
 	}
 	public WebElement blast_more_mute() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("mute blasts")));
 	}
 	public WebElement blast_more_delete() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete blast")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete blasts")));
 	}
 	public WebElement blast_more_block() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("block user")));

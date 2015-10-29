@@ -335,8 +335,12 @@ public class BlastTest extends Drivers {
 		video_button().click();
 		action.longPress(photo_button(), 5000).release().perform();
 		swipe_view_photo_send().click();
-		Thread.sleep(4000);
-		driver.pressKeyCode(4);
+		try {
+			swipe_view_exit().click();
+		} catch (Exception e) {
+			action.press(100, 1000).release().perform();
+			swipe_view_exit().click();
+		}	
 	}
 
 	@Test
