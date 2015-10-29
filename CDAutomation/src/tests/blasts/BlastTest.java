@@ -40,7 +40,7 @@ public class BlastTest extends Drivers {
 		System.out.println("Creating a blast list");
 		try {
 			if (driver.findElementById("com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator").isDisplayed()) {
-				blast_list_expand(); // Doesn't need .click(); attribute
+				blast_list_expand(); // Doesn't need .click() attribute
 				blast_list_edit().click();
 				blast_list_more().click();
 				System.out.println("Deleting pre-existing blast list first");
