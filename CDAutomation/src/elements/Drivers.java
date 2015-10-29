@@ -35,6 +35,7 @@ public class Drivers {
     public WebElement name(String name) {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
+    
     public WebElement OK_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("OK")));
     }
@@ -266,7 +267,7 @@ public class Drivers {
 	public WebElement chat_room_send_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_send_button")));
 	}
-	public WebElement sent_text_blast() {
+	public WebElement sent_text_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_bubble_view_message_text")));
 	}
 	public WebElement pinned_message() {
@@ -376,6 +377,23 @@ public class Drivers {
     public WebElement new_email_text_box() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
     }
+    
+    public WebElement invalid_username(){
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
+    }
+    
+    public WebElement friends_search()
+    {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
+    }
+    
+    public WebElement chat_room_first_friend() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ListView[@index='0'][android.widget.RelativeLayout[@index='0']]")));
+	}
+    
+    //public WebElement search_result_first_friend(){
+    	//return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1'][android.widget.RelativeLayout[@index='1']]")));
+    //}
     
 /// Sign up elements ///
     public WebElement sign_up_button() {

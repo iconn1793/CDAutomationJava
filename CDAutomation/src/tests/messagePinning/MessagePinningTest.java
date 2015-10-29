@@ -30,13 +30,13 @@ public class MessagePinningTest extends Drivers {
 		action_menu().click();
 		action_menu_dust().click();
 		Thread.sleep(5000);
-		// chat_room_first_friend().click();
+		chat_room_first_friend().click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		chat_room_send_button().click();
 		System.out.println("Sent a dust");
 		Thread.sleep(5000);
-		sent_text_blast().click();
+		sent_text_dust().click();
 		
 		try {
 			if (pinned_message().isDisplayed()) {
@@ -81,7 +81,7 @@ public class MessagePinningTest extends Drivers {
 		tap_to_unpin_button().click();
 		
 		try {
-			if (sent_text_blast().isDisplayed()) {
+			if (sent_text_dust().isDisplayed()) {
 				System.out.println("Unpinned the message");
 			}
 		} catch (Exception e) {
@@ -90,7 +90,7 @@ public class MessagePinningTest extends Drivers {
 		Thread.sleep(16000);
 
 		try {
-			if (sent_text_blast().isDisplayed()) {
+			if (sent_text_dust().isDisplayed()) {
 				System.out.println("Countdown did not resume");
 			}
 		} catch (Exception e) {

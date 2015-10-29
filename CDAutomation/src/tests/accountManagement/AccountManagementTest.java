@@ -60,20 +60,19 @@ public class AccountManagementTest extends Drivers {
 		try {
 			if (name(account_new_email).isDisplayed()) {
 				System.out.println("Email adress changed");
+				new_email_text_box().sendKeys(account_email);
+				change_password_ok_button().click();
+				System.out.println("Email address reset");
 			}
 		} catch (Exception e) {
 			System.out.println("Email adress is not changed");
-			new_email_text_box().sendKeys(account_email);
-			change_password_ok_button().click();
-			System.out.println("Email address reset");
+			
 		}
 	}
 
 	@Test
 	public void test03_account_deleting() throws Exception {
 		System.out.println("Deleting");
-		more_button().click();
-		action.press(change_email_address()).moveTo(back_button()).release().perform();
 		delete_account().click();
 		confirm().click();
 		System.out.println("Account Deleted");
@@ -84,9 +83,11 @@ public class AccountManagementTest extends Drivers {
 			login_password().click();
 			login_password().sendKeys(account_pw);
 			login_OK().click();
-			System.out.println("Logged into deleted account");
+			invalid_username().isDisplayed();
+			System.out.println("Could not login into deleted account");
+			sign_up_button().click();
 		} catch (Exception e) {
-			System.out.println("Cannot log into deleted account");
+			System.out.println("Loged in into deleted account");
 			driver.pressKeyCode(4);
 			sign_up_button().click();
 		}
