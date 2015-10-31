@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Sending_dust extends Drivers{
 
-	WebDriverWait wait = new WebDriverWait(driver, waitTime(20));
+	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
 	String account_pw = "password";

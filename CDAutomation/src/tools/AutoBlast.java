@@ -9,7 +9,7 @@ public class AutoBlast extends Drivers {
 	String blast_recipient = "bktest01";
 	String blast_type = "photo, video, text";  // Use photo, video, text, or a combination of the 3
 	String blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com";  // Only works for text blasts
-	int number_of_blasts = 3;  // Number of blasts per type
+	int number_of_blasts = 5;  // Number of blasts per type
 	
 	TouchAction action = new TouchAction(driver);
 	

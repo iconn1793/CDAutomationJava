@@ -1,10 +1,9 @@
 package tests.onBoarding;
 
-import elements.Drivers;
-import tests.onBoarding.AndroidCamera;
-import io.appium.java_client.TouchAction;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
+import elements.Drivers;
+import io.appium.java_client.TouchAction;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OnBoardingTest extends Drivers {
@@ -23,6 +22,8 @@ public class OnBoardingTest extends Drivers {
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
+			System.out.println("Checking if logged in");
+			waitTime(8);
             sign_up_button();
             isLoggedOut = true;
         } catch (Exception e) {
@@ -44,11 +45,13 @@ public class OnBoardingTest extends Drivers {
 	    sign_up_button().click();
 	    pick_username().sendKeys(account_name + "!@//$");
 	    try {
+	    	waitTime(3);
 	        sign_up_OK().click();
 	        System.out.println("Special characters used in username");
 	    } catch (Exception e) {
 	        System.out.println("Could not use special characters in username");
 	    }
+	    waitTime(20);
 	    pick_username().sendKeys(account_name);
 	    sign_up_OK().click();
 	    create_password().sendKeys(account_pw);
@@ -79,7 +82,13 @@ public class OnBoardingTest extends Drivers {
         System.out.println("Skipping checking contacts and sending text message");
         OK_button().click();
         skip_button().click();
-        done_button().click();
+        try {
+        	waitTime(5);
+        	done_button().click();
+        } catch (Exception e) {
+        	skip_button().click();
+        	done_button().click();
+        }
         System.out.println("New account created");
 	}
 	

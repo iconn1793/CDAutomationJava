@@ -12,6 +12,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
+
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -24,18 +25,17 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
-	public int waitTime(int x) {
-		return x;
-	}
-	
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	TouchAction action = new TouchAction(driver);
 	
+	public WebDriverWait waitTime(int x) {
+		return wait = new WebDriverWait(driver, x);
+	}
+
 /// Common elements ///
     public WebElement name(String name) {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
-    
     public WebElement OK_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("OK")));
     }

@@ -8,8 +8,6 @@ import elements.Drivers;
 
 public class LoginWith extends Drivers {
 	
-	WebDriverWait wait = new WebDriverWait(driver, 5);
-	
     public void user(String account, String password) {
         boolean already_logged_in = false;
         boolean logged_out = false;
