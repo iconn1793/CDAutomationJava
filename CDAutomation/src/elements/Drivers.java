@@ -417,10 +417,19 @@ public class Drivers {
     public WebElement chat_room_first_friend() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ListView[@index='0'][android.widget.RelativeLayout[@index='0']]")));
 	}
+   
+    public WebElement delete_dust() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete dust")));
+	}
     
-    //public WebElement search_result_first_friend(){
-    	//return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1'][android.widget.RelativeLayout[@index='1']]")));
-    //}
+    public WebElement friends_more_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("more_button")));
+	}
+    public WebElement friends_list_search() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("more_button")));
+	}
+    
+    
     
 /// Sign up elements ///
     public WebElement sign_up_button() {
