@@ -423,10 +423,10 @@ public class Drivers {
 	}
     
     public WebElement friends_more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("more_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("more_button")));
 	}
     public WebElement friends_list_search() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("more_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("home_bottom_bar")));
 	}
     
     
