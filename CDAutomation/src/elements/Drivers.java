@@ -435,7 +435,12 @@ public class Drivers {
     public WebElement friends_list_search() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("home_bottom_bar")));
 	}
-    
+    public WebElement enter_website_textbox() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("custom")));
+	}
+    public WebElement save_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Save")));
+	}
     
     
 /// Sign up elements ///
