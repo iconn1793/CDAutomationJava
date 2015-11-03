@@ -10,11 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Sending_dust extends Drivers{
+public class Sending_dust extends Drivers {
 
-	
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
@@ -33,8 +31,7 @@ public class Sending_dust extends Drivers{
 	int sh = driver.manage().window().getSize().getHeight();
 
 	@Test
-	public void test01_chat_from_action_menu() throws Exception
-	{
+	public void test01_chat_from_action_menu() throws Exception {
 		loginAs.user(account_name, account_pw);
 		action_menu().click();
 		action_menu_dust().click();
@@ -45,17 +42,149 @@ public class Sending_dust extends Drivers{
 		chat_room_text_box().sendKeys(text_message);
 		chat_room_send_button().click();
 		System.out.println("Sent a dust");
-		try
-		{
+		try {
 			if (sent_text_dust().isDisplayed())
-			System.out.println("Started a chat from floating action menu");
-		}
-		catch (Exception e) {
+				System.out.println("Started a chat from floating action menu");
+		} catch (Exception e) {
 			System.out.println("Unable to start a chat from floating action menu");
-		} 
-		
+		}
+
 	}
-	
+
+	@Test
+	public void test02_chat_from_dust_room() throws Exception
+
+	{
+
+		back_button().click();
+
+		back_button().click();
+
+		dusts_tab().click();
+
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+		first_friend.click();
+
+		chat_room_text_box().click();
+
+		chat_room_text_box().sendKeys(text_message);
+
+		chat_room_send_button().click();
+
+		System.out.println("Sent a dust");
+
+		try
+
+		{
+
+			if (sent_text_dust().isDisplayed())
+
+				System.out.println("Started a chat from dust room");
+
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to start a chat from dust room");
+
+		}
+
+	}
+
+	@Test
+
+	public void test03_chat_from_search_bar() throws Exception
+
+	{
+
+		back_button().click();
+
+		action_menu().click();
+
+		action_menu_search().click();
+
+		friends_search().click();
+
+		friends_search().sendKeys(friend_username0);
+
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+		first_friend.click();
+
+		chat_room_text_box().click();
+
+		chat_room_text_box().sendKeys(text_message);
+
+		chat_room_send_button().click();
+
+		System.out.println("Sent a dust");
+
+		try
+
+		{
+
+			if (sent_text_dust().isDisplayed())
+
+				System.out.println("Started a chat from action menu search bar");
+
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to start a chat from action menu search bar");
+
+		}
+
+	}
+
+	@Test
+
+	public void test04_chat_from_search_bar() throws Exception
+
+	{
+
+		// you don't have a dust room with that person.
+
+		remove_dustroom();
+
+		action_menu().click();
+
+		action_menu_search().click();
+
+		friends_search().click();
+
+		friends_search().sendKeys(friend_username0);
+
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+		first_friend.click();
+
+		chat_room_text_box().click();
+
+		chat_room_text_box().sendKeys(text_message);
+
+		chat_room_send_button().click();
+
+		System.out.println("Sent a dust");
+
+		try
+
+		{
+
+			if (sent_text_dust().isDisplayed())
+
+				System.out.println("Started a chat from action menu search bar");
+
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to start a chat from action menu search bar");
+
+		}
+
+	}
 
 	@Test
 
@@ -63,162 +192,186 @@ public class Sending_dust extends Drivers{
 
 	{
 
-	
+		back_button().click();
+		back_button().click();
 
-	back_button().click();
-	back_button().click();
-	
+		more_button().click();
 
-	more_button().click();
+		friends().click();
 
+		friends_list_search().sendKeys(friend_username0);
 
-	friends().click();
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 
-	
+		first_friend.click();
 
-	friends_list_search().sendKeys(friend_username0);
+		chat_room_text_box().click();
 
-	WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		chat_room_text_box().sendKeys(text_message);
 
-	first_friend.click();
+		chat_room_send_button().click();
 
-	chat_room_text_box().click();
+		System.out.println("Sent a dust");
 
-	chat_room_text_box().sendKeys(text_message);
+		try
 
-	chat_room_send_button().click();
+		{
 
-	System.out.println("Sent a dust");
+			if (sent_text_dust().isDisplayed())
 
-	try
+				System.out.println("Started a chat from floating action menu");
 
-	{
+		}
 
-	if (sent_text_dust().isDisplayed())
+		catch (Exception e) {
 
-	System.out.println("Started a chat from floating action menu");
+			System.out.println("Unable to start a chat from floating action menu");
 
-	}
-
-	catch (Exception e) {
-
-	System.out.println("Unable to start a chat from floating action menu");
-
-	} 
-
-
-
+		}
 
 	}
-	
-	
+
 	@Test
 
-	public void test06_chat_from_friend_list() throws Exception
-	{ //You do not have a dust room
+	public void test06_chat_from_friend_list() throws Exception { // You do not
+																	// have a
+																	// dust room
 
-	back_button().click();
-	remove_dustroom();
-	blasts_tab().click();
-	more_button().click();
+		back_button().click();
+		remove_dustroom();
+		blasts_tab().click();
+		more_button().click();
 
+		friends().click();
 
-	friends().click();
+		friends_list_search().sendKeys(friend_username0);
 
-	
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 
-	friends_list_search().sendKeys(friend_username0);
+		first_friend.click();
 
-	WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		chat_room_text_box().click();
 
-	first_friend.click();
+		chat_room_text_box().sendKeys(text_message);
 
-	chat_room_text_box().click();
+		chat_room_send_button().click();
 
-	chat_room_text_box().sendKeys(text_message);
+		System.out.println("Sent a dust");
 
-	chat_room_send_button().click();
+		try
 
-	System.out.println("Sent a dust");
+		{
 
-	try
+			if (sent_text_dust().isDisplayed())
 
-	{
+				System.out.println("Started a chat from floating action menu");
 
-	if (sent_text_dust().isDisplayed())
+		}
 
-	System.out.println("Started a chat from floating action menu");
+		catch (Exception e) {
 
-	}
+			System.out.println("Unable to start a chat from floating action menu");
 
-	catch (Exception e) {
-
-	System.out.println("Unable to start a chat from floating action menu");
-
-	} 
-
-
-	
-	}
-	public void test07_chat_from_friend_list() throws Exception
-	{ //You do not have a dust room
-
-	blasts_tab().click();
-	more_button().click();
-
-
-	friends().click();
-
-	friends_list_search().click();
-
-	friends_list_search().sendKeys(friend_username0);
-
-	WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
-	first_friend.click();
-
-	chat_room_text_box().click();
-
-	chat_room_text_box().sendKeys(text_message);
-
-	chat_room_send_button().click();
-
-	System.out.println("Sent a dust");
-
-	try
-
-	{
-
-	if (sent_text_dust().isDisplayed())
-
-	System.out.println("Started a chat from floating action menu");
+		}
 
 	}
 
-	catch (Exception e) {
+	@Test
+	public void test07_chat_from_friend_list() throws Exception {
 
-	System.out.println("Unable to start a chat from floating action menu");
+		back_button().click();
+		back_button().click();
+		back_button().click();
 
-	} 
+		more_button().click();
 
+		friends().click();
 
-	
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+		first_friend.click();
+
+		chat_room_text_box().click();
+
+		chat_room_text_box().sendKeys(text_message);
+
+		chat_room_send_button().click();
+
+		System.out.println("Sent a dust");
+
+		try
+
+		{
+
+			if (sent_text_dust().isDisplayed())
+
+				System.out.println("Started a chat from floating action menu");
+
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to start a chat from floating action menu");
+
+		}
+
 	}
+
+	@Test
+	public void test08_chat_from_friend_list() throws Exception { // You do not
+																	// have a
+																	// dust room
+
+		back_button().click();
+		remove_dustroom();
+		blasts_tab();
+		more_button().click();
+
+		friends().click();
+
+		friends_list_search().click();
+
+		friends_list_search().sendKeys(friend_username0);
+
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+		first_friend.click();
+
+		chat_room_text_box().click();
+
+		chat_room_text_box().sendKeys(text_message);
+
+		chat_room_send_button().click();
+
+		System.out.println("Sent a dust");
+
+		try
+
+		{
+
+			if (sent_text_dust().isDisplayed())
+
+				System.out.println("Started a chat from floating action menu");
+
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to start a chat from floating action menu");
+
+		}
+
+	}
+
 	public void remove_dustroom()
 
 	{
 		back_button().click();
 		back_button().click();
-	dusts_tab().click();
-
-	friends_more_button().click();
-
-	delete_dust().click();
-	
-
+		dusts_tab().click();
+		friends_more_button().click();
+		delete_dust().click();
 
 	}
-	
-	
-	
+
 }
