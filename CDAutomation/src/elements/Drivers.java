@@ -129,8 +129,11 @@ public class Drivers {
 	public WebElement groups_title_field() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0'][android.widget.EditText[@index='0']]")));
 	}
+	public WebElement group_three_dotted_menu() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.LinearLayout[@index='2'][android.widget.ImageButton[@index='0']]")));
+	}
 	public WebElement group01_more_button() {
-		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2']]")));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
 	}
 	public WebElement group01() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
@@ -146,6 +149,9 @@ public class Drivers {
 	}
 	public WebElement group_camera_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_photo_button")));
+	}
+	public WebElement dusting_with() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/btn_chatting_triangle")));
 	}
 	public WebElement card_view() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/card_view")));
@@ -288,6 +294,9 @@ public class Drivers {
 	public WebElement blast_Ok_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Ok")));
 	}
+	public WebElement message_timer() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_timer_view")));
+	}
 	public WebElement chat_room_text_box() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_text_box")));
 	}
@@ -405,12 +414,11 @@ public class Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
     }
     
-    public WebElement invalid_username(){
+    public WebElement invalid_username() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
     }
     
-    public WebElement friends_search()
-    {
+    public WebElement friends_search() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
     }
     
