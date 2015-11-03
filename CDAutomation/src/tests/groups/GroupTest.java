@@ -1,13 +1,9 @@
 package tests.groups;
 
-import org.junit.*;
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 
-import org.junit.runners.MethodSorters;
-
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GroupTest extends Drivers {
 
 	//////////////////////////////////
@@ -27,7 +23,6 @@ public class GroupTest extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 	
-	@Test
     public void test01_create_group() throws Exception {
 		// Log into account01
 		loginAs.user(account01, password01);
@@ -42,8 +37,7 @@ public class GroupTest extends Drivers {
         groups_title_field().sendKeys("Test Group");
         confirm().click();
 	}
-	
-     @Test   
+	 
      public void test02_add_blocked_user() throws Exception {
         // Tries to add blocked account to group
         group_three_dotted_menu().click();
@@ -58,8 +52,7 @@ public class GroupTest extends Drivers {
 		}
      }
      
-     @Test
-		public void test03_group_members() throws Exception {
+     public void test03_group_members() throws Exception {
 		// Check members in group
 		dusting_with().click();
 		Thread.sleep(1000);
@@ -81,7 +74,6 @@ public class GroupTest extends Drivers {
 		}
 	}
      
-     @Test
      public void test04_send_group_messages() throws Exception {
 		// Taps on +username
         Thread.sleep(1000);
@@ -135,8 +127,7 @@ public class GroupTest extends Drivers {
 		name("leave room").click();
 	}
 	
-		@Test
-		public void test05_open_group_messages() throws Exception {
+	public void test05_open_group_messages() throws Exception {
 		// Log into account02
 		loginAs.user(account02, password02);
 		
