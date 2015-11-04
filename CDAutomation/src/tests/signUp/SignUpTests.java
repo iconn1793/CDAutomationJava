@@ -68,7 +68,7 @@ public class SignUpTests extends Drivers {
         OK_button().click();
 	}
 	
-	public void test03_takeProfilePic() throws Exception {
+	public void test03_take_profile_pic() throws Exception {
 		// Takes a picture with camera and sets as profile picture
         sign_up_profile_pic().click();
         camera_button().click(); Thread.sleep(3000);
@@ -78,7 +78,7 @@ public class SignUpTests extends Drivers {
         OK_button().click();
         skip_button().click();
         try {
-        	waitTime(5);
+        	waitTime(2);
         	done_button().click();
         } catch (Exception e) {
         	skip_button().click();
@@ -87,7 +87,18 @@ public class SignUpTests extends Drivers {
         System.out.println("New account created");
 	}
 	
-    public void test04_updating_profile_picture() throws Exception {
+	public void test04_check_for_tutorial() throws Exception {
+		try {
+			if (tutorial_image().isDisplayed()) {
+				Thread.sleep(1000);
+				driver.pressKeyCode(4);
+			}
+		} catch (Exception e) {
+
+		}
+	}
+	
+    public void test05_update_profile_pic() throws Exception {
         // Changes profile picture
         more_button().click();
         profile_picture().click();
@@ -98,7 +109,7 @@ public class SignUpTests extends Drivers {
         System.out.println("Profile picture updated");
 	}
 	
-    public void test05_loginLogout() throws Exception {
+    public void test06_login_logout() throws Exception {
         // Logout and login test
         System.out.println("Login and logout");
         action.press(followers()).moveTo(back_button()).release().perform();
@@ -116,6 +127,5 @@ public class SignUpTests extends Drivers {
         delete_account().click();
         System.out.println("Deleting account");
         confirm().click();
-        System.out.println("On boarding test completed");
 	}
 }

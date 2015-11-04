@@ -7,12 +7,12 @@ import elements.Drivers;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RunGroupTests extends GroupTests {
 	
-	Drivers element = new Drivers();
-	
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 	}
+	
+	Drivers element = new Drivers();
 	
 	@Test
 	public void test01_createGroup() throws Exception {
@@ -103,6 +103,7 @@ public class RunGroupTests extends GroupTests {
 		try {
 			System.out.println("[GroupTest] Starting test07");
 			test07_open_group_messages();
+			System.out.println("Test Complete");
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();

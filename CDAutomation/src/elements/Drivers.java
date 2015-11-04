@@ -497,4 +497,7 @@ public class Drivers {
     public WebElement date() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.NumberPicker[@index='2'][android.widget.Button]")));
     }
+    public WebElement tutorial_image() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tutorial_image")));
+    }
 }

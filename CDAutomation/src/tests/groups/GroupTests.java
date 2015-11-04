@@ -158,7 +158,5 @@ public class GroupTests extends Drivers {
 		Thread.sleep(1000);
 		group_three_dotted_menu().click();
 		name("leave room").click();
-		
-		System.out.println("Complete");
 		}
 }
