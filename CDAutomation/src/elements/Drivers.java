@@ -442,6 +442,17 @@ public class Drivers {
     public WebElement save_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Save")));
 	}
+    //add friend from followers
+    public WebElement add_friend() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("+")));
+	}
+    
+    public WebElement okay_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Okay")));
+	}
+    public WebElement unfollow_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("unfollow user")));
+	}
     
     
 /// Sign up elements ///

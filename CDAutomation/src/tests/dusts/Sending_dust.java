@@ -27,9 +27,6 @@ public class Sending_dust extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
-
 	@Test
 	public void test01_chat_from_action_menu() throws Exception {
 		loginAs.user(account_name, account_pw);
