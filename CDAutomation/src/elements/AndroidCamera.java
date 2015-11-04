@@ -1,6 +1,5 @@
-package tests.signUp;
+package elements;
 
-import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
 public class AndroidCamera extends Drivers {

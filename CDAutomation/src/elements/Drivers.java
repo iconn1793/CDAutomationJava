@@ -12,10 +12,12 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
-
+	protected static DesiredCapabilities capabilities = new DesiredCapabilities();
+	protected WebDriverWait wait = new WebDriverWait(driver, 20);
+	protected TouchAction action = new TouchAction(driver);
+	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("platformVersion", "");
 		capabilities.setCapability("deviceName", "");
@@ -24,9 +26,23 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-	TouchAction action = new TouchAction(driver);
-	
+	public boolean Android() {
+		if (capabilities.getCapability("platformName").equals("Android")) {
+			System.out.println("[Active Device] Android");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public boolean iOS() {
+		if (capabilities.getCapability("platformName").equals("iOS")) {
+			System.out.println("[Active Device] iOS");
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}

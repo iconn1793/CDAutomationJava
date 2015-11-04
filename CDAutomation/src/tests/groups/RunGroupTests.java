@@ -5,20 +5,26 @@ import org.junit.runners.MethodSorters;
 import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RunGroupTests extends GroupTests {
+public class RunGroupTests extends Android_GroupTests {
 	
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 	}
 	
+	Android_GroupTests android = new Android_GroupTests();
+	iOS_GroupTests iOS = new iOS_GroupTests();
 	Drivers element = new Drivers();
 	
 	@Test
 	public void test01_createGroup() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test01");
-			test01_create_group();
+			if (Android()) {
+				android.test01_create_group();
+			} else if (iOS()) {
+				iOS.test01_create_group();
+			}
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
