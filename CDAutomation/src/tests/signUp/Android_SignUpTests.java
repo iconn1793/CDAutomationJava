@@ -5,7 +5,7 @@ import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
 
-public class SignUpTests extends Drivers {
+public class Android_SignUpTests extends Drivers {
 	
 	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";

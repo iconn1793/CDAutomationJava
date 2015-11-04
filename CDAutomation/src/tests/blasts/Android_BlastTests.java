@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class BlastTests extends Drivers {
+public class Android_BlastTests extends Drivers {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";
@@ -30,7 +30,7 @@ public class BlastTests extends Drivers {
 	int sh = driver.manage().window().getSize().getHeight();
 
 	@Test
-	public void test01_sending_text_blasts() throws Exception {
+	public void test01_send_text_blasts() throws Exception {
 		// Logs into blast testing account
 		loginAs.user(account01, password01);
 
@@ -84,7 +84,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test02_sending_photo_blast_01() throws Exception {
+	public void test02_send_photo_blast_01() throws Exception {
 		// Sends photo blast with drawing and URL to all followers
 		System.out.println("Sending photo blast with drawing and text to all followers");
 		action_menu().click();
@@ -106,7 +106,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test03_sending_photo_blast_02() throws Exception {
+	public void test03_send_photo_blast_02() throws Exception {
 		// Sends non public photo blast with +username to the new blast list
 		System.out.println("Sending non public photo blast");
 		action_menu().click();
@@ -132,7 +132,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test04_sending_giphy_blast() throws Exception {
+	public void test04_send_giphy_blast() throws Exception {
 		// Sends text blast with giphy to a single friend
 		System.out.println("Sending giphy");
 		action_menu().click();
@@ -146,7 +146,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test05_sending_video_blast_01() throws Exception {
+	public void test05_send_video_blast_01() throws Exception {
 		// Takes video, adds +username, creates blast list, then sends to that blast list
 		System.out.println("Sending video to newly created blast list");
 		action_menu().click();
@@ -169,7 +169,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test06_sending_video_blast_02() throws Exception {
+	public void test06_send_video_blast_02() throws Exception {
 		// Takes video, adds URL, then sends to single friend
 		System.out.println("Sending video with URL");
 		action_menu().click();
@@ -187,7 +187,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test07_sending_text_for_replies() throws Exception {
+	public void test07_send_text_for_replies() throws Exception {
 		// Sends text blast for reply test on other account
 		System.out.println("Sending text blast for reply test");
 		action_menu().click();
@@ -210,7 +210,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test08_opening_text_blast() throws Exception {
+	public void test08_open_text_blast() throws Exception {
 		// Login as account02
 		loginAs.user(account02, password02);
 
@@ -229,7 +229,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test09_opening_photo_blast() throws Exception {
+	public void test09_open_photo_blast() throws Exception {
 		// Opens photo with drawing and URL
 		try {
 			Thread.sleep(3000);
@@ -248,7 +248,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test10_opening_non_public_blast() throws Exception {
+	public void test10_open_non_public_blast() throws Exception {
 		// Opens non public photo blast with +username
 		try {
 			Thread.sleep(4000);
@@ -266,7 +266,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test11_opening_giphy_blast() throws Exception {
+	public void test11_open_giphy_blast() throws Exception {
 		// Checks if giphy was received
 		try {
 			Thread.sleep(3000);
@@ -282,7 +282,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test12_opening_video_blast() throws Exception {
+	public void test12_open_video_blast() throws Exception {
 		// Opens video with +username
 		try {
 			Thread.sleep(4000);
@@ -344,7 +344,7 @@ public class BlastTests extends Drivers {
 	}
 
 	@Test
-	public void test14_checking_blast_replies() throws Exception {
+	public void test14_check_replies() throws Exception {
 		// Login with account01 to check replies
 		loginAs.user(account01, password01);
 
