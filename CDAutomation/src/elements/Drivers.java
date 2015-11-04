@@ -13,7 +13,6 @@ import io.appium.java_client.android.AndroidDriver;
 public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
 
-	
 	@BeforeClass
 	public static void setUp() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();

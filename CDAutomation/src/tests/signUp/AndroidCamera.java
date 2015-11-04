@@ -1,4 +1,4 @@
-package tests.onBoarding;
+package tests.signUp;
 
 import elements.Drivers;
 import io.appium.java_client.TouchAction;
