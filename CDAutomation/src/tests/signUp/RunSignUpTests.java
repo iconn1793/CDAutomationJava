@@ -1,4 +1,4 @@
-package tests.onBoarding;
+package tests.signUp;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
@@ -19,6 +19,18 @@ public class RunSignUpTests extends SignUpTests {
 		try {
 			System.out.println("[GroupTest] Starting test01");
 			test01_check_logged_out();
+		} catch (Exception e) {
+			System.err.println("[Fail] Got exception " + e);
+			driver.resetApp();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test02_signUp() throws Exception {
+		try {
+			System.out.println("[GroupTest] Starting test01");
+			test02_sign_up();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			driver.resetApp();

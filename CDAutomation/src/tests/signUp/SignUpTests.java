@@ -1,4 +1,4 @@
-package tests.onBoarding;
+package tests.signUp;
 
 import elements.Drivers;
 import io.appium.java_client.TouchAction;
@@ -36,7 +36,7 @@ public class SignUpTests extends Drivers {
 		}
 	}
 	
-	public void test02_signUp() throws Exception {
+	public void test02_sign_up() throws Exception {
 		// Create new account and check if special characters can be used
 	    sign_up_button().click();
 	    pick_username().sendKeys(account_name + "!@//$");
