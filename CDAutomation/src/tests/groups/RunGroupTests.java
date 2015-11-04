@@ -5,7 +5,7 @@ import org.junit.runners.MethodSorters;
 import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RunTest extends GroupTest {
+public class RunGroupTests extends GroupTests {
 	
 	Drivers element = new Drivers();
 	
@@ -57,10 +57,10 @@ public class RunTest extends GroupTest {
 	}
 	
 	@Test
-	public void test04_sendGroupMessages() throws Exception {
+	public void test04_sendUsernamePhoto() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test04");
-			test04_send_group_messages();
+			test04_send_username_photo();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
@@ -71,10 +71,38 @@ public class RunTest extends GroupTest {
 	}
 		
 	@Test
-	public void test05_openGroupMessages() throws Exception {
+	public void test05_sendVideoGiphy() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test05");
-			test05_open_group_messages();
+			test05_send_video_giphy();
+		} catch (Exception e) {
+			System.err.println("[Fail] Got exception " + e);
+			relaunch();
+			element.groups_tab().click();
+			element.group01().click();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test06_sendGalleryPhoto() throws Exception {
+		try {
+			System.out.println("[GroupTest] Starting test06");
+			test06_send_gallery_photo();
+		} catch (Exception e) {
+			System.err.println("[Fail] Got exception " + e);
+			relaunch();
+			element.groups_tab().click();
+			element.group01().click();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test07_openGroupMessages() throws Exception {
+		try {
+			System.out.println("[GroupTest] Starting test07");
+			test07_open_group_messages();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();

@@ -4,7 +4,7 @@ import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 
-public class GroupTest extends Drivers {
+public class GroupTests extends Drivers {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";
@@ -70,11 +70,11 @@ public class GroupTest extends Drivers {
 				System.out.println("Group creator not shown. All other users appear correctly.");
 			}
 		} catch (Exception e) {
-			System.out.println("Missing users in group!");
+			System.out.println("Missing users in group!"); 
 		}
 	}
      
-     public void test04_send_group_messages() throws Exception {
+     public void test04_send_username_photo() throws Exception {
 		// Taps on +username
         Thread.sleep(1000);
 		group_text_field().clear();
@@ -95,7 +95,9 @@ public class GroupTest extends Drivers {
 		add_text_field().sendKeys("www.cyberdust.com");
 		done_button().click();
 		next_button().click();
-		
+     }
+     
+     public void test05_send_video_giphy() throws Exception {
 		// Video
 		group_camera_button().click();
 		video_button().click();
@@ -110,7 +112,9 @@ public class GroupTest extends Drivers {
 		group_text_field().clear();
 		group_text_field().sendKeys(":giphy cats");	
 		group_text_send().click();
-		
+     }
+     
+     public void test06_send_gallery_photo() throws Exception {
 		// Photo from gallery
 		group_camera_button().click();
 		photo_gallery().click();
@@ -127,7 +131,7 @@ public class GroupTest extends Drivers {
 		name("leave room").click();
 	}
 	
-	public void test05_open_group_messages() throws Exception {
+	public void test07_open_group_messages() throws Exception {
 		// Log into account02
 		loginAs.user(account02, password02);
 		

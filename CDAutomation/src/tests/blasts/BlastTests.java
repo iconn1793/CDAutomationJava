@@ -7,7 +7,7 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class BlastTest extends Drivers {
+public class BlastTests extends Drivers {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";

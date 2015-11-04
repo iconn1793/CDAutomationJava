@@ -1,12 +1,10 @@
 package tests.onBoarding;
 
-import org.junit.*;
-import org.junit.runners.MethodSorters;
 import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class OnBoardingTest extends Drivers {
+
+public class SignUpTests extends Drivers {
 	
 	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";
@@ -17,8 +15,7 @@ public class OnBoardingTest extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	AndroidCamera androidCamera = new AndroidCamera();
 	
-	@Test
-	public void test01_checkIfLoggedOut() throws Exception {
+	public void test01_check_logged_out() throws Exception {
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
@@ -39,7 +36,6 @@ public class OnBoardingTest extends Drivers {
 		}
 	}
 	
-	@Test
 	public void test02_signUp() throws Exception {
 		// Create new account and check if special characters can be used
 	    sign_up_button().click();
@@ -72,7 +68,6 @@ public class OnBoardingTest extends Drivers {
         OK_button().click();
 	}
 	
-	@Test
 	public void test03_takeProfilePic() throws Exception {
 		// Takes a picture with camera and sets as profile picture
         sign_up_profile_pic().click();
@@ -92,7 +87,6 @@ public class OnBoardingTest extends Drivers {
         System.out.println("New account created");
 	}
 	
-	@Test
     public void test04_updating_profile_picture() throws Exception {
         // Changes profile picture
         more_button().click();
@@ -104,7 +98,6 @@ public class OnBoardingTest extends Drivers {
         System.out.println("Profile picture updated");
 	}
 	
-	@Test
     public void test05_loginLogout() throws Exception {
         // Logout and login test
         System.out.println("Login and logout");
