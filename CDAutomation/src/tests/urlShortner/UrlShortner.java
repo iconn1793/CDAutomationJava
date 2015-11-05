@@ -34,7 +34,7 @@ public class UrlShortner extends Drivers {
 		loginAs.user(account_name, account_pw);
 		more_button().click();
 		enter_website().click();
-		enter_website_textbox().sendKeys(account_website);
+		edit_textbox().sendKeys(account_website);
 		save_button().click();
 		
 		WebElement shortned_url = wait.until(ExpectedConditions.elementToBeClickable(By.name(shortned_website)));
@@ -51,7 +51,7 @@ public class UrlShortner extends Drivers {
 	public void test02_shortned_bio() throws Exception {
 		
 		enter_website().click();
-		enter_website_textbox().sendKeys(shortned_website);
+		edit_textbox().sendKeys(shortned_website);
 		save_button().click();
 		
 		WebElement shortned_url = wait.until(ExpectedConditions.elementToBeClickable(By.name(shortned_website)));
