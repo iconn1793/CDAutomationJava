@@ -39,7 +39,7 @@ public class Drivers {
 		}
 	}
 	
-	//Checks if device is iOS
+	// Checks if device is iOS
 	public boolean iOS() {
 		if (capabilities.getCapability("platformName").equals("iOS")) {
 			System.out.println("[Active Device] iOS");
@@ -54,12 +54,12 @@ public class Drivers {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
 		
 		String dateTime = LocalDateTime.now().format(formatter)+" ";
-		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Android_", "").replace("iOS_", "");
+		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
 		
 		System.out.print(dateTime + testClass + text + "\n");
 	}
 	
-	// For changing the WebDriverWait time when needed
+	// For changing the WebDriverWait time from in a test
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}
