@@ -32,7 +32,6 @@ public class Drivers {
 	// Checks if device is Android
 	public boolean Android() {
 		if (capabilities.getCapability("platformName").equals("Android")) {
-			System.out.println("[Active Device] Android");
 			return true;
 		} else {
 			return false;
@@ -42,7 +41,6 @@ public class Drivers {
 	// Checks if device is iOS
 	public boolean iOS() {
 		if (capabilities.getCapability("platformName").equals("iOS")) {
-			System.out.println("[Active Device] iOS");
 			return true;
 		} else {
 			return false;

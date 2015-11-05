@@ -4,7 +4,7 @@ import elements.LoginWith;
 import elements.AndroidAlbum;
 import io.appium.java_client.TouchAction;
 
-public class iOS_GroupTests extends Android_GroupTests {
+public class iOS_GroupTest extends Android_GroupTest {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";
@@ -24,7 +24,7 @@ public class iOS_GroupTests extends Android_GroupTests {
 	LoginWith loginAs = new LoginWith();
 	
     public void test01_create_group() throws Exception {
-    	System.out.println("Running iOS Test");
+    	log("Running iOS Test");
 //		// Log into account01
 //		loginAs.user(account01, password01);
 //		

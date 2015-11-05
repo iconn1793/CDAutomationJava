@@ -4,7 +4,7 @@ import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 
-public class Android_BlastTests extends Drivers {
+public class Android_BlastTest extends Drivers {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";

@@ -4,14 +4,14 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_BlastTests extends Android_BlastTests {
+public class Run_BlastTest extends Android_BlastTest {
 	
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 	}
 	
-	Android_BlastTests android = new Android_BlastTests();
+	Android_BlastTest android = new Android_BlastTest();
 	
 	@Test
 	public void test01_sendTextBlasts() throws Exception {

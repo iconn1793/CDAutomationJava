@@ -5,7 +5,7 @@ import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
 
-public class Android_SignUpTests extends Drivers {
+public class Android_SignUpTest extends Drivers {
 	
 	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";
@@ -20,7 +20,7 @@ public class Android_SignUpTests extends Drivers {
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
-			System.out.println("Checking if logged in");
+			log("Checking if logged in");
 			waitTime(8);
             sign_up_button();
             isLoggedOut = true;
@@ -32,7 +32,7 @@ public class Android_SignUpTests extends Drivers {
             action.press(followers()).moveTo(back_button()).release().perform();
             // try this: driver.scrollTo("Logout");
             logout().click();
-            System.out.println("Logging out before starting test");
+            log("Logging out before starting test");
             confirm().click();
 		}
 	}
@@ -44,9 +44,9 @@ public class Android_SignUpTests extends Drivers {
 	    try {
 	    	waitTime(3);
 	        sign_up_OK().click();
-	        System.out.println("Special characters used in username");
+	        log("Special characters used in username");
 	    } catch (Exception e) {
-	        System.out.println("Could not use special characters in username");
+	        log("Could not use special characters in username");
 	    }
 	    waitTime(20);
 	    pick_username().sendKeys(account_name);
@@ -57,13 +57,13 @@ public class Android_SignUpTests extends Drivers {
 	    birthday().click(); Thread.sleep(2000);
 	    		
         // Sets birthday
-        System.out.println("Entering birthday");
+        log("Entering birthday");
         action.longPress(date().getLocation().x, date().getLocation().y, 3000).release().perform();
         birthday_done().click();
         birthday_OK().click();
 
         // Enters email
-        System.out.println("Entering email");
+        log("Entering email");
         email().sendKeys(account_email);
         email_OK().click();
         OK_button().click();
@@ -73,9 +73,9 @@ public class Android_SignUpTests extends Drivers {
 		// Takes a picture with camera and sets as profile picture
         sign_up_profile_pic().click();
         camera_button().click(); Thread.sleep(3000);
-        System.out.println("Taking a photo and setting it as the profile picture");
+        log("Taking a photo and setting it as the profile picture");
         androidCamera.takePhoto();
-        System.out.println("Skipping checking contacts and sending text message");
+        log("Skipping checking contacts and sending text message");
         OK_button().click();
         skip_button().click();
         try {
@@ -85,17 +85,19 @@ public class Android_SignUpTests extends Drivers {
         	skip_button().click();
         	done_button().click();
         }
-        System.out.println("New account created");
+        log("New account created");
 	}
 	
 	public void test04_check_for_tutorial() throws Exception {
 		try {
+			waitTime(5);
 			if (tutorial_image().isDisplayed()) {
 				Thread.sleep(1000);
+				log("Backing out of tutorial screen");
 				driver.pressKeyCode(4);
 			}
 		} catch (Exception e) {
-
+			log("No tutorial screen");
 		}
 	}
 	
@@ -104,15 +106,15 @@ public class Android_SignUpTests extends Drivers {
         more_button().click();
         profile_picture().click();
         change_profile_picture().click();
-        System.out.println("Changing profile picture");
+        log("Changing profile picture");
         camera_button().click(); Thread.sleep(3000);
         androidCamera.takePhoto();
-        System.out.println("Profile picture updated");
+        log("Profile picture updated");
 	}
 	
     public void test06_login_logout() throws Exception {
         // Logout and login test
-        System.out.println("Login and logout");
+        log("Login and logout");
         action.press(followers()).moveTo(back_button()).release().perform();
         logout().click();
         confirm().click();
@@ -120,13 +122,13 @@ public class Android_SignUpTests extends Drivers {
         login_username().sendKeys(account_name.toUpperCase());
         login_password().sendKeys(account_pw);
         login_OK().click();
-        System.out.println("Username is not case sensitive");
+        log("Username is not case sensitive");
 
         // Deletes account
         more_button().click(); Thread.sleep(1000);
         action.press(followers()).moveTo(back_button()).release().perform();
         delete_account().click();
-        System.out.println("Deleting account");
+        log("Deleting account");
         confirm().click();
 	}
 }
