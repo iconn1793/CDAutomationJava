@@ -3,10 +3,7 @@ package tests.blasts;
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
-import org.junit.*;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Android_BlastTests extends Drivers {
 
 	////////////////////////////////////////
@@ -29,7 +26,6 @@ public class Android_BlastTests extends Drivers {
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();
 
-	@Test
 	public void test01_send_text_blasts() throws Exception {
 		// Logs into blast testing account
 		loginAs.user(account01, password01);
@@ -37,13 +33,13 @@ public class Android_BlastTests extends Drivers {
 		// Creates a blast list
 		blast_lists().click();
 		Thread.sleep(2000);
-		System.out.println("Creating a blast list");
+		log("Creating a blast list");
 		try {
 			if (driver.findElementById("com.radicalapps.cyberdust:id/blast_groups_list_item_group_indicator").isDisplayed()) {
 				blast_list_expand(); // Doesn't need .click() attribute
 				blast_list_edit().click();
 				blast_list_more().click();
-				System.out.println("Deleting pre-existing blast list first");
+				log("Deleting pre-existing blast list first");
 				delete_list().click();
 				confirm().click();
 				blast_lists().click();
@@ -57,7 +53,7 @@ public class Android_BlastTests extends Drivers {
 		username(account03).click();
 		OK_button().click();
 		// Sends text blast with +username, URL, and location to blast list
-		System.out.println("Sending text blast to blast list");
+		log("Sending text blast to blast list");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
@@ -69,7 +65,7 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 
 		// Edits participants and renames blast list
-		System.out.println("Editing blast list");
+		log("Editing blast list");
 		blast_lists().click();
 		blast_list_expand(); // Doesn't need .click(); attribute
 		blast_list_edit().click();
@@ -83,10 +79,9 @@ public class Android_BlastTests extends Drivers {
 		back_button().click();
 	}
 
-	@Test
 	public void test02_send_photo_blast_01() throws Exception {
 		// Sends photo blast with drawing and URL to all followers
-		System.out.println("Sending photo blast with drawing and text to all followers");
+		log("Sending photo blast with drawing and text to all followers");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -105,10 +100,9 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	@Test
 	public void test03_send_photo_blast_02() throws Exception {
 		// Sends non public photo blast with +username to the new blast list
-		System.out.println("Sending non public photo blast");
+		log("Sending non public photo blast");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -122,7 +116,7 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 
 		// Deletes blast list
-		System.out.println("Deleting renamed blast list");
+		log("Deleting renamed blast list");
 		blast_lists().click();
 		blast_list_expand();
 		blast_list_edit().click();
@@ -131,10 +125,9 @@ public class Android_BlastTests extends Drivers {
 		confirm().click();
 	}
 
-	@Test
 	public void test04_send_giphy_blast() throws Exception {
 		// Sends text blast with giphy to a single friend
-		System.out.println("Sending giphy");
+		log("Sending giphy");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
@@ -145,10 +138,9 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	@Test
 	public void test05_send_video_blast_01() throws Exception {
 		// Takes video, adds +username, creates blast list, then sends to that blast list
-		System.out.println("Sending video to newly created blast list");
+		log("Sending video to newly created blast list");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -168,10 +160,9 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	@Test
 	public void test06_send_video_blast_02() throws Exception {
 		// Takes video, adds URL, then sends to single friend
-		System.out.println("Sending video with URL");
+		log("Sending video with URL");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -186,10 +177,9 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	@Test
 	public void test07_send_text_for_replies() throws Exception {
 		// Sends text blast for reply test on other account
-		System.out.println("Sending text blast for reply test");
+		log("Sending text blast for reply test");
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
@@ -200,7 +190,7 @@ public class Android_BlastTests extends Drivers {
 		blast_Ok_button().click();
 
 		// Deletes blast list
-		System.out.println("Deleting blast list");
+		log("Deleting blast list");
 		blast_lists().click();
 		blast_list_expand();
 		blast_list_edit().click();
@@ -209,18 +199,17 @@ public class Android_BlastTests extends Drivers {
 		confirm().click();
 	}
 
-	@Test
 	public void test08_open_text_blast() throws Exception {
 		// Login as account02
 		loginAs.user(account02, password02);
 
 		// Opens text blast with +username, URL, and location
-		System.out.println("Opening text blast and checking +username, URL, and location");
+		log("Opening text blast and checking +username, URL, and location");
 		Thread.sleep(2000);
 		name(account01).click(); Thread.sleep(2000);
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
-		action.press(sw / 6, sh / 4).release().perform(); // clicks +username
+		action.press(sw/10*6, sh/10*4).release().perform(); // clicks +username
 		swipe_view_add().click(); Thread.sleep(2000);
 		swipe_view_url_card().click(); Thread.sleep(4000);
 		back_button().click(); Thread.sleep(1000);
@@ -228,16 +217,15 @@ public class Android_BlastTests extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	@Test
 	public void test09_open_photo_blast() throws Exception {
 		// Opens photo with drawing and URL
 		try {
 			Thread.sleep(3000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/page_frag_image").isDisplayed()) {
-				System.out.println("Image loaded successfully");
+				log("Image loaded successfully");
 			}
 		} catch (Exception e) {
-			System.out.println("Image did not load");
+			log("Image did not load");
 		}
 		swipe_view_text().click();
 		Thread.sleep(4000);
@@ -247,16 +235,15 @@ public class Android_BlastTests extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	@Test
 	public void test10_open_non_public_blast() throws Exception {
 		// Opens non public photo blast with +username
 		try {
 			Thread.sleep(4000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/page_frag_reblast").isDisplayed()) {
-				System.out.println("Able to reblast non public blast");
+				log("Able to reblast non public blast");
 			}
 		} catch (Exception e) {
-			System.out.println("Not able to reblast non public blast");
+			log("Not able to reblast non public blast");
 		}
 		swipe_view_text().click();
 		swipe_view_add().click();
@@ -265,32 +252,30 @@ public class Android_BlastTests extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	@Test
 	public void test11_open_giphy_blast() throws Exception {
 		// Checks if giphy was received
 		try {
 			Thread.sleep(3000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/page_frag_gif_view").isDisplayed() 
 					&& driver.findElementById("com.radicalapps.cyberdust:id/text_overlay").isDisplayed()) {
-				System.out.println("Giphy loaded successfully");
+				log("Giphy loaded successfully");
 			}
 		} catch (Exception e) {
-			System.out.println("Giphy was not found");
+			log("Giphy was not found");
 		}
 		Thread.sleep(1000);
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	@Test
 	public void test12_open_video_blast() throws Exception {
 		// Opens video with +username
 		try {
 			Thread.sleep(4000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/overlay_video_view").isDisplayed()) {
-				System.out.println("Video loaded successfully");
+				log("Video loaded successfully");
 			}
 		} catch (Exception e) {
-			System.out.println("Video did not load");
+			log("Video did not load");
 		}
 		swipe_view_text().click();
 		swipe_view_add().click();
@@ -307,17 +292,16 @@ public class Android_BlastTests extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	@Test
 	public void test13_reply_to_blast() throws Exception {
 		// Opens blast and tests reply functionality
-		System.out.println("Testing reply functionality");
+		log("Testing reply functionality");
 		swipe_view_reply().click();
 		swipe_view_reply().sendKeys("Test reply");
 		swipe_view_reply_send().click();
 		swipe_view_reply().click();
 		swipe_view_reply().sendKeys("+blasttest");
 		
-		System.out.println("Testing if +usernames can be tapped");
+		log("Testing if +usernames can be tapped");
 		swipe_view_reblast().click();
 		swipe_view_reply_send().click();
 		swipe_view_reply_monkey().click();
@@ -325,7 +309,7 @@ public class Android_BlastTests extends Drivers {
 		swipe_view_emoji_cancel().click();
 		swipe_view_reply_media().click();
 		
-		System.out.println("Testing photo and video replies");
+		log("Testing photo and video replies");
 		photo_button().click();
 		photo_pen().click();
 		driver.swipe(photo_back_button().getLocation().x + 50, photo_back_button().getLocation().y - 50,
@@ -343,7 +327,6 @@ public class Android_BlastTests extends Drivers {
 		}	
 	}
 
-	@Test
 	public void test14_check_replies() throws Exception {
 		// Login with account01 to check replies
 		loginAs.user(account01, password01);
@@ -351,17 +334,17 @@ public class Android_BlastTests extends Drivers {
 		// Opens replies from account02 and does a check to see if they were all received
 		dusts_tab().click();
 		username(account02).click();
-		System.out.println("Checking if all replies were successful");
+		log("Checking if all replies were successful");
 		try {
 			Thread.sleep(2000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/chat_bubble_view_message_text").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/emoji_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/photo_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/video_play_button").isDisplayed()) {
-				System.out.println("All replies successfully received from " + account02);
+				log("All replies successfully received from " + account02);
 			}
 		} catch (Exception e) {
-			System.out.println("All replies were not received");
+			log("All replies were not received");
 		}
 		Thread.sleep(2000);
 		back_button().click();

@@ -35,7 +35,7 @@ public class LoginWith extends Drivers {
         }
         
         if (already_logged_in && !logged_out) {
-            System.out.println("[Login] Already logged in as " + account);
+            log("Already logged in as " + account);
             back_button().click();
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
@@ -45,7 +45,7 @@ public class LoginWith extends Drivers {
         }
         
         if (logged_out && !already_logged_in) {
-            System.out.println("[Login] Logging in as " + account);
+            log("Logging in as " + account);
             login_button().click();
             login_username().sendKeys(account);
             login_password().click();

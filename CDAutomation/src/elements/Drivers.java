@@ -1,6 +1,9 @@
 package elements;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -26,6 +29,7 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
+	// Checks if device is Android
 	public boolean Android() {
 		if (capabilities.getCapability("platformName").equals("Android")) {
 			System.out.println("[Active Device] Android");
@@ -34,6 +38,8 @@ public class Drivers {
 			return false;
 		}
 	}
+	
+	//Checks if device is iOS
 	public boolean iOS() {
 		if (capabilities.getCapability("platformName").equals("iOS")) {
 			System.out.println("[Active Device] iOS");
@@ -42,7 +48,18 @@ public class Drivers {
 			return false;
 		}
 	}
-
+	
+	// For logging tests
+	public void log (String text) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
+		
+		String dateTime = LocalDateTime.now().format(formatter)+" ";
+		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Android_", "").replace("iOS_", "");
+		
+		System.out.print(dateTime + testClass + text + "\n");
+	}
+	
+	// For changing the WebDriverWait time when needed
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}

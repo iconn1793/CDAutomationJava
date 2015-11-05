@@ -38,7 +38,7 @@ public class AndroidCamera extends Drivers {
         try {
         	profile_picture_done().click(); Thread.sleep(3000);
         } catch (Exception e) {
-            System.out.println("Could not take a photo, going back");
+            log("Could not take a photo, going back");
             for (int i = 0; i < 2; i++) {
                 driver.pressKeyCode(4); Thread.sleep(3000);  // If none of the above works, go back
             try {
