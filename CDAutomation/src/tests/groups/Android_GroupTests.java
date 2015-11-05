@@ -2,9 +2,10 @@ package tests.groups;
 
 import elements.Drivers;
 import elements.LoginWith;
+import elements.AndroidAlbum;
 import io.appium.java_client.TouchAction;
 
-public class GroupTests extends Drivers {
+public class Android_GroupTests extends Drivers {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";

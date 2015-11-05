@@ -2,28 +2,32 @@ package tests.groups;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RunGroupTests extends GroupTests {
+public class Run_GroupTests extends Android_GroupTests {
 	
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 	}
 	
-	Drivers element = new Drivers();
+	Android_GroupTests android = new Android_GroupTests();
+	iOS_GroupTests iOS = new iOS_GroupTests();
 	
 	@Test
 	public void test01_createGroup() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test01");
-			test01_create_group();
+			if (Android()) {
+				android.test01_create_group();
+			} else if (iOS()) {
+				iOS.test01_create_group();
+			}
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -32,12 +36,12 @@ public class RunGroupTests extends GroupTests {
 	public void test02_addBlockedUser() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test02");
-			test02_add_blocked_user();
+			android.test02_add_blocked_user();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -46,12 +50,12 @@ public class RunGroupTests extends GroupTests {
 	public void test03_groupMembers() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test03");
-			test03_group_members();
+			android.test03_group_members();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -60,12 +64,12 @@ public class RunGroupTests extends GroupTests {
 	public void test04_sendUsernamePhoto() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test04");
-			test04_send_username_photo();
+			android.test04_send_username_photo();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -74,12 +78,12 @@ public class RunGroupTests extends GroupTests {
 	public void test05_sendVideoGiphy() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test05");
-			test05_send_video_giphy();
+			android.test05_send_video_giphy();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -88,12 +92,12 @@ public class RunGroupTests extends GroupTests {
 	public void test06_sendGalleryPhoto() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test06");
-			test06_send_gallery_photo();
+			android.test06_send_gallery_photo();
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);
 			relaunch();
-			element.groups_tab().click();
-			element.group01().click();
+			groups_tab().click();
+			group01().click();
 			throw e;
 		}
 	}
@@ -102,7 +106,7 @@ public class RunGroupTests extends GroupTests {
 	public void test07_openGroupMessages() throws Exception {
 		try {
 			System.out.println("[GroupTest] Starting test07");
-			test07_open_group_messages();
+			android.test07_open_group_messages();
 			System.out.println("Test Complete");
 		} catch (Exception e) {
 			System.err.println("[Fail] Got exception " + e);

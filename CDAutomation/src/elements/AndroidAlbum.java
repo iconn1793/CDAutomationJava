@@ -1,6 +1,5 @@
-package tests.groups;
+package elements;
 
-import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
 public class AndroidAlbum extends Drivers {

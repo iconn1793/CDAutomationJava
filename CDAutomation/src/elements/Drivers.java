@@ -1,6 +1,9 @@
 package elements;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -12,10 +15,12 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
-
+	protected static DesiredCapabilities capabilities = new DesiredCapabilities();
+	protected WebDriverWait wait = new WebDriverWait(driver, 20);
+	protected TouchAction action = new TouchAction(driver);
+	
 	@BeforeClass
 	public static void setUp() throws Exception {
-		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("platformVersion", "");
 		capabilities.setCapability("deviceName", "");
@@ -24,9 +29,37 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-	TouchAction action = new TouchAction(driver);
+	// Checks if device is Android
+	public boolean Android() {
+		if (capabilities.getCapability("platformName").equals("Android")) {
+			System.out.println("[Active Device] Android");
+			return true;
+		} else {
+			return false;
+		}
+	}
 	
+	//Checks if device is iOS
+	public boolean iOS() {
+		if (capabilities.getCapability("platformName").equals("iOS")) {
+			System.out.println("[Active Device] iOS");
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	// For logging tests
+	public void log (String text) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
+		
+		String dateTime = LocalDateTime.now().format(formatter)+" ";
+		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Android_", "").replace("iOS_", "");
+		
+		System.out.print(dateTime + testClass + text + "\n");
+	}
+	
+	// For changing the WebDriverWait time when needed
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}
