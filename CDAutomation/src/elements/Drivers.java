@@ -1,6 +1,9 @@
 package elements;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -47,14 +50,21 @@ public class Drivers {
 		}
 	}
 	
-	// For logging tests
-	public void log (String text) {
+	// Prints text to console and to a log file in '/workspace/projectname/testlogs/'
+	public void log (String text) throws Exception {
+		new File(Paths.get("").toAbsolutePath().normalize().toString()+"\\testlogs\\").mkdir();
+		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
+		String logName = getClass().getPackage().toString().replace("package ", "");
+		String logLocation = Paths.get("").toAbsolutePath().normalize().toString()+"\\testlogs\\"+logName+".log";
 		
+		FileWriter myWriter = new FileWriter(logLocation, true);
+		String testName = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
 		String dateTime = LocalDateTime.now().format(formatter)+" ";
-		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
 		
-		System.out.print(dateTime + testClass + text + "\n");
+		System.out.print(dateTime + testName + text + "\n");
+		myWriter.append(dateTime + testName + text + "\n");
+		myWriter.close();
 	}
 	
 	// For changing the WebDriverWait time from in a test
@@ -435,7 +445,7 @@ public class Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_edit_text")));
     }
     public WebElement confirm_new_password() {
-       return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")));
     }
     public WebElement change_password_ok_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/spinner_button_text_view")));

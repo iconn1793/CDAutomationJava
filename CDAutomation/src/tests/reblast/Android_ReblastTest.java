@@ -27,7 +27,6 @@ public class Android_ReblastTest extends Drivers {
     	// Login to reblast test accounts
     	loginAs.user(account01, password01);
    
-        log("Sending text blasts with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_text().click();
@@ -42,7 +41,6 @@ public class Android_ReblastTest extends Drivers {
     }
 	
     public void test02_send_text_no_loc () throws Exception {
-        log("Sending text blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_text().click();
@@ -55,7 +53,6 @@ public class Android_ReblastTest extends Drivers {
     }
 
     public void test03_send_photo_with_loc() throws Exception {
-        log("Sending photo blasts with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_media().click();
@@ -70,7 +67,6 @@ public class Android_ReblastTest extends Drivers {
     }
     
     public void test04_send_photo_no_loc() throws Exception {
-        log("Sending photo blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_media().click();
@@ -84,7 +80,6 @@ public class Android_ReblastTest extends Drivers {
     
 
     public void test05_send_giphy_with_loc() throws Exception {
-        log("Sending giphy with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_text().click();
@@ -99,7 +94,6 @@ public class Android_ReblastTest extends Drivers {
     }
 
     public void test06_send_giphy_no_loc() throws Exception {
-        log("Sending giphy without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_text().click();
@@ -112,7 +106,6 @@ public class Android_ReblastTest extends Drivers {
     }
 
     public void test07_send_video_with_loc() throws Exception {
-        log("Sending video blasts with location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_media().click();
@@ -128,7 +121,6 @@ public class Android_ReblastTest extends Drivers {
     }
     
     public void test08_send_video_no_loc() throws Exception {
-        log("Sending video blasts without location");
         for (int i = 0; i < 3; i++) {
             action_menu().click();
             action_menu_media().click();
@@ -143,7 +135,6 @@ public class Android_ReblastTest extends Drivers {
 
 
     public void test09_reblast_setup() throws Exception {
-        log("Setting up reblast test");
         loginAs.user(account02, password02);
         blast_lists().click(); 
         Thread.sleep(2000);
@@ -170,19 +161,19 @@ public class Android_ReblastTest extends Drivers {
     
     public void test10_reblast_text_with_loc() throws Exception {
         username(account01).click();
-        log("Reblasting text with location to all followers");
+        log("Reblasting text to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting text with location to blast list");
+        log("Reblasting text to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting text with location to a friend");
+        log("Reblasting text to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -194,19 +185,19 @@ public class Android_ReblastTest extends Drivers {
 
     public void test11_reblast_text_no_loc() throws Exception {
         username(account01).click();
-        log("Reblasting text blast without location to all followers");
+        log("Reblasting text to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting text blast without location to blast list");
+        log("Reblasting text to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting text blast without location to a friend");
+        log("Reblasting text to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -218,19 +209,19 @@ public class Android_ReblastTest extends Drivers {
  
     public void test12_reblast_photo_with_loc() throws Exception {
         username(account01).click();
-        log("Reblasting photo blast with location to all followers");
+        log("Reblasting photo to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting photo blast with location to blast list");
+        log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting photo blast with location to a friend");
+        log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -242,19 +233,19 @@ public class Android_ReblastTest extends Drivers {
 
     public void test13_reblast_photo_no_loc() throws Exception {
         username(account01).click();
-        log("Reblasting photo blast without location to all followers");
+        log("Reblasting photo to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting photo blast without location to blast list");
+        log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting photo blast without location to a friend");
+        log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -265,19 +256,19 @@ public class Android_ReblastTest extends Drivers {
 
     public void test14_reblast_giphy_with_loc() throws Exception {
         username(account01).click();
-        log("Reblasting giphy with location to all followers");
+        log("Reblasting giphy to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting giphy with location to blast list");
+        log("Reblasting giphy to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting giphy with location to a friend");
+        log("Reblasting giphy to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -288,19 +279,19 @@ public class Android_ReblastTest extends Drivers {
 
     public void test15_reblast_giphy_no_loc() throws Exception {
         username(account01).click();
-        log("Reblasting giphy without location to all followers");
+        log("Reblasting giphy to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting giphy without location to blast list");
+        log("Reblasting giphy to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting giphy without location to a friend");
+        log("Reblasting giphy to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -311,19 +302,19 @@ public class Android_ReblastTest extends Drivers {
     
     public void test16_reblast_video_with_loc() throws Exception {
         username(account01).click();
-        log("Reblasting video blast with location to all followers");
+        log("Reblasting video to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting video blast with location to blast list");
+        log("Reblasting video to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting video blast with location to a friend");
+        log("Reblasting video to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
@@ -334,19 +325,19 @@ public class Android_ReblastTest extends Drivers {
 
     public void test17_reblast_video_no_loc() throws Exception {
         username(account01).click();
-        log("Reblasting video blast without location to all followers");
+        log("Reblasting video to all followers");
         swipe_view_reblast().click();
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting video blast without location to blast list");
+        log("Reblasting video to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
         driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
-        log("Reblasting video blast without location to a friend");
+        log("Reblasting video to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();

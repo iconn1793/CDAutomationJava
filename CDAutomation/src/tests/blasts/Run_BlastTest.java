@@ -15,11 +15,12 @@ public class Run_BlastTest extends Android_BlastTest {
 	
 	@Test
 	public void test01_sendTextBlasts() throws Exception {
+		log("[Start] Starting blast test");
 		try {
-			log("Starting test01");
+			log("Test01 sending text blasts");
 			android.test01_send_text_blasts();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -28,10 +29,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test02_sendPhotoBlast1() throws Exception {
 		try {
-			log("Starting test02");
+			log("Test02 sending photo blast1");
 			android.test02_send_photo_blast_01();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -40,10 +41,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test02_sendPhotoBlast2() throws Exception {
 		try {
-			log("Starting test03");
+			log("Test03 sending photo blast2");
 			android.test03_send_photo_blast_02();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -52,10 +53,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test04_sendGiphyBlast() throws Exception {
 		try {
-			log("Starting test04");
+			log("Test04 sending giphy blast");
 			android.test04_send_giphy_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -64,10 +65,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test05_sendVideoBlast1() throws Exception {
 		try {
-			log("Starting test05");
+			log("Test05 sending video blast1");
 			android.test05_send_video_blast_01();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -76,10 +77,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test06_sendVideoBlast2() throws Exception {
 		try {
-			log("Starting test06");
+			log("Test06 sending video blast2");
 			android.test06_send_video_blast_02();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -88,10 +89,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test07_sendTextForReplies() throws Exception {
 		try {
-			log("Starting test07");
+			log("Test07 sending text blast for reply test");
 			android.test07_send_text_for_replies();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -100,10 +101,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test08_openTextBlast() throws Exception {
 		try {
-			log("Starting test08");
+			log("Test08 opening text blasts");
 			android.test08_open_text_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			name(account01).click(); 
 			Thread.sleep(1000);
@@ -114,10 +115,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test09_openPhotoBlast() throws Exception {
 		try {
-			log("Starting test09");
+			log("Test09 opening photo blasts");
 			android.test09_open_photo_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			name(account01).click(); 
 			Thread.sleep(1000);
@@ -128,10 +129,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test10_openNonPublicBlast() throws Exception {
 		try {
-			log("Starting test10");
+			log("Test10 openinig non public blast");
 			android.test10_open_non_public_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			name(account01).click(); 
 			Thread.sleep(1000);
@@ -142,10 +143,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test11_openGiphyBlast() throws Exception {
 		try {
-			log("Starting test11");
+			log("Test11 opening giphy blast");
 			android.test11_open_giphy_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			name(account01).click(); 
 			Thread.sleep(1000);
@@ -156,10 +157,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test12_openVideoBlast() throws Exception {
 		try {
-			log("Starting test12");
+			log("Test12 opening video blasts");
 			android.test12_open_video_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			name(account01).click(); 
 			Thread.sleep(1000);
@@ -170,10 +171,10 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test13_replyToBlast() throws Exception {
 		try {
-			log("Starting test13");
+			log("Test13 replying to blast");
 			android.test13_reply_to_blast();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -182,13 +183,14 @@ public class Run_BlastTest extends Android_BlastTest {
 	@Test
 	public void test14_checkReplies() throws Exception {
 		try {
-			log("Starting test14");
+			log("Test14 checking if replies were received");
 			android.test14_check_replies();
 			log("Test Complete");
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
+		log("[Finish] Test complete\n");
 	}
 }

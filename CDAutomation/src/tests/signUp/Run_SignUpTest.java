@@ -15,11 +15,12 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	
 	@Test
 	public void test01_checkIfLoggedOut() throws Exception {
+		log("[Start] Starting sign up test");
 		try {
-			log("Starting test01");
+			log("Test01 checking if logged out");
 			android.test01_check_logged_out();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			driver.resetApp();
 			throw e;
 		}
@@ -28,10 +29,10 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test02_signUp() throws Exception {
 		try {
-			log("Starting test02");
+			log("Test02 starting on boarding process");
 			android.test02_sign_up();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			driver.resetApp();
 			throw e;
 		}
@@ -40,10 +41,10 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test03_takeProfilePic() throws Exception {
 		try {
-			log("Starting test03");
+			log("Test03 taking a profile picture");
 			android.test03_take_profile_pic();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -52,10 +53,10 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test04_checkForTutorial() throws Exception {
 		try {
-			log("Starting test04");
+			log("Test04 checking for first time tutorial");
 			android.test04_check_for_tutorial();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
@@ -64,10 +65,10 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test05_updateProfilePic() throws Exception {
 		try {
-			log("Starting test05");
+			log("Test05 updating profile picture");
 			android.test05_update_profile_pic();
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			more_button().click();
 			throw e;
@@ -77,13 +78,13 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test06_loginLogout() throws Exception {
 		try {
-			log("Starting test06");
+			log("Test06 logging out then back in");
 			android.test06_login_logout();
-	        log("Test Complete");
 		} catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
+		log("[Finish] Test Complete\n");
 	}
 }

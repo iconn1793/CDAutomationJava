@@ -68,7 +68,7 @@ public class Android_GroupTest extends Drivers {
 		}
 		try {
 			if (name(account02).isDisplayed() && name(account03).isDisplayed()) {
-				log("Group creator not shown. All other users appear correctly.");
+				log("User who created group not listed.");
 			}
 		} catch (Exception e) {
 			log("Missing users in group!"); 
@@ -149,7 +149,7 @@ public class Android_GroupTest extends Drivers {
 			if (driver.findElementById("com.radicalapps.cyberdust:id/chat_bubble_view_message_text").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/photo_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/video_play_button").isDisplayed()) {
-				log("All group messages successfully received from " + account01);
+				log("All group messages successfully received");
 			}
 		} catch (Exception e) {
 			log("All group messages were not received!");
