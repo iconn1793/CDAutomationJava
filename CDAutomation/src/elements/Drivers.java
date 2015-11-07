@@ -108,6 +108,9 @@ public class Drivers {
 	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
 	}
+	public WebElement dust1_more_button() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
+	}
 	public WebElement new_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tap_to_compose_button")));
 	}
@@ -172,10 +175,10 @@ public class Drivers {
 	public WebElement group_three_dotted_menu() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.LinearLayout[@index='2'][android.widget.ImageButton[@index='0']]")));
 	}
-	public WebElement group01_more_button() {
+	public WebElement group1_more_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
 	}
-	public WebElement group01() {
+	public WebElement group1() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
 	}
 	public WebElement group02() {

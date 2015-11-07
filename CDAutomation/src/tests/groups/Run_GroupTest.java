@@ -28,7 +28,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -42,7 +42,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -56,7 +56,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -70,7 +70,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -84,7 +84,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -98,7 +98,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -112,7 +112,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}
@@ -126,7 +126,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			log("[Fail] Got exception " + e);
 			relaunch();
 			groups_tab().click();
-			group01().click();
+			group1().click();
 			throw e;
 		}
 	}

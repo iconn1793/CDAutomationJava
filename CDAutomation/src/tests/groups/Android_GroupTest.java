@@ -142,7 +142,7 @@ public class Android_GroupTest extends Drivers {
 		
 		// Check if all group messages were received from account01
 		groups_tab().click();
-		group01().click();
+		group1().click();
 		
 		try {
 			Thread.sleep(2000);
