@@ -52,9 +52,13 @@ public class Drivers {
 	
 	// Prints text to console and to a log file in the project folder / test logs folder
 	public void log (String text) throws Exception {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
 		String projectPath = Paths.get("").toAbsolutePath().normalize().toString();
-		String logName = getClass().getPackage().toString().replace("package ", "");
 		String logLocation = new String();
+		
+		String dateTime = LocalDateTime.now().format(formatter)+" ";
+		String logName = getClass().getPackage().toString().replace("package ", "");
+		String testName = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
 		
 		if (projectPath.contains("/")) {
 			new File(projectPath+"/testlogs/").mkdir();
@@ -65,6 +69,8 @@ public class Drivers {
 		}
 		
 		FileWriter myWriter = new FileWriter(logLocation, true);
+		System.out.print(dateTime + testName + text + "\n");
+		myWriter.append(dateTime + testName + text + "\n");
 		myWriter.append("Test" + "\n");
 		myWriter.close();
 	}
