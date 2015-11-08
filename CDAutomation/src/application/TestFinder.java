@@ -22,8 +22,8 @@ public class TestFinder {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
 				System.out.println("[Application]: Running "+simpleList.get(i));
-				Class<?> myClass = Class.forName(rawList.get(i).replace(myDir, "").replace("\\tests", "tests").replace("\\", "."));
-				
+				Class<?> myClass = Class.forName(rawList.get(i).replace(myDir, "").replace("\\tests", "tests")
+						.replace("//tests", "tests").replace("\\", ".").replace("/", "."));
 				runTest.addListener(output);
 				runTest.run(myClass);
 			}

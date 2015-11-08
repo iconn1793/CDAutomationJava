@@ -11,11 +11,11 @@ public class FileFinder {
 		DefaultListModel<String> myList = new DefaultListModel<String>();
 	    File dir = new File(dirName);
 
-	    // Get all files from directory and subdirectories
+	    // Get all files from directory and sub directories
 	    File[] fList = dir.listFiles();
 	    for (File file : fList) {
 	        if (file.isFile() && file.getAbsolutePath().contains("Run") || file.getAbsolutePath().contains("run")) {
-	            files.addElement(file.getAbsolutePath().replace("\\bin", "").replace("\\src", "").replace(".java", "").replace(".class", ""));
+	            files.addElement(file.getAbsolutePath().replace("bin", "").replace("src", "").replace(".java", "").replace(".class", ""));
 	        } else if (file.isDirectory()) {
 	            testFilePath(file.getAbsolutePath(), files);
 	        }
