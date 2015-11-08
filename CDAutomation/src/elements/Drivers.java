@@ -50,20 +50,22 @@ public class Drivers {
 		}
 	}
 	
-	// Prints text to console and to a log file in '/workspace/projectname/testlogs/'
+	// Prints text to console and to a log file in the project folder / test logs folder
 	public void log (String text) throws Exception {
-		new File(Paths.get("").toAbsolutePath().normalize().toString()+"\\testlogs\\").mkdir();
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
+		String projectPath = Paths.get("").toAbsolutePath().normalize().toString();
 		String logName = getClass().getPackage().toString().replace("package ", "");
-		String logLocation = Paths.get("").toAbsolutePath().normalize().toString()+"\\testlogs\\"+logName+".log";
+		String logLocation = new String();
+		
+		if (projectPath.contains("/")) {
+			new File(projectPath+"/testlogs/").mkdir();
+			logLocation = projectPath+"/testlogs/"+logName+".log";
+		} else {
+			new File(projectPath+"\\testlogs\\").mkdir();
+			logLocation = projectPath+"\\testlog\\"+logName+".log";
+		}
 		
 		FileWriter myWriter = new FileWriter(logLocation, true);
-		String testName = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
-		String dateTime = LocalDateTime.now().format(formatter)+" ";
-		
-		System.out.print(dateTime + testName + text + "\n");
-		myWriter.append(dateTime + testName + text + "\n");
+		myWriter.append("Test" + "\n");
 		myWriter.close();
 	}
 	
