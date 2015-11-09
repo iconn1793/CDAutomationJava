@@ -15,8 +15,6 @@ public class ProfileBio extends Drivers
 	String account_name = "testProfilebio";
 	String account_pw = "password";
 	String text_bio = "CyberdustText ";
-	
-    //inputConnection.commitText(text,mComposing.length());
     
 	//////////////////////////////////////////////
 	
