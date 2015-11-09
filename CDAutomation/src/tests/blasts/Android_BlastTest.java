@@ -4,7 +4,7 @@ import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 
-public class Android_BlastTests extends Drivers {
+public class Android_BlastTest extends Drivers {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";
@@ -200,7 +200,7 @@ public class Android_BlastTests extends Drivers {
 	}
 
 	public void test08_open_text_blast() throws Exception {
-		// Login as account02
+		// Log in as account02
 		loginAs.user(account02, password02);
 
 		// Opens text blast with +username, URL, and location
@@ -209,7 +209,7 @@ public class Android_BlastTests extends Drivers {
 		name(account01).click(); Thread.sleep(2000);
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
-		action.press(sw/10*6, sh/10*4).release().perform(); // clicks +username
+		action.press(sw/10*2, sh/10*2).release().perform(); // clicks +username
 		swipe_view_add().click(); Thread.sleep(2000);
 		swipe_view_url_card().click(); Thread.sleep(4000);
 		back_button().click(); Thread.sleep(1000);

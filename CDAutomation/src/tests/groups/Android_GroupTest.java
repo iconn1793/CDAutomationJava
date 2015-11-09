@@ -5,7 +5,7 @@ import elements.LoginWith;
 import elements.AndroidAlbum;
 import io.appium.java_client.TouchAction;
 
-public class Android_GroupTests extends Drivers {
+public class Android_GroupTest extends Drivers {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";
@@ -47,9 +47,9 @@ public class Android_GroupTests extends Drivers {
 		try {
 			waitTime(2);
 			OK_button().click();
-			System.out.println("Added blocked user to group!");
+			log("Added blocked user to group!");
 		} catch (Exception e) {
-			System.out.println("Could not add blocked user to group");
+			log("Could not add blocked user to group");
 		}
      }
      
@@ -61,28 +61,30 @@ public class Android_GroupTests extends Drivers {
 		try {
 			waitTime(2);
 			if (name(account01).isDisplayed()) {
-				System.out.println("User who created group is displayed!");
+				log("User who created group is displayed!");
 			}
 		} catch (Exception e) {
 
 		}
 		try {
 			if (name(account02).isDisplayed() && name(account03).isDisplayed()) {
-				System.out.println("Group creator not shown. All other users appear correctly.");
+				log("User who created group not listed.");
 			}
 		} catch (Exception e) {
-			System.out.println("Missing users in group!"); 
+			log("Missing users in group!"); 
 		}
 	}
      
-     public void test04_send_username_photo() throws Exception {
+     public void test04_send_username() throws Exception {
 		// Taps on +username
         Thread.sleep(1000);
 		group_text_field().clear();
 		group_text_field().sendKeys("+grouptest");
 		action.press(group_text_field().getLocation().x+300, group_text_field().getLocation().y-50).release().perform();
 		group_text_send().click();
-		
+     }
+     
+     public void test05_send_photo() throws Exception {
 		// Photo
 		group_camera_button().click();
 		photo_button().click();
@@ -98,7 +100,7 @@ public class Android_GroupTests extends Drivers {
 		next_button().click();
      }
      
-     public void test05_send_video_giphy() throws Exception {
+     public void test06_send_video() throws Exception {
 		// Video
 		group_camera_button().click();
 		video_button().click();
@@ -108,14 +110,16 @@ public class Android_GroupTests extends Drivers {
 		done_button().click();
 		next_button().click();
 		Thread.sleep(2000);
-		
+     }
+     
+     public void test07_send_giphy() throws Exception {
 		// Giphy
 		group_text_field().clear();
 		group_text_field().sendKeys(":giphy cats");	
 		group_text_send().click();
      }
      
-     public void test06_send_gallery_photo() throws Exception {
+     public void test08_send_gallery_photo() throws Exception {
 		// Photo from gallery
 		group_camera_button().click();
 		photo_gallery().click();
@@ -132,28 +136,28 @@ public class Android_GroupTests extends Drivers {
 		name("leave room").click();
 	}
 	
-	public void test07_open_group_messages() throws Exception {
+	public void test09_open_group_messages() throws Exception {
 		// Log into account02
 		loginAs.user(account02, password02);
 		
 		// Check if all group messages were received from account01
 		groups_tab().click();
-		group01().click();
+		group1().click();
 		
 		try {
 			Thread.sleep(2000);
 			if (driver.findElementById("com.radicalapps.cyberdust:id/chat_bubble_view_message_text").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/photo_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/video_play_button").isDisplayed()) {
-				System.out.println("All group messages successfully received from " + account01);
+				log("All group messages successfully received");
 			}
 		} catch (Exception e) {
-			System.out.println("All group messages were not received!");
+			log("All group messages were not received!");
 			}
 		
 		// Tap and hold to see who sent a message
 		Thread.sleep(1000);
-		System.out.println("Tapping and holding on message");
+		log("Tapping and holding on message");
 		action.longPress(message_timer(), 3000).perform();
 		
 		Thread.sleep(1000);

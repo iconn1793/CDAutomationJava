@@ -1,6 +1,9 @@
 package elements;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -32,34 +35,47 @@ public class Drivers {
 	// Checks if device is Android
 	public boolean Android() {
 		if (capabilities.getCapability("platformName").equals("Android")) {
-			System.out.println("[Active Device] Android");
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
-	//Checks if device is iOS
+	// Checks if device is iOS
 	public boolean iOS() {
 		if (capabilities.getCapability("platformName").equals("iOS")) {
-			System.out.println("[Active Device] iOS");
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
-	// For logging tests
-	public void log (String text) {
+	// Prints text to console and to a log file in the project folder / test logs folder
+	public void log (String text) throws Exception {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
+		String projectPath = Paths.get("").toAbsolutePath().normalize().toString();
+		String logLocation = new String();
 		
 		String dateTime = LocalDateTime.now().format(formatter)+" ";
-		String testClass = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Android_", "").replace("iOS_", "");
+		String logName = getClass().getPackage().toString().replace("package ", "");
+		String testName = ("["+getClass().getSimpleName()+"]: ").replace("Run_", "").replace("Run", "").replace("Android_", "").replace("iOS_", "");
 		
-		System.out.print(dateTime + testClass + text + "\n");
+		if (projectPath.contains("/")) {
+			new File(projectPath+"/testlogs/").mkdir();
+			logLocation = projectPath+"/testlogs/"+logName+".log";
+		} else {
+			new File(projectPath+"\\testlogs\\").mkdir();
+			logLocation = projectPath+"\\testlog\\"+logName+".log";
+		}
+		
+		FileWriter myWriter = new FileWriter(logLocation, true);
+		System.out.print(dateTime + testName + text + "\n");
+		myWriter.append(dateTime + testName + text + "\n");
+		myWriter.append("Test" + "\n");
+		myWriter.close();
 	}
 	
-	// For changing the WebDriverWait time when needed
+	// For changing the WebDriverWait time from in a test
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}
@@ -99,6 +115,9 @@ public class Drivers {
 	}
 	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
+	}
+	public WebElement dust1_more_button() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
 	}
 	public WebElement new_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tap_to_compose_button")));
@@ -164,10 +183,10 @@ public class Drivers {
 	public WebElement group_three_dotted_menu() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.LinearLayout[@index='2'][android.widget.ImageButton[@index='0']]")));
 	}
-	public WebElement group01_more_button() {
+	public WebElement group1_more_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
 	}
-	public WebElement group01() {
+	public WebElement group1() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
 	}
 	public WebElement group02() {
@@ -437,7 +456,7 @@ public class Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_edit_text")));
     }
     public WebElement confirm_new_password() {
-       return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")));
     }
     public WebElement change_password_ok_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/spinner_button_text_view")));
