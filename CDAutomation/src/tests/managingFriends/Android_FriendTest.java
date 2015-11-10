@@ -34,8 +34,7 @@ public class Android_FriendTest extends Drivers {
 //    	chat_room_send_button().click();
 //    	back_button().click();
 //    	back_button().click();
-    	System.out.println(sw/10*9);
-    	System.out.println(Math.round(sh/10*1.7));
+
     	Thread.sleep(2000);
     	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
     }

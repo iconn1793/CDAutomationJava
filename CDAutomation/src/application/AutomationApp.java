@@ -68,10 +68,23 @@ public class AutomationApp {
 		consoleOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleOut);
 		
+		// Open log button
+		JButton logButton = new JButton("Open Log");
+		logButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<String> selectedTests = listOfTests.getSelectedValuesList();
+				try {
+					new application.LogFinder().openLog(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		logButton.setBounds(70, 328, 90, 25);
+		myFrame.getContentPane().add(logButton);
+		
 		// Run button
 		JButton runButton = new JButton("Run");
-		runButton.setBounds(132, 328, 89, 23);
-		
 		runButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<String> selectedTests = listOfTests.getSelectedValuesList();
@@ -82,12 +95,21 @@ public class AutomationApp {
 				}
 			}
 		});
-
+		runButton.setBounds(170, 328, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
-		// Stop button
+		// Stop button - TODO
 		JButton stopButton = new JButton("Stop");
-		stopButton.setBounds(231, 328, 89, 23);
+		stopButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					throw new InterruptedException();
+				} catch (InterruptedException e) {
+					System.out.println("Test stopped");
+				}
+			}
+		});
+		stopButton.setBounds(270, 328, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 	}
 }

@@ -14,7 +14,7 @@ public class FileFinder {
 	    // Get all files from directory and sub directories
 	    File[] fList = dir.listFiles();
 	    for (File file : fList) {
-	        if (file.isFile() && file.getAbsolutePath().contains("Run") || file.getAbsolutePath().contains("run")) {
+	        if (file.isFile() && file.getAbsolutePath().contains("Run")) {
 	            files.addElement(file.getAbsolutePath().replace("bin", "").replace("src", "").replace(".java", "").replace(".class", ""));
 	        } else if (file.isDirectory()) {
 	            testFilePath(file.getAbsolutePath(), files);

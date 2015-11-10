@@ -15,18 +15,22 @@ public class TestFinder {
 	
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void allTests(List<String> selectedTests) throws Exception {
-		JUnitCore runTest = new JUnitCore();
+		JUnitCore junit = new JUnitCore();
 		RunListener output = new RunListener();
 		
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
-				System.out.println("[Application]: Running "+simpleList.get(i));
-				Class<?> myClass = Class.forName((rawList.get(i).replace(myDir, "").replace("\\tests", "tests")
-						.replace("\\tests", "tests").replace("//tests", "tests").replace("\\", ".").replace("/", ".")));
-
-				runTest.addListener(output);
-				runTest.run(myClass);
+				System.out.println("[Application]: Starting "+simpleList.get(i));
+				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
+				junit.addListener(output);
+				try {
+					junit.run(myClass);
+					elements.Drivers.callDriver().quit();
+				} catch (Exception e) {
+					e.printStackTrace();
+					throw e;
+				}
 			}
 		}
 	}

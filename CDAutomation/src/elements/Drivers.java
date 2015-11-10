@@ -32,6 +32,10 @@ public class Drivers {
 		driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
+	public static AndroidDriver<WebElement> callDriver() {
+		return driver;
+	}
+	
 	// Checks if device is Android
 	public boolean Android() {
 		if (capabilities.getCapability("platformName").equals("Android")) {
@@ -65,13 +69,12 @@ public class Drivers {
 			logLocation = projectPath+"/testlogs/"+logName+".log";
 		} else {
 			new File(projectPath+"\\testlogs\\").mkdir();
-			logLocation = projectPath+"\\testlog\\"+logName+".log";
+			logLocation = projectPath+"\\testlogs\\"+logName+".log";
 		}
 		
 		FileWriter myWriter = new FileWriter(logLocation, true);
 		System.out.print(dateTime + testName + text + "\n");
 		myWriter.append(dateTime + testName + text + "\n");
-		myWriter.append("Test" + "\n");
 		myWriter.close();
 	}
 	
