@@ -44,12 +44,14 @@ public class Android_GroupTest extends Drivers {
         group_three_dotted_menu().click();
         name("add friends to room").click();
         name(blocked_account).click();
+        OK_button().click();
 		try {
 			waitTime(2);
-			OK_button().click();
+			dusting_with().click();
 			log("Added blocked user to group!");
 		} catch (Exception e) {
 			log("Could not add blocked user to group");
+			back_button().click();
 		}
      }
      
