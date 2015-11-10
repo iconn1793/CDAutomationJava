@@ -82,6 +82,14 @@ public class Drivers {
 	public WebDriverWait waitTime(int x) {
 		return wait = new WebDriverWait(driver, x);
 	}
+	
+	//logs out of the current account
+	public void logoutAccount()
+	{
+	action.press(followers()).moveTo(back_button()).release().perform();
+    logout().click();
+    confirm().click();
+	}
 
 /// Common elements ///
     public WebElement name(String name) {
