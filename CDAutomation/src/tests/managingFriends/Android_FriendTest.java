@@ -23,7 +23,7 @@ public class Android_FriendTest extends Drivers {
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();
 	
-    public void test01_dustsTab () throws Exception {
+    public void test01_send_dusts () throws Exception {
 //    	loginAs.user(account01, password01);
     	dusts_tab().click();
     	
@@ -45,7 +45,7 @@ public class Android_FriendTest extends Drivers {
     	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
     }
     
-    public void test02 () throws Exception {
+    public void test02_receive_dusts () throws Exception {
     	 
     }
 }
