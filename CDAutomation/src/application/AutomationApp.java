@@ -106,15 +106,21 @@ public class AutomationApp {
 		listOfTests.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				List<String> selectedTests = listOfTests.getSelectedValuesList();
-				try {
+				if (listOfTests.getSelectedIndex() == listOfTests.getLeadSelectionIndex() && listOfTests.getSelectedIndex() == listOfTests.getAnchorSelectionIndex()) {
 					methodList.removeAllElements();
+				}
+				try {
+					//methodList.removeAllElements();
 					List<String> myTestMethods = application.TestListener.getTestMethods(selectedTests);
 					for (int i = 0; i < simpleList.size(); i++) {
 						if (selectedTests.contains(simpleList.get(i))) {
 							for (int j = 0; j < myTestMethods.size(); j++) {
+//								if (!methodList.contains(simpleList.get(i))) {
+//									methodList.addElement(simpleList.get(i));
+//								}
 								if (!methodList.contains(myTestMethods.get(j))) {
 									methodList.addElement(myTestMethods.get(j));
-								}
+								} 
 							}
 						}
 					}
