@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
@@ -60,7 +62,7 @@ public class AutomationApp {
 		listOfTests.setFont(new Font("Arial", Font.PLAIN, 11));
 		testListScroll.setViewportView(listOfTests);
 		testListScroll.setBounds(10, 10, 150, 181);
-		listOfTests.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
+		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
 		myFrame.getContentPane().add(testListScroll);
 		
 		// Drag and drop rearrange - TODO
@@ -74,21 +76,6 @@ public class AutomationApp {
 		consoleOut.setBounds(10, 203, 464, 118);
 		consoleOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleOut);
-
-		// Open log button
-		JButton logButton = new JButton("Open Log");
-		logButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<String> selectedTests = listOfTests.getSelectedValuesList();
-				try {
-					new application.LogFinder().openLog(selectedTests);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		logButton.setBounds(100, 326, 90, 25);
-		myFrame.getContentPane().add(logButton);
 		
 		// JUnit output window - TODO Change from JList 
 		DefaultListModel<String> methodList = new DefaultListModel<String>();
@@ -100,9 +87,10 @@ public class AutomationApp {
 		JScrollPane junitScroll = new JScrollPane();
 		junitScroll.setViewportView(junitOut);
 		junitScroll.setBounds(250, 10, 224, 180);
-		junitOut.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
+		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
 		
+		// Shows the test methods in a test class when selected
 		listOfTests.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				List<String> selectedTests = listOfTests.getSelectedValuesList();
@@ -132,6 +120,40 @@ public class AutomationApp {
 			}
 		});
 		
+		// Select all tests button
+		JButton selectAllButton = new JButton("Select All");
+		selectAllButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<Integer> selectAllList = new ArrayList<Integer>();
+				for (int i = 0; i < simpleList.size(); i++) {
+					selectAllList.add(i);
+				}
+				int [] allTests = new int[selectAllList.size()];
+				Iterator<Integer> iterator = selectAllList.iterator();
+				for (int i = 0; i < allTests.length; i++) {
+					allTests[i] = iterator.next().intValue();
+				}
+				listOfTests.setSelectedIndices(allTests);
+			}
+		});
+		selectAllButton.setBounds(160, 168, 90, 20);
+		myFrame.getContentPane().add(selectAllButton);
+		
+		// Open log button
+		JButton logButton = new JButton("Open Log");
+		logButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<String> selectedTests = listOfTests.getSelectedValuesList();
+				try {
+					new application.LogFinder().openLog(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		logButton.setBounds(100, 326, 90, 25);
+		myFrame.getContentPane().add(logButton);
+		
 		// Run button
 		JButton runButton = new JButton("Run");
 		runButton.addActionListener(new ActionListener() {
@@ -148,14 +170,10 @@ public class AutomationApp {
 		myFrame.getContentPane().add(runButton);
 		
 		// Stop button - TODO
-		JButton stopButton = new JButton("Stop");
+		JButton stopButton = new JButton("Close");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					throw new InterruptedException();
-				} catch (InterruptedException e) {
-					System.out.println("Test stopped");
-				}
+				System.exit(0);
 			}
 		});
 		stopButton.setBounds(300, 326, 90, 25);
