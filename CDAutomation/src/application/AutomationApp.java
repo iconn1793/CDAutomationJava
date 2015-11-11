@@ -112,12 +112,16 @@ public class AutomationApp {
 				try {
 					//methodList.removeAllElements();
 					List<String> myTestMethods = application.TestListener.getTestMethods(selectedTests);
+					System.out.println(myTestMethods.size());
 					for (int i = 0; i < simpleList.size(); i++) {
 						if (selectedTests.contains(simpleList.get(i))) {
 							for (int j = 0; j < myTestMethods.size(); j++) {
-//								if (!methodList.contains(simpleList.get(i))) {
-//									methodList.addElement(simpleList.get(i));
-//								}
+								if (!methodList.contains(simpleList.get(i)) && methodList.size()-myTestMethods.size() > 0) {
+									methodList.add(methodList.size()-myTestMethods.size(), simpleList.get(i));
+									methodList.insertElementAt("\n", methodList.size()-myTestMethods.size()-1);
+								} else if (!methodList.contains(simpleList.get(i))) {
+									methodList.addElement(simpleList.get(i));
+								}
 								if (!methodList.contains(myTestMethods.get(j))) {
 									methodList.addElement(myTestMethods.get(j));
 								} 
