@@ -110,9 +110,7 @@ public class AutomationApp {
 					methodList.removeAllElements();
 				}
 				try {
-					//methodList.removeAllElements();
 					List<String> myTestMethods = application.TestListener.getTestMethods(selectedTests);
-					System.out.println(myTestMethods.size());
 					for (int i = 0; i < simpleList.size(); i++) {
 						if (selectedTests.contains(simpleList.get(i))) {
 							for (int j = 0; j < myTestMethods.size(); j++) {
