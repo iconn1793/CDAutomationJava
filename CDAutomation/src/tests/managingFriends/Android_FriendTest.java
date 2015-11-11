@@ -26,6 +26,8 @@ public class Android_FriendTest extends Drivers {
     public void test01_dustsTab () throws Exception {
 //    	loginAs.user(account01, password01);
     	dusts_tab().click();
+    	
+    	// Sending dust to account02
 //    	action_menu().click();
 //    	action_menu_dust().click();
 //    	name(account02).click();
@@ -34,6 +36,10 @@ public class Android_FriendTest extends Drivers {
 //    	chat_room_send_button().click();
 //    	back_button().click();
 //    	back_button().click();
+    	
+    	// Sending blast to account02
+    	
+    	// Sending blast to account03
 
     	Thread.sleep(2000);
     	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
