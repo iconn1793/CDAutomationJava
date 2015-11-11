@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
 public class Android_UrlShortnerTest extends Drivers {
 
 	WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -24,13 +23,11 @@ public class Android_UrlShortnerTest extends Drivers {
 
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
+	
 	@Test
-	public void test01_shortned_bio() throws Exception {
+	public void test01_shortned_bio() throws Exception {	
 		loginAs.user(account_name, account_pw);
-		System.out.println(ANSI_RED + "This text is red!" + ANSI_RESET);
+		
 		more_button().click();
 		enter_website().click();
 		edit_textbox().clear();
@@ -45,7 +42,7 @@ public class Android_UrlShortnerTest extends Drivers {
 			if (shortned_url.isDisplayed())
 				System.out.println("Website name is shortned");
 		} catch (Exception e) {
-			System.out.println("Unable to shorten the website name");
+			System.err.println("Unable to shorten the website name");
 		}
 
 	}
@@ -62,11 +59,12 @@ public class Android_UrlShortnerTest extends Drivers {
 			if (shortned_url.isDisplayed())
 				System.out.println("Website name is not shortned");
 		} catch (Exception e) {
-			System.out.println("Website is shortned");
+			System.err.println("Website is shortned");
 		}
 		enter_website().click();
 		edit_textbox().clear();
 		save_button().click();
+		logoutAccount();
 
 	}
 }

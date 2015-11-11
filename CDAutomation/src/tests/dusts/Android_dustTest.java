@@ -1,17 +1,15 @@
 package tests.dusts;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
-import org.junit.*;
-import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Sending_dust extends Drivers {
+public class Android_dustTest extends Drivers {
 
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
@@ -27,7 +25,6 @@ public class Sending_dust extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 
-	@Test
 	public void test01_chat_from_action_menu() throws Exception {
 		loginAs.user(account_name, account_pw);
 		action_menu().click();
@@ -48,7 +45,6 @@ public class Sending_dust extends Drivers {
 
 	}
 
-	@Test
 	public void test02_chat_from_dust_room() throws Exception
 
 	{
@@ -88,8 +84,6 @@ public class Sending_dust extends Drivers {
 		}
 
 	}
-
-	@Test
 
 	public void test03_chat_from_search_bar() throws Exception
 
@@ -134,8 +128,6 @@ public class Sending_dust extends Drivers {
 		}
 
 	}
-
-	@Test
 
 	public void test04_chat_from_search_bar() throws Exception
 
@@ -183,8 +175,6 @@ public class Sending_dust extends Drivers {
 
 	}
 
-	@Test
-
 	public void test05_chat_from_friend_list() throws Exception
 
 	{
@@ -228,11 +218,9 @@ public class Sending_dust extends Drivers {
 
 	}
 
-	@Test
-
 	public void test06_chat_from_friend_list() throws Exception { // You do not
-																	// have a
-																	// dust room
+		// have a
+		// dust room
 
 		back_button().click();
 		remove_dustroom();
@@ -273,7 +261,6 @@ public class Sending_dust extends Drivers {
 
 	}
 
-	@Test
 	public void test07_chat_from_friend_list() throws Exception {
 
 		back_button().click();
@@ -314,7 +301,7 @@ public class Sending_dust extends Drivers {
 
 	}
 
-	@Test
+
 	public void test08_chat_from_friend_list() throws Exception { // You do not
 																	// have a
 																	// dust room

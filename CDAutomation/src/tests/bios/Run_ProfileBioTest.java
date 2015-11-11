@@ -5,7 +5,7 @@ import org.junit.runners.MethodSorters;
 import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class RunProfileBio extends ProfileBio{
+public class Run_ProfileBioTest extends Android_ProfileBioTest{
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();

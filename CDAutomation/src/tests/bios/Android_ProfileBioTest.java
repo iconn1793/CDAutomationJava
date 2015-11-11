@@ -8,7 +8,7 @@ import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ProfileBio extends Drivers
+public class Android_ProfileBioTest extends Drivers
 {
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
