@@ -26,7 +26,7 @@ public class Android_BlastTest extends Drivers {
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();
 
-	public void test01_send_text_blasts() throws Exception {
+	public void test01_create_blast_list() throws Exception {
 		// Logs into blast testing account
 		loginAs.user(account01, password01);
 
@@ -52,6 +52,9 @@ public class Android_BlastTest extends Drivers {
 		username(account02).click();
 		username(account03).click();
 		OK_button().click();
+	}
+	
+	public void test02_send_text_blasts() throws Exception {
 		// Sends text blast with +username, URL, and location to blast list
 		log("Sending text blast to blast list");
 		action_menu().click();
@@ -79,7 +82,7 @@ public class Android_BlastTest extends Drivers {
 		back_button().click();
 	}
 
-	public void test02_send_photo_blast_01() throws Exception {
+	public void test03_send_photo_blast_01() throws Exception {
 		// Sends photo blast with drawing and URL to all followers
 		log("Sending photo blast with drawing and text to all followers");
 		action_menu().click();
@@ -100,7 +103,7 @@ public class Android_BlastTest extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	public void test03_send_photo_blast_02() throws Exception {
+	public void test04_send_photo_blast_02() throws Exception {
 		// Sends non public photo blast with +username to the new blast list
 		log("Sending non public photo blast");
 		action_menu().click();
@@ -125,7 +128,7 @@ public class Android_BlastTest extends Drivers {
 		confirm().click();
 	}
 
-	public void test04_send_giphy_blast() throws Exception {
+	public void test05_send_giphy_blast() throws Exception {
 		// Sends text blast with giphy to a single friend
 		log("Sending giphy");
 		action_menu().click();
@@ -138,7 +141,7 @@ public class Android_BlastTest extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	public void test05_send_video_blast_01() throws Exception {
+	public void test06_send_video_blast_01() throws Exception {
 		// Takes video, adds +username, creates blast list, then sends to that blast list
 		log("Sending video to newly created blast list");
 		action_menu().click();
@@ -160,7 +163,7 @@ public class Android_BlastTest extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	public void test06_send_video_blast_02() throws Exception {
+	public void test07_send_video_blast_02() throws Exception {
 		// Takes video, adds URL, then sends to single friend
 		log("Sending video with URL");
 		action_menu().click();
@@ -177,7 +180,7 @@ public class Android_BlastTest extends Drivers {
 		blast_Ok_button().click();
 	}
 
-	public void test07_send_text_for_replies() throws Exception {
+	public void test08_send_text_for_replies() throws Exception {
 		// Sends text blast for reply test on other account
 		log("Sending text blast for reply test");
 		action_menu().click();
@@ -199,7 +202,7 @@ public class Android_BlastTest extends Drivers {
 		confirm().click();
 	}
 
-	public void test08_open_text_blast() throws Exception {
+	public void test09_open_text_blast() throws Exception {
 		// Log in as account02
 		loginAs.user(account02, password02);
 
@@ -207,6 +210,15 @@ public class Android_BlastTest extends Drivers {
 		log("Opening text blast and checking +username, URL, and location");
 		Thread.sleep(2000);
 		name(account01).click(); Thread.sleep(2000);
+		
+		// Checks for "Welcome to Swipe View!" message
+		try {
+			waitTime(3);
+			name("OK").click();
+		} catch (Exception e) {
+
+		}
+		waitTime(20);
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
 		action.press(sw/10*2, sh/10*2).release().perform(); // clicks +username
@@ -217,7 +229,7 @@ public class Android_BlastTest extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	public void test09_open_photo_blast() throws Exception {
+	public void test10_open_photo_blast() throws Exception {
 		// Opens photo with drawing and URL
 		try {
 			Thread.sleep(3000);
@@ -235,7 +247,7 @@ public class Android_BlastTest extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	public void test10_open_non_public_blast() throws Exception {
+	public void test11_open_non_public_blast() throws Exception {
 		// Opens non public photo blast with +username
 		try {
 			Thread.sleep(4000);
@@ -252,7 +264,7 @@ public class Android_BlastTest extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	public void test11_open_giphy_blast() throws Exception {
+	public void test12_open_giphy_blast() throws Exception {
 		// Checks if giphy was received
 		try {
 			Thread.sleep(3000);
@@ -267,7 +279,7 @@ public class Android_BlastTest extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	public void test12_open_video_blast() throws Exception {
+	public void test13_open_video_blast() throws Exception {
 		// Opens video with +username
 		try {
 			Thread.sleep(4000);
@@ -292,7 +304,7 @@ public class Android_BlastTest extends Drivers {
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
 	}
 
-	public void test13_reply_to_blast() throws Exception {
+	public void test14_reply_to_blast() throws Exception {
 		// Opens blast and tests reply functionality
 		log("Testing reply functionality");
 		swipe_view_reply().click();
@@ -327,7 +339,7 @@ public class Android_BlastTest extends Drivers {
 		}	
 	}
 
-	public void test14_check_replies() throws Exception {
+	public void test15_check_replies() throws Exception {
 		// Login with account01 to check replies
 		loginAs.user(account01, password01);
 
