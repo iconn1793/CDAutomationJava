@@ -26,7 +26,13 @@ public class AndroidCamera extends Drivers {
         	
         }
         try {
-        	driver.findElementByName("OK").click();  // For Galaxy phones
+        	driver.findElementByName("OK").click();  // For Galaxy Note 4
+        } catch (Exception e) {
+        	
+        }
+        try {
+        	driver.findElementByName("Save").click();  // For Galaxy Note 3
+        	
         } catch (Exception e) {
         	
         }
