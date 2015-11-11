@@ -3,6 +3,7 @@ package application;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
@@ -14,6 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
 import java.awt.Color;
+import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.UIManager;
+import java.awt.Font;
+import javax.swing.ListSelectionModel;
 
 public class AutomationApp {
 	private JFrame myFrame;
@@ -40,8 +47,9 @@ public class AutomationApp {
 	// Initialize the contents of the frame.
 	private void initialize() {
 		myFrame = new JFrame();
+		myFrame.setResizable(false);
 		myFrame.setTitle("CD Automation");
-		myFrame.setBounds(300, 300, 460, 400);
+		myFrame.setBounds(300, 300, 500, 400);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
 
@@ -49,9 +57,10 @@ public class AutomationApp {
 		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 		JList<String> listOfTests = new JList<String>(simpleList);
 		JScrollPane testListScroll = new JScrollPane();
+		listOfTests.setFont(new Font("Arial", Font.PLAIN, 11));
 		testListScroll.setViewportView(listOfTests);
-		testListScroll.setBounds(10, 10, 137, 181);
-		listOfTests.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		testListScroll.setBounds(10, 10, 150, 181);
+		listOfTests.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
 		myFrame.getContentPane().add(testListScroll);
 		
 		// Drag and drop rearrange - TODO
@@ -62,7 +71,7 @@ public class AutomationApp {
 		JTextPane consoleOut = new JTextPane();
 		consoleOut.setBackground(Color.LIGHT_GRAY);
 		consoleOut.setEditable(false);
-		consoleOut.setBounds(10, 203, 424, 118);
+		consoleOut.setBounds(10, 203, 464, 118);
 		consoleOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleOut);
 
@@ -78,27 +87,48 @@ public class AutomationApp {
 				}
 			}
 		});
-		logButton.setBounds(70, 328, 90, 25);
+		logButton.setBounds(100, 326, 90, 25);
 		myFrame.getContentPane().add(logButton);
 		
-		// junit output window - TODO Change from jlist 
+		// JUnit output window - TODO Change from JList 
 		DefaultListModel<String> methodList = new DefaultListModel<String>();
-		JList<String> junitOut = new JList<String>();
+		JList<String> junitOut = new JList<String>(methodList);
+		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		junitOut.setFont(new Font("Arial", Font.PLAIN, 11));
 		junitOut.setBackground(Color.WHITE);
 		junitOut.setFocusable(false);
 		JScrollPane junitScroll = new JScrollPane();
 		junitScroll.setViewportView(junitOut);
-		junitScroll.setBounds(250, 10, 180, 180);
-		junitOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		junitScroll.setBounds(250, 10, 224, 180);
+		junitOut.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
+		
+		listOfTests.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent arg0) {
+				List<String> selectedTests = listOfTests.getSelectedValuesList();
+				try {
+					methodList.removeAllElements();
+					List<String> myTestMethods = application.TestListener.getTestMethods(selectedTests);
+					for (int i = 0; i < simpleList.size(); i++) {
+						if (selectedTests.contains(simpleList.get(i))) {
+							for (int j = 0; j < myTestMethods.size(); j++) {
+								if (!methodList.contains(myTestMethods.get(j))) {
+									methodList.addElement(myTestMethods.get(j));
+								}
+							}
+						}
+					}
+				} catch (Exception e) {
+						e.printStackTrace();
+				}
+			}
+		});
 		
 		// Run button
 		JButton runButton = new JButton("Run");
 		runButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<String> selectedTests = listOfTests.getSelectedValuesList();
-				methodList.removeAllElements();
-
 				try {
 					TestExecuter.allTests(selectedTests);
 				} catch (Exception e) {
@@ -106,7 +136,7 @@ public class AutomationApp {
 				}
 			}
 		});
-		runButton.setBounds(170, 328, 90, 25);
+		runButton.setBounds(200, 326, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
 		// Stop button - TODO
@@ -120,7 +150,7 @@ public class AutomationApp {
 				}
 			}
 		});
-		stopButton.setBounds(270, 328, 90, 25);
+		stopButton.setBounds(300, 326, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 	}
 }

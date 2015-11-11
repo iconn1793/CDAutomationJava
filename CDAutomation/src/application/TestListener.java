@@ -19,7 +19,7 @@ public class TestListener extends RunListener {
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
-		Class<?> myClass = application.TestExecuter.class;
+		Class<?> myClass = null;
 		for (int i = 0; i < simpleList.size(); i++) {
 			if (selectedTests.contains(simpleList.get(i))) {
 				myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
@@ -41,7 +41,6 @@ public class TestListener extends RunListener {
 			e.printStackTrace();
 		}
 		Collections.sort(methodList);
-		System.out.print(methodList);
 		return methodList;
 	}
 	
