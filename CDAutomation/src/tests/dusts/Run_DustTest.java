@@ -38,7 +38,7 @@ public class Run_DustTest extends Android_dustTest {
 		}
 	}
 	@Test
-	public void test03_sendTextDusts() throws Exception {
+	public void test03_sendDustFromSearchBar() throws Exception {
 		try {
 			log("Test03: Start a chat from Dusts tab (using search) - you already have a dust room with that person.");
 			android.test03_chat_from_search_bar();
@@ -50,7 +50,7 @@ public class Run_DustTest extends Android_dustTest {
 	}
 	
 	@Test
-	public void test04_dustRoomTest() throws Exception {
+	public void test04_sendDustFromSearchBar02() throws Exception {
 		try {
 			log("Test04 Start a chat from Dusts tab (using search) - you dont have a dust room with that person.");
 			android.test04_chat_from_search_bar();
@@ -61,7 +61,7 @@ public class Run_DustTest extends Android_dustTest {
 		}
 	}
 	@Test
-	public void test05_sendTextDusts() throws Exception {
+	public void test05_sendDustsfromFriendsPage() throws Exception {
 		try {
 			log("Test05: Start a chat from Friends page (using search) - you already have a dust room with that person.");
 			android.test05_chat_from_friend_list();
@@ -73,7 +73,7 @@ public class Run_DustTest extends Android_dustTest {
 	}
 	
 	@Test
-	public void test06_dustRoomTest() throws Exception {
+	public void test06_sendDustsfromFriendsPage02() throws Exception {
 		try {
 			log("Test06: Start a chat from Friends page (using search) - you dont have a dust room with that person.");
 			android.test06_chat_from_friend_list();
@@ -84,7 +84,7 @@ public class Run_DustTest extends Android_dustTest {
 		}
 	}
 		@Test
-		public void test07_sendTextDusts() throws Exception {
+		public void test07_sendDustsfromFriendsPage03() throws Exception {
 			try {
 				log("Test07: Start a chat from Friends page - you already have a dust room with that person.");
 				android.test07_chat_from_friend_list();
@@ -96,7 +96,7 @@ public class Run_DustTest extends Android_dustTest {
 		}
 		
 		@Test
-		public void test08_dustRoomTest() throws Exception {
+		public void test08_sendDustsfromFriendsPage04() throws Exception {
 			try {
 				log("Test08: Start a chat from Friends page - you dont have a dust room with that person.");
 				android.test08_chat_from_friend_list();
