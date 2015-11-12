@@ -1,5 +1,9 @@
 package tests.messagePinning;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
@@ -11,6 +15,7 @@ String account_name = "existingTest01";
 String account_pw = "password";
 String account_email = "new_existing@cyberdust.com";
 String text_message = "cyber dust";
+String friend_username = "aaaaa2";
 //////////////////////////////////////////////
 
 
@@ -23,7 +28,9 @@ public void test01_pinning_messages() throws Exception {
 	action_menu().click();
 	action_menu_dust().click();
 	Thread.sleep(5000);
-	chat_room_first_friend().click();
+	WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+	first_friend.click();
 	chat_room_text_box().click();
 	chat_room_text_box().sendKeys(text_message);
 	chat_room_send_button().click();
@@ -61,6 +68,9 @@ public void test02_messagePinning() throws Exception
 		System.out.println("Message is disappeared");
 	}
 	System.out.println("Checking if new messages appear below pinned messages");
+	WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+	first_friend.click();
 	chat_room_text_box().sendKeys(text_message);
 	chat_room_send_button().click();
 	chat_room_text_box().sendKeys(text_message);
@@ -76,6 +86,9 @@ public void test02_messagePinning() throws Exception
 		System.out.println("New Messages appear below pinned message");
 	}
 	back_button().click();
+	//WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+
+	first_friend.click();
 	tap_to_unpin_button().click();
 	
 	try {
