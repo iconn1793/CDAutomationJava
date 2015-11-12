@@ -7,7 +7,7 @@ import javax.swing.DefaultListModel;
 import org.junit.runner.JUnitCore;
 
 
-public class TestExecuter extends AutomationApp {
+public class TestExecuter {
 	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
 	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
 	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
@@ -22,9 +22,9 @@ public class TestExecuter extends AutomationApp {
 			if (selectedTests.contains(simpleList.get(i))) {
 				System.out.println("[Application]: Starting "+simpleList.get(i));
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
-				junit.addListener(new application.TestListener());
+				junit.addListener(new application.AutomationApp());
 				try {
-					junit.run(myClass);
+					JUnitCore.runClasses(myClass);
 					elements.Drivers.callDriver().quit();
 				} catch (Exception e) {
 					e.printStackTrace();

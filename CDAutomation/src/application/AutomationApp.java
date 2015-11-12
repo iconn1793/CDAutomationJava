@@ -3,7 +3,6 @@ package application;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -23,10 +22,15 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
+import org.junit.runner.Description;
+import org.junit.runner.Result;
+import org.junit.runner.notification.RunListener;
 
-public class AutomationApp {
+public class AutomationApp extends RunListener {
 	private JFrame myFrame;
 
+	
+	
 	// Launch the application.
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -57,17 +61,17 @@ public class AutomationApp {
 
 		// List of test files
 		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-		JList<String> listOfTests = new JList<String>(simpleList);
+		JList<String> testClassList = new JList<String>(simpleList);
 		JScrollPane testListScroll = new JScrollPane();
-		listOfTests.setFont(new Font("Arial", Font.PLAIN, 11));
-		testListScroll.setViewportView(listOfTests);
+		testClassList.setFont(new Font("Arial", Font.PLAIN, 11));
+		testListScroll.setViewportView(testClassList);
 		testListScroll.setBounds(10, 10, 150, 181);
 		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
 		myFrame.getContentPane().add(testListScroll);
 		
 		// Drag and drop rearrange - TODO
-		listOfTests.setDropMode(DropMode.INSERT);
-		listOfTests.setDragEnabled(true);
+		testClassList.setDropMode(DropMode.INSERT);
+		testClassList.setDragEnabled(true);
 
 		// Console output window
 		JTextPane consoleOut = new JTextPane();
@@ -77,7 +81,7 @@ public class AutomationApp {
 		consoleOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleOut);
 		
-		// JUnit output window - TODO Change from JList 
+		// JUnit output window
 		DefaultListModel<String> methodList = new DefaultListModel<String>();
 		JList<String> junitOut = new JList<String>(methodList);
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -91,10 +95,10 @@ public class AutomationApp {
 		myFrame.getContentPane().add(junitScroll);
 		
 		// Shows the test methods in a test class when selected
-		listOfTests.addListSelectionListener(new ListSelectionListener() {
+		testClassList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
-				List<String> selectedTests = listOfTests.getSelectedValuesList();
-				if (listOfTests.getSelectedIndex() == listOfTests.getLeadSelectionIndex() && listOfTests.getSelectedIndex() == listOfTests.getAnchorSelectionIndex()) {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				if (testClassList.getSelectedIndex() == testClassList.getLeadSelectionIndex() && testClassList.getSelectedIndex() == testClassList.getAnchorSelectionIndex()) {
 					methodList.removeAllElements();
 				}
 				try {
@@ -120,6 +124,9 @@ public class AutomationApp {
 			}
 		});
 		
+		// Highlights running test method
+
+		
 		// Select all tests button
 		JButton selectAllButton = new JButton("Select All");
 		selectAllButton.addActionListener(new ActionListener() {
@@ -133,7 +140,7 @@ public class AutomationApp {
 				for (int i = 0; i < allTests.length; i++) {
 					allTests[i] = iterator.next().intValue();
 				}
-				listOfTests.setSelectedIndices(allTests);
+				testClassList.setSelectedIndices(allTests);
 			}
 		});
 		selectAllButton.setBounds(160, 168, 90, 20);
@@ -143,7 +150,7 @@ public class AutomationApp {
 		JButton logButton = new JButton("Open Log");
 		logButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				List<String> selectedTests = listOfTests.getSelectedValuesList();
+				List<String> selectedTests = testClassList.getSelectedValuesList();
 				try {
 					new application.LogFinder().openLog(selectedTests);
 				} catch (Exception e) {
@@ -158,7 +165,7 @@ public class AutomationApp {
 		JButton runButton = new JButton("Run");
 		runButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				List<String> selectedTests = listOfTests.getSelectedValuesList();
+				List<String> selectedTests = testClassList.getSelectedValuesList();
 				try {
 					TestExecuter.allTests(selectedTests);
 				} catch (Exception e) {
@@ -178,5 +185,7 @@ public class AutomationApp {
 		});
 		stopButton.setBounds(300, 326, 90, 25);
 		myFrame.getContentPane().add(stopButton);
+		
+
 	}
 }
