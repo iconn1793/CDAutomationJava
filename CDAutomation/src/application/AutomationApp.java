@@ -1,35 +1,34 @@
 package application;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.border.BevelBorder;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
-
-import java.awt.Color;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.UIManager;
-import java.awt.Font;
-import javax.swing.ListSelectionModel;
-import org.junit.runner.Description;
-import org.junit.runner.Result;
-import org.junit.runner.notification.RunListener;
 
-public class AutomationApp extends RunListener {
+public class AutomationApp {
 	private JFrame myFrame;
-
-	
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -68,10 +67,6 @@ public class AutomationApp extends RunListener {
 		testListScroll.setBounds(10, 10, 150, 181);
 		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
 		myFrame.getContentPane().add(testListScroll);
-		
-		// Drag and drop rearrange - TODO
-		testClassList.setDropMode(DropMode.INSERT);
-		testClassList.setDragEnabled(true);
 
 		// Console output window
 		JTextPane consoleOut = new JTextPane();
@@ -93,6 +88,86 @@ public class AutomationApp extends RunListener {
 		junitScroll.setBounds(250, 10, 224, 180);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
+		
+		// Listeners
+		ActionListener selectAll = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<Integer> selectAllList = new ArrayList<Integer>();
+				for (int i = 0; i < simpleList.size(); i++) {
+					selectAllList.add(i);
+				}
+				int [] allTests = new int[selectAllList.size()];
+				Iterator<Integer> iterator = selectAllList.iterator();
+				for (int i = 0; i < allTests.length; i++) {
+					allTests[i] = iterator.next().intValue();
+				}
+				testClassList.setSelectedIndices(allTests);
+			}
+		};
+		
+		Runnable runTestThread = new Runnable() {
+			@Override
+			public void run() {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				try {
+					TestExecuter.allTests(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		ActionListener runTest = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Thread runThread = new Thread(runTestThread);
+				runThread.start();
+			}
+		};
+		
+		ActionListener openLog = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				try {
+					new application.LogFinder().openLog(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		ActionListener clearLog = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				try {
+					new application.LogFinder().clearLog(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		// Right click list popup menu
+		JPopupMenu listPopup = new JPopupMenu();
+		
+		listPopup.add("   Run Test").addActionListener(runTest);
+		listPopup.add("   Open Log").addActionListener(openLog);
+		listPopup.add("   Clear Log").addActionListener(clearLog);
+		
+		testClassList.addMouseListener(new MouseAdapter() {
+			List<String> selectedTests = testClassList.getSelectedValuesList();
+			public void mousePressed(MouseEvent m) {
+				if (SwingUtilities.isRightMouseButton(m)) {
+					if (selectedTests.isEmpty() || selectedTests.size() == 1) {
+						testClassList.setSelectedIndex(testClassList.locationToIndex(m.getPoint()));
+						testClassList.setComponentPopupMenu(listPopup);
+					}
+				}
+			}
+		});
+
+		// Drag and drop to rearrange list - TODO
+		testClassList.setDropMode(DropMode.INSERT);
+		testClassList.setDragEnabled(true);
 		
 		// Shows the test methods in a test class when selected
 		testClassList.addListSelectionListener(new ListSelectionListener() {
@@ -124,63 +199,26 @@ public class AutomationApp extends RunListener {
 			}
 		});
 		
-		// Highlights running test method
-
-		
-		// Select all tests button
+		// Buttons //
 		JButton selectAllButton = new JButton("Select All");
-		selectAllButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<Integer> selectAllList = new ArrayList<Integer>();
-				for (int i = 0; i < simpleList.size(); i++) {
-					selectAllList.add(i);
-				}
-				int [] allTests = new int[selectAllList.size()];
-				Iterator<Integer> iterator = selectAllList.iterator();
-				for (int i = 0; i < allTests.length; i++) {
-					allTests[i] = iterator.next().intValue();
-				}
-				testClassList.setSelectedIndices(allTests);
-			}
-		});
+		selectAllButton.addActionListener(selectAll);
 		selectAllButton.setBounds(160, 168, 90, 20);
 		myFrame.getContentPane().add(selectAllButton);
 		
-		// Open log button
 		JButton logButton = new JButton("Open Log");
-		logButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
-				try {
-					new application.LogFinder().openLog(selectedTests);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		logButton.addActionListener(openLog);
 		logButton.setBounds(100, 326, 90, 25);
 		myFrame.getContentPane().add(logButton);
 		
-		// Run button
 		JButton runButton = new JButton("Run");
-		runButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
-				try {
-					TestExecuter.allTests(selectedTests);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		runButton.addActionListener(runTest);
 		runButton.setBounds(200, 326, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
-		// Stop button - TODO
-		JButton stopButton = new JButton("Close");
+		// TODO need to interrupt JUnit test class
+		JButton stopButton = new JButton("Stop");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
 			}
 		});
 		stopButton.setBounds(300, 326, 90, 25);
