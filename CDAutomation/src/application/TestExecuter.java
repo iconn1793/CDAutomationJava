@@ -1,6 +1,5 @@
 package application;
 
-import application.AutomationApp;
 import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.DefaultListModel;
@@ -15,14 +14,14 @@ public class TestExecuter {
 
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void allTests(List<String> selectedTests) throws Exception {
-		JUnitCore junit = new JUnitCore();
+		//JUnitCore junit = new JUnitCore();
 		
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
 				System.out.println("[Application]: Starting "+simpleList.get(i));
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
-				junit.addListener(new application.AutomationApp());
+				//junit.addListener(new application.AutomationApp());
 				try {
 					JUnitCore.runClasses(myClass);
 					elements.Drivers.callDriver().quit();

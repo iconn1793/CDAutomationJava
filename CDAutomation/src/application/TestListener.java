@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.DefaultListModel;
+
 import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -44,9 +45,14 @@ public class TestListener extends RunListener {
 		return methodList;
 	}
 	
-	public void testRunStarted(Description description)	throws Exception
-	{
-		System.out.println("Number of testcases to execute : " + description.testCount());
-	}
+//	public void testStarted (Description description, JList<String> newConfig) throws Exception {
+//		for (int i = 0; i < simpleList.size(); i++) {
+//			//System.out.println(getTestMethods(simpleList.get(i)));
+//			System.out.println(description.getMethodName());
+//			if (description.getMethodName().contains("test")) {
+//				newConfig.setSelectedIndex(1);
+//			}
+//		}
+//	}
 
 }
