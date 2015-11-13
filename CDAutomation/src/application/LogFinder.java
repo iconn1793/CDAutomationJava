@@ -36,5 +36,33 @@ public class LogFinder {
 		} catch (Exception e) {
 			
 		}
+	}
+	
+	public void clearLog(List<String> selectedTests) throws Exception {
+		
+		String projectPath = Paths.get("").toAbsolutePath().normalize().toString();
+		String logLocation = new String();
+		String testName = new String();
+		String logName = new String();
+		
+		for (int i = 0; i < rawList.size(); i++) {
+			testName = rawList.get(i).substring(rawList.get(i).indexOf("Run"), rawList.get(i).length()).replace("Run_", "").replace("Run", "");
+			if (selectedTests.contains(testName)) {
+				logName = rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).indexOf("Run")-1).replace("/", ".").replace("\\", ".");
+				
+				if (projectPath.contains("/")) {
+					logLocation = projectPath+"/testlogs/"+logName+".log";
+				} else {
+					logLocation = projectPath+"\\testlogs\\"+logName+".log";
+				}
+			}
+		}
+		
+		try {
+			new File(logLocation).delete();
+			new File(logLocation).createNewFile();
+		} catch (Exception e) {
+			
+		}
 	}	
 }
