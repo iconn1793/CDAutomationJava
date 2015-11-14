@@ -17,6 +17,7 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
 	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
+	static public String runningMethod = new String();
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
@@ -45,14 +46,16 @@ public class TestListener extends RunListener {
 		return methodList;
 	}
 	
-//	public void testStarted (Description description, JList<String> newConfig) throws Exception {
-//		for (int i = 0; i < simpleList.size(); i++) {
-//			//System.out.println(getTestMethods(simpleList.get(i)));
-//			System.out.println(description.getMethodName());
-//			if (description.getMethodName().contains("test")) {
-//				newConfig.setSelectedIndex(1);
-//			}
-//		}
-//	}
+	public void testStarted (Description description) throws Exception {
+		runningMethod = description.getMethodName();
+	}
+	
+	public static String callRunningMethod () {
+		int i = 0;
+		while (i == runningMethod.length()) {
+			System.out.print(runningMethod);
+		}
+		return runningMethod;
+	}
 
 }
