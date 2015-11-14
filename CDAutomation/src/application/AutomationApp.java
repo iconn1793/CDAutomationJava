@@ -105,6 +105,20 @@ public class AutomationApp {
 			}
 		};
 		
+		Runnable testMethodSelector = new Runnable() {
+			@Override
+			public void run() {
+				int i = 0; 
+				while (i < methodList.size()) {
+					while (application.TestListener.callRunningMethod().equals(methodList.get(i))) {
+						junitOut.setSelectedValue(application.TestListener.callRunningMethod(), true);
+						application.TestListener.callRunningMethod();
+					}
+					i++;
+				}
+			}
+		};
+		
 		Runnable runTestThread = new Runnable() {
 			@Override
 			public void run() {
@@ -117,10 +131,12 @@ public class AutomationApp {
 			}
 		};
 		
+		Thread methodSelector = new Thread(testMethodSelector);
+		Thread testThread = new Thread(runTestThread);
 		ActionListener runTest = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Thread runThread = new Thread(runTestThread);
-				runThread.start();
+				methodSelector.start();
+				testThread.start();
 			}
 		};
 		
@@ -154,11 +170,11 @@ public class AutomationApp {
 		listPopup.add("   Clear Log").addActionListener(clearLog);
 		
 		testClassList.addMouseListener(new MouseAdapter() {
-			List<String> selectedTests = testClassList.getSelectedValuesList();
-			public void mousePressed(MouseEvent m) {
-				if (SwingUtilities.isRightMouseButton(m)) {
+			public void mousePressed(MouseEvent e) {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				if (SwingUtilities.isRightMouseButton(e)) {
 					if (selectedTests.isEmpty() || selectedTests.size() == 1) {
-						testClassList.setSelectedIndex(testClassList.locationToIndex(m.getPoint()));
+						testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
 						testClassList.setComponentPopupMenu(listPopup);
 					}
 				}
@@ -219,6 +235,7 @@ public class AutomationApp {
 		JButton stopButton = new JButton("Stop");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
 			}
 		});
 		stopButton.setBounds(300, 326, 90, 25);
