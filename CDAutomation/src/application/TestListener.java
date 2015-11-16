@@ -22,6 +22,7 @@ public class TestListener extends RunListener {
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
 		Class<?> myClass = application.TestListener.class;
+		
 		for (int i = 0; i < simpleList.size(); i++) {
 			if (selectedTests.contains(simpleList.get(i))) {
 				myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
@@ -35,8 +36,15 @@ public class TestListener extends RunListener {
 		try {
 			for (int i = 0; i < classM.length; i++) {
 				String classM_New = classM[i].getName().toLowerCase();
+				
 				if (classM_New.contains("test0") || classM_New.contains("test1") || classM_New.contains("test2")) {
-					methodList.add(classM[i].getName());
+					String className = classM[i].getDeclaringClass().getSimpleName().replace("Run", "").replace("_", "");
+					String classMethods = classM[i].getName();
+					
+					if (!methodList.contains(className)) {
+						methodList.add(className);
+					}
+					methodList.add(classMethods);
 				}
 			}
 		} catch (Exception e) {
@@ -50,6 +58,10 @@ public class TestListener extends RunListener {
 		runningMethod = description.getMethodName();
 	}
 	
+	public void testResult (Result result) throws Exception {
+		Boolean testResult = result.wasSuccessful();
+	}
+	
 	public static String callRunningMethod () {
 		int i = 0;
 		while (i == runningMethod.length()) {
@@ -57,5 +69,4 @@ public class TestListener extends RunListener {
 		}
 		return runningMethod;
 	}
-
 }

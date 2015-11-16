@@ -25,9 +25,8 @@ public class TestExecuter {
 				try {
 					junit.run(myClass);
 					elements.Drivers.callDriver().quit();
-				} catch (Exception e) {
-					e.printStackTrace();
-					throw e;
+				} catch (NullPointerException e) {
+					System.err.println("\nCould not start test! Check if the server is running.\n");
 				}
 			}
 		}

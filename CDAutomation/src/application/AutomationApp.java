@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -63,6 +64,7 @@ public class AutomationApp {
 		JList<String> testClassList = new JList<String>(simpleList);
 		JScrollPane testListScroll = new JScrollPane();
 		testClassList.setFont(new Font("Arial", Font.PLAIN, 11));
+		testClassList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		testListScroll.setViewportView(testClassList);
 		testListScroll.setBounds(10, 10, 150, 181);
 		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
@@ -77,8 +79,8 @@ public class AutomationApp {
 		myFrame.getContentPane().add(consoleOut);
 		
 		// JUnit output window
-		DefaultListModel<String> methodList = new DefaultListModel<String>();
-		JList<String> junitOut = new JList<String>(methodList);
+		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
+		JList<String> junitOut = new JList<String>(testMethodsList);
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		junitOut.setFont(new Font("Arial", Font.PLAIN, 11));
 		junitOut.setBackground(Color.WHITE);
@@ -109,8 +111,8 @@ public class AutomationApp {
 			@Override
 			public void run() {
 				int i = 0; 
-				while (i < methodList.size()) {
-					while (application.TestListener.callRunningMethod().equals(methodList.get(i))) {
+				while (i < testMethodsList.size()) {
+					while (application.TestListener.callRunningMethod().equals(testMethodsList.get(i))) {
 						junitOut.setSelectedValue(application.TestListener.callRunningMethod(), true);
 						application.TestListener.callRunningMethod();
 					}
@@ -131,10 +133,10 @@ public class AutomationApp {
 			}
 		};
 		
-		Thread methodSelector = new Thread(testMethodSelector);
-		Thread testThread = new Thread(runTestThread);
 		ActionListener runTest = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				Thread methodSelector = new Thread(testMethodSelector);
+				Thread testThread = new Thread(runTestThread);
 				methodSelector.start();
 				testThread.start();
 			}
@@ -162,7 +164,7 @@ public class AutomationApp {
 			}
 		};
 		
-		// Right click list popup menu
+		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
 		
 		listPopup.add("   Run Test").addActionListener(runTest);
@@ -190,27 +192,18 @@ public class AutomationApp {
 			public void valueChanged(ListSelectionEvent arg0) {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
 				if (testClassList.getSelectedIndex() == testClassList.getLeadSelectionIndex() && testClassList.getSelectedIndex() == testClassList.getAnchorSelectionIndex()) {
-					methodList.removeAllElements();
-				}
+					testMethodsList.removeAllElements();
+				} 
 				try {
-					List<String> myTestMethods = application.TestListener.getTestMethods(selectedTests);
-					for (int i = 0; i < simpleList.size(); i++) {
-						if (selectedTests.contains(simpleList.get(i))) {
-							for (int j = 0; j < myTestMethods.size(); j++) {
-								if (!methodList.contains(simpleList.get(i)) && methodList.size()-myTestMethods.size() > 0) {
-									methodList.add(methodList.size()-myTestMethods.size(), simpleList.get(i));
-									methodList.insertElementAt("\n", methodList.size()-myTestMethods.size()-1);
-								} else if (!methodList.contains(simpleList.get(i))) {
-									methodList.addElement(simpleList.get(i));
-								}
-								if (!methodList.contains(myTestMethods.get(j))) {
-									methodList.addElement(myTestMethods.get(j));
-								} 
-							}
+					List<String> calledTestMethods = application.TestListener.getTestMethods(selectedTests);
+					for (int i = 0; i < calledTestMethods.size(); i++) {
+						if (selectedTests.contains(calledTestMethods.get(0)) && !testMethodsList.contains(calledTestMethods.get(i))) {
+							testMethodsList.addElement(calledTestMethods.get(i));
 						}
 					}
+					testMethodsList.addElement("\n");
 				} catch (Exception e) {
-						e.printStackTrace();
+					e.printStackTrace();
 				}
 			}
 		});
