@@ -17,7 +17,9 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
 	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-	static public String runningMethod = new String();
+	
+	static public String currentTest = new String();
+	static public String testResult = new String();
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
@@ -55,18 +57,25 @@ public class TestListener extends RunListener {
 	}
 	
 	public void testStarted (Description description) throws Exception {
-		runningMethod = description.getMethodName();
+		currentTest = description.getMethodName();
 	}
 	
-	public void testResult (Result result) throws Exception {
-		Boolean testResult = result.wasSuccessful();
+	public void testFailure (Failure failure) throws Exception {
+		 testResult = failure.getDescription().getMethodName();
 	}
 	
-	public static String callRunningMethod () {
-		int i = 0;
-		while (i == runningMethod.length()) {
-			System.out.print(runningMethod);
+	public void testRunFinished (Result result) throws Exception {
+		currentTest = "";
+	}
+	
+	public static String currentRunningTest() {
+		while (currentTest.length() == 0 || currentTest == "") {
+			System.out.flush();
 		}
-		return runningMethod;
+		return currentTest;
+	}
+	
+	public static String currentTestResult() {
+		return testResult;
 	}
 }

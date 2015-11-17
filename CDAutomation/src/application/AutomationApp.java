@@ -25,6 +25,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -91,6 +93,33 @@ public class AutomationApp {
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
 		
+		// Runnables
+		Runnable testMethodSelector = new Runnable() {
+			@Override
+			public void run() {
+				try {
+					while (testMethodsList.contains(application.TestListener.currentRunningTest())) {
+						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
+						Thread.sleep(1000);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();	
+					}
+				}
+			};
+		
+		Runnable runTestThread = new Runnable() {
+			@Override
+			public void run() {
+				List<String> selectedTests = testClassList.getSelectedValuesList();
+				try {
+					TestExecuter.allTests(selectedTests);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
 		// Listeners
 		ActionListener selectAll = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -104,32 +133,6 @@ public class AutomationApp {
 					allTests[i] = iterator.next().intValue();
 				}
 				testClassList.setSelectedIndices(allTests);
-			}
-		};
-		
-		Runnable testMethodSelector = new Runnable() {
-			@Override
-			public void run() {
-				int i = 0; 
-				while (i < testMethodsList.size()) {
-					while (application.TestListener.callRunningMethod().equals(testMethodsList.get(i))) {
-						junitOut.setSelectedValue(application.TestListener.callRunningMethod(), true);
-						application.TestListener.callRunningMethod();
-					}
-					i++;
-				}
-			}
-		};
-		
-		Runnable runTestThread = new Runnable() {
-			@Override
-			public void run() {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
-				try {
-					TestExecuter.allTests(selectedTests);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
 			}
 		};
 		
@@ -228,7 +231,7 @@ public class AutomationApp {
 		JButton stopButton = new JButton("Stop");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				
 			}
 		});
 		stopButton.setBounds(300, 326, 90, 25);
