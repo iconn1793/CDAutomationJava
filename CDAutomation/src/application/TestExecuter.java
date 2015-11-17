@@ -26,7 +26,7 @@ public class TestExecuter {
 					junit.run(myClass);
 					elements.Drivers.callDriver().quit();
 				} catch (NullPointerException e) {
-					System.err.println("\nCould not start test! Check if the server is running.\n");
+					System.err.println("Could not start test! Check if the server is running.\n");
 				}
 			}
 		}
