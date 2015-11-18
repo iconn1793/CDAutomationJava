@@ -7,8 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -25,8 +25,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -65,7 +63,7 @@ public class AutomationApp {
 		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 		JList<String> testClassList = new JList<String>(simpleList);
 		JScrollPane testListScroll = new JScrollPane();
-		testClassList.setFont(new Font("Arial", Font.PLAIN, 11));
+		testClassList.setFont(new Font("Arial", Font.BOLD, 11));
 		testClassList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		testListScroll.setViewportView(testClassList);
 		testListScroll.setBounds(10, 10, 150, 181);
@@ -73,12 +71,18 @@ public class AutomationApp {
 		myFrame.getContentPane().add(testListScroll);
 
 		// Console output window
-		JTextPane consoleOut = new JTextPane();
-		consoleOut.setBackground(Color.LIGHT_GRAY);
-		consoleOut.setEditable(false);
-		consoleOut.setBounds(10, 203, 464, 118);
-		consoleOut.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		myFrame.getContentPane().add(consoleOut);
+		JTextPane consoleWindow = new JTextPane();
+		JScrollPane consoleScroll = new JScrollPane();
+		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
+		System.setOut(outPrintStream);
+		System.setErr(outPrintStream);
+		consoleWindow.setBackground(Color.WHITE);
+		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
+		consoleWindow.setEditable(false);
+		consoleScroll.setViewportView(consoleWindow);
+		consoleScroll.setBounds(10, 203, 464, 118);
+		consoleScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		myFrame.getContentPane().add(consoleScroll);
 		
 		// JUnit output window
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
@@ -102,6 +106,7 @@ public class AutomationApp {
 						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
 						Thread.sleep(1000);
 						}
+					System.out.println("END");
 					} catch (Exception e) {
 						e.printStackTrace();	
 					}
@@ -135,11 +140,11 @@ public class AutomationApp {
 				testClassList.setSelectedIndices(allTests);
 			}
 		};
+		Thread methodSelector = new Thread(testMethodSelector);
+		Thread testThread = new Thread(runTestThread);
 		
 		ActionListener runTest = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Thread methodSelector = new Thread(testMethodSelector);
-				Thread testThread = new Thread(runTestThread);
 				methodSelector.start();
 				testThread.start();
 			}
@@ -231,7 +236,8 @@ public class AutomationApp {
 		JButton stopButton = new JButton("Stop");
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				methodSelector.interrupt();
+				testThread.interrupt();
 			}
 		});
 		stopButton.setBounds(300, 326, 90, 25);
