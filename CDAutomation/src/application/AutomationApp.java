@@ -104,8 +104,13 @@ public class AutomationApp {
 				try {
 					while (testMethodsList.contains(application.TestListener.currentRunningTest())) {
 						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
-						Thread.sleep(1000);
+						Thread.sleep(500);
+						for (int i = 0; i < testMethodsList.size(); i++) {
+							if (testMethodsList.getElementAt(i).equals(application.TestListener.currentTestResult())) {
+								System.out.println(testMethodsList.getElementAt(i));
+							}
 						}
+					}
 					System.out.println("END");
 					} catch (Exception e) {
 						e.printStackTrace();	

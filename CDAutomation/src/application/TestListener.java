@@ -65,11 +65,11 @@ public class TestListener extends RunListener {
 	}
 	
 	public void testRunFinished (Result result) throws Exception {
-		currentTest = "";
+		currentTest = "done";
 	}
 	
 	public static String currentRunningTest() {
-		while (currentTest.length() == 0 || currentTest == "") {
+		while (currentTest.length() == 0 || currentTest == "done") {
 			System.out.flush();
 		}
 		return currentTest;
