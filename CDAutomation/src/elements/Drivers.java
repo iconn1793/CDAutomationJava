@@ -515,6 +515,9 @@ public class Drivers {
     public WebElement unfollow_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("unfollow user")));
 	}
+    public WebElement search_friends() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Search Friends")));
+	}
     
     
 /// Sign up elements ///
