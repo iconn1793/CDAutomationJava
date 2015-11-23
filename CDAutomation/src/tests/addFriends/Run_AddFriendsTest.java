@@ -48,6 +48,17 @@ public class Run_AddFriendsTest extends Android_AddFriendsTest {
 		}
 	}
 	@Test
+	public void test04_AddFriendFromFollowers() throws Exception {
+		try {
+			log("Test04: add a user by searching username in AddFriends");
+			android.test04_Follow_from_AddFriends();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
 	public void test05_AddFriendFromFollowers() throws Exception {
 		try {
 			log("Test05: add a user by searching username in HomeScreen");

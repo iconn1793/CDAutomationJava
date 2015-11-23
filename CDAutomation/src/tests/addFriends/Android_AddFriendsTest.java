@@ -33,6 +33,7 @@ public class Android_AddFriendsTest extends Drivers {
 	public void test01_addFriend_fromChat() throws Exception {
 		loginAs.user(friend_username, account_pw);
 		action_menu().click();
+		Thread.sleep(1000);
 		action_menu_dust().click();
 		Thread.sleep(5000);
 
@@ -112,7 +113,7 @@ public class Android_AddFriendsTest extends Drivers {
 		add_friend().click();
 		back_button().click();
 		browse_friends().click();
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username0)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend, 4000).release().perform();
 		try{
 			
@@ -141,12 +142,15 @@ public class Android_AddFriendsTest extends Drivers {
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend, 4000).release().perform();
 		delete_dust().click();
-		okay_button().click();
+		//okay_button().click();
 		more_button().click();
 		action.press(friends()).moveTo(followers()).release().perform();
 		add_friends().click();
-		add_friends_search_button_text().sendKeys(friend_username+Keys.RETURN);
+		add_friends_search_button_text().click();
+		friends_search().sendKeys(friend_username);
+		friends_search().sendKeys(Keys.ENTER);
 		add_friends_button_inBrowseFriends().click();
+		back_button().click();
 		back_button().click();
 		browse_friends().click();
 		action.longPress(first_friend, 4000).release().perform();
@@ -175,7 +179,42 @@ public class Android_AddFriendsTest extends Drivers {
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_search().click();
-		add_friends_search_button_text().sendKeys(friend_username+Keys.RETURN);
+		friends_search().click();
+		friends_search().sendKeys(friend_username);
+		friends_search().sendKeys(Keys.ENTER);
+		add_friends_button_inBrowseFriends().click();
+		back_button().click();
+		browse_friends().click();
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		action.longPress(first_friend, 4000).release().perform();
+		try{
+			
+			if(unfollow_button().isDisplayed())
+				System.out.println("Added a friend from search bar");
+			unfollow_button().click();
+			okay_button().click();
+			
+		}
+
+		catch (Exception e) {
+
+			System.out.println("Unable to add a friend from search bar");
+
+		}
+		
+	}
+	public void test06_popular_page() throws Exception
+
+	{
+
+		
+		action_menu().click();
+		Thread.sleep(2000);
+		action_menu_discover().click();
+		Thread.sleep(4000);
+		friends_search().click();
+		friends_search().sendKeys(friend_username);
+		friends_search().sendKeys(Keys.ENTER);
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();

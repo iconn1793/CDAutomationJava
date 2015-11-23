@@ -541,6 +541,9 @@ public class Drivers {
 	}
     
     
+    public WebElement discover_tab() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_discover")));
+	}
     
 /// Sign up elements ///
     public WebElement sign_up_button() {
