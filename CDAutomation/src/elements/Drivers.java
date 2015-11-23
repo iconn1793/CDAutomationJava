@@ -374,6 +374,12 @@ public class Drivers {
 	public WebElement tap_to_unpin_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Tap message to unpin")));
 	}
+	public WebElement follow_from_chat_room() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("follow")));
+	}
+	public WebElement unfollow_from_chat_room() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("unfollow")));
+	}
     
 /// More page elements ///
     public WebElement profile_picture() {
@@ -518,6 +524,22 @@ public class Drivers {
     public WebElement search_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Search Friends")));
 	}
+    
+    public WebElement browse_followers() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_followers_row")));
+	}
+    
+    public WebElement browse_friends() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
+	}
+    
+    public WebElement add_friends_search_button_text() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_search_button_text")));
+	}
+    public WebElement add_friends_button_inBrowseFriends() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friend_contacts_listitem_button")));
+	}
+    
     
     
 /// Sign up elements ///

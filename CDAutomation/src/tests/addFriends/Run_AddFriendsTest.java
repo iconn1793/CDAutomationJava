@@ -25,5 +25,37 @@ public class Run_AddFriendsTest extends Android_AddFriendsTest {
 			throw e;
 		}
 	}
-	
+	@Test
+	public void test02_AddFriendFromDusts() throws Exception {
+		try {
+			log("Test02: add a user that messaged you from home +");
+			android.test02_AddFriend_from_DustsTab();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
+	public void test03_AddFriendFromFollowers() throws Exception {
+		try {
+			log("Test03: add a user that added you");
+			android.test03_chat_from_search_bar();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
+	public void test05_AddFriendFromFollowers() throws Exception {
+		try {
+			log("Test05: add a user by searching username in HomeScreen");
+			android.test05_AddFriend_from_home();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
 }

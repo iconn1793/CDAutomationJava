@@ -105,18 +105,20 @@ public class AutomationApp {
 					while (testMethodsList.contains(application.TestListener.currentRunningTest())) {
 						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
 						Thread.sleep(500);
-						for (int i = 0; i < testMethodsList.size(); i++) {
-							if (testMethodsList.getElementAt(i).equals(application.TestListener.currentTestResult())) {
-								System.out.println(testMethodsList.getElementAt(i));
-							}
+						
+							
 						}
-					}
+					//while loop ends
 					System.out.println("END");
-					} catch (Exception e) {
-						e.printStackTrace();	
-					}
+					} 
+				catch (Exception e) {
+				e.printStackTrace();	
+					
 				}
-			};
+				
+			}
+			
+		};
 		
 		Runnable runTestThread = new Runnable() {
 			@Override
