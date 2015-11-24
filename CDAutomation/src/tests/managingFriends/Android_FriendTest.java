@@ -15,6 +15,15 @@ public class Android_FriendTest extends Drivers {
 	
 	String account03 = "friendtest03";
 	String password03 = "friendtest03";
+	
+	String account04 = "friendtest04";
+	String password04 = "friendtest04";
+	
+	String account05 = "friendtest05";
+	String password05 = "friendtest05";
+	
+	String account06 = "friendtest06";
+	String password06 = "friendtest06";
 	//////////////////////////////////
 
 	TouchAction action = new TouchAction(driver);
@@ -23,29 +32,382 @@ public class Android_FriendTest extends Drivers {
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();
 	
-    public void test01_send_dusts () throws Exception {
-//    	loginAs.user(account01, password01);
-    	dusts_tab().click();
+	// Does a check for blasts from a specified account
+	public void checkForBlastsFrom(String account) throws Exception {
+    	try {
+    		blasts_tab().click();
+    		waitTime(1);
+    		if (username(account).isDisplayed()) {
+    			log("[Warning] Blast received from "+account);
+    		}
+    	} catch (Exception e) {
+    		log ("No blast received from "+account);
+    	}
+    	waitTime(20);
+	}
+	
+	// Does a check for dusts from a specified account
+	public void checkForDustsFrom(String account) throws Exception {
+    	try {
+    		dusts_tab().click();
+    		waitTime(1);
+    		if (username(account).isDisplayed()) {
+    			log("[Warning] Dust received from "+account);
+    		}
+    	} catch (Exception e) {
+    		log ("No dust received from "+account);
+    	}
+    	waitTime(20);
+	}
+	
+	// Does a check for a specific account in friends list
+	public void checkForFriend(String account) throws Exception {
+		try {
+			waitTime(1);
+			if (username(account).isDisplayed()) {
+				log("[Warning] "+account+" is on friends list");
+			}
+		} catch (Exception e) {
+			log(account+" is not on friends list");
+		}
+		waitTime(20);
+	}
+	
+	// Sends dusts to specified accounts
+	public void sendDustsTo(String recipient1, String recipient2) throws Exception {
+		action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+    	username(recipient1).click();
+    	chat_room_text_box().clear();
+    	chat_room_text_box().sendKeys("Test");
+    	chat_room_send_button().click();
+    	log("Sending dust to "+recipient1);
+    	back_button().click();
+    	username(recipient2).click();
+    	chat_room_text_box().clear();
+    	chat_room_text_box().sendKeys("Test");
+    	chat_room_send_button().click();
+    	log("Sending dust to "+recipient2);
+    	back_button().click();
+    	back_button().click();
+	}
+	
+	// Sends blasts to specified accounts
+	public void sendBlastsTo(String recipient1, String recipient2) throws Exception {
+		action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_text().click();
+       	dust_blast_field().sendKeys("Test");
+    	OK_button().click();
+    	blast_friends().click();
+    	username(recipient1).click();
+    	username(recipient2).click();
+    	blast_Ok_button().click();
+    	log("Sending blasts to "+recipient1+" and "+recipient2);
+	}
+	
+	// Checks for friend in friends list then sends blast
+	public void checkFriendsThenBlast(String recipient1, String recipient2, String checkForAccount) throws Exception {
+		action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_text().click();
+       	dust_blast_field().sendKeys("Test");
+    	OK_button().click();
+    	blast_friends().click();
+    	checkForFriend(checkForAccount);
+    	username(recipient1).click();
+    	username(recipient2).click();
+    	blast_Ok_button().click();
+    	log("Sending blasts to "+recipient1+" and "+recipient2);
+	}
+	
+	// Start of test
+    public void test01_blast_for_blasts_tab() throws Exception {
+    	loginAs.user(account04, password04);
     	
-    	// Sending dust to account02
-//    	action_menu().click();
-//    	action_menu_dust().click();
-//    	name(account02).click();
-//    	chat_room_text_box().clear();
-//    	chat_room_text_box().sendKeys("Test");
-//    	chat_room_send_button().click();
-//    	back_button().click();
-//    	back_button().click();
-    	
-    	// Sending blast to account02
-    	
-    	// Sending blast to account03
-
-    	Thread.sleep(2000);
-    	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_text().click();
+    	dust_blast_field().sendKeys("Block/mute from blasts tab");
+    	OK_button().click();
+    	blast_friends().click();
+    	username(account01).click();
+    	username(account02).click();
+    	blast_Ok_button().click();
+    	log("Sending blasts to account01 and 02");
     }
     
-    public void test02_receive_dusts () throws Exception {
-    	 
+    public void test02_blast_for_swipe_view() throws Exception {
+    	loginAs.user(account05, password05);
+    	
+    	action_menu().click();
+    	action_menu_text().click();
+    	dust_blast_field().sendKeys("Block/mute from swipe view");
+    	OK_button().click();
+    	blast_friends().click();
+    	username(account01).click();
+    	username(account02).click();
+    	username(account03).click();
+    	blast_Ok_button().click();
+    	log("Sending blasts to account01, 02, and 03");
+    }
+    
+    public void test03_block_all_accounts() throws Exception {
+    	loginAs.user(account01, password01);
+
+    	// Send account02 dust
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+    	name(account02).click();
+    	chat_room_text_box().clear();
+    	chat_room_text_box().sendKeys("Before blocking");
+    	chat_room_send_button().click();
+    	back_button().click();
+    	
+    	// Block account03 from inside dust room
+		name(account03).click();
+		dust_three_dotted_menu().click();
+		name("block friend").click();
+		confirm().click();
+		log("Blocking account03 from inside dust room");
+    	back_button().click();
+    	
+    	// Block account02 from Dusts tab
+    	dusts_tab().click();
+    	Thread.sleep(1000);
+    	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
+    	name("block user").click();
+    	log("Blocking account02 from Dusts tab");
+    	confirm().click();
+    	
+    	// Block account05 from swipe view
+    	blasts_tab().click();
+    	username(account05).click();
+    	blasted_by().click();
+    	blasted_by_block().click();
+    	log("Blocking account05 from swipe view");
+    	confirm().click();
+    	
+    	// Block account04 from Blasts Tab
+    	blast_more_button().click();
+    	blast_more_block().click();
+    	log("Blocking account04 from Blasts tab");
+    	confirm().click();
+    	
+    	// Block account06 from More / Friends
+    	more_button().click();
+    	friends().click();
+    	action.longPress(username(account06), 2000).release().perform();
+    	name("block user").click();
+    	log("Blocking account06 from More/friends menu");
+    	confirm().click();
+    	back_button().click();
+    	back_button().click();
+    }
+    
+    public void test04_message_to_blocked() throws Exception {
+    	// Try to send dust to blocked account
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+    	
+    	for (int i = 2; i <= 6; i++){
+	    	name("friendtest0"+i).click();
+	    	try {
+	    		waitTime(1);
+	    		if (chat_room_text_box().isDisplayed()) {
+	    			log("[Warning] Opened dust room with blocked user!");
+	    		}
+	    	} catch (Exception e) {
+	    		
+	    	}
+    	}
+    	log("Cannot start dust with blocked users");
+    	back_button().click();
+    	
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_text().click();
+    	dust_blast_field().sendKeys("Test");
+    	log("Sending blast to blocked accounts");
+    	OK_button().click();
+    	blast_all_followers().click();
+    	blast_Ok_button().click();
+    }
+    
+    public void test05_mute_all_accounts() throws Exception {
+    	loginAs.user(account02, password02);
+    	checkForBlastsFrom(account01);
+    	
+    	// Mute account01 from Dusts tab
+    	dusts_tab().click();
+    	Thread.sleep(1000);
+    	action.press(sw/10*9,(int)Math.round(sh/10*1.7)).release().perform();
+    	name("mute blasts").click();
+    	log("Muting account01 from Dusts tab");
+    	confirm().click();
+    	
+    	// Mute account03 from inside dust room
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+		name(account03).click();
+		dust_three_dotted_menu().click();
+		name("mute blasts").click();
+		confirm().click();
+		log("Muting account03 from inside dust room");
+    	back_button().click();
+    	back_button().click();
+    	
+    	// Mute account05 from swipe view
+    	blasts_tab().click();
+    	username(account05).click();
+    	blasted_by().click();
+    	blasted_by_mute().click();
+    	log("Muting account05 from swipe view");
+    	confirm().click();
+    	username(account05).click();
+    	swipe_view_exit().click();
+    	
+    	// Mute account04 from Blasts Tab
+    	blast_more_button().click();
+    	blast_more_mute().click();
+    	log("Muting account04 from Blasts tab");
+    	confirm().click();
+    	username(account04).click();
+    	swipe_view_exit().click();
+    	
+    	// Mute account06 from More / Friends
+    	more_button().click();
+    	friends().click();
+    	action.longPress(username(account06), 2000).release().perform();
+    	name("mute blasts").click();
+    	log("Muting account06 from More/friends menu");
+    	confirm().click();
+    	back_button().click();
+    	back_button().click();
+    }
+    
+    public void test06_dusts_and_blasts_02() throws Exception {
+    	// Send dust to account01
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+    	username(account01).click();
+    	chat_room_text_box().clear();
+    	chat_room_text_box().sendKeys("Test");
+    	chat_room_send_button().click();
+    	log("Sending dust to "+account01);
+    	back_button().click();
+    	back_button().click();
+    	
+    	//Send blast to account01
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_text().click();
+       	dust_blast_field().sendKeys("Test");
+    	OK_button().click();
+    	blast_friends().click();
+    	username(account01).click();
+    	blast_Ok_button().click();
+    	log("Sending blasts to "+account01);
+    }
+    
+    public void test07_unfollow_accounts() throws Exception {
+    	loginAs.user(account03, password03);
+    	
+    	// Unfollow account04 from inside dust room
+    	action_menu().click();
+    	Thread.sleep(500);
+    	action_menu_dust().click();
+    	username(account04).click();
+    	dust_three_dotted_menu().click();
+		name("unfollow").click();
+		log("Unfollowing account04 from inside dust room");
+		confirm().click();
+		back_button().click();
+		
+		// Unfollow account05 from swipe view
+		username(account05).click();
+		blasted_by().click();
+		blasted_by_unfollow().click();
+		log("Unfollowing account05 from swipe view");
+		confirm().click();
+		
+		// Unfollow account06 from More/friends
+    	more_button().click();
+    	friends().click();
+    	action.longPress(username(account06), 2000).release().perform();
+    	name("unfollow user").click();
+    	log("Unfollowing account06 from More/friends menu");
+    	confirm().click();
+    	back_button().click();
+    	back_button().click();
+    }
+    
+    public void test08_dusts_and_blasts_03() throws Exception {
+    	checkForBlastsFrom(account01);
+    	sendDustsTo(account01, account02);
+    	sendBlastsTo(account01, account02);
+    }
+    
+    public void test09_dusts_and_blasts_04() throws Exception {
+    	loginAs.user(account04, password04);
+    	checkForBlastsFrom(account01);
+    	sendDustsTo(account01, account02);
+    	checkFriendsThenBlast(account01, account02, account03);
+    }
+    
+    public void test10_dusts_and_blasts_05() throws Exception {
+    	loginAs.user(account05, password05);
+    	checkForBlastsFrom(account01);
+    	sendDustsTo(account01, account02);
+    	checkFriendsThenBlast(account01, account02, account03);
+    }
+    
+    public void test11_dusts_and_blasts_06() throws Exception {
+    	loginAs.user(account06, password06);
+    	checkForBlastsFrom(account01);
+    	sendDustsTo(account01, account02);
+    	checkFriendsThenBlast(account01, account02, account03);
+    }
+    
+    public void test12_check_msg_from_blocked() throws Exception {
+    	loginAs.user(account01, password01);
+    	for (int i = 2; i <= 6; i++) {
+	    	checkForBlastsFrom("friendtest0"+i);
+	    	checkForDustsFrom("friendtest0"+i);
+    	}
+    }
+    	
+    public void test13_unblock_accounts() throws Exception {
+    	// Unblock account02 from More -> friends
+    	more_button().click();
+    	friends().click();
+    	action.longPress(username(account02), 2000).release().perform();
+    	name("unblock user").click();
+    	log("Unblocking account02 from More/friends menu");
+    	back_button().click();
+    	
+    	// Unblock account03, 04, 05, and 06 from More/'muted/blocked users'
+    	action.press(followers()).moveTo(back_button()).release().perform();
+    	muted_blocked_users().click();
+    	for (int i = 3; i <=6; i++) {
+    		username("friendtest0"+i).click();
+    	}
+    	back_button().click();
+    	back_button().click();
+    	sendDustsTo(account02, account03);
+    	sendBlastsTo(account02, account03);
+    }
+    
+    public void test14_unmute_accounts() throws Exception {
+    	loginAs.user(account02, password02);
+    }
+    
+    public void test15_add_accounts() throws Exception {
+    	loginAs.user(account03, account03);
     }
 }
