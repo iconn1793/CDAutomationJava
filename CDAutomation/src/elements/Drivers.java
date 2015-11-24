@@ -136,6 +136,24 @@ public class Drivers {
 	public WebElement blasts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("BLASTS")));
 	}
+	public WebElement blasted_by() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/profile_button")));
+	}
+	public WebElement blasted_by_recommend() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_recommend_button")));
+	}
+	public WebElement blasted_by_mute() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_muteblast_button")));
+	}
+	public WebElement blasted_by_block() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_mute_button")));
+	}
+	public WebElement blasted_by_unfollow() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_delete_button")));
+	}
+	public WebElement blasted_by_report() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_report_button")));
+	}
 	public WebElement blast01() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
 	}
@@ -353,8 +371,14 @@ public class Drivers {
 	public WebElement username(String user) {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name(user)));
 	}
+	public WebElement mute_blast_icon() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/mute_blast_icon")));
+	}
 	public WebElement blast_Ok_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Ok")));
+	}
+	public WebElement dust_three_dotted_menu() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.LinearLayout[@index='2'][android.widget.ImageButton[@index='0']]")));
 	}
 	public WebElement message_timer() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_timer_view")));
