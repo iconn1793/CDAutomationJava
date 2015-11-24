@@ -31,7 +31,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class App {
+public class AutomationApp {
 	private JFrame myFrame;
 	
 	// Launch the application.
@@ -39,7 +39,7 @@ public class App {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					App window = new App();
+					AutomationApp window = new AutomationApp();
 					window.myFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +49,7 @@ public class App {
 	}
 
 	// Create the application.
-	public App() {
+	public AutomationApp() {
 		initialize();
 	}
 
