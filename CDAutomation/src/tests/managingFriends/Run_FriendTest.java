@@ -168,6 +168,67 @@ public class Run_FriendTest extends Android_FriendTest {
 			relaunch();
 			throw e;
 		}
+	}
+	
+	@Test
+	public void test14_checkMsgFromMuted() throws Exception {
+		try {
+			log("Test14");
+			android.test14_check_msg_from_muted();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test15_unmuteAccount01() throws Exception {
+		try {
+			log("Test15");
+			android.test15_unmute_account01();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test16_unmuteAccount03And04() throws Exception {
+		try {
+			log("Test16");
+			android.test16_unmute_account03_and_04();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test17_unmuteAccount05And06() throws Exception {
+		try {
+			log("Test17");
+			android.test17_unmute_account05_and_06();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	
+	@Test
+	public void test18_addAccounts() throws Exception {
+		try {
+			log("Test18");
+			android.test18_add_accounts();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+
 		log("[Finish] Test complete\n");
 	}
 }
