@@ -25,7 +25,7 @@ public class Run_FriendTest extends Android_FriendTest {
 			throw e;
 		}
 	}
-	
+
 	@Test
 	public void test02_blastFromAcct05() throws Exception {
 		try {
