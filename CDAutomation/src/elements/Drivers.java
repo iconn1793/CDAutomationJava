@@ -72,8 +72,14 @@ public class Drivers {
 			logLocation = projectPath+"\\testlogs\\"+logName+".log";
 		}
 		
+		if (text.toLowerCase().contains("fail") || text.toLowerCase().contains("exception") 
+				|| text.toLowerCase().contains("warning")) {
+			System.err.print(dateTime + testName + text + "\n\n");
+		} else {
+			System.out.print(dateTime + testName + text + "\n");
+		}
+		
 		FileWriter myWriter = new FileWriter(logLocation, true);
-		System.out.print(dateTime + testName + text + "\n");
 		myWriter.append(dateTime + testName + text + "\n");
 		myWriter.close();
 	}

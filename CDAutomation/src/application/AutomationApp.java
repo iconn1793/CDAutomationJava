@@ -77,8 +77,9 @@ public class AutomationApp {
 		JTextPane consoleWindow = new JTextPane();
 		JScrollPane consoleScroll = new JScrollPane();
 		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
+		PrintStream errPrintStream = new PrintStream(new ConsoleErrorOutput(consoleWindow));
 		System.setOut(outPrintStream);
-		System.setErr(outPrintStream);
+		System.setErr(errPrintStream);
 		consoleWindow.setBackground(Color.WHITE);
 		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
 		consoleWindow.setEditable(false);
@@ -123,7 +124,7 @@ public class AutomationApp {
 		stopButton.setBounds(300, 355, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
-		// Runnables w
+		// Runnables
 		Runnable testMethodSelector = new Runnable() {
 			@Override
 			public void run() {
