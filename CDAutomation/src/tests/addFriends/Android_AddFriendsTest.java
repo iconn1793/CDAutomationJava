@@ -1,12 +1,12 @@
 package tests.addFriends;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import elements.Drivers;
+//import elements.Friend;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
 
@@ -30,8 +30,10 @@ public class Android_AddFriendsTest extends Drivers {
 		driver.closeApp();
 		driver.launchApp();
 	}
+	
 	public void test01_addFriend_fromChat() throws Exception {
 		loginAs.user(friend_username, account_pw);
+		Thread.sleep(5000);
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_dust().click();
@@ -68,9 +70,6 @@ public class Android_AddFriendsTest extends Drivers {
 		{
 			System.out.println("Unable to follow from chat menu");
 		}
-		
-		
-
 	}
 	
 	public void logout_account()
@@ -132,10 +131,7 @@ public class Android_AddFriendsTest extends Drivers {
 		}
 
 	}
-	public void test04_Follow_from_AddFriends() throws Exception
-
-	{
-
+	public void test04_Follow_from_AddFriends() throws Exception{
 		
 		back_button().click();
 		back_button().click();
@@ -148,7 +144,8 @@ public class Android_AddFriendsTest extends Drivers {
 		add_friends().click();
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
-		friends_search().sendKeys(Keys.ENTER);
+		driver.pressKeyCode(66);
+		
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		back_button().click();
@@ -162,7 +159,6 @@ public class Android_AddFriendsTest extends Drivers {
 			okay_button().click();
 			
 		}
-
 		catch (Exception e) {
 
 			System.out.println("Unable to add a friend from search bar");
@@ -175,13 +171,14 @@ public class Android_AddFriendsTest extends Drivers {
 
 	{
 
-		
+		back_button().click();
+		back_button().click();
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_search().click();
 		friends_search().click();
 		friends_search().sendKeys(friend_username);
-		friends_search().sendKeys(Keys.ENTER);
+		driver.pressKeyCode(66);
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();
@@ -212,28 +209,62 @@ public class Android_AddFriendsTest extends Drivers {
 		Thread.sleep(2000);
 		action_menu_discover().click();
 		Thread.sleep(4000);
-		friends_search().click();
-		friends_search().sendKeys(friend_username);
-		friends_search().sendKeys(Keys.ENTER);
-		add_friends_button_inBrowseFriends().click();
-		back_button().click();
-		browse_friends().click();
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-		action.longPress(first_friend, 4000).release().perform();
+	
 		try{
 			
-			if(unfollow_button().isDisplayed())
-				System.out.println("Added a friend from search bar");
-			unfollow_button().click();
-			okay_button().click();
-			
-		}
+			if(discover_tab().isDisplayed())
+				System.out.println("Popular tab is accessible");
+			}
 
 		catch (Exception e) {
 
-			System.out.println("Unable to add a friend from search bar");
+			System.out.println("Discover tab is not accessible");
 
 		}
 		
+	}
+	
+	public void test07_chatters_page() throws Exception
+	{
+		try{
+			if(chatters_tab().isDisplayed())
+				System.out.println("Chatters tab is accessible");
+		}
+
+		catch (Exception e) {
+			System.out.println("Discover tab is not accessible");
+
+		}
+		
+	}
+	
+	public void test08_Popular_page() throws Exception
+
+	{
+
+	
+		try{
+			
+			if(chatters_tab().isDisplayed())
+			{
+				
+				WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='3']")));
+				first_friend.click();
+				yes_button().click();
+				Thread.sleep(2000);
+				first_friend.click();
+				yes_button().click();
+				
+				if(Friend_already_added().isDisplayed())
+				{
+					System.out.println("Popular page - a user can be added");
+				}
+			}
+		}
+		catch (Exception e) {
+
+			System.out.println("Discover tab is not accessible");
+		
+		}
 	}
 }

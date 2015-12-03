@@ -69,4 +69,37 @@ public class Run_AddFriendsTest extends Android_AddFriendsTest {
 			throw e;
 		}
 	}
+	@Test
+	public void test06_AddFriendFromPopular() throws Exception {
+		try {
+			log("Test06: Popular page - can access ");
+			android.test06_popular_page();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
+	public void test07_AddFriendFromChatters() throws Exception {
+		try {
+			log("Test07: Chatters page  - can access ");
+			android.test07_chatters_page();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
+	public void test08_AddFriendFromPopular2() throws Exception {
+		try {
+			log("Test08: Popular page - a user can be added ");
+			android.test08_Popular_page();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
 }
