@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import application.TestListener;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
 import javax.swing.JProgressBar;
@@ -54,6 +57,7 @@ public class AutomationApp {
 	}
 
 	// Initialize the contents of the frame.
+	@SuppressWarnings("serial")
 	private void initialize() {
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
@@ -90,6 +94,7 @@ public class AutomationApp {
 		
 		// JUnit output window
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
+		List<String> failedTests = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
 		JScrollPane junitScroll = new JScrollPane();
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -100,6 +105,28 @@ public class AutomationApp {
 		junitScroll.setBounds(250, 10, 224, 180);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
+		
+		junitOut.setCellRenderer(new DefaultListCellRenderer() {
+			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+				Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+				
+				if (!value.toString().contains("test")) {
+					setFont(new Font("Arial", Font.BOLD, 11));
+				}
+				
+				for (int i = 0; i < failedTests.size(); i++) {
+					if (value.equals(failedTests.get(i))) {
+						setForeground(Color.RED);
+					}
+				}
+//				for (int i = 0; i < passedTests.size(); i++) {
+//					if (value.equals(passedTests.get(i))) {
+//						setForeground(Color.GREEN);
+//					}
+//				}
+				return component;
+			}
+		});
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
@@ -128,13 +155,26 @@ public class AutomationApp {
 		Runnable testMethodSelector = new Runnable() {
 			@Override
 			public void run() {
+				TestListener t = new TestListener();
 				try {
-					while (testMethodsList.contains(application.TestListener.currentRunningTest())) {
-						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
-						Thread.sleep(500);
+					while (testMethodsList.contains(t.currentTest())) {
+						
+						junitOut.setSelectedValue(t.currentTest(), true);
+						
+						if (!failedTests.contains(t.currentResult())){
+							failedTests.add(t.currentResult());
 						}
-					//while loop ends
-					System.out.println("END");
+						
+//						if (!passedTests.contains(t.currentTest()) && !t.currentTest().contains(t.currentResult())) {
+//							passedTests.add(t.currentTest());
+//						}
+
+						Thread.sleep(500);
+						
+						if (TestListener.currentTest.equals("done")) {
+							junitOut.clearSelection();
+						}
+					}
 				} catch (Exception e) {
 					e.printStackTrace();	
 				}
