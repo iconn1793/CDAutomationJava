@@ -45,10 +45,11 @@ public class Android_GroupTest extends Drivers {
         name("add friends to room").click();
         name(blocked_account).click();
         OK_button().click();
+        
 		try {
 			waitTime(2);
 			dusting_with().click();
-			log("Added blocked user to group!");
+			log("[Warning] Added blocked user to group!");
 		} catch (Exception e) {
 			log("Could not add blocked user to group");
 			back_button().click();
@@ -66,7 +67,7 @@ public class Android_GroupTest extends Drivers {
 				log("User who created group is displayed!");
 			}
 		} catch (Exception e) {
-
+			
 		}
 		try {
 			if (name(account02).isDisplayed() && name(account03).isDisplayed()) {

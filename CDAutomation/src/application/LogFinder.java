@@ -20,6 +20,7 @@ public class LogFinder {
 		
 		for (int i = 0; i < rawList.size(); i++) {
 			testName = rawList.get(i).substring(rawList.get(i).indexOf("Run"), rawList.get(i).length()).replace("Run_", "").replace("Run", "");
+			
 			if (selectedTests.contains(testName)) {
 				logName = rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).indexOf("Run")-1).replace("/", ".").replace("\\", ".");
 				
@@ -47,6 +48,7 @@ public class LogFinder {
 		
 		for (int i = 0; i < rawList.size(); i++) {
 			testName = rawList.get(i).substring(rawList.get(i).indexOf("Run"), rawList.get(i).length()).replace("Run_", "").replace("Run", "");
+			
 			if (selectedTests.contains(testName)) {
 				logName = rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).indexOf("Run")-1).replace("/", ".").replace("\\", ".");
 				

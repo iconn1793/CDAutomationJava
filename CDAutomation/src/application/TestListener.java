@@ -11,7 +11,6 @@ import org.junit.runner.Description;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
-import elements.Drivers;
 
 public class TestListener extends RunListener {
 	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
@@ -63,21 +62,20 @@ public class TestListener extends RunListener {
 	
 	public void testFailure (Failure failure) throws Exception {
 		testResult = failure.getDescription().getMethodName();
-		//System.err.println("[FAIL] "+failure.getDescription().getMethodName()+": "+failure.getMessage()+"\n");
 	}
 	
 	public void testRunFinished (Result result) throws Exception {
 		currentTest = "done";
 	}
 	
-	public static String currentRunningTest() {
+	public String currentTest() {
 		while (currentTest.length() == 0 || currentTest == "done") {
 			System.out.flush();
 		}
 		return currentTest;
 	}
 	
-	public static String currentTestResult() {
+	public String currentResult() {
 		return testResult;
 	}
 }
