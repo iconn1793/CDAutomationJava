@@ -119,11 +119,6 @@ public class AutomationApp {
 						setForeground(Color.RED);
 					}
 				}
-//				for (int i = 0; i < passedTests.size(); i++) {
-//					if (value.equals(passedTests.get(i))) {
-//						setForeground(Color.GREEN);
-//					}
-//				}
 				return component;
 			}
 		});
@@ -158,16 +153,11 @@ public class AutomationApp {
 				TestListener t = new TestListener();
 				try {
 					while (testMethodsList.contains(t.currentTest())) {
-						
 						junitOut.setSelectedValue(t.currentTest(), true);
 						
 						if (!failedTests.contains(t.currentResult())){
 							failedTests.add(t.currentResult());
 						}
-						
-//						if (!passedTests.contains(t.currentTest()) && !t.currentTest().contains(t.currentResult())) {
-//							passedTests.add(t.currentTest());
-//						}
 
 						Thread.sleep(500);
 						
