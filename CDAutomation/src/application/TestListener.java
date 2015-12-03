@@ -18,8 +18,8 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	
-	static public String currentTest = new String();
-	static public String testResult = new String();
+	static public String currentTest = "";
+	static public String testResult = "";
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
