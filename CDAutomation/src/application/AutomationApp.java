@@ -29,8 +29,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -95,6 +93,7 @@ public class AutomationApp {
 		// JUnit output window
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
 		List<String> failedTests = new ArrayList<String>();
+		List<String> passedTests = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
 		JScrollPane junitScroll = new JScrollPane();
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -106,27 +105,12 @@ public class AutomationApp {
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
 		
-		junitOut.setCellRenderer(new DefaultListCellRenderer() {
-			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-				Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-				
-				if (!value.toString().contains("test")) {
-					setFont(new Font("Arial", Font.BOLD, 11));
-				}
-				
-				for (int i = 0; i < failedTests.size(); i++) {
-					if (value.equals(failedTests.get(i))) {
-						setForeground(Color.RED);
-					}
-				}
-				return component;
-			}
-		});
-		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
-		testProgressBar.setBounds(270, 194, 180, 8);
+		testProgressBar.setBounds(270, 196, 180, 14);
+		testProgressBar.setForeground(Color.GREEN.darker());
+		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
 		// Buttons
@@ -151,17 +135,43 @@ public class AutomationApp {
 			@Override
 			public void run() {
 				TestListener t = new TestListener();
+				testProgressBar.setMaximum(testMethodsList.size()-1);
+				
 				try {
-					while (testMethodsList.contains(t.currentTest())) {
-						junitOut.setSelectedValue(t.currentTest(), true);
+					while (testMethodsList.contains(t.runningTest())) {
+						junitOut.setSelectedValue(t.runningTest(), true);
 						
-						if (!failedTests.contains(t.currentResult())){
-							failedTests.add(t.currentResult());
+						testProgressBar.setStringPainted(true);
+						testProgressBar.setString("Test Progress");
+						testProgressBar.setValue((junitOut.getSelectedIndex()));
+						
+						if (!failedTests.contains(t.failedTests())){
+							failedTests.add(t.failedTests());
+						}
+						
+						if (!passedTests.contains(t.passedTests())) {
+							passedTests.add(t.passedTests());
 						}
 
 						Thread.sleep(500);
 						
+						// After all tests have been completed
 						if (TestListener.currentTest.equals("done")) {
+							testProgressBar.setValue(testProgressBar.getValue()+1);
+							
+							if (testProgressBar.getValue() == testMethodsList.size()-1) {
+								testProgressBar.setValue(testMethodsList.size());
+								testProgressBar.setString("Complete");
+							}
+							
+							if (!failedTests.contains(t.failedTests())){
+								failedTests.add(t.failedTests());
+							}
+							
+							if (!passedTests.contains(t.passedTests())) {
+								passedTests.add(t.passedTests());
+							}
+							
 							junitOut.clearSelection();
 						}
 					}
@@ -184,16 +194,6 @@ public class AutomationApp {
 		};
 		
 		// Listeners
-		ChangeListener testProgress = new ChangeListener () {
-			public void stateChanged(ChangeEvent e) {
-				for (int i = 0; i < testMethodsList.size(); i++) {
-					System.out.println(i);
-					testProgressBar.setMaximum(testMethodsList.size());
-					testProgressBar.setValue(i);
-				}
-			}
-		};
-		
 		ActionListener selectAll = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<Integer> selectAllList = new ArrayList<Integer>();
@@ -251,7 +251,6 @@ public class AutomationApp {
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
 		runButton.addActionListener(runTest);
-		testProgressBar.addChangeListener(testProgress);
 		
 		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
@@ -294,6 +293,31 @@ public class AutomationApp {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+		});
+		
+		// Test methods cell renderer
+		junitOut.setCellRenderer(new DefaultListCellRenderer() {
+			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+				Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+				
+				if (!value.toString().contains("test")) {
+					setFont(new Font("Arial", Font.BOLD, 11));
+				}
+				
+				for (int i = 0; i < failedTests.size(); i++) {
+					if (value.equals(failedTests.get(i))) {
+						setForeground(Color.RED.darker());
+					}		
+				}
+				
+				for (int i = 0; i < passedTests.size(); i++) {
+					if (value.equals(passedTests.get(i))) {
+						setForeground(Color.GREEN.darker());
+					}
+				}
+				
+				return component;
 			}
 		});
 	}

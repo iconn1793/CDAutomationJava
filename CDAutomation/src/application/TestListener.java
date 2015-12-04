@@ -19,7 +19,8 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	
 	static public String currentTest = "";
-	static public String testResult = "";
+	static public String failResult = "";
+	static public String passResult = "";
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
@@ -61,21 +62,31 @@ public class TestListener extends RunListener {
 	}
 	
 	public void testFailure (Failure failure) throws Exception {
-		testResult = failure.getDescription().getMethodName();
+		failResult = failure.getDescription().getMethodName();
+	}
+	
+	public void testFinished (Description description) throws Exception {
+		if (!description.getMethodName().equals(failResult)) {
+			passResult = description.getMethodName();
+		}
 	}
 	
 	public void testRunFinished (Result result) throws Exception {
 		currentTest = "done";
 	}
 	
-	public String currentTest() {
+	public String runningTest() {
 		while (currentTest.length() == 0 || currentTest == "done") {
 			System.out.flush();
 		}
 		return currentTest;
 	}
 	
-	public String currentResult() {
-		return testResult;
+	public String failedTests() {
+		return failResult;
+	}
+	
+	public String passedTests() {
+		return passResult;
 	}
 }
