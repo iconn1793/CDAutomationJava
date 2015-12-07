@@ -19,6 +19,7 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	
 	static public String currentTest = "";
+	static public String testResult = "";
 	static public String failResult = "";
 	static public String passResult = "";
 	
@@ -62,12 +63,8 @@ public class TestListener extends RunListener {
 	}
 	
 	public void testFailure (Failure failure) throws Exception {
-<<<<<<< HEAD
-		 testResult = failure.getDescription().getMethodName();
-		 System.out.println("[FAIL] "+failure.getDescription().getMethodName()+": "+failure.getMessage()+"\n");
-		 
-		 
-=======
+		testResult = failure.getDescription().getMethodName();
+		System.out.println("[FAIL] "+failure.getDescription().getMethodName()+": "+failure.getMessage()+"\n");
 		failResult = failure.getDescription().getMethodName();
 	}
 	
@@ -75,7 +72,6 @@ public class TestListener extends RunListener {
 		if (!description.getMethodName().equals(failResult)) {
 			passResult = description.getMethodName();
 		}
->>>>>>> branch 'master' of https://github.com/BrantK/CDAutomationJava.git
 	}
 	
 	public void testRunFinished (Result result) throws Exception {

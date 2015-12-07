@@ -142,7 +142,7 @@ public class Android_TimeOutTests extends Drivers{
 			System.out.println("ERROR: Message is not deleted after 60 seconds");
 			
 		}
-<<<<<<< HEAD
+
 		if(!message1.isDisplayed())
 		{
 			System.out.println("Message deleted after 20 seconds");
@@ -190,7 +190,7 @@ public class Android_TimeOutTests extends Drivers{
 			System.out.println("ERROR: Message is not deleted after 60 seconds");
 			
 		}
-=======
+
 //		if(!message1.isDisplayed())
 //		{
 //			System.out.println("Message deleted after 20 seconds");
@@ -238,7 +238,7 @@ public class Android_TimeOutTests extends Drivers{
 //			System.out.println("ERROR: Message is not deleted after 60 seconds");
 //			
 //		}
->>>>>>> branch 'master' of https://github.com/BrantK/CDAutomationJava.git
+
 	}
 		
 	public void logout_account()
