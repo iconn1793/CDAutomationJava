@@ -410,6 +410,13 @@ public class Drivers {
 	public WebElement unfollow_from_chat_room() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("unfollow")));
 	}
+	public WebElement yes_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Yes")));
+	}
+	
+	public WebElement Friend_already_added() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Friend Already Added")));
+	}
     
 /// More page elements ///
     public WebElement profile_picture() {
@@ -545,6 +552,19 @@ public class Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("+")));
 	}
     
+    public WebElement switch_emoji_keyboard() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_emoji_button")));
+	}
+    public WebElement switch_text_keyboard() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/emoji_keyboard_fragment_keyboard_button")));
+	}
+   // public WebElement no_friend() {
+	 //   return wait.until(ExpectedConditions.elementToBeClickable(By.name("You don't have any friends yet.?Lets add some!")));
+	//}
+  //  com.radicalapps.cyberdust:id/emoji_keyboard_fragment_photo_button
+    
+    
+    
     public WebElement okay_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Okay")));
 	}
@@ -574,7 +594,9 @@ public class Drivers {
     public WebElement discover_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_discover")));
 	}
-    
+    public WebElement chatters_tab() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_chatters")));
+	}
 /// Sign up elements ///
     public WebElement sign_up_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_signup_button")));
