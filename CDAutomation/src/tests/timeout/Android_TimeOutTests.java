@@ -142,53 +142,53 @@ public class Android_TimeOutTests extends Drivers{
 			System.out.println("ERROR: Message is not deleted after 60 seconds");
 			
 		}
-//		if(!message1.isDisplayed())
-//		{
-//			System.out.println("Message deleted after 20 seconds");
-//			
-//		}
-//		else
-//		{	
-//			System.out.println("ERROR: Message is not deleted after 20 seconds");
-//			
-//		}
-//		if(!swipe_view_monkey().isDisplayed())
-//		{
-//			System.out.println("Message deleted after 20 seconds");
-//			
-//		}
-//		else
-//		{	
-//			System.out.println("ERROR: Message is not deleted after 20 seconds");
-//			
-//		}
-//		
-//		WebElement message3 = wait.until(ExpectedConditions.elementToBeClickable(By.name("+technology")));
-//		WebElement message4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView[@index='0'][android.widget.LinearLayout[@index='0']][android.widget.RelativeLayout[@index ='0'")));       
-//		
-//		Thread.sleep(40000);
-//		if(!message4.isDisplayed())
-//		{
-//			System.out.println("Message deleted after 60 seconds");
-//			
-//		}
-//		else
-//		{	
-//			System.out.println("ERROR: Message is not deleted after 60 seconds");
-//			
-//		}
-//		
-//		Thread.sleep(40000);
-//		if(!message3.isDisplayed())
-//		{
-//			System.out.println("Message deleted after 60 seconds");
-//			
-//		}
-//		else
-//		{	
-//			System.out.println("ERROR: Message is not deleted after 60 seconds");
-//			
-//		}
+		if(!message1.isDisplayed())
+		{
+			System.out.println("Message deleted after 20 seconds");
+			
+		}
+		else
+		{	
+			System.out.println("ERROR: Message is not deleted after 20 seconds");
+			
+		}
+		if(!swipe_view_monkey().isDisplayed())
+		{
+			System.out.println("Message deleted after 20 seconds");
+			
+		}
+		else
+		{	
+			System.out.println("ERROR: Message is not deleted after 20 seconds");
+			
+		}
+		
+		WebElement message3 = wait.until(ExpectedConditions.elementToBeClickable(By.name("+technology")));
+		WebElement message4 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView[@index='0'][android.widget.LinearLayout[@index='0']][android.widget.RelativeLayout[@index ='0'")));       
+		
+		Thread.sleep(40000);
+		if(!message4.isDisplayed())
+		{
+			System.out.println("Message deleted after 60 seconds");
+			
+		}
+		else
+		{	
+			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			
+		}
+		
+		Thread.sleep(40000);
+		if(!message3.isDisplayed())
+		{
+			System.out.println("Message deleted after 60 seconds");
+			
+		}
+		else
+		{	
+			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			
+		}
 	}
 		
 	public void logout_account()

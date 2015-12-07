@@ -124,7 +124,7 @@ public class Android_FriendTest extends Drivers {
     	username(recipient2).click();
     	blast_Ok_button().click();
 	}
-	
+
 	// Start of test //
     public void test01_blast_for_blasts_tab() throws Exception {
     	loginAs.user(account04, password04);
