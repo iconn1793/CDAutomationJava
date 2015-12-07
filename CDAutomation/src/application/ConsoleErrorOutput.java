@@ -21,10 +21,6 @@ public class ConsoleErrorOutput extends OutputStream {
 	public void write(int b) throws IOException {
 		Style style = context.addStyle("errorOutput", null);
 		StyleConstants.setForeground(style, Color.RED);
-<<<<<<< HEAD
-=======
-		
->>>>>>> branch 'master' of https://github.com/BrantK/CDAutomationJava.git
 		try {
 			textPane.getStyledDocument().insertString(textPane.getDocument().getLength(), String.valueOf((char)b), style);
 			textPane.setCaretPosition(textPane.getDocument().getLength());
