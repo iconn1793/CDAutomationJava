@@ -19,9 +19,11 @@ public class TestExecuter {
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
+				
 				System.out.println("[Application]: Starting "+simpleList.get(i));
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
 				junit.addListener(new application.TestListener());
+				
 				try {
 					junit.run(myClass);
 					elements.Drivers.callDriver().quit();

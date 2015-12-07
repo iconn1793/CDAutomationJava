@@ -18,8 +18,9 @@ public class TestListener extends RunListener {
 	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	
-	static public String currentTest = new String();
-	static public String testResult = new String();
+	static public String currentTest = "";
+	static public String failResult = "";
+	static public String passResult = "";
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
@@ -61,24 +62,38 @@ public class TestListener extends RunListener {
 	}
 	
 	public void testFailure (Failure failure) throws Exception {
+<<<<<<< HEAD
 		 testResult = failure.getDescription().getMethodName();
 		 System.out.println("[FAIL] "+failure.getDescription().getMethodName()+": "+failure.getMessage()+"\n");
 		 
 		 
+=======
+		failResult = failure.getDescription().getMethodName();
+	}
+	
+	public void testFinished (Description description) throws Exception {
+		if (!description.getMethodName().equals(failResult)) {
+			passResult = description.getMethodName();
+		}
+>>>>>>> branch 'master' of https://github.com/BrantK/CDAutomationJava.git
 	}
 	
 	public void testRunFinished (Result result) throws Exception {
 		currentTest = "done";
 	}
 	
-	public static String currentRunningTest() {
+	public String runningTest() {
 		while (currentTest.length() == 0 || currentTest == "done") {
 			System.out.flush();
 		}
 		return currentTest;
 	}
 	
-	public static String currentTestResult() {
-		return testResult;
+	public String failedTests() {
+		return failResult;
+	}
+	
+	public String passedTests() {
+		return passResult;
 	}
 }

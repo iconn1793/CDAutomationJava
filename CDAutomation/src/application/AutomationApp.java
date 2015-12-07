@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,9 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import application.TestListener;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
 import javax.swing.JProgressBar;
@@ -26,8 +29,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -54,6 +55,7 @@ public class AutomationApp {
 	}
 
 	// Initialize the contents of the frame.
+	@SuppressWarnings("serial")
 	private void initialize() {
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
@@ -77,8 +79,9 @@ public class AutomationApp {
 		JTextPane consoleWindow = new JTextPane();
 		JScrollPane consoleScroll = new JScrollPane();
 		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
+		PrintStream errPrintStream = new PrintStream(new ConsoleErrorOutput(consoleWindow));
 		System.setOut(outPrintStream);
-		System.setErr(outPrintStream);
+		System.setErr(errPrintStream);
 		consoleWindow.setBackground(Color.WHITE);
 		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
 		consoleWindow.setEditable(false);
@@ -89,6 +92,8 @@ public class AutomationApp {
 		
 		// JUnit output window
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
+		List<String> failedTests = new ArrayList<String>();
+		List<String> passedTests = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
 		JScrollPane junitScroll = new JScrollPane();
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -103,7 +108,9 @@ public class AutomationApp {
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
-		testProgressBar.setBounds(270, 194, 180, 8);
+		testProgressBar.setBounds(270, 196, 180, 14);
+		testProgressBar.setForeground(Color.GREEN.darker());
+		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
 		// Buttons
@@ -123,17 +130,51 @@ public class AutomationApp {
 		stopButton.setBounds(300, 355, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
-		// Runnables w
+		// Runnables
 		Runnable testMethodSelector = new Runnable() {
 			@Override
 			public void run() {
+				TestListener t = new TestListener();
+				testProgressBar.setMaximum(testMethodsList.size()-1);
+				
 				try {
-					while (testMethodsList.contains(application.TestListener.currentRunningTest())) {
-						junitOut.setSelectedValue(application.TestListener.currentRunningTest(), true);
-						Thread.sleep(500);
+					while (testMethodsList.contains(t.runningTest())) {
+						junitOut.setSelectedValue(t.runningTest(), true);
+						
+						testProgressBar.setStringPainted(true);
+						testProgressBar.setString("Test Progress");
+						testProgressBar.setValue((junitOut.getSelectedIndex()));
+						
+						if (!failedTests.contains(t.failedTests())){
+							failedTests.add(t.failedTests());
 						}
-					//while loop ends
-					System.out.println("END");
+						
+						if (!passedTests.contains(t.passedTests())) {
+							passedTests.add(t.passedTests());
+						}
+
+						Thread.sleep(500);
+						
+						// After all tests have been completed
+						if (TestListener.currentTest.equals("done")) {
+							testProgressBar.setValue(testProgressBar.getValue()+1);
+							
+							if (testProgressBar.getValue() == testMethodsList.size()-1) {
+								testProgressBar.setValue(testMethodsList.size());
+								testProgressBar.setString("Complete");
+							}
+							
+							if (!failedTests.contains(t.failedTests())){
+								failedTests.add(t.failedTests());
+							}
+							
+							if (!passedTests.contains(t.passedTests())) {
+								passedTests.add(t.passedTests());
+							}
+							
+							junitOut.clearSelection();
+						}
+					}
 				} catch (Exception e) {
 					e.printStackTrace();	
 				}
@@ -153,16 +194,6 @@ public class AutomationApp {
 		};
 		
 		// Listeners
-		ChangeListener testProgress = new ChangeListener () {
-			public void stateChanged(ChangeEvent e) {
-				for (int i = 0; i < testMethodsList.size(); i++) {
-					System.out.println(i);
-					testProgressBar.setMaximum(testMethodsList.size());
-					testProgressBar.setValue(i);
-				}
-			}
-		};
-		
 		ActionListener selectAll = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<Integer> selectAllList = new ArrayList<Integer>();
@@ -220,7 +251,6 @@ public class AutomationApp {
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
 		runButton.addActionListener(runTest);
-		testProgressBar.addChangeListener(testProgress);
 		
 		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
@@ -263,6 +293,31 @@ public class AutomationApp {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+		});
+		
+		// Test methods cell renderer
+		junitOut.setCellRenderer(new DefaultListCellRenderer() {
+			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+				Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+				
+				if (!value.toString().contains("test")) {
+					setFont(new Font("Arial", Font.BOLD, 11));
+				}
+				
+				for (int i = 0; i < failedTests.size(); i++) {
+					if (value.equals(failedTests.get(i))) {
+						setForeground(Color.RED.darker());
+					}		
+				}
+				
+				for (int i = 0; i < passedTests.size(); i++) {
+					if (value.equals(passedTests.get(i))) {
+						setForeground(Color.GREEN.darker());
+					}
+				}
+				
+				return component;
 			}
 		});
 	}
