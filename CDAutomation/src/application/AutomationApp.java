@@ -9,17 +9,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.PrintStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import application.TestListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.DropMode;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
@@ -31,6 +36,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import org.junit.runner.notification.StoppedByUserException;
 
 public class AutomationApp {
 	private JFrame myFrame;
@@ -187,6 +194,9 @@ public class AutomationApp {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
 				try {
 					TestExecuter.allTests(selectedTests);
+				} catch (StoppedByUserException e) {
+					System.out.println("Test Stopped");
+					TestListener.currentTest = "done";
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -231,8 +241,11 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				methodSelector.interrupt();
-				testThread.interrupt();
+				try {
+					new application.TestExecuter().stopTests();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
@@ -299,25 +312,46 @@ public class AutomationApp {
 		// Test methods cell renderer
 		junitOut.setCellRenderer(new DefaultListCellRenderer() {
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-				Component component = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+				JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 				
-				if (!value.toString().contains("test")) {
+				String filePath = Paths.get("").toAbsolutePath().normalize().toString();
+				String iconLocation = "";
+				
+				if (filePath.contains("/")) {
+					iconLocation = filePath+"/icons/";
+				} else {
+					iconLocation = filePath+"\\icons\\";
+				}
+				
+				Icon tSuiteIcon = new ImageIcon(iconLocation+"tsuite.gif");
+				Icon testIcon = new ImageIcon(iconLocation+"test.gif");
+				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
+				Icon passIcon = new ImageIcon(iconLocation+"pass.gif");
+				Icon failIcon = new ImageIcon(iconLocation+"fail.gif");
+				
+				if (simpleList.contains(value.toString())) {
+					setIcon(tSuiteIcon);
 					setFont(new Font("Arial", Font.BOLD, 11));
 				}
 				
-				for (int i = 0; i < failedTests.size(); i++) {
-					if (value.equals(failedTests.get(i))) {
-						setForeground(Color.RED.darker());
-					}		
+				if (value.toString().contains("test")) {
+					label.setBorder(BorderFactory.createEmptyBorder(2,12,0,0));
+					setIcon(testIcon);
 				}
 				
-				for (int i = 0; i < passedTests.size(); i++) {
-					if (value.equals(passedTests.get(i))) {
-						setForeground(Color.GREEN.darker());
-					}
+				if (value.toString().equals(TestListener.currentTest)) {
+					setIcon(runningIcon);
 				}
 				
-				return component;
+				if (failedTests.contains(value)) {
+					setIcon(failIcon);
+				}		
+
+				if (passedTests.contains(value)) {
+					setIcon(passIcon);
+				}
+				
+				return label;
 			}
 		});
 	}
