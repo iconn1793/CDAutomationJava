@@ -37,6 +37,8 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.junit.runner.notification.StoppedByUserException;
+
 public class AutomationApp {
 	private JFrame myFrame;
 	
@@ -192,6 +194,9 @@ public class AutomationApp {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
 				try {
 					TestExecuter.allTests(selectedTests);
+				} catch (StoppedByUserException e) {
+					System.out.println("Test Stopped");
+					TestListener.currentTest = "done";
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -236,8 +241,11 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				methodSelector.interrupt();
-				testThread.interrupt();
+				try {
+					new application.TestExecuter().stopTests();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		
