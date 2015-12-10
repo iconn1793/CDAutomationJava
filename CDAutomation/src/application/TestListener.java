@@ -13,10 +13,10 @@ import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
 public class TestListener extends RunListener {
-	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
-	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
-	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
-	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
+	static String myDir = Paths.get("").toAbsolutePath().normalize().toString();
+	static DefaultListModel<String> fileList = new DefaultListModel<String>();
+	static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
+	static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	
 	static public String currentTest = "";
 	static public String testResult = "";
