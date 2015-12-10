@@ -7,9 +7,9 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 
 public class LogFinder {
-	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
-	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
-	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
+	private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
+	private DefaultListModel<String> fileList = new DefaultListModel<String>();
+	private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	
 	public void openLog(List<String> selectedTests) throws Exception {
 		
