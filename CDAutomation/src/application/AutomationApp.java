@@ -41,6 +41,7 @@ import org.junit.runner.notification.StoppedByUserException;
 
 public class AutomationApp {
 	private JFrame myFrame;
+	private boolean resetTestStatus;
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -101,6 +102,7 @@ public class AutomationApp {
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
 		List<String> failedTests = new ArrayList<String>();
 		List<String> passedTests = new ArrayList<String>();
+		List<String> passedClass = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
 		JScrollPane junitScroll = new JScrollPane();
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -143,6 +145,7 @@ public class AutomationApp {
 			public void run() {
 				TestListener t = new TestListener();
 				testProgressBar.setMaximum(testMethodsList.size()-1);
+				List<String> selectedTests = testClassList.getSelectedValuesList();
 				
 				try {
 					while (testMethodsList.contains(t.runningTest())) {
@@ -179,6 +182,14 @@ public class AutomationApp {
 								passedTests.add(t.passedTests());
 							}
 							
+							if (testMethodsList.contains(testClassList.getSelectedValue())) {
+								for (int i = 0; i < selectedTests.size(); i++) {
+									if (!passedClass.contains(selectedTests.get(i))) {
+										passedClass.add(selectedTests.get(i));
+									}
+								}
+							}
+
 							junitOut.clearSelection();
 						}
 					}
@@ -195,8 +206,8 @@ public class AutomationApp {
 				try {
 					TestExecuter.allTests(selectedTests);
 				} catch (StoppedByUserException e) {
-					System.out.println("Test Stopped");
 					TestListener.currentTest = "done";
+					System.out.println("Test Stopped");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -219,12 +230,18 @@ public class AutomationApp {
 			}
 		};
 		
-		Thread methodSelector = new Thread(testMethodSelector);
-		Thread testThread = new Thread(runTestThread);
 		ActionListener runTest = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				methodSelector.start();
-				testThread.start();
+				Thread methodSelector = new Thread(testMethodSelector);
+				Thread testThread = new Thread(runTestThread);
+				
+				if (testThread.getState() == Thread.State.valueOf("NEW")) {
+					methodSelector.start();
+					testThread.start();
+				} else {
+					new Thread(methodSelector).start();
+					new Thread(runTestThread).start();
+				}
 			}
 		};
 		
@@ -241,11 +258,7 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					new application.TestExecuter().stopTests();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				new TestExecuter().stopTests();
 			}
 		});
 		
@@ -292,9 +305,11 @@ public class AutomationApp {
 		testClassList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
+				
 				if (testClassList.getSelectedIndex() == testClassList.getLeadSelectionIndex() && testClassList.getSelectedIndex() == testClassList.getAnchorSelectionIndex()) {
 					testMethodsList.removeAllElements();
 				} 
+			
 				try {
 					List<String> calledTestMethods = application.TestListener.getTestMethods(selectedTests);
 					for (int i = 0; i < calledTestMethods.size(); i++) {
@@ -305,6 +320,15 @@ public class AutomationApp {
 					testMethodsList.addElement("\n");
 				} catch (Exception e) {
 					e.printStackTrace();
+				}
+				
+				if (passedClass.contains(testClassList.getSelectedValue())) {
+					testProgressBar.setMaximum(testMethodsList.size());
+					testProgressBar.setValue(testMethodsList.size());
+					testProgressBar.setString("Complete");
+				} else {
+					testProgressBar.setValue(0);
+					testProgressBar.setString("");
 				}
 			}
 		});
@@ -329,7 +353,7 @@ public class AutomationApp {
 				Icon passIcon = new ImageIcon(iconLocation+"pass.gif");
 				Icon failIcon = new ImageIcon(iconLocation+"fail.gif");
 				
-				if (simpleList.contains(value.toString())) {
+				if (simpleList.contains(value)) {
 					setIcon(tSuiteIcon);
 					setFont(new Font("Arial", Font.BOLD, 11));
 				}
@@ -350,7 +374,7 @@ public class AutomationApp {
 				if (passedTests.contains(value)) {
 					setIcon(passIcon);
 				}
-				
+
 				return label;
 			}
 		});
