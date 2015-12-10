@@ -1,0 +1,30 @@
+12/07/15 12:34:55 [MessagePinningTest]: [Start] Starting test
+12/07/15 12:34:55 [MessagePinningTest]: Test01
+12/07/15 12:35:45 [MessagePinningTest]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 0b5e64ca-8c1c-4ddc-98cb-b44ec6ac9993
+12/07/15 12:35:50 [MessagePinningTest]: Test02
+12/07/15 12:36:11 [MessagePinningTest]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: android:id/home
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 0b5e64ca-8c1c-4ddc-98cb-b44ec6ac9993
+12/07/15 12:36:55 [MessagePinningTest]: [Start] Starting test
+12/07/15 12:36:55 [MessagePinningTest]: Test01
+12/07/15 12:38:04 [MessagePinningTest]: Test02
+12/07/15 12:38:45 [MessagePinningTest]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.name: aaaaa2
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: fafff2c0-05e4-4bd6-98d5-124699931c3d
+12/07/15 12:40:02 [MessagePinningTest]: [Start] Starting test
+12/07/15 12:40:02 [MessagePinningTest]: Test01
+12/07/15 12:41:11 [MessagePinningTest]: Test02
+12/07/15 12:42:49 [MessagePinningTest]: Test Complete
+12/07/15 12:42:49 [MessagePinningTest]: [Finish] Test complete
+

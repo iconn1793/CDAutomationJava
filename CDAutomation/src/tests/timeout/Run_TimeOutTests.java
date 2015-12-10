@@ -17,7 +17,18 @@ public class Run_TimeOutTests extends Android_TimeOutTests {
 		log("[Start] Starting time out test");
 		try {
 			log("Test01: message expires");
-			android.test01_text_timeout();
+			android.test01_video_timeout();
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
+	@Test
+	public void test02_TimeOutTest() throws Exception {
+		try {
+			log("Test01: message expires");
+			android.test02_photo_timeout();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();

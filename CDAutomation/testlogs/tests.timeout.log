@@ -1,0 +1,204 @@
+12/07/15 12:51:30 [TimeOutTests]: [Start] Starting time out test
+12/07/15 12:51:30 [TimeOutTests]: Test01: message expires
+12/07/15 12:54:15 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 7d454e27-ac53-4736-a164-6bc11cde4488
+12/07/15 13:28:50 [TimeOutTests]: [Start] Starting time out test
+12/07/15 13:28:50 [TimeOutTests]: Test01: message expires
+12/07/15 13:30:52 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: af0525ab-c857-43ac-a4e1-6aeece5f3167
+12/07/15 13:40:40 [TimeOutTests]: [Start] Starting time out test
+12/07/15 13:40:40 [TimeOutTests]: Test01: message expires
+12/07/15 13:42:50 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: com.radicalapps.cyberdust:id/chat_room_fragment_text_box
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: d7b91e8f-1fb6-4ba1-94f5-9ebd46733f3a
+12/07/15 13:49:11 [TimeOutTests]: [Start] Starting time out test
+12/07/15 13:49:11 [TimeOutTests]: Test01: message expires
+12/07/15 13:51:12 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: e41bf1ef-307a-473d-af96-b486333a88d7
+12/07/15 13:52:36 [TimeOutTests]: [Start] Starting time out test
+12/07/15 13:52:36 [TimeOutTests]: Test01: message expires
+12/07/15 13:53:45 [TimeOutTests]: [Start] Starting time out test
+12/07/15 13:53:45 [TimeOutTests]: Test01: message expires
+12/07/15 13:57:52 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: com.radicalapps.cyberdust:id/action_take_picture
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: be9fa752-826b-44cb-92cb-8c6edd7401df
+12/07/15 14:02:25 [TimeOutTests]: [Start] Starting time out test
+12/07/15 14:02:25 [TimeOutTests]: Test01: message expires
+12/07/15 14:03:59 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: com.radicalapps.cyberdust:id/more_fragment_logout_row
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: f587232c-b616-45cc-aad4-b31b188dd237
+12/07/15 14:09:51 [TimeOutTests]: [Start] Starting time out test
+12/07/15 14:09:51 [TimeOutTests]: Test01: message expires
+12/07/15 14:13:32 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: com.radicalapps.cyberdust:id/action_take_picture
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: efb534ce-0cd3-4a3c-b4c9-d8eb21283354
+12/07/15 14:18:36 [TimeOutTests]: [Start] Starting time out test
+12/07/15 14:18:36 [TimeOutTests]: Test01: message expires
+12/07/15 14:22:47 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.id: com.radicalapps.cyberdust:id/action_take_picture
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: bc3cf53c-00c5-4222-854c-73cbe332b164
+12/08/15 11:21:47 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:21:47 [TimeOutTests]: Test01: message expires
+12/08/15 11:22:31 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 411 milliseconds
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: d92c3a4f-bc96-44b6-8ec0-765f798be905
+*** Element info: {Using=xpath, value=//android.widget.FrameLayout[@index='1'][android.widget.ImageView[@index='0']]}
+12/08/15 11:24:57 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:24:57 [TimeOutTests]: Test01: message expires
+12/08/15 11:25:37 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 83 milliseconds
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 56578433-1114-41ca-8c62-93bdab04ef23
+*** Element info: {Using=xpath, value=//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]}
+12/08/15 11:30:07 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:30:07 [TimeOutTests]: Test01: message expires
+12/08/15 11:31:47 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 5f8209c0-6a64-4268-a632-50088e667f87
+12/08/15 11:34:48 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:34:48 [TimeOutTests]: Test01: message expires
+12/08/15 11:38:02 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: faabbb22-7599-443d-8899-8da113b4dfda
+12/08/15 11:40:15 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:40:16 [TimeOutTests]: Test01: message expires
+12/08/15 11:41:23 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: afde34de-5b8d-4fc7-9ffd-b0767af0da56
+12/08/15 11:43:15 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:43:15 [TimeOutTests]: Test01: message expires
+12/08/15 11:45:48 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=T01130GQNF, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=4.4.4, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 7a7b019a-b16b-408b-a4e8-c6be7115d835
+12/08/15 11:47:25 [TimeOutTests]: [Start] Starting time out test
+12/08/15 11:47:26 [TimeOutTests]: Test01: message expires
+12/08/15 11:54:35 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.name: Cyber Dust
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 5c38eda3-8ec9-4f2d-81aa-fea83c23f554
+12/08/15 12:08:04 [TimeOutTests]: [Start] Starting time out test
+12/08/15 12:08:04 [TimeOutTests]: Test01: message expires
+12/08/15 12:09:53 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 6622d420-3164-48f5-9cf4-1f0b49b821e2
+12/08/15 12:10:32 [TimeOutTests]: [Start] Starting time out test
+12/08/15 12:10:32 [TimeOutTests]: Test01: message expires
+12/08/15 12:11:29 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 35155185-2715-4b0c-b47b-275a37264b46
+12/08/15 12:12:29 [TimeOutTests]: [Start] Starting time out test
+12/08/15 12:12:29 [TimeOutTests]: Test01: message expires
+12/08/15 12:14:49 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 87739a2a-4038-402f-8599-4cba25278a4d
+12/08/15 12:19:15 [TimeOutTests]: [Start] Starting time out test
+12/08/15 12:19:15 [TimeOutTests]: Test01: message expires
+12/08/15 12:20:15 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: fcdad867-4ec4-47ac-bd84-4c577216f8e3
+12/08/15 12:35:52 [TimeOutTests]: [Start] Starting time out test
+12/08/15 12:35:53 [TimeOutTests]: Test01: message expires
+12/08/15 12:42:14 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: driver.version: AndroidDriver
+12/08/15 13:52:39 [TimeOutTests]: [Start] Starting time out test
+12/08/15 13:52:39 [TimeOutTests]: Test01: message expires
+12/08/15 13:59:21 [TimeOutTests]: Testing a video message
+12/08/15 14:00:27 [TimeOutTests]: Test01: message expires
+12/08/15 14:02:56 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.name: Cyber Dust
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: ab932e6b-eaf8-4ffc-9405-c5d27c4ec6e4
+12/08/15 14:34:58 [TimeOutTests]: [Start] Starting time out test
+12/08/15 14:34:58 [TimeOutTests]: Test01: message expires
+12/08/15 14:35:54 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='1'][android.widget.ImageView[@index='0']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: a9e774cd-a20d-4314-bb37-798da6b6e5f3
+12/08/15 14:36:02 [TimeOutTests]: Test01: message expires
+12/08/15 14:36:23 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.name: timeoutfriend4
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: a9e774cd-a20d-4314-bb37-798da6b6e5f3
+12/08/15 14:36:58 [TimeOutTests]: [Start] Starting time out test
+12/08/15 14:36:58 [TimeOutTests]: Test01: message expires
+12/08/15 14:41:26 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.xpath: //android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 73786a4d-380c-4b0b-ae58-a9993731be69
+12/08/15 14:41:34 [TimeOutTests]: Test01: message expires
+12/08/15 14:41:55 [TimeOutTests]: [Fail] Got exception org.openqa.selenium.TimeoutException: Timed out after 20 seconds waiting for element to be clickable: By.name: timeoutfriend4
+Build info: version: '2.48.2', revision: '41bccdd', time: '2015-10-09 19:55:52'
+System info: host: 'Manjushris-MacBook-Air.local', ip: '192.168.1.108', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.10.4', java.version: '1.8.0_60'
+Driver info: io.appium.java_client.android.AndroidDriver
+Capabilities [{appPackage=com.radicalapps.cyberdust, networkConnectionEnabled=true, warnings={}, databaseEnabled=false, deviceName=ZX1D529CHR, platform=LINUX, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, desired={appPackage=com.radicalapps.cyberdust, appActivity=com.radicalapps.cyberdust.activities.LauncherActivity, platformVersion=, platformName=Android, deviceName=}, platformVersion=5.0.2, webStorageEnabled=false, locationContextEnabled=false, browserName=Android, takesScreenshot=true, javascriptEnabled=true, platformName=Android}]
+Session ID: 73786a4d-380c-4b0b-ae58-a9993731be69
