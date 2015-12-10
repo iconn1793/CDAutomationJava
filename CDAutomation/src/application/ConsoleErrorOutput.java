@@ -20,7 +20,7 @@ public class ConsoleErrorOutput extends OutputStream {
 	@Override
 	public void write(int b) throws IOException {
 		Style style = context.addStyle("errorOutput", null);
-		StyleConstants.setForeground(style, Color.RED);
+		StyleConstants.setForeground(style, Color.RED.darker());
 		try {
 			textPane.getStyledDocument().insertString(textPane.getDocument().getLength(), String.valueOf((char)b), style);
 			textPane.setCaretPosition(textPane.getDocument().getLength());
