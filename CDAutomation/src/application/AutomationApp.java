@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import java.awt.event.MouseEvent;
 import java.io.PrintStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import application.TestListener;
@@ -23,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -41,7 +44,6 @@ import org.junit.runner.notification.StoppedByUserException;
 
 public class AutomationApp {
 	private JFrame myFrame;
-	private boolean resetTestStatus;
 	
 	// Launch the application.
 	public static void main(String[] args) {
@@ -104,6 +106,7 @@ public class AutomationApp {
 		List<String> passedTests = new ArrayList<String>();
 		List<String> passedClass = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
+		HashMap<String, String> exceptionsMap = new HashMap<String, String>();
 		JScrollPane junitScroll = new JScrollPane();
 		junitOut.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		junitOut.setFont(new Font("Arial", Font.PLAIN, 11));
@@ -113,6 +116,18 @@ public class AutomationApp {
 		junitScroll.setBounds(250, 10, 224, 180);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
+		
+		// Exception info window
+		JDialog exceptionWindow = new JDialog(myFrame, "", Dialog.ModalityType.MODELESS);
+		JScrollPane exceptionScroll = new JScrollPane();
+		JTextPane exceptionText = new JTextPane();
+		exceptionText.setEditable(false);
+		exceptionText.setForeground(Color.RED.darker());
+		exceptionText.setFont(new Font("Arial", Font.PLAIN, 11));
+		exceptionScroll.setViewportView(exceptionText);
+		exceptionWindow.add(exceptionScroll);
+		exceptionWindow.setSize(525, 200);
+		exceptionWindow.setResizable(false);
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
@@ -157,6 +172,7 @@ public class AutomationApp {
 						
 						if (!failedTests.contains(t.failedTests())){
 							failedTests.add(t.failedTests());
+							exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
 						}
 						
 						if (!passedTests.contains(t.passedTests())) {
@@ -176,6 +192,7 @@ public class AutomationApp {
 							
 							if (!failedTests.contains(t.failedTests())){
 								failedTests.add(t.failedTests());
+								exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
 							}
 							
 							if (!passedTests.contains(t.passedTests())) {
@@ -258,7 +275,7 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TestExecuter().stopTests();
+				//new TestExecuter().stopTests();
 			}
 		});
 		
@@ -296,8 +313,24 @@ public class AutomationApp {
 				}
 			}
 		});
-
-		// Drag and drop to rearrange list - TODO
+		
+		// Shows the exception and stack trace of a failed test
+		junitOut.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					if (exceptionsMap.keySet().contains(junitOut.getSelectedValue())) {
+						exceptionText.setText(TestListener.exceptionResult);
+						exceptionWindow.setLocation(e.getLocationOnScreen());
+						exceptionWindow.setTitle(junitOut.getSelectedValue());
+						exceptionWindow.setVisible(true);
+					} else {
+						exceptionWindow.setVisible(false);
+					}
+				}
+			}
+		});
+		
+		// Drag and drop to rearrange list
 		testClassList.setDropMode(DropMode.INSERT);
 		testClassList.setDragEnabled(true);
 		
@@ -347,9 +380,9 @@ public class AutomationApp {
 					iconLocation = filePath+"\\icons\\";
 				}
 				
+				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
 				Icon tSuiteIcon = new ImageIcon(iconLocation+"tsuite.gif");
 				Icon testIcon = new ImageIcon(iconLocation+"test.gif");
-				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
 				Icon passIcon = new ImageIcon(iconLocation+"pass.gif");
 				Icon failIcon = new ImageIcon(iconLocation+"fail.gif");
 				
@@ -374,7 +407,6 @@ public class AutomationApp {
 				if (passedTests.contains(value)) {
 					setIcon(passIcon);
 				}
-
 				return label;
 			}
 		});

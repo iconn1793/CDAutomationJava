@@ -13,18 +13,19 @@ import org.junit.runner.notification.Failure;
 import org.junit.runner.notification.RunListener;
 
 public class TestListener extends RunListener {
-	static String myDir = Paths.get("").toAbsolutePath().normalize().toString();
-	static DefaultListModel<String> fileList = new DefaultListModel<String>();
-	static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
-	static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-	
 	static public String currentTest = "";
 	static public String testResult = "";
 	static public String failResult = "";
 	static public String passResult = "";
+	static public String exceptionResult = "";
 	
 	// Finds test method names
 	public static List<String> getTestMethods(List<String> selectedTests) throws Exception {
+		String myDir = Paths.get("").toAbsolutePath().normalize().toString();
+		DefaultListModel<String> fileList = new DefaultListModel<String>();
+		DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
+		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
+		
 		Class<?> myClass = application.TestListener.class;
 		
 		for (int i = 0; i < simpleList.size(); i++) {
@@ -65,6 +66,7 @@ public class TestListener extends RunListener {
 	public void testFailure (Failure failure) throws Exception {
 		testResult = failure.getDescription().getMethodName();
 		failResult = failure.getDescription().getMethodName();
+		exceptionResult = failure.getTrace().toString();
 	}
 	
 	public void testFinished (Description description) throws Exception {
