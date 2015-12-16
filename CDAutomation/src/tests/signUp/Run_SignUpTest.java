@@ -17,7 +17,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	public void test01_checkIfLoggedOut() throws Exception {
 		log("[Start] Starting sign up test");
 		try {
-			log("Test01 checking if logged out");
+			log("[Test01]");
 			android.test01_check_logged_out();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
@@ -29,7 +29,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test02_signUp() throws Exception {
 		try {
-			log("Test02 starting on boarding process");
+			log("[Test02]");
 			android.test02_sign_up();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
@@ -41,7 +41,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test03_takeProfilePic() throws Exception {
 		try {
-			log("Test03 taking a profile picture");
+			log("[Test03]");
 			android.test03_take_profile_pic();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
@@ -53,7 +53,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test04_checkForTutorial() throws Exception {
 		try {
-			log("Test04 checking for first time tutorial");
+			log("[Test04]");
 			android.test04_check_for_tutorial();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
@@ -65,7 +65,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test05_updateProfilePic() throws Exception {
 		try {
-			log("Test05 updating profile picture");
+			log("[Test05]");
 			android.test05_update_profile_pic();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
@@ -78,7 +78,7 @@ public class Run_SignUpTest extends Android_SignUpTest {
 	@Test
 	public void test06_loginLogout() throws Exception {
 		try {
-			log("Test06 logging out then back in");
+			log("[Test06]");
 			android.test06_login_logout();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);

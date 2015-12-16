@@ -20,7 +20,7 @@ public class Android_SignUpTest extends Drivers {
 		// Check if logged out
 		boolean isLoggedOut;
 		try {
-			log("Checking if logged in");
+			log("Checking if logged out");
 			waitTime(8);
             sign_up_button();
             isLoggedOut = true;
@@ -114,7 +114,7 @@ public class Android_SignUpTest extends Drivers {
 	
     public void test06_login_logout() throws Exception {
         // Logout and login test
-        log("Login and logout");
+        log("Logging out then logging in");
         action.press(followers()).moveTo(back_button()).release().perform();
         logout().click();
         confirm().click();
