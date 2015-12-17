@@ -90,11 +90,10 @@ public class Drivers {
 	}
 	
 	//logs out of the current account
-	public void logoutAccount()
-	{
-	action.press(followers()).moveTo(back_button()).release().perform();
-    logout().click();
-    confirm().click();
+	public void logoutAccount() {
+		action.press(followers()).moveTo(back_button()).release().perform();
+	    logout().click();
+	    confirm().click();
 	}
 
 /// Common elements ///
@@ -245,7 +244,8 @@ public class Drivers {
 	public WebElement more_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")));
 	}
-	public WebElement action_menu() {
+	public WebElement action_menu() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1'][android.widget.ImageView[@index='0']]")));
 	}
 	public WebElement action_menu_dust() {
