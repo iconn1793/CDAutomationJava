@@ -17,24 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import application.TestListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.DefaultListModel;
-import javax.swing.DropMode;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JProgressBar;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPopupMenu;
-import javax.swing.JScrollPane;
-import javax.swing.JTextPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -170,6 +153,7 @@ public class AutomationApp {
 						testProgressBar.setString("Test Progress");
 						testProgressBar.setValue((junitOut.getSelectedIndex()));
 						
+						
 						if (!failedTests.contains(t.failedTests())){
 							failedTests.add(t.failedTests());
 							exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
@@ -219,9 +203,16 @@ public class AutomationApp {
 		Runnable runTestThread = new Runnable() {
 			@Override
 			public void run() {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
+				if (passedClass.contains(testClassList.getSelectedValue())) {
+					for (int i = 0; i < testMethodsList.size(); i++) {
+						passedClass.remove(testMethodsList.get(i));
+						passedTests.remove(testMethodsList.get(i));
+						failedTests.remove(testMethodsList.get(i));
+					}
+				}
+				
 				try {
-					TestExecuter.allTests(selectedTests);
+					TestExecuter.runTests(testClassList.getSelectedValuesList());
 				} catch (StoppedByUserException e) {
 					TestListener.currentTest = "done";
 					System.out.println("Test Stopped");
@@ -275,7 +266,7 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//new TestExecuter().stopTests();
+				new TestExecuter().stopTests();
 			}
 		});
 		
@@ -320,6 +311,7 @@ public class AutomationApp {
 				if (e.getClickCount() == 2) {
 					if (exceptionsMap.keySet().contains(junitOut.getSelectedValue())) {
 						exceptionText.setText(TestListener.exceptionResult);
+						exceptionText.setCaretPosition(0);
 						exceptionWindow.setLocation(e.getLocationOnScreen());
 						exceptionWindow.setTitle(junitOut.getSelectedValue());
 						exceptionWindow.setVisible(true);
@@ -402,11 +394,12 @@ public class AutomationApp {
 				
 				if (failedTests.contains(value)) {
 					setIcon(failIcon);
-				}		
+				}
 
 				if (passedTests.contains(value)) {
 					setIcon(passIcon);
 				}
+				
 				return label;
 			}
 		});
