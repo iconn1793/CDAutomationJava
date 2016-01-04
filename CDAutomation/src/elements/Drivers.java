@@ -74,7 +74,7 @@ public class Drivers {
 		
 		if (text.toLowerCase().contains("fail") || text.toLowerCase().contains("exception") 
 				|| text.toLowerCase().contains("warning") || text.toLowerCase().contains("error")) {
-			System.err.print(dateTime + testName + text + "\n\n");
+			System.err.print(dateTime + testName + text + "\n");
 		} else {
 			System.out.print(dateTime + testName + text + "\n");
 		}
