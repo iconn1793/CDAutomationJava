@@ -7,7 +7,6 @@ import javax.swing.DefaultListModel;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.RunNotifier;
 
-
 public class TestExecuter {
 	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
 	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
@@ -16,7 +15,7 @@ public class TestExecuter {
 	static private JUnitCore junit = new JUnitCore();
 	
 	// Finds test classes with "Run" in the name and adds them to the application
-	public static void allTests(List<String> selectedTests) throws Exception {
+	public static void runTests (List<String> selectedTests) throws Exception {
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
@@ -39,8 +38,8 @@ public class TestExecuter {
 		try {
 			Field field = JUnitCore.class.getDeclaredField("notifier");
 			field.setAccessible(true);
-			RunNotifier runNotifier = (RunNotifier) field.get(junit);
-			runNotifier.pleaseStop();
+			RunNotifier restNotifier = (RunNotifier) field.get(junit);
+			restNotifier.pleaseStop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
