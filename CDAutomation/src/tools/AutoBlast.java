@@ -7,13 +7,13 @@ import org.junit.*;
 
 public class AutoBlast extends Drivers {
 	String blast_recipient = "bktest01";
-	String blast_type = "photo, video, text";  // Use photo, video, text, or a combination of the 3
-	String blast_text = "+bkortman +bktest01 +bktest02 \n www.google.com";  // Only works for text blasts
-	int number_of_blasts = 5;  // Number of blasts per type
+	String blast_type = "text";  // Use photo, video, text, or a combination of the 3
+	String blast_text = "Test";  // Only works for text blasts
+	int number_of_blasts = 100;  // Number of blasts per type
 	
 	TouchAction action = new TouchAction(driver);
 	
-    public void photo_blast() {
+    public void photo_blast() throws Exception {
         action_menu().click();
         action_menu_media().click();
         photo_button().click();
@@ -22,7 +22,7 @@ public class AutoBlast extends Drivers {
         username(blast_recipient).click();
         blast_Ok_button().click();
     }
-    public void video_blast() {
+    public void video_blast() throws Exception {
         action_menu().click();
         action_menu_media().click();
         video_button().click();
@@ -32,7 +32,7 @@ public class AutoBlast extends Drivers {
         username(blast_recipient).click();
         blast_Ok_button().click();
     }
-    public void text_blast() {
+    public void text_blast() throws Exception {
         action_menu().click();
         action_menu_text().click();
         dust_blast_field().sendKeys(blast_text);
@@ -42,7 +42,7 @@ public class AutoBlast extends Drivers {
         blast_Ok_button().click();
     }
     @Test
-    public void autoblast() {
+    public void autoblast() throws Exception {
     	for (int i = 0; i < number_of_blasts; i++) {
     		
     		if (blast_type.toLowerCase().contains("text".toLowerCase())) {
