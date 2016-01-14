@@ -66,7 +66,7 @@ public class TestListener extends RunListener {
 	public void testFailure (Failure failure) throws Exception {
 		testResult = failure.getDescription().getMethodName();
 		failResult = failure.getDescription().getMethodName();
-		exceptionResult = failure.getTrace().toString();
+		exceptionResult = failure.getException().toString();
 	}
 	
 	public void testFinished (Description description) throws Exception {
