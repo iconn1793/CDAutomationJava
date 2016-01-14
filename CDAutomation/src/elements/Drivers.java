@@ -115,6 +115,9 @@ public class Drivers {
 	public WebElement cancel() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")));
 	}
+	public WebElement profile_follow_button() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_button")));
+	}
 	
 /// Home page elements /// 	
 	public WebElement login_button() {
@@ -248,25 +251,32 @@ public class Drivers {
 		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1'][android.widget.ImageView[@index='0']]")));
 	}
-	public WebElement action_menu_dust() {
+	public WebElement action_menu_dust() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_group() {
+	public WebElement action_menu_group() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_text() {
+	public WebElement action_menu_text() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='3'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_media() {
+	public WebElement action_menu_media() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='4'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_discover() {
+	public WebElement action_menu_discover() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='5'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_search() {
+	public WebElement action_menu_search() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='8'][android.widget.ImageView[@index='1']]")));
 	}
-	public WebElement action_menu_close() {
+	public WebElement action_menu_close() throws InterruptedException {
+		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='7'][android.widget.ImageView[@index='0']]")));
 	}
 	public WebElement dust_blast_field() {
@@ -332,9 +342,7 @@ public class Drivers {
 	public WebElement blast_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_tab_friends")));
 	}
-	public WebElement swipe_view_add() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friend")));
-	}
+
 	public WebElement swipe_view_cancel() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/cancel")));
 	}
