@@ -24,6 +24,9 @@ public class Android_GroupTest extends Drivers {
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 	
+	int sw = driver.manage().window().getSize().getWidth();
+	int sh = driver.manage().window().getSize().getHeight();
+	
     public void test01_create_group() throws Exception {
 		// Log into account01
 		loginAs.user(account01, password01);
@@ -34,7 +37,8 @@ public class Android_GroupTest extends Drivers {
         username(account02).click();
         username(account03).click();
         OK_button().click();
-        groups_title_field().clear();
+        Thread.sleep(500);
+        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
         groups_title_field().sendKeys("Test Group");
         confirm().click();
 	}

@@ -28,6 +28,7 @@ public class Android_ReblastTest extends Drivers {
     	loginAs.user(account01, password01);
    
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_text().click();
             dust_blast_field().sendKeys("Test");
@@ -42,6 +43,7 @@ public class Android_ReblastTest extends Drivers {
 	
     public void test02_send_text_no_loc () throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_text().click();
             dust_blast_field().sendKeys("Test");
@@ -54,6 +56,7 @@ public class Android_ReblastTest extends Drivers {
 
     public void test03_send_photo_with_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_media().click();
             photo_button().click();
@@ -68,6 +71,7 @@ public class Android_ReblastTest extends Drivers {
     
     public void test04_send_photo_no_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_media().click();
             photo_button().click();
@@ -77,10 +81,10 @@ public class Android_ReblastTest extends Drivers {
             blast_Ok_button().click();
         }
     }
-    
 
     public void test05_send_giphy_with_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_text().click();
             dust_blast_field().sendKeys(":giphy cats");
@@ -95,6 +99,7 @@ public class Android_ReblastTest extends Drivers {
 
     public void test06_send_giphy_no_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_text().click();
             dust_blast_field().sendKeys(":giphy cats");
@@ -107,6 +112,7 @@ public class Android_ReblastTest extends Drivers {
 
     public void test07_send_video_with_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_media().click();
             video_button().click();
@@ -122,6 +128,7 @@ public class Android_ReblastTest extends Drivers {
     
     public void test08_send_video_no_loc() throws Exception {
         for (int i = 0; i < 3; i++) {
+        	blasts_tab();
             action_menu().click();
             action_menu_media().click();
             video_button().click();
@@ -133,9 +140,10 @@ public class Android_ReblastTest extends Drivers {
         }
     }
 
-
     public void test09_reblast_setup() throws Exception {
         loginAs.user(account02, password02);
+        blasts_tab();
+        driver.swipe((sw/10), (sh/10*8), (sw/10), (sh/10), 300);
         blast_lists().click(); 
         Thread.sleep(2000);
         log("Creating a blast list");
@@ -157,6 +165,8 @@ public class Android_ReblastTest extends Drivers {
         username(account01).click();
         username(account03).click();
         OK_button().click();
+        Thread.sleep(500);
+        driver.swipe((sw/10), (sh/10*2), (sw/10), (sh/10*8), 300);
     }
     
     public void test10_reblast_text_with_loc() throws Exception {
