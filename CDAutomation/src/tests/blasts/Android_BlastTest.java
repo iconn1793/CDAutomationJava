@@ -58,7 +58,7 @@ public class Android_BlastTest extends Drivers {
 		// Sends text blast with +username, URL, and location to blast list
 		log("Sending text blast to blast list");
 		action_menu().click();
-		Thread.sleep(1000);
+		Thread.sleep(500);
 		action_menu_text().click();
 		dust_blast_field().sendKeys(blast_username + " " + blast_url);
 		text_location_button().click();
@@ -203,7 +203,6 @@ public class Android_BlastTest extends Drivers {
 	}
 
 	public void test09_open_text_blast() throws Exception {
-		// Log in as account02
 		loginAs.user(account02, password02);
 
 		// Opens text blast with +username, URL, and location
@@ -218,12 +217,26 @@ public class Android_BlastTest extends Drivers {
 		} catch (Exception e) {
 
 		}
+		
 		waitTime(20);
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
-		action.press(sw/10*2, sh/10*2).release().perform(); // clicks +username
-		swipe_view_add().click(); Thread.sleep(2000);
-		swipe_view_url_card().click(); Thread.sleep(4000);
+		action.press(sw/10*2, sh/10*2).release().perform(); // taps +username
+		
+		try {
+			Thread.sleep(1000);
+			if (profile_follow_button().isDisplayed()) {
+				log ("+username tapped and profile opened");
+			}
+		} catch (Exception e) {
+			log ("[Warning] +username did not open profile!");
+		}
+		
+		action.press(sw/10*2, sh/10*2).release().perform(); // closes profile
+		Thread.sleep(2000);
+		action.press(sw/10*2, (int)(sh/10*2.5)).release().perform(); // Taps on URL
+		// swipe_view_url_card().click(); currently not working over Wifi
+		Thread.sleep(4000);
 		back_button().click(); Thread.sleep(1000);
 		
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
@@ -258,7 +271,17 @@ public class Android_BlastTest extends Drivers {
 			log("Not able to reblast non public blast");
 		}
 		swipe_view_text().click();
-		swipe_view_add().click();
+		
+		try {
+			Thread.sleep(1000);
+			if (profile_follow_button().isDisplayed()) {
+				log ("+username tapped and profile opened");
+			}
+		} catch (Exception e) {
+			log ("[Warning] +username did not open profile!");
+		}
+		
+		action.press(sw/10*2, sh/10*2).release().perform();
 		Thread.sleep(1000);
 
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
@@ -290,7 +313,17 @@ public class Android_BlastTest extends Drivers {
 			log("Video did not load");
 		}
 		swipe_view_text().click();
-		swipe_view_add().click();
+		
+		try {
+			Thread.sleep(1000);
+			if (profile_follow_button().isDisplayed()) {
+				log ("+username tapped and profile opened");
+			}
+		} catch (Exception e) {
+			log ("[Warning] +username did not open profile!");
+		}
+		
+		action.press(sw/10*2, sh/10*2).release().perform();
 		Thread.sleep(1000);
 
 		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
