@@ -4,7 +4,6 @@ import elements.AndroidCamera;
 import elements.Drivers;
 import io.appium.java_client.TouchAction;
 
-
 public class Android_SignUpTest extends Drivers {
 	
 	/////////////////////////////////////////////////////
