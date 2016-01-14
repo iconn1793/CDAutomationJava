@@ -87,7 +87,7 @@ public class AutomationApp {
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
 		List<String> failedTests = new ArrayList<String>();
 		List<String> passedTests = new ArrayList<String>();
-		List<String> passedClass = new ArrayList<String>();
+		List<String> executedTests = new ArrayList<String>();
 		JList<String> junitOut = new JList<String>(testMethodsList);
 		HashMap<String, String> exceptionsMap = new HashMap<String, String>();
 		JScrollPane junitScroll = new JScrollPane();
@@ -162,6 +162,14 @@ public class AutomationApp {
 						if (!passedTests.contains(t.passedTests())) {
 							passedTests.add(t.passedTests());
 						}
+						
+						if (testMethodsList.contains(testClassList.getSelectedValue())) {
+							for (int i = 0; i < selectedTests.size(); i++) {
+								if (!executedTests.contains(selectedTests.get(i))) {
+									executedTests.add(selectedTests.get(i));
+								}
+							}
+						}
 
 						Thread.sleep(500);
 						
@@ -182,14 +190,6 @@ public class AutomationApp {
 							if (!passedTests.contains(t.passedTests())) {
 								passedTests.add(t.passedTests());
 							}
-							
-							if (testMethodsList.contains(testClassList.getSelectedValue())) {
-								for (int i = 0; i < selectedTests.size(); i++) {
-									if (!passedClass.contains(selectedTests.get(i))) {
-										passedClass.add(selectedTests.get(i));
-									}
-								}
-							}
 
 							junitOut.clearSelection();
 						}
@@ -203,11 +203,12 @@ public class AutomationApp {
 		Runnable runTestThread = new Runnable() {
 			@Override
 			public void run() {
-				if (passedClass.contains(testClassList.getSelectedValue())) {
+				if (executedTests.contains(testClassList.getSelectedValue())) {
 					for (int i = 0; i < testMethodsList.size(); i++) {
-						passedClass.remove(testMethodsList.get(i));
+						executedTests.remove(testMethodsList.get(i));
 						passedTests.remove(testMethodsList.get(i));
 						failedTests.remove(testMethodsList.get(i));
+						exceptionsMap.remove(testMethodsList.get(i));
 					}
 				}
 				
@@ -266,7 +267,8 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TestExecuter().stopTests();
+				//new TestExecuter().stopTests();
+				System.out.println(executedTests);
 			}
 		});
 		
@@ -310,7 +312,7 @@ public class AutomationApp {
 			public void mousePressed(MouseEvent e) {
 				if (e.getClickCount() == 2) {
 					if (exceptionsMap.keySet().contains(junitOut.getSelectedValue())) {
-						exceptionText.setText(TestListener.exceptionResult);
+						exceptionText.setText(exceptionsMap.get(junitOut.getSelectedValue()));
 						exceptionText.setCaretPosition(0);
 						exceptionWindow.setLocation(e.getLocationOnScreen());
 						exceptionWindow.setTitle(junitOut.getSelectedValue());
@@ -347,7 +349,7 @@ public class AutomationApp {
 					e.printStackTrace();
 				}
 				
-				if (passedClass.contains(testClassList.getSelectedValue())) {
+				if (executedTests.contains(testClassList.getSelectedValue())) {
 					testProgressBar.setMaximum(testMethodsList.size());
 					testProgressBar.setValue(testMethodsList.size());
 					testProgressBar.setString("Complete");
