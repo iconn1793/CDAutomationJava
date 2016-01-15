@@ -207,18 +207,9 @@ public class Android_BlastTest extends Drivers {
 
 		// Opens text blast with +username, URL, and location
 		log("Opening text blast and checking +username, URL, and location");
-		Thread.sleep(2000);
+		blasts_tab();
 		name(account01).click(); Thread.sleep(2000);
 		
-		// Checks for "Welcome to Swipe View!" message
-		try {
-			waitTime(3);
-			name("OK").click();
-		} catch (Exception e) {
-
-		}
-		
-		waitTime(20);
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
 		action.press(sw/10*2, sh/10*2).release().perform(); // taps +username
