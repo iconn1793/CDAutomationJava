@@ -90,7 +90,7 @@ public class Android_SignUpTest extends Drivers {
 	public void test04_check_for_tutorial() throws Exception {
 		try {
 			waitTime(5);
-			if (tutorial_image().isDisplayed()) {
+			if (tutorial_video().isDisplayed()) {
 				Thread.sleep(1000);
 				log("Backing out of tutorial screen");
 				driver.pressKeyCode(4);
