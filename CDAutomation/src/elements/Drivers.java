@@ -169,7 +169,7 @@ public class Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1' and @resource-id='com.radicalapps.cyberdust:id/card_view']")));
 	}
 	public WebElement blast_more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageView[@index='3' and @resource-id='com.radicalapps.cyberdust:id/more_button']")));
 	}
 	public WebElement blast_more_mute() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("mute blasts")));
