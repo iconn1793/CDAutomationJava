@@ -1,5 +1,7 @@
 package tests.managingFriends;
 
+import org.openqa.selenium.By;
+
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
@@ -75,6 +77,7 @@ public class Android_FriendTest extends Drivers {
 	
 	// Sends dusts to specified accounts
 	public void sendDustsTo(String recipient1, String recipient2) throws Exception {
+		blasts_tab();
 		action_menu().click();
     	Thread.sleep(500);
     	
@@ -97,6 +100,7 @@ public class Android_FriendTest extends Drivers {
 	
 	// Sends blasts to specified accounts
 	public void sendBlastsTo(String recipient1, String recipient2) throws Exception {
+		blasts_tab();
 		action_menu().click();
     	Thread.sleep(500);
     	
@@ -113,6 +117,7 @@ public class Android_FriendTest extends Drivers {
 	// Checks for friend in friends list then sends blast
 	public void checkFriendsThenBlast(String recipient1, String recipient2, String checkForAccount) throws Exception {
 		log("Sending blasts to "+recipient1+" and "+recipient2);
+		blasts_tab();
 		action_menu().click();
     	Thread.sleep(500);
     	action_menu_text().click();
@@ -128,6 +133,7 @@ public class Android_FriendTest extends Drivers {
 	// Start of test //
     public void test01_blast_for_blasts_tab() throws Exception {
     	loginAs.user(account04, password04);
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending blasts to account01 and 02");
@@ -142,6 +148,7 @@ public class Android_FriendTest extends Drivers {
     
     public void test02_blast_for_swipe_view() throws Exception {
     	loginAs.user(account05, password05);
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending blasts to account01, 02, and 03");
@@ -160,6 +167,7 @@ public class Android_FriendTest extends Drivers {
     	loginAs.user(account01, password01);
 
     	// Send account02 blast before blocking
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending blast to account02 for testing later");
@@ -171,6 +179,7 @@ public class Android_FriendTest extends Drivers {
     	blast_Ok_button().click();
     	
     	// Send account02 dust before blocking
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending dust to account02 for testing later");
@@ -219,11 +228,22 @@ public class Android_FriendTest extends Drivers {
     	name("block user").click();
     	confirm().click();
     	back_button().click();
+//    	Thread.sleep(500);
+//    	
+//    	// Turns off Blast Previews
+//    	driver.swipe((sw/10), (sh/10*7), (sw/10), (sh/10*3), 300);
+//		try {
+//			if (driver.findElement(By.xpath("//android.widget.Switch[@text='ON' and "
+//					+ "@resource-id='com.radicalapps.cyberdust:id/more_fragment_show_preview_switch']")).isDisplayed()) {
+//				show_blast_previews().click();
+//			}
+//		} catch (Exception e) {}
     	back_button().click();
     }
     
     public void test04_message_to_blocked() throws Exception {
     	// Try to send dust to blocked account
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	action_menu_dust().click();
@@ -240,6 +260,8 @@ public class Android_FriendTest extends Drivers {
     	log("Cannot start dust with blocked users");
     	back_button().click();
     	
+    	// Send blast to blocked accounts
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending blast to blocked accounts");
@@ -253,15 +275,6 @@ public class Android_FriendTest extends Drivers {
     public void test05_mute_all_accounts() throws Exception {
     	loginAs.user(account02, password02);
     	
-    	waitTime(2);
-    	try {
-    		if (name(account01).isDisplayed() && name("Before blocking/muting").isDisplayed()) {
-    		}
-    	} catch (Exception e) {
-    		log("[Warning] blast received from "+account01);
-    	}
-    	waitTime(20);
-    	
     	// Mute account01 from Dusts tab
     	log("Muting account01 from Dusts tab");
     	dusts_tab().click();
@@ -271,6 +284,7 @@ public class Android_FriendTest extends Drivers {
     	confirm().click();
     	
     	// Mute account03 from inside dust room
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Muting account03 from inside dust room");
@@ -285,6 +299,8 @@ public class Android_FriendTest extends Drivers {
     	// Mute account05 from swipe view
     	log("Muting account05 from swipe view");
     	blasts_tab().click();
+    	Thread.sleep(1000);
+    	driver.swipe((sw/10), (sh/10*6), (sw/10), (sh/10*3), 300);
     	username(account05).click();
     	blasted_by().click();
     	blasted_by_mute().click();
@@ -294,6 +310,7 @@ public class Android_FriendTest extends Drivers {
     	
     	// Mute account04 from Blasts Tab
     	log("Muting account04 from Blasts tab");
+    	Thread.sleep(1000);
     	blast_more_button().click();
     	blast_more_mute().click();
     	confirm().click();
@@ -313,6 +330,7 @@ public class Android_FriendTest extends Drivers {
     
     public void test06_dusts_and_blasts_02() throws Exception {
     	// Send dust to account01
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending dust to "+account01);
@@ -325,6 +343,7 @@ public class Android_FriendTest extends Drivers {
     	back_button().click();
     	
     	// Send blast to account01
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Sending blasts to "+account01);
@@ -340,6 +359,7 @@ public class Android_FriendTest extends Drivers {
     	loginAs.user(account03, password03);
     	
     	// Unfollow account04 from inside dust room
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
     	log("Unfollowing account04 from inside dust room");
@@ -414,6 +434,7 @@ public class Android_FriendTest extends Drivers {
     	
     	// Unblock account03, 04, 05, and 06 from More/muted and blocked users
     	log("Unblocking accounts 03, 04, 05, and 06 from More/muted and blocked users");
+    	Thread.sleep(500);
     	action.press(followers()).moveTo(back_button()).release().perform();
     	muted_blocked_users().click();
     	for (int i = 3; i <=6; i++) {
@@ -511,7 +532,15 @@ public class Android_FriendTest extends Drivers {
     
     public void test17_unmute_account05_and_06() throws Exception {
     	dusts_tab().click();
-    	action.press(name("Delete Empty Rooms")).moveTo(action_menu()).release().perform();
+    	
+    	waitTime(1);
+    	try {
+    		if (name("Delete Empty Rooms").isDisplayed()) {
+    			action.press(name("Delete Empty Rooms")).moveTo(action_menu()).release().perform();
+    		}
+    	}catch (Exception e) {}
+    	waitTime(20);
+    	
     	Thread.sleep(1000);
     	
     	// Unmute account06 from Dusts tab
@@ -520,6 +549,7 @@ public class Android_FriendTest extends Drivers {
     	name("unmute blasts").click();
     	
     	// Unmute account05 from inside Dust room
+    	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
 		log("Unmuting account05 from inside dust room");
@@ -538,6 +568,7 @@ public class Android_FriendTest extends Drivers {
     
     public void test18_add_accounts() throws Exception {
     	loginAs.user(account03, account03);
+    	blasts_tab();
     	
     	try {
     		waitTime(3);
