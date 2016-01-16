@@ -267,8 +267,7 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//new TestExecuter().stopTests();
-				System.out.println(executedTests);
+				new TestExecuter().stopTests();
 			}
 		});
 		
