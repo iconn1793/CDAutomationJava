@@ -12,7 +12,7 @@ public class Run_GroupTest extends Android_GroupTest {
 	}
 	
 	Android_GroupTest android = new Android_GroupTest();
-	iOS_GroupTest iOS = new iOS_GroupTest();
+	IOS_GroupTest iOS = new IOS_GroupTest();
 	
 	@Test
 	public void test01_createGroup() throws Exception {
