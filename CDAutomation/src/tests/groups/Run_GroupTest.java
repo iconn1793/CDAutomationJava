@@ -12,7 +12,7 @@ public class Run_GroupTest extends Android_GroupTest {
 	}
 	
 	Android_GroupTest android = new Android_GroupTest();
-	IOS_GroupTest iOS = new IOS_GroupTest();
+	IOS_GroupTest IOS = new IOS_GroupTest();
 	
 	@Test
 	public void test01_createGroup() throws Exception {
@@ -22,7 +22,7 @@ public class Run_GroupTest extends Android_GroupTest {
 			if (Android()) {
 				android.test01_create_group();
 			} else if (iOS()) {
-				iOS.test01_create_group();
+				IOS.test01_create_group();
 			}
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
