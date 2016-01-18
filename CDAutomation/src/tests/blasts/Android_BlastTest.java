@@ -223,9 +223,9 @@ public class Android_BlastTest extends Drivers {
 			log ("[Warning] +username did not open profile!");
 		}
 		
-		action.press(sw/10*2, sh/10*2).release().perform(); // closes profile
+		driver.pressKeyCode(4);
 		Thread.sleep(2000);
-		action.press(sw/10*2, (int)(sh/10*2.5)).release().perform(); // Taps on URL
+		action.press(sw/10*2, (int)(sh/10*2.9)).release().perform(); // Taps on URL
 		// swipe_view_url_card().click(); currently not working over Wifi
 		Thread.sleep(4000);
 		back_button().click(); Thread.sleep(1000);
