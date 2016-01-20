@@ -1,7 +1,5 @@
 package tests.managingFriends;
 
-import org.openqa.selenium.By;
-
 import elements.Drivers;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
@@ -202,7 +200,7 @@ public class Android_FriendTest extends Drivers {
     	log("Blocking account02 from Dusts tab");
     	dusts_tab().click();
     	Thread.sleep(1000);
-    	action.press(sw/10*9,(int)Math.round(sh/10*1.8)).release().perform();
+    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
     	name("block user").click();
     	confirm().click();
     	
@@ -216,6 +214,7 @@ public class Android_FriendTest extends Drivers {
     	
     	// Block account04 from Blasts Tab
     	log("Blocking account04 from Blasts tab");
+    	blasts_tab();
     	blast_more_button().click();
     	blast_more_block().click();
     	confirm().click();
@@ -279,7 +278,7 @@ public class Android_FriendTest extends Drivers {
     	log("Muting account01 from Dusts tab");
     	dusts_tab().click();
     	Thread.sleep(1000);
-    	action.press(sw/10*9,(int)Math.round(sh/10*1.8)).release().perform();
+    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
     	name("mute blasts").click();
     	confirm().click();
     	
@@ -301,7 +300,13 @@ public class Android_FriendTest extends Drivers {
     	blasts_tab().click();
     	Thread.sleep(1000);
     	driver.swipe((sw/10), (sh/10*6), (sw/10), (sh/10*3), 300);
-    	username(account05).click();
+    	try {
+    		waitTime(2);
+    		username(account05).click();
+    	} catch (Exception e) {
+    		action.press((int)(sw/10*5.17), (int)(sh/10*3.11)).release().perform();
+    		waitTime(20);
+    	}
     	blasted_by().click();
     	blasted_by_mute().click();
     	confirm().click();
@@ -318,6 +323,7 @@ public class Android_FriendTest extends Drivers {
     	swipe_view_exit().click();
     	
     	// Mute account06 from More / Friends
+    	Thread.sleep(1000);
     	more_button().click();
     	log("Muting account06 from More/friends menu");
     	friends().click();
@@ -536,17 +542,26 @@ public class Android_FriendTest extends Drivers {
     	waitTime(1);
     	try {
     		if (name("Delete Empty Rooms").isDisplayed()) {
-    			action.press(name("Delete Empty Rooms")).moveTo(action_menu()).release().perform();
+    			Thread.sleep(500);
+    			driver.swipe((sw/10), (sh/10*3), (sw/10), (sh/10*8), 300);
     		}
     	}catch (Exception e) {}
     	waitTime(20);
     	
     	Thread.sleep(1000);
     	
-    	// Unmute account06 from Dusts tab
-    	log("Unmuting account06 from Dusts tab");
-    	action.press(sw/10*9, sh/10*4).release().perform();
-    	name("unmute blasts").click();
+    	// Unmute account06 from Dusts tab 
+    	try {
+			Thread.sleep(500);
+			action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+			name("delete dust").click();
+	    	log("Unmuting account06 from Dusts tab");
+	    	Thread.sleep(500);
+	    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+	    	name("unmute blasts").click();
+    	} catch (Exception e) {
+    		log("[Warning] Could not tap on dust room more menu");
+    	}
     	
     	// Unmute account05 from inside Dust room
     	blasts_tab();
@@ -561,9 +576,16 @@ public class Android_FriendTest extends Drivers {
 		back_button().click();
 		
 		// Delete all dusts
-		action.press(name(account06)).moveTo(dusts_tab()).release().perform();
-		name("Delete All Dusts").click();
-		confirm().click();
+		try {
+			log("Deleting all remaining dust rooms");
+			for (int i = 0; i < 4; i++) {
+				Thread.sleep(500);
+				action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+				name("delete dust").click();
+			}
+		} catch (Exception e) {
+			log("Couldn't delete all dusts");
+		}
     }
     
     public void test18_add_accounts() throws Exception {
@@ -587,7 +609,7 @@ public class Android_FriendTest extends Drivers {
     		waitTime(3);
     		if (name(account01).isDisplayed()) {
     			log("Dust received from account01 after being unblocked");
-    			action.press(sw/10*9,(int)Math.round(sh/10*1.8)).release().perform();
+    			action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
     			name("delete dust").click();
     		}
     	} catch (Exception e) {
