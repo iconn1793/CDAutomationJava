@@ -144,6 +144,9 @@ public class Drivers {
 	public WebElement blasts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("BLASTS")));
 	}
+	public WebElement delete_all_dusts() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete All Dusts")));
+	}
 	public WebElement blasted_by() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/profile_button")));
 	}

@@ -29,6 +29,7 @@ public class Android_DeleteChatRoomTests extends Drivers{
 	String account_friend2 = "testaccount1";
 	String account_friend3 = "testaccount2";
 	String account_friend4 = "testaccount3";
+	String account_friend5 = "testaccount4";
 
 	public static void relaunch() {
 		driver.closeApp();
@@ -44,6 +45,7 @@ public class Android_DeleteChatRoomTests extends Drivers{
 		action_menu_dust().click();
 		
 		search_friends().sendKeys(friend_account_short);
+		
 		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
 		user1.click();
 		chat_room_text_box().sendKeys(text_message);
@@ -56,6 +58,7 @@ public class Android_DeleteChatRoomTests extends Drivers{
 		group_text_send().click();
 		back_button().click();
 		
+		
 		WebElement user3 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend3)));
 		user3.click();
 		chat_room_text_box().sendKeys(text_message);
@@ -67,6 +70,31 @@ public class Android_DeleteChatRoomTests extends Drivers{
 		chat_room_text_box().sendKeys(text_message);
 		group_text_send().click();
 		back_button().click();
+		action.press(user3).moveTo(user1).release().perform();
+			
+		WebElement user5 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend5)));
+		user5.click();
+		chat_room_text_box().sendKeys(text_message);
+		group_text_send().click();
+		back_button().click();
+		
+		back_button().click();
+		
+		dusts_tab().click();
+		 action.press(user1).moveTo(user3).release().perform();
+		 delete_all_dusts().click();
+		 yes_button().click();
+		 if((delete_all_dusts().isDisplayed()))
+		 {
+			 System.out.println("Error: Dusts are not deleted");
+		 }
+		 else
+		 {
+			 System.out.println("Dusts are deleted");
+		 }
+				 
+		
+		
 	}
 }
 		
