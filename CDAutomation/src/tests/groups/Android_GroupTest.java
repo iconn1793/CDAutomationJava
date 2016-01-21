@@ -32,6 +32,7 @@ public class Android_GroupTest extends Drivers {
 		loginAs.user(account01, password01);
 		
 		// Adds test accounts to group
+		blasts_tab();
     	action_menu().click();
         action_menu_group().click();
         username(account02).click();
@@ -103,7 +104,7 @@ public class Android_GroupTest extends Drivers {
 				photo_save_image().getLocation().x + 50, photo_save_image().getLocation().y + 50, 1000);
 		add_text().click();
 		add_text_field().sendKeys("www.cyberdust.com");
-		done_button().click();
+		driver.pressKeyCode(4);
 		next_button().click();
      }
      
