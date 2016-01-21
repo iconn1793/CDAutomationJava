@@ -38,8 +38,8 @@ public class TestExecuter {
 		try {
 			Field field = JUnitCore.class.getDeclaredField("notifier");
 			field.setAccessible(true);
-			RunNotifier restNotifier = (RunNotifier) field.get(junit);
-			restNotifier.pleaseStop();
+			RunNotifier runNotifier = (RunNotifier) field.get(junit);
+			runNotifier.pleaseStop();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
