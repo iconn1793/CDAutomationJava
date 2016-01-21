@@ -654,4 +654,7 @@ public class Drivers {
     public WebElement tutorial_video() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tutorial_video_view")));
     }
+    public WebElement delete_empty_rooms_button() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete Empty Rooms")));
+    }
 }
