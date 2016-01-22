@@ -86,16 +86,14 @@ public class AutomationApp {
 		myFrame.getContentPane().add(junitScroll);
 		
 		// Console output window
-		JTextPane consoleWindow = new JTextPane();
+		JTextPane consoleOutput = new JTextPane();
 		JScrollPane consoleScroll = new JScrollPane();
-		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
-		PrintStream errPrintStream = new PrintStream(new ConsoleErrorOutput(consoleWindow));
-		System.setOut(outPrintStream);
-		System.setErr(errPrintStream);
-		consoleWindow.setBackground(Color.WHITE);
-		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
-		consoleWindow.setEditable(false);
-		consoleScroll.setViewportView(consoleWindow);
+		PrintStream logOutPrintStream = new PrintStream(new ConsoleOutput(consoleOutput));
+		PrintStream logErrPrintStream = new PrintStream(new ConsoleErrorOutput(consoleOutput));
+		consoleOutput.setBackground(Color.WHITE);
+		consoleOutput.setFont(new Font("Arial", Font.PLAIN, 11));
+		consoleOutput.setEditable(false);
+		consoleScroll.setViewportView(consoleOutput);
 		consoleScroll.setBounds(10, 245, 464, 180);
 		consoleScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleScroll);
@@ -103,6 +101,8 @@ public class AutomationApp {
 		// Server output window
 		JTextPane serverOutput = new JTextPane();
 		JScrollPane serverScroll = new JScrollPane();
+		PrintStream serverOutPrintStream = new PrintStream(new ConsoleOutput(serverOutput));
+		PrintStream serverErrPrintStream = new PrintStream(new ConsoleErrorOutput(serverOutput));
 		serverOutput.setBackground(Color.WHITE);
 		serverOutput.setFont(new Font("Arial", Font.PLAIN, 11));
 		serverOutput.setEditable(false);
@@ -110,6 +110,9 @@ public class AutomationApp {
 		serverScroll.setBounds(495, 18, 380, 420);
 		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(serverScroll);
+		
+		System.setOut(serverOutPrintStream);
+		System.setErr(serverErrPrintStream);
 		
 		// Exception info window
 		JDialog exceptionWindow = new JDialog(myFrame, "", Dialog.ModalityType.MODELESS);
@@ -160,11 +163,13 @@ public class AutomationApp {
 					while (testMethodsList.contains(t.runningTest())) {
 						junitOut.setSelectedValue(t.runningTest(), true);
 						
+						System.setOut(logOutPrintStream);
+						System.setErr(logErrPrintStream);
+						
 						testProgressBar.setStringPainted(true);
 						testProgressBar.setString("Test Progress");
 						testProgressBar.setValue((junitOut.getSelectedIndex()));
-						
-						
+				
 						if (!failedTests.contains(t.failedTests())){
 							failedTests.add(t.failedTests());
 							exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
@@ -182,10 +187,13 @@ public class AutomationApp {
 							}
 						}
 
-						Thread.sleep(500);
+						Thread.sleep(300);
 						
 						// After all tests have been completed
 						if (TestListener.currentTest.equals("done")) {
+							System.setOut(serverOutPrintStream);
+							System.setErr(serverErrPrintStream);
+							
 							testProgressBar.setValue(testProgressBar.getValue()+1);
 							
 							if (testProgressBar.getValue() == testMethodsList.size()-1) {
