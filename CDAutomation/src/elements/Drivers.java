@@ -657,4 +657,13 @@ public class Drivers {
     public WebElement delete_empty_rooms_button() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete Empty Rooms")));
     }
+    public WebElement create_group_ok_button() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("spinner_button_layout")));
+    }
+    public WebElement delete_all_groups() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete All Groups")));
+    }
+    public WebElement delete_group_button() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete group")));
+    }
 }
