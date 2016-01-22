@@ -57,6 +57,7 @@ public class Android_BlastTest extends Drivers {
 	public void test02_send_text_blasts() throws Exception {
 		// Sends text blast with +username, URL, and location to blast list
 		log("Sending text blast to blast list");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(500);
 		action_menu_text().click();
@@ -85,6 +86,7 @@ public class Android_BlastTest extends Drivers {
 	public void test03_send_photo_blast_01() throws Exception {
 		// Sends photo blast with drawing and URL to all followers
 		log("Sending photo blast with drawing and text to all followers");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -106,6 +108,7 @@ public class Android_BlastTest extends Drivers {
 	public void test04_send_photo_blast_02() throws Exception {
 		// Sends non public photo blast with +username to the new blast list
 		log("Sending non public photo blast");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -131,6 +134,7 @@ public class Android_BlastTest extends Drivers {
 	public void test05_send_giphy_blast() throws Exception {
 		// Sends text blast with giphy to a single friend
 		log("Sending giphy");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
@@ -144,6 +148,7 @@ public class Android_BlastTest extends Drivers {
 	public void test06_send_video_blast_01() throws Exception {
 		// Takes video, adds +username, creates blast list, then sends to that blast list
 		log("Sending video to newly created blast list");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -166,6 +171,7 @@ public class Android_BlastTest extends Drivers {
 	public void test07_send_video_blast_02() throws Exception {
 		// Takes video, adds URL, then sends to single friend
 		log("Sending video with URL");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_media().click();
@@ -183,6 +189,7 @@ public class Android_BlastTest extends Drivers {
 	public void test08_send_text_for_replies() throws Exception {
 		// Sends text blast for reply test on other account
 		log("Sending text blast for reply test");
+		blasts_tab();
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
@@ -380,7 +387,7 @@ public class Android_BlastTest extends Drivers {
 				log("All replies successfully received from " + account02);
 			}
 		} catch (Exception e) {
-			log("All replies were not received");
+			log("[Warning] All replies were not received");
 		}
 		Thread.sleep(2000);
 		back_button().click();
