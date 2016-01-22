@@ -41,6 +41,7 @@ public class QuickAccountCreator extends Drivers{
 	        
 	        // Logs out
 	        more_button().click();
+
 	        action.press(followers()).moveTo(back_button()).release().perform();
 	        logout().click();
 	        confirm().click();

@@ -49,7 +49,7 @@ public class Android_TutorialTest extends Drivers{
 	{
 		WebElement replay = wait.until(ExpectedConditions.elementToBeClickable(By.name("replay")));
 		 WebElement exit = wait.until(ExpectedConditions.elementToBeClickable(By.name("exit")));
-		 
+		
 		 replay.click();
 		 exit.click();
 		 
