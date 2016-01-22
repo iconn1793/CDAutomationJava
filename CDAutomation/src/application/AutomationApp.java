@@ -53,7 +53,7 @@ public class AutomationApp {
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
 		myFrame.setTitle("CD Automation");
-		myFrame.setBounds(300, 300, 500, 420);
+		myFrame.setBounds(300, 150, 900, 500);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
 
@@ -64,24 +64,9 @@ public class AutomationApp {
 		testClassList.setFont(new Font("Arial", Font.BOLD, 11));
 		testClassList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		testListScroll.setViewportView(testClassList);
-		testListScroll.setBounds(10, 10, 150, 181);
+		testListScroll.setBounds(10, 10, 180, 200);
 		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
 		myFrame.getContentPane().add(testListScroll);
-
-		// Console output window
-		JTextPane consoleWindow = new JTextPane();
-		JScrollPane consoleScroll = new JScrollPane();
-		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
-		PrintStream errPrintStream = new PrintStream(new ConsoleErrorOutput(consoleWindow));
-		System.setOut(outPrintStream);
-		System.setErr(errPrintStream);
-		consoleWindow.setBackground(Color.WHITE);
-		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
-		consoleWindow.setEditable(false);
-		consoleScroll.setViewportView(consoleWindow);
-		consoleScroll.setBounds(10, 219, 464, 125);
-		consoleScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		myFrame.getContentPane().add(consoleScroll);
 		
 		// JUnit output window
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
@@ -96,9 +81,35 @@ public class AutomationApp {
 		junitOut.setBackground(Color.WHITE);
 		junitOut.setFocusable(false);
 		junitScroll.setViewportView(junitOut);
-		junitScroll.setBounds(250, 10, 224, 180);
+		junitScroll.setBounds(230, 10, 250, 200);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
+		
+		// Console output window
+		JTextPane consoleWindow = new JTextPane();
+		JScrollPane consoleScroll = new JScrollPane();
+		PrintStream outPrintStream = new PrintStream(new ConsoleOutput(consoleWindow));
+		PrintStream errPrintStream = new PrintStream(new ConsoleErrorOutput(consoleWindow));
+		System.setOut(outPrintStream);
+		System.setErr(errPrintStream);
+		consoleWindow.setBackground(Color.WHITE);
+		consoleWindow.setFont(new Font("Arial", Font.PLAIN, 11));
+		consoleWindow.setEditable(false);
+		consoleScroll.setViewportView(consoleWindow);
+		consoleScroll.setBounds(10, 245, 464, 180);
+		consoleScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		myFrame.getContentPane().add(consoleScroll);
+		
+		// Server output window
+		JTextPane serverOutput = new JTextPane();
+		JScrollPane serverScroll = new JScrollPane();
+		serverOutput.setBackground(Color.WHITE);
+		serverOutput.setFont(new Font("Arial", Font.PLAIN, 11));
+		serverOutput.setEditable(false);
+		serverScroll.setViewportView(serverOutput);
+		serverScroll.setBounds(495, 18, 380, 420);
+		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		myFrame.getContentPane().add(serverScroll);
 		
 		// Exception info window
 		JDialog exceptionWindow = new JDialog(myFrame, "", Dialog.ModalityType.MODELESS);
@@ -108,33 +119,33 @@ public class AutomationApp {
 		exceptionText.setForeground(Color.RED.darker());
 		exceptionText.setFont(new Font("Arial", Font.PLAIN, 11));
 		exceptionScroll.setViewportView(exceptionText);
-		exceptionWindow.add(exceptionScroll);
+		exceptionWindow.getContentPane().add(exceptionScroll);
 		exceptionWindow.setSize(525, 200);
 		exceptionWindow.setResizable(false);
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
-		testProgressBar.setBounds(270, 196, 180, 14);
+		testProgressBar.setBounds(264, 218, 180, 14);
 		testProgressBar.setForeground(Color.GREEN.darker());
 		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
 		// Buttons
 		JButton selectAllButton = new JButton("Select All");
-		selectAllButton.setBounds(38, 193, 90, 20);
+		selectAllButton.setBounds(54, 216, 90, 20);
 		myFrame.getContentPane().add(selectAllButton);
 		
 		JButton logButton = new JButton("Open Log");
-		logButton.setBounds(100, 355, 90, 25);
+		logButton.setBounds(100, 436, 90, 25);
 		myFrame.getContentPane().add(logButton);
 		
 		JButton runButton = new JButton("Run");
-		runButton.setBounds(200, 355, 90, 25);
+		runButton.setBounds(200, 436, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
 		JButton stopButton = new JButton("Stop");
-		stopButton.setBounds(300, 355, 90, 25);
+		stopButton.setBounds(300, 436, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
 		// Runnables
