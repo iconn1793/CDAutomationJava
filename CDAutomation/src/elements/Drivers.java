@@ -666,4 +666,7 @@ public class Drivers {
     public WebElement delete_group_button() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete group")));
     }
+    public WebElement tutorial_button() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("tutorial")));
+    }
 }
