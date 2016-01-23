@@ -9,3 +9,10 @@ import elements.Drivers;
 import elements.LoginWith;
 import elements.AndroidCamera;
 import io.appium.java_client.TouchAction;
+
+public class Android_TimestampTest extends Drivers {
+	
+	public void test01_timestamp_test() throws Exception {
+		
+	}
+}

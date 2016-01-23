@@ -12,7 +12,7 @@ import elements.AndroidCamera;
 import io.appium.java_client.TouchAction;
 
 
-public class Android_deleteGroupChatRoomTests extends Drivers{
+public class Android_deleteGroupChatTests extends Drivers{
 	
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	AndroidCamera androidCamera = new AndroidCamera();
