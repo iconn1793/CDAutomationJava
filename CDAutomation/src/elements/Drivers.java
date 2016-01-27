@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 import org.junit.*;
 import org.openqa.selenium.By;
@@ -23,7 +24,6 @@ public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
 	protected WebDriverWait wait = new WebDriverWait(driver, 20);
 	protected TouchAction action = new TouchAction(driver);
-	private static String newText = new String();
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -32,6 +32,8 @@ public class Drivers {
 				.withArgument(GeneralServerFlag.LOG_NO_COLORS));
 		service.start();
 		
+		environmentVariableCheck();
+
 		capabilities.setCapability("platformName", "Android");
 		capabilities.setCapability("platformVersion", "");
 		capabilities.setCapability("deviceName", "");
@@ -44,6 +46,27 @@ public class Drivers {
 	public static void tearDown() {
 		AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
 		service.stop();
+	}
+	
+	// Checks if Android_Home is set for Mac OS X
+	public static void environmentVariableCheck() throws Exception {
+		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+			File bashProfile = new File (System.getenv("HOME")+"/.bash_profile");
+			FileWriter setenvWriter = new FileWriter(bashProfile, true);
+			
+			@SuppressWarnings("resource")
+			String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
+			
+			application.TestExecuter.serverErrorMessage = "###### Environment variable updated!\n"
+					+ "###### Please restart your IDE!";
+
+			if (System.getenv("ANDROID_HOME").equals("") || System.getenv("ANDROID_HOME").equals(null)) {
+				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
+					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
+					setenvWriter.close();
+				}
+			}
+		}
 	}
 	
 	// For calling driver from other classes
@@ -94,15 +117,9 @@ public class Drivers {
 			System.out.print(dateTime + testName + text + "\n");
 		}
 		
-		newText = dateTime + testName + text + "\n";
-		
 		FileWriter myWriter = new FileWriter(logLocation, true);
 		myWriter.append(dateTime + testName + text + "\n");
 		myWriter.close();
-	}
-	
-	public String logText() {
-		return newText;
 	}
 	
 	// For changing the WebDriverWait time from in a test

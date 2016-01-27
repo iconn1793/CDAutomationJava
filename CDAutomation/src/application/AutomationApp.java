@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import application.TestListener;
 
 import javax.swing.*;
@@ -84,7 +85,7 @@ public class AutomationApp {
 		junitScroll.setBounds(230, 10, 250, 200);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
-		
+
 		// Console output window
 		JTextPane consoleOutput = new JTextPane();
 		JScrollPane consoleScroll = new JScrollPane();

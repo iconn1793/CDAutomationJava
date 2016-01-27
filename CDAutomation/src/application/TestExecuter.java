@@ -8,14 +8,16 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.RunNotifier;
 
 public class TestExecuter {
-	static private String myDir = Paths.get("").toAbsolutePath().normalize().toString();
-	static private DefaultListModel<String> fileList = new DefaultListModel<String>();
-	static private DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
-	static private DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-	static private JUnitCore junit = new JUnitCore();
+	private static String myDir = Paths.get("").toAbsolutePath().normalize().toString();
+	private static DefaultListModel<String> fileList = new DefaultListModel<String>();
+	private static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
+	private static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
+	private static JUnitCore junit = new JUnitCore();
+	public static String serverErrorMessage = "";
 	
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void runTests (List<String> selectedTests) throws Exception {
+		serverErrorMessage = "Cannot connect to server!\n";
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
@@ -28,7 +30,7 @@ public class TestExecuter {
 					junit.run(myClass);
 					elements.Drivers.callDriver().quit();
 				} catch (NullPointerException e) {
-					System.err.println("Could not start test! Check if the server is running.\n");
+					System.err.println(serverErrorMessage);
 				}
 			}
 		}
