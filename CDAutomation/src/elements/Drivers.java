@@ -51,15 +51,17 @@ public class Drivers {
 	// Checks if Android_Home is set for Mac OS X
 	public static void environmentVariableCheck() throws Exception {
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-			File bashProfile = new File (System.getenv("HOME")+"/.bash_profile");
-			FileWriter setenvWriter = new FileWriter(bashProfile, true);
 			
-			@SuppressWarnings("resource")
-			String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
-
-			if (System.getenv("ANDROID_HOME") == null) {
+			if (System.getenv("ANDROID_HOME") == null || !System.getenv("ANDROID_HOME").contains("/")) {
+				File bashProfile = new File (System.getenv("HOME")+"/.bash_profile");
+				FileWriter setenvWriter = new FileWriter(bashProfile, true);
+				
+				@SuppressWarnings("resource")
+				String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
+				
 				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
 						+ "###### Please restart your IDE!";
+				
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
 					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
 					setenvWriter.close();
