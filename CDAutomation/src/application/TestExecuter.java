@@ -17,7 +17,7 @@ public class TestExecuter {
 	
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void runTests (List<String> selectedTests) throws Exception {
-		serverErrorMessage = "Cannot connect to server!\n";
+		serverErrorMessage = "Failed to establish connection to Appium server.\n";
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
@@ -31,6 +31,8 @@ public class TestExecuter {
 					elements.Drivers.callDriver().quit();
 				} catch (NullPointerException e) {
 					System.err.println(serverErrorMessage);
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		}

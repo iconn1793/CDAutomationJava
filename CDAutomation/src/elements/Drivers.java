@@ -57,13 +57,12 @@ public class Drivers {
 			@SuppressWarnings("resource")
 			String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
 
-			if (System.getenv("ANDROID_HOME").equals("") || System.getenv("ANDROID_HOME").equals(null)) {
+			if (!System.getenv("ANDROID_HOME").contains("/")) {
+				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
+						+ "###### Please restart your IDE!";
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
 					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
 					setenvWriter.close();
-					
-					application.TestExecuter.serverErrorMessage = "###### Environment variable updated!\n"
-							+ "###### Please restart your IDE!";
 				}
 			}
 		}
