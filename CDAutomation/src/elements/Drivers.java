@@ -57,7 +57,7 @@ public class Drivers {
 			@SuppressWarnings("resource")
 			String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
 
-			if (!System.getenv("ANDROID_HOME").contains("/")) {
+			if (System.getenv("ANDROID_HOME") == null) {
 				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
 						+ "###### Please restart your IDE!";
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
