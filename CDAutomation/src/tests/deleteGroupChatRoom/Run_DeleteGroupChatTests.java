@@ -3,17 +3,17 @@ import org.junit.*;
 import org.junit.runners.MethodSorters;
 
 
-import tests.deleteGroupChatRoom.Android_deleteGroupChatTests;
+import tests.deleteGroupChatRoom.Android_DeleteGroupChatTests;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_deleteGroupChatTests extends Android_deleteGroupChatTests {
+public class Run_DeleteGroupChatTests extends Android_DeleteGroupChatTests {
 	
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 		
 	}
-	Android_deleteGroupChatTests android = new Android_deleteGroupChatTests();
+	Android_DeleteGroupChatTests android = new Android_DeleteGroupChatTests();
 	
 	@Test
 	public void test01_delete_all_group_chat_rooms() throws Exception {

@@ -57,7 +57,7 @@ public class AutomationApp {
 		myFrame.setBounds(300, 150, 900, 500);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
-
+		
 		// List of test files
 		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 		JList<String> testClassList = new JList<String>(simpleList);
