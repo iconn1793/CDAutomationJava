@@ -56,8 +56,8 @@ public class Drivers {
 				File bashProfile = new File (System.getenv("HOME")+"/.bash_profile");
 				FileWriter setenvWriter = new FileWriter(bashProfile, true);
 				
-				@SuppressWarnings("resource")
-				String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
+				Scanner bashProfileScanner = new Scanner(bashProfile);
+				String bashProfileContent = bashProfileScanner.useDelimiter("//Z").next();
 				
 				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
 						+ "###### Please restart your IDE!";
@@ -65,6 +65,9 @@ public class Drivers {
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
 					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
 					setenvWriter.close();
+					bashProfileScanner.close();
+				} else {
+					bashProfileScanner.close();
 				}
 			}
 		}
