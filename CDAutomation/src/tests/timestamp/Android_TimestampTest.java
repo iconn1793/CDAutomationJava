@@ -65,11 +65,32 @@ public class Android_TimestampTest extends Drivers {
 		{
 			log("timestamp is incorrect");
 		}
-		Thread.sleep(60000);
+		
+	}
+	
+	public void test02_sent_group_timestamp() throws Exception {
+        action_menu().click();
+		
+		Thread.sleep(1000);
+		action_menu_group().click();
+		WebElement user1 = name(account_friend);
+		WebElement user2 = name(account_friend2);
+		user1.click();
+		user2.click();
+		OK_button().click();
+        Thread.sleep(500);
+        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        groups_title_field().sendKeys(" Group 1");
+        confirm().click();
+        group_text_field().click();
+        group_text_field().sendKeys(text_message);
+        group_text_send().click();
+		back_button().click();
+		groups_tab().click();
 		try{
 			
 			//if(dust_info_text().getText().contains("you sent")&&(dust_info_text().getText().contains("minute ago")||dust_info_text().getText().contains("minute ago")))
-			if((dust_info_text().getText()).contains("You sent a minute ago"))
+			if((dust_info_text().getText()).contains("You sent less than a minute ago"))
 			{
 				log("timestamp is correct");
 			}
@@ -83,11 +104,61 @@ public class Android_TimestampTest extends Drivers {
 		{
 			log("timestamp is incorrect");
 		}
+		friends_more_button().click();
+		delete_group_button().click();
 	}
 	
-	public void test01_sent_group_timestamp() throws Exception {
+	
+	public void test03_received_dust_timestamp() throws Exception {
+		
+		loginAs.user(account_friend, account_pw);
+		Thread.sleep(5000);
 		
 		
+		dusts_tab().click();
+		try{
+			if(dust_info_text().getText().contains("you sent")&&(dust_info_text().getText().contains("minute ago")))
+			{
+				log("timestamp is correct");
+			}
+			else
+			{
+				log("incorrect");
+			}
+				
+		}
+		catch(Exception e)
+		{
+			log("timestamp is incorrect");
+		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
