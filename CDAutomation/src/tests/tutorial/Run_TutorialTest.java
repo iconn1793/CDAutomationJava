@@ -1,8 +1,8 @@
-package tests.Tutorial;
+package tests.tutorial;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
-import tests.Tutorial.Android_TutorialTest;
+import tests.tutorial.Android_TutorialTest;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Run_TutorialTest extends Android_TutorialTest {
