@@ -57,8 +57,8 @@ public class Android_DeleteGroupChatTests extends Drivers{
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
-		back_button().click();
-		log("First group created");
+		back_button().click();    
+		log("First group created");      
 		
 		
 		action_menu().click();
