@@ -37,9 +37,4 @@ public class Run_TutorialTest extends Android_TutorialTest {
 			throw e;
 		}
 	}
-	
-	
-	
-	
 }
-	

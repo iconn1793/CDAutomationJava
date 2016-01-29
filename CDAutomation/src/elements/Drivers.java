@@ -203,8 +203,11 @@ public class Drivers {
 	public WebElement my_blasts_screenshots(String screenshotCount) {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='"+screenshotCount+"' and @resource-id='com.radicalapps.cyberdust:id/screenshot_count']")));
 	}
-	public WebElement my_blasts_delete() {
+	public WebElement my_blasts_trash_can() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/action_delete")));
+	}
+	public WebElement my_blasts_delete() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/delete_button")));
 	}
 	public WebElement delete_all_dusts() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete All Dusts")));
