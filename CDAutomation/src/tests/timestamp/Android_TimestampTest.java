@@ -104,6 +104,7 @@ public class Android_TimestampTest extends Drivers {
 		{
 			log("timestamp is incorrect");
 		}
+		Thread.sleep(1000);
 		friends_more_button().click();
 		delete_group_button().click();
 	}
@@ -117,7 +118,7 @@ public class Android_TimestampTest extends Drivers {
 		
 		dusts_tab().click();
 		try{
-			if(dust_info_text().getText().contains("you sent")&&(dust_info_text().getText().contains("minute ago")))
+			if(dust_info_text().getText().contains("You received")&&(dust_info_text().getText().contains("minute ago")))
 			{
 				log("timestamp is correct");
 			}
@@ -131,6 +132,27 @@ public class Android_TimestampTest extends Drivers {
 		{
 			log("timestamp is incorrect");
 		}
+	}
+	public void test04_received_group_timestamp() throws Exception {
+	
+		groups_tab().click();
+		try{
+			if(dust_info_text().getText().contains("You received")&&(dust_info_text().getText().contains("minute ago")))
+			{
+				log("timestamp is correct");
+			}
+			else
+			{
+				log("incorrect");
+			}
+				
+		}
+		catch(Exception e)
+		{
+			log("timestamp is incorrect");
+		
+		}
+			
 	}
 	
 	
