@@ -24,7 +24,7 @@ public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
 	protected WebDriverWait wait = new WebDriverWait(driver, 20);
 	protected TouchAction action = new TouchAction(driver);
-	public static String appiumServerAddress = "0.0.0.0";
+	public static String appiumServerAddress = "127.0.0.1";
 	public static int appiumServerPort = 4723;
 	
 	@BeforeClass
