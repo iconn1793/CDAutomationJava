@@ -18,7 +18,7 @@ public class Run_TimestampTest extends Android_TimestampTest {
 		log("[Start] Starting timestamp test");
 		try {
 			log("Test01");
-			new Android_TimestampTest().test01_timestamp_test();
+			new Android_TimestampTest().test01_sent_dust_timestamp();
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
