@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import elements.Drivers;
 
-public class LoginWith extends IOSDrivers {
+public class LoginWith extends Drivers {
 	
     public void user(String account, String password) {
         boolean already_logged_in = false;
