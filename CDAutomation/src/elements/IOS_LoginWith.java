@@ -4,7 +4,7 @@ import elements.IOSDrivers;
 
 ////Designed only to run on iOS simulation
 ////
-////For some reason the test will always end with "failed to establish server connection", regardless of test success
+//// Will always end with "Failed to establish connection to Appium server", regardless of test success
 
 public class IOS_LoginWith extends IOSDrivers {
 

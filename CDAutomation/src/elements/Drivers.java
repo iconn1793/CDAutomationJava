@@ -733,13 +733,8 @@ public class Drivers {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("tutorial")));
     }
     
-<<<<<<< HEAD
-   
-    
-    
-=======
     public WebElement dust_info_text() { //text like you sent x minutes ago
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/info_text")));
     }
->>>>>>> BrantK/master
+
 }
