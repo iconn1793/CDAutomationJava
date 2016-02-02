@@ -2,7 +2,10 @@ package elements;
 
 import elements.IOSDrivers;
 
-////Designed only to run on iOS simulation/////
+////Designed only to run on iOS simulation
+////
+////For some reason the test will always end with "failed to establish server connection", regardless of test success
+
 public class IOS_LoginWith extends IOSDrivers {
 
 	
