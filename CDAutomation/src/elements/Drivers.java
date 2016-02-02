@@ -706,4 +706,8 @@ public class Drivers {
     public WebElement tutorial_button() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("tutorial")));
     }
+    
+   
+    
+    
 }
