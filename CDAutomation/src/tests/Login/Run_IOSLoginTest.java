@@ -1,4 +1,4 @@
-package tests.ian;
+package tests.Login;
 
 import static org.junit.Assert.*;
 
