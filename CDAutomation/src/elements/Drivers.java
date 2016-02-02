@@ -24,12 +24,16 @@ public class Drivers {
 	protected static AndroidDriver<WebElement> driver;
 	protected WebDriverWait wait = new WebDriverWait(driver, 20);
 	protected TouchAction action = new TouchAction(driver);
+	public static String appiumServerAddress = "127.0.0.1";
+	public static int appiumServerPort = 4723;
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
 		AppiumDriverLocalService service = AppiumDriverLocalService
 				.buildService(new AppiumServiceBuilder()
-				.withArgument(GeneralServerFlag.LOG_NO_COLORS));
+				.withArgument(GeneralServerFlag.LOG_NO_COLORS)
+				.withIPAddress(appiumServerAddress)
+				.usingPort(appiumServerPort));
 		service.start();
 		
 		environmentVariableCheck();
@@ -56,8 +60,8 @@ public class Drivers {
 				File bashProfile = new File (System.getenv("HOME")+"/.bash_profile");
 				FileWriter setenvWriter = new FileWriter(bashProfile, true);
 				
-				@SuppressWarnings("resource")
-				String bashProfileContent = new Scanner(bashProfile).useDelimiter("//Z").next();
+				Scanner bashProfileScanner = new Scanner(bashProfile);
+				String bashProfileContent = bashProfileScanner.useDelimiter("//Z").next();
 				
 				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
 						+ "###### Please restart your IDE!";
@@ -65,6 +69,9 @@ public class Drivers {
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
 					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
 					setenvWriter.close();
+					bashProfileScanner.close();
+				} else {
+					bashProfileScanner.close();
 				}
 			}
 		}
@@ -94,7 +101,7 @@ public class Drivers {
 	}
 	
 	// Prints text to console and to a log file in the project folder / test logs folder
-	public void log(String text) throws Exception {
+	public void log(String text) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss");
 		String projectPath = Paths.get("").toAbsolutePath().normalize().toString();
 		String logLocation = new String();
@@ -118,9 +125,13 @@ public class Drivers {
 			System.out.print(dateTime + testName + text + "\n");
 		}
 		
-		FileWriter myWriter = new FileWriter(logLocation, true);
-		myWriter.append(dateTime + testName + text + "\n");
-		myWriter.close();
+		try {
+			FileWriter myWriter = new FileWriter(logLocation, true);
+			myWriter.append(dateTime + testName + text + "\n");
+			myWriter.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	// For changing the WebDriverWait time from in a test
@@ -182,6 +193,21 @@ public class Drivers {
 	}
 	public WebElement blasts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("BLASTS")));
+	}
+	public WebElement my_blasts() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name("MY BLASTS")));
+	}
+	public WebElement my_blasts_views(String viewCount) {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='"+viewCount+"' and @resource-id='com.radicalapps.cyberdust:id/view_count']")));
+	}
+	public WebElement my_blasts_screenshots(String screenshotCount) {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.TextView[@text='"+screenshotCount+"' and @resource-id='com.radicalapps.cyberdust:id/screenshot_count']")));
+	}
+	public WebElement my_blasts_trash_can() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/action_delete")));
+	}
+	public WebElement my_blasts_delete() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/delete_button")));
 	}
 	public WebElement delete_all_dusts() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete All Dusts")));
@@ -369,6 +395,12 @@ public class Drivers {
 	public WebElement make_public() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_public_button_check")));
 	}
+	public WebElement homepage_profile_picture() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/profile_picture")));
+	}
+	public WebElement profile_blast_image() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/image")));
+	}
 	public WebElement blast_all_followers() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_followers_button_plus")));
 	}
@@ -384,7 +416,6 @@ public class Drivers {
 	public WebElement blast_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_tab_friends")));
 	}
-
 	public WebElement swipe_view_cancel() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/cancel")));
 	}
@@ -423,6 +454,9 @@ public class Drivers {
 	}
 	public WebElement swipe_view_exit() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/exit_button")));
+	}
+	public WebElement screenshot_button() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/screenshot_button")));
 	}
 	public WebElement username(String user) {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name(user)));
@@ -463,7 +497,6 @@ public class Drivers {
 	public WebElement yes_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Yes")));
 	}
-	
 	public WebElement Friend_already_added() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Friend Already Added")));
 	}
@@ -507,6 +540,9 @@ public class Drivers {
     }
     public WebElement friends() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
+    }
+    public WebElement friend_profile_picture() {
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_friend_listitem_icon")));
     }
     public WebElement add_friends() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_row")));
@@ -568,23 +604,18 @@ public class Drivers {
     public WebElement new_email_text_box() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
     }
-    
     public WebElement invalid_username() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
     }
-    
     public WebElement friends_search() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
     }
-    
     public WebElement chat_room_first_friend() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ListView[@index='0'][android.widget.RelativeLayout[@index='0']]")));
 	}
-   
     public WebElement delete_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete dust")));
 	}
-    
     public WebElement friends_more_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("more_button")));
 	}
@@ -601,17 +632,16 @@ public class Drivers {
     public WebElement add_friend() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("+")));
 	}
-    
     public WebElement switch_emoji_keyboard() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_emoji_button")));
 	}
     public WebElement switch_text_keyboard() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/emoji_keyboard_fragment_keyboard_button")));
 	}
-   // public WebElement no_friend() {
-	 //   return wait.until(ExpectedConditions.elementToBeClickable(By.name("You don't have any friends yet.?Lets add some!")));
-	//}
-  //  com.radicalapps.cyberdust:id/emoji_keyboard_fragment_photo_button
+//    public WebElement no_friend() {
+//	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("You don't have any friends yet.?Lets add some!")));
+//	}
+//    com.radicalapps.cyberdust:id/emoji_keyboard_fragment_photo_button
     
     public WebElement okay_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Okay")));
@@ -622,29 +652,25 @@ public class Drivers {
     public WebElement search_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Search Friends")));
 	}
-    
     public WebElement browse_followers() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_followers_row")));
 	}
-    
     public WebElement browse_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
 	}
-    
     public WebElement add_friends_search_button_text() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_search_button_text")));
 	}
     public WebElement add_friends_button_inBrowseFriends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friend_contacts_listitem_button")));
 	}
-    
-    
     public WebElement discover_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_discover")));
 	}
     public WebElement chatters_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_chatters")));
 	}
+    
 /// Sign up elements ///
     public WebElement sign_up_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_signup_button")));
@@ -707,7 +733,13 @@ public class Drivers {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("tutorial")));
     }
     
+<<<<<<< HEAD
    
     
     
+=======
+    public WebElement dust_info_text() { //text like you sent x minutes ago
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/info_text")));
+    }
+>>>>>>> BrantK/master
 }

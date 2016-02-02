@@ -31,7 +31,11 @@ public class IOSDrivers {
 		capabilities.setCapability("deviceName", "iPhone 6");
 		capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
 		//capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
+<<<<<<< HEAD
 		capabilities.setCapability("app", "/Users/ianconnelly/downloads/CyberDust.app"); //Set path here for simulation
+=======
+		capabilities.setCapability("app", "/Users/Manjushri/Downloads/CyberDust.app"); //Set path here for simulation
+>>>>>>> BrantK/master
 		driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	

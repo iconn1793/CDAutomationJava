@@ -12,7 +12,7 @@ import elements.AndroidCamera;
 import io.appium.java_client.TouchAction;
 
 
-public class Android_deleteGroupChatTests extends Drivers{
+public class Android_DeleteGroupChatTests extends Drivers{
 	
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	AndroidCamera androidCamera = new AndroidCamera();
@@ -57,8 +57,8 @@ public class Android_deleteGroupChatTests extends Drivers{
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
-		back_button().click();
-		log("First group created");
+		back_button().click();    
+		log("First group created");      
 		
 		
 		action_menu().click();

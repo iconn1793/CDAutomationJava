@@ -8,7 +8,7 @@ import elements.Drivers;
 
 public class LoginWith extends IOSDrivers {
 	
-    public void user(String account, String password) throws Exception {
+    public void user(String account, String password) {
         boolean already_logged_in = false;
         boolean logged_out = false;
 
