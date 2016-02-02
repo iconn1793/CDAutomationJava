@@ -31,7 +31,9 @@ public class IOSDrivers {
 		capabilities.setCapability("deviceName", "iPhone 6");
 		capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
 		//capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
-		capabilities.setCapability("app", "/Users/Manjushri/Downloads/CyberDust.app"); //Set path here for simulation
+		capabilities.setCapability("app", "/Users/ianconnelly/downloads/CyberDust.app"); //Set path here for simulation
+
+
 		driver = new IOSDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 	
@@ -98,6 +100,8 @@ public class IOSDrivers {
 	    logout().click();
 	    confirm().click();
 	}
+	
+
 
 /// Common elements ///
     public WebElement name(String name) {
@@ -121,16 +125,22 @@ public class IOSDrivers {
 	
 /// Home page elements /// 	
 	public WebElement login_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_login_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")));
 	}
 	public WebElement login_username() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_username_edit_text")));
 	}
 	public WebElement login_password() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_password_edit_text")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(" //UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]")));
 	}
 	public WebElement login_OK() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_ok_button")));
+	}
+	public WebElement push_notifications_OK() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")));
+	}
+	public WebElement exit_onboarding() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("exit")));
 	}
 	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
