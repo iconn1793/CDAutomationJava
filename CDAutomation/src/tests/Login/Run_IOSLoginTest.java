@@ -1,7 +1,5 @@
 package tests.Login;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class Run_IOSLoginTest extends IOS_LoginTest {
