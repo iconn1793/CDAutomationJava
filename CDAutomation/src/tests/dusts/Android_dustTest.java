@@ -20,7 +20,6 @@ public class Android_dustTest extends Drivers {
 	String friend_username = "aaaaa2";
 	String friend_username0 = "aaaaa";
 	String friend_username2 = "existing02";
-	String text_message = "OMG we're dusting!";
 	//////////////////////////////////////////////
 
 	TouchAction action = new TouchAction(driver);
