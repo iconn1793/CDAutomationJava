@@ -8,6 +8,6 @@ public class IOS_LoginTest extends IOSDrivers {
 	IOS_LoginWith loginAs = new IOS_LoginWith();
 	
 	public void Login() throws Exception {
-		loginAs.user("testacct01", "test01\n");
+		loginAs.user("testacct01\n", "test01\n");
 	}
 }

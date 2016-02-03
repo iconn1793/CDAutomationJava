@@ -2,16 +2,16 @@ package tests.accountManagement;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-import elements.Drivers;
+import elements.IOSDrivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_AccountManagement extends Android_AccountManagementTest{
+public class Run_IOSAccountManagement extends IOS_AccountManagementTest{
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
 	}
-Drivers element = new Drivers();
-
+IOSDrivers element = new IOSDrivers();
+	/*
 	@Test
 	public void test01_ChangePassword() throws Exception
 	{
@@ -25,8 +25,9 @@ Drivers element = new Drivers();
 			throw e;
 		}
 		
-	}
-
+		
+		
+	}*/
 	@Test
 	public void test02_ChangeEmail() throws Exception
 	{
@@ -41,8 +42,6 @@ Drivers element = new Drivers();
 		}
 		
 	}
-	
-	
 	@Test
 	public void test03_AccountDeleting() throws Exception
 	{

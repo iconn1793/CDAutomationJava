@@ -108,13 +108,13 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
     public WebElement OK_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("next")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("OK")));
     }
     public WebElement done_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("done")));
     }
 	public WebElement back_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/home")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")));
 	}
 	public WebElement confirm() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button1")));
@@ -122,13 +122,16 @@ public class IOSDrivers {
 	public WebElement cancel() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")));
 	}
+	public WebElement close() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[2]")));
+	}
 	
 /// Home page elements /// 	
 	public WebElement login_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")));
 	}
 	public WebElement login_username() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_username_edit_text")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("testacct01")));
 	}
 	public WebElement login_password() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(" //UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]")));
@@ -255,7 +258,7 @@ public class IOSDrivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/card_view")));
 	}
 	public WebElement more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")));
 	}
 	public WebElement action_menu() throws InterruptedException {
 		Thread.sleep(500);
@@ -465,7 +468,7 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_email")));
     }
     public WebElement followers() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_followers_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")));
     }
     public WebElement friends() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
@@ -495,11 +498,14 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_logout_row")));
     }
     public WebElement change_email_address() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_email_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
     }
     public WebElement change_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_password_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[14]/UIAStaticText[1]")));
     }
+    public WebElement clear_text_button() {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));
+    }    
     public WebElement validate_mobile() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_mobile_number_row")));
     }
@@ -516,16 +522,16 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_delete_account_row")));
     }
     public WebElement enter_old_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_oldpass_edit_text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]/UIASecureTextField[1]")));
 	}
     public WebElement enter_new_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_edit_text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[2]/UIASecureTextField[1]")));
     }
     public WebElement confirm_new_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_password_fragment_newpass_confirm_edit_text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[3]/UIASecureTextField[1]")));
     }
     public WebElement change_password_ok_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/spinner_button_text_view")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")));
     }
     public WebElement new_email_text_box() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
