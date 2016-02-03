@@ -16,6 +16,7 @@ public class Android_dustTest extends Drivers {
 	String account_name = "existingTest01";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
+	String text_message = "cyber dust";
 	String friend_username = "aaaaa2";
 	String friend_username0 = "aaaaa";
 	String friend_username2 = "existing02";
