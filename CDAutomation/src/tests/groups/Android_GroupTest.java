@@ -1,11 +1,10 @@
 package tests.groups;
 
-import elements.Drivers;
-import elements.LoginWith;
 import elements.AndroidAlbum;
-import io.appium.java_client.TouchAction;
+import elements.AndroidElements;
+import elements.LoginWith;
 
-public class Android_GroupTest extends Drivers {
+public class Android_GroupTest extends AndroidElements {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";
@@ -19,17 +18,14 @@ public class Android_GroupTest extends Drivers {
 	
 	String blocked_account = "grouptest04";
 	/////////////////////////////////
-
-	AndroidAlbum androidAlbum = new AndroidAlbum();
-	TouchAction action = new TouchAction(driver);
-	LoginWith loginAs = new LoginWith();
 	
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
+	LoginWith loginAs = new LoginWith();
 	
     public void test01_create_group() throws Exception {
 		// Log into account01
+    	log("Running login method");
 		loginAs.user(account01, password01);
+		log("Ran login method");
 		
 		// Adds test accounts to group
 		blasts_tab();
@@ -39,7 +35,7 @@ public class Android_GroupTest extends Drivers {
         username(account03).click();
         OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys("Test Group");
         confirm().click();
 	}
@@ -132,7 +128,7 @@ public class Android_GroupTest extends Drivers {
 		group_camera_button().click();
 		photo_gallery().click();
 		Thread.sleep(2000);
-		androidAlbum.selectPhoto();
+		new AndroidAlbum().selectPhoto();
 		photo_pen().click();
 		driver.swipe(photo_back_button().getLocation().x + 50, photo_back_button().getLocation().y - 50,
 				photo_pen().getLocation().x, photo_pen().getLocation().y + 50, 1000);

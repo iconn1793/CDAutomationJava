@@ -5,15 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import elements.LoginWith;
-import elements.AndroidCamera;
-import elements.AndroidElements;
+import elements.IOSElements;
 
-public class Android_TutorialTest extends AndroidElements {
+public class IOS_TutorialTest extends IOSElements {
 
 	String account_name = "tutorialtest";
 	String account_pw = "password";
 
-	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_tutorialUI() throws Exception

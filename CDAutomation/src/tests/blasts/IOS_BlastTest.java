@@ -1,9 +1,9 @@
 package tests.blasts;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_BlastTest extends AndroidElements {
+public class IOS_BlastTest extends IOSElements {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";

@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import elements.LoginWith;
-import elements.AndroidElements;
+import elements.IOSElements;
 
-public class Android_DeleteGroupChatTests extends AndroidElements {
+public class IOS_DeleteGroupChatTests extends IOSElements {
 	
 	String account_name = "deletegroupchatroom";
 	String account_pw = "password";

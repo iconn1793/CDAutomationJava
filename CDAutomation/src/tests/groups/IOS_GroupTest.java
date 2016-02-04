@@ -1,11 +1,10 @@
 package tests.groups;
 
-import elements.IOSDrivers;
+import elements.IOSElements;
 import elements.LoginWith;
 import elements.AndroidAlbum;
-import io.appium.java_client.TouchAction;
 
-public class IOS_GroupTest extends IOSDrivers {
+public class IOS_GroupTest extends IOSElements {
 
 	//////////////////////////////////
 	String account01 = "grouptest01";
@@ -20,12 +19,7 @@ public class IOS_GroupTest extends IOSDrivers {
 	String blocked_account = "grouptest04";
 	/////////////////////////////////
 
-	AndroidAlbum androidAlbum = new AndroidAlbum();
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-	
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
 	
     public void test01_create_group() throws Exception {
 		// Log into account01
@@ -38,7 +32,7 @@ public class IOS_GroupTest extends IOSDrivers {
         username(account03).click();
         OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys("Test Group");
         confirm().click();
 	}
@@ -131,7 +125,7 @@ public class IOS_GroupTest extends IOSDrivers {
 		group_camera_button().click();
 		photo_gallery().click();
 		Thread.sleep(2000);
-		androidAlbum.selectPhoto();
+		new AndroidAlbum().selectPhoto();
 		photo_pen().click();
 		driver.swipe(photo_back_button().getLocation().x + 50, photo_back_button().getLocation().y - 50,
 				photo_pen().getLocation().x, photo_pen().getLocation().y + 50, 1000);

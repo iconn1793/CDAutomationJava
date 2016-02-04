@@ -1,11 +1,10 @@
 package tools;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
 
-
-public class AutoBlast extends Drivers {
+public class AutoBlast extends AndroidElements {
 	String blast_recipient = "bktest01";
 	String blast_type = "text";  // Use photo, video, text, or a combination of the 3
 	String blast_text = "Test";  // Only works for text blasts

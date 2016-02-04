@@ -1,10 +1,6 @@
 package elements;
 
-import io.appium.java_client.TouchAction;
-
-public class AndroidAlbum extends Drivers {
-	
-	TouchAction action = new TouchAction(driver);
+public class AndroidAlbum extends AndroidElements {
 	
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();

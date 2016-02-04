@@ -1,30 +1,23 @@
 package tests.urlShortner;
 
-import elements.Drivers;
+import elements.IOSElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
-import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Android_UrlShortnerTest extends Drivers {
+public class IOS_URLShortenerTest extends IOSElements {
 
-	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
 	String account_website = "www.cyberdust.com ";
 	String shortned_website = "cyberdust.com";
-	
 	//////////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 	
-	@Test
 	public void test01_shortned_bio() throws Exception {	
 		loginAs.user(account_name, account_pw);
 		
@@ -46,9 +39,8 @@ public class Android_UrlShortnerTest extends Drivers {
 		}
 
 	}
-	@Test
+	
 	public void test02_shortned_bio() throws Exception {
-		
 		enter_website().click();
 		edit_textbox().sendKeys(shortned_website);
 		save_button().click();
@@ -65,6 +57,5 @@ public class Android_UrlShortnerTest extends Drivers {
 		edit_textbox().clear();
 		save_button().click();
 		logoutAccount();
-
 	}
 }

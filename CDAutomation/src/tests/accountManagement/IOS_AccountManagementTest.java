@@ -1,9 +1,9 @@
 package tests.accountManagement;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_AccountManagementTest extends AndroidElements {
+public class IOS_AccountManagementTest extends IOSElements {
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";

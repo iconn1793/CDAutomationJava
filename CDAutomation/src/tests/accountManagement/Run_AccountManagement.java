@@ -2,57 +2,64 @@ package tests.accountManagement;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
+
 import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_AccountManagement extends Android_AccountManagementTest{
-	public static void relaunch() {
-		driver.closeApp();
-		driver.launchApp();
-	}
-Drivers element = new Drivers();
+public class Run_AccountManagement extends Drivers {
 	
 	@Test
-	public void test01_ChangePassword() throws Exception
-	{
-		try{
-			System.out.println("Starting test - Change account password");
-			test01_changing_password();
-		}
-		catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+	public void test01_ChangePassword() throws Exception {
+		try {
+			log("Starting test - Change account password");
+			
+			if (Android()) {
+				new Android_AccountManagementTest().test01_changing_password();
+			} else if (IOS()) {
+				new IOS_AccountManagementTest().test01_changing_password();
+			}
+			
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
 		}
-		
 	}
+
 	@Test
-	public void test02_ChangeEmail() throws Exception
-	{
-		try{
-			System.out.println("Starting test - change account email");
-			test02_changing_email();
-		}
-		catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+	public void test02_ChangeEmail() throws Exception {
+		try {
+			log("Starting test - change account email");
+			
+			if (Android()) {
+				new Android_AccountManagementTest().test02_changing_email();
+			} else if (IOS()) {
+				new IOS_AccountManagementTest().test02_changing_email();
+			}
+			
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
 			relaunch();
 			throw e;
-		}
-		
+		}	
 	}
+	
+	
 	@Test
-	public void test03_AccountDeleting() throws Exception
+	public void test03_AccountDeleting() throws Exception 
 	{
-		try{
-			System.out.println("Starting test - delete account");
-			test03_account_deleting();
-		}
-		catch (Exception e) {
-			System.err.println("[Fail] Got exception " + e);
+		try {
+			log("Starting test - delete account");
+			
+			if (Android()) {
+				new Android_AccountManagementTest().test03_account_deleting();
+			} else if (IOS()) {
+				new IOS_AccountManagementTest().test03_account_deleting();
+			}
+			
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
 			throw e;
 		}
-		
 	}
-	
-	
 }

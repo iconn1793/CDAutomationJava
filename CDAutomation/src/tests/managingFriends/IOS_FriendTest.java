@@ -1,9 +1,9 @@
 package tests.managingFriends;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_FriendTest extends AndroidElements {
+public class IOS_FriendTest extends IOSElements {
 
 	//////////////////////////////////
 	String account01 = "friendtest01";
