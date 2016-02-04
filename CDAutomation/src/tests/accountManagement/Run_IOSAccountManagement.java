@@ -2,7 +2,7 @@ package tests.accountManagement;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
-import elements.IOSDrivers;
+import elements.IOSElements;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Run_IOSAccountManagement extends IOS_AccountManagementTest{
@@ -10,6 +10,7 @@ public class Run_IOSAccountManagement extends IOS_AccountManagementTest{
 		driver.closeApp();
 		driver.launchApp();
 	}
+	
 IOSDrivers element = new IOSDrivers();
 
 	@Test

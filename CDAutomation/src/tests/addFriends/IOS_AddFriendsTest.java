@@ -3,17 +3,15 @@ package tests.addFriends;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-<<<<<<< HEAD
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import elements.IOSDrivers;
 import elements.IOS_LoginWith;
 import io.appium.java_client.TouchAction;
 
-public class IOS_AddFriendsTest extends IOSDrivers {
+public class IOS_AddFriendsTest extends IOSDrivers;
 
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-=======
+WebDriverWait wait = new WebDriverWait(driver, 20);
 
 import elements.IOSElements;
 import elements.LoginWith;

@@ -3,12 +3,8 @@ package tests.accountManagement;
 import elements.IOSElements;
 import elements.LoginWith;
 
-<<<<<<< HEAD
-
-public class IOS_AccountManagementTest extends IOSDrivers {
-=======
 public class IOS_AccountManagementTest extends IOSElements {
->>>>>>> BrantK/master
+
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
@@ -48,10 +44,10 @@ public class IOS_AccountManagementTest extends IOSElements {
 		System.out.println("Password reset");
 	}
 
-<<<<<<< HEAD
-	public void test02_changing_email() throws Exception {		
-=======
-	public void test02_changing_email() throws Exception {
+
+		
+
+public void test02_changing_email() throws Exception {
 		//temp
 		loginAs.user(account_name, account_pw);
 		System.out.println("Logged In");
@@ -59,7 +55,6 @@ public class IOS_AccountManagementTest extends IOSElements {
 		action.press(followers()).moveTo(back_button()).release().perform();
 		//end temp
 		
->>>>>>> BrantK/master
 		change_email_address().click();
 		new_email_text_box().sendKeys(account_new_email);
 		change_password_ok_button().click();
@@ -94,12 +89,9 @@ public class IOS_AccountManagementTest extends IOSElements {
 			System.out.println("Could not login into deleted account");
 			back_button().click();
 		} catch (Exception e) {
-<<<<<<< HEAD
+
 			System.out.println("Logged in into deleted account");
-=======
-			System.out.println("Loged in into deleted account");
-			driver.pressKeyCode(4);
->>>>>>> BrantK/master
+			//driver.pressKeyCode(4);
 			sign_up_button().click();
 		}
 

@@ -71,7 +71,7 @@ public class Drivers {
 			capabilities.setCapability("platformVersion", "");
 			capabilities.setCapability("deviceName", "iPhone 6");
 			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-			capabilities.setCapability("app", "/Users/brant/Development/builds/CyberDust.app"); //Set path here for simulation
+			capabilities.setCapability("app", "/Users/ianconnelly/Downloads/CyberDust.app"); //Set path here for simulation
 			driver = new IOSDriver<>(service, capabilities);
 		}
 		
