@@ -9,7 +9,6 @@ import elements.LoginWith;
 
 public class Android_AddFriendsTest extends AndroidElements {
 
-	///////////////////////////////////////////////
 	String account_name = "existingtest02";
 	String account_short = "existingtest0";
 	String account_pw = "password";
@@ -17,8 +16,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 	String text_message = "cyber dust";
 	String friend_username = "aaaaa2";
 	String friend_username0 = "aaaaa";
-	//////////////////////////////////////////////
-	
+
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_addFriend_fromChat() throws Exception {
