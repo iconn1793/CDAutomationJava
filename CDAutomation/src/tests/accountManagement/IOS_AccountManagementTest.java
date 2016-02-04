@@ -1,76 +1,71 @@
 package tests.accountManagement;
-import org.openqa.selenium.By;
 
-import elements.IOSDrivers;
-import elements.IOS_LoginWith;
-import io.appium.java_client.TouchAction;
+import elements.IOSElements;
+import elements.LoginWith;
 
-public class IOS_AccountManagementTest extends IOSDrivers {
+public class IOS_AccountManagementTest extends IOSElements {
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
 	String account_pw = "password";
 	String account_new_pw = "new password";
-	String account_email = "testuser_02@cyberdust.com";
-	String account_new_email = "new_testuser_02@cyberdust.com";
+	String account_new_email = "testuser_02@cyberdust.com";
+	String account_email = "new_testuser_02@cyberdust.com";
 	/////////////////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
-	IOS_LoginWith loginAs = new IOS_LoginWith();
-
+	LoginWith loginAs = new LoginWith();
+	
 	public void test01_changing_password() throws Exception {
 		// Logs into existing testing account
-		loginAs.user(account_name + "\n", account_pw + "\n");
+		loginAs.user(account_name, account_pw);
 		System.out.println("Logged In");
 
 		// Changes password
 		more_button().click();
-		action.press(followers()).moveTo(close()).release().perform();
+		action.press(followers()).moveTo(back_button()).release().perform();
 		change_password().click();
-		driver.getKeyboard().sendKeys(account_pw + "\n");
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
+		enter_old_password().click();
+		enter_old_password().sendKeys(account_pw);
+		enter_new_password().click();
+		enter_new_password().sendKeys(account_new_pw);
+		confirm_new_password().click();
+		confirm_new_password().sendKeys(account_new_pw);
 		change_password_ok_button().click();
-		System.out.println("Password changed");
-		
 
 		// Resets Password
 		change_password().click();
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
-		driver.getKeyboard().sendKeys(account_pw + "\n");
-		driver.getKeyboard().sendKeys(account_pw + "\n");
+		enter_old_password().sendKeys(account_new_pw);
+		enter_new_password().click();
+		enter_new_password().sendKeys(account_pw);
+		confirm_new_password().click();
+		confirm_new_password().sendKeys(account_pw);
 		change_password_ok_button().click();
 		System.out.println("Password reset");
 	}
 
 	public void test02_changing_email() throws Exception {
-		//temp area start
-		loginAs.user(account_name + "\n", account_pw + "\n");
+		//temp
+		loginAs.user(account_name, account_pw);
 		System.out.println("Logged In");
 		more_button().click();
-		action.press(followers()).moveTo(close()).release().perform();
-		//temp area end
+		action.press(followers()).moveTo(back_button()).release().perform();
+		//end temp
 		
 		change_email_address().click();
-		clear_text_button().click();
-		driver.getKeyboard().sendKeys(account_new_email + "\n");
-		OK_button().click();
-		OK_button().click();
+		new_email_text_box().sendKeys(account_new_email);
+		change_password_ok_button().click();
 
 		// Reset email address
 		change_email_address().click();
-		Thread.sleep(1000);
 		try {
-			if ((driver.findElement(By.id("new_testuser_02@cyberdust.com"))).getAttribute("value").equals(account_new_email)) {
-				System.out.println("Email address changed");
-				clear_text_button().click();
-				driver.getKeyboard().sendKeys(account_email + "\n");
-				OK_button().click();
-				OK_button().click();
+			if (name(account_new_email).isDisplayed()) {
+				System.out.println("Email adress changed");
+				new_email_text_box().sendKeys(account_email);
+				change_password_ok_button().click();
 				System.out.println("Email address reset");
 			}
 		} catch (Exception e) {
-			System.out.println("Email address is not changed");
+			System.out.println("Email adress is not changed");
 
 		}
 	}
@@ -93,8 +88,8 @@ public class IOS_AccountManagementTest extends IOSDrivers {
 			driver.launchApp();
 			sign_up_button().click();
 		} catch (Exception e) {
-			System.out.println("Logged in into deleted account");
-			//driver.pressKeyCode(4);
+			System.out.println("Loged in into deleted account");
+			driver.pressKeyCode(4);
 			sign_up_button().click();
 		}
 
