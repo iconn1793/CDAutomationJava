@@ -15,7 +15,7 @@ public class Run_AddFriendsTest extends Drivers {
 			log("Test01: add a user that messaged you from chat");
 			
 			if (Android()) {
-				//new Android_AddFriendsTest().test01_addFriend_fromChat();
+				new Android_AddFriendsTest().test01_addFriend_fromChat();
 			} else if (IOS()) {
 				new IOS_AddFriendsTest().test01_addFriend_fromChat();
 			}
@@ -33,7 +33,7 @@ public class Run_AddFriendsTest extends Drivers {
 			log("Test02: add a user that messaged you from home +");
 
 			if (Android()) {
-				//new Android_AddFriendsTest().test02_AddFriend_from_DustsTab();
+				new Android_AddFriendsTest().test02_AddFriend_from_DustsTab();
 			} else if (IOS()) {
 				new IOS_AddFriendsTest().test02_AddFriend_from_DustsTab();
 			}
