@@ -1,9 +1,9 @@
 package tests.signUp;
 
 import elements.AndroidCamera;
-import elements.AndroidElements;
+import elements.IOSElements;
 
-public class Android_SignUpTest extends AndroidElements {
+public class IOS_SignUpTest extends IOSElements {
 	
 	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";

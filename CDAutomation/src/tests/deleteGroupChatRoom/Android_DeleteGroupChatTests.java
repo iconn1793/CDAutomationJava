@@ -1,43 +1,27 @@
 package tests.deleteGroupChatRoom;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
 import elements.LoginWith;
-import elements.AndroidCamera;
-import io.appium.java_client.TouchAction;
+import elements.AndroidElements;
 
-
-public class Android_DeleteGroupChatTests extends Drivers{
-	
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-	AndroidCamera androidCamera = new AndroidCamera();
+public class Android_DeleteGroupChatTests extends AndroidElements {
 	
 	String account_name = "deletegroupchatroom";
 	String account_pw = "password";
 	String friend_account_short = "testaccount";
-	
-	String text_message = "CyberDust.com";
-	TouchAction action = new TouchAction(driver);
-	LoginWith loginAs = new LoginWith();
 	
 	String account_friend1 = "testaccount1";
 	String account_friend2 = "testaccount2";
 	String account_friend3 = "testaccount3";
 	String account_friend4 = "testaccount4";
 	String account_friend5 = "testaccount5";
-
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
 	
-	public static void relaunch() {
-		driver.closeApp();
-		driver.launchApp();
-	}
+	String text_message = "CyberDust.com";
+	
+	LoginWith loginAs = new LoginWith();
 	
 	public void test01_delete_all_group_chat_rooms() throws Exception
 	{
@@ -54,7 +38,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
 		back_button().click();    
@@ -70,7 +54,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 2");
         confirm().click();
 		back_button().click();
@@ -86,7 +70,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 3");
         confirm().click();
 		back_button().click();
@@ -101,7 +85,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 4");
         confirm().click();
 		back_button().click();
@@ -116,7 +100,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 5");
         confirm().click();
 		back_button().click();
@@ -158,7 +142,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
 		back_button().click();
@@ -174,7 +158,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 2");
         confirm().click();
 		back_button().click();
@@ -190,7 +174,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 3");
         confirm().click();
 		back_button().click();
@@ -205,7 +189,7 @@ public class Android_DeleteGroupChatTests extends Drivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 4");
         confirm().click();
 		back_button().click();

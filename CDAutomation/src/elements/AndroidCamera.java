@@ -1,10 +1,6 @@
 package elements;
 
-import io.appium.java_client.TouchAction;
-
-public class AndroidCamera extends Drivers {
-	
-	TouchAction action = new TouchAction(driver);
+public class AndroidCamera extends AndroidElements {
 	
 	public void takePhoto() throws Exception {
 		// Tries to take a photo with several different kinds of android phones

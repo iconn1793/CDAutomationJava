@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_dustTest extends AndroidElements {
+public class IOS_dustTest extends IOSElements {
 
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";

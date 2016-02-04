@@ -1,21 +1,18 @@
 package tests.timeout;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
 import elements.LoginWith;
 import elements.AndroidCamera;
-import io.appium.java_client.TouchAction;
+import elements.AndroidElements;
 
-
-public class Android_TimeOutTests extends Drivers{
-	
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-	AndroidCamera androidCamera = new AndroidCamera();
+public class Android_TimeoutTests extends AndroidElements {
 	
 	String account_name = "timeouttest";
+	String account_short = "timeouttes";
+	String account_pw = "password";
 	
 	String friends_account_name1 = "timeoutfriend1";
 	String friends_account_name2 = "timeoutfriend2";
@@ -23,22 +20,11 @@ public class Android_TimeOutTests extends Drivers{
 	String friends_account_name4 = "timeoutfriend4";
 	String friends_account_name5 = "timeoutfriend5";
 	
-	String account_short = "timeouttes";
-	String account_pw = "password";
-	
 	String text_message = "Cyber Dust";
 	
-	
-	TouchAction action = new TouchAction(driver);
+	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 
-	public static void relaunch() {
-		driver.closeApp();
-		driver.launchApp();
-	}
-	
-	
-	
 	public void test01_video_timeout() throws Exception
 	{
 		loginAs.user(friends_account_name1, account_pw);
@@ -169,10 +155,10 @@ public class Android_TimeOutTests extends Drivers{
 			System.out.println("ERROR: Message is not deleted after 60 seconds");
 			
 		}
-		WebElement message11 = wait.until(ExpectedConditions.elementToBeClickable(By.name(text_message)));
-		WebElement message2 = wait.until(ExpectedConditions.elementToBeClickable(By.name("+technology")));
+//		WebElement message11 = wait.until(ExpectedConditions.elementToBeClickable(By.name(text_message)));
+//		WebElement message2 = wait.until(ExpectedConditions.elementToBeClickable(By.name("+technology")));
 		Thread.sleep(21000);
-		WebElement message5 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView[@index='0'][android.widget.LinearLayout[@index='0']][android.widget.RelativeLayout[@index ='1'")));       
+//		WebElement message5 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ScrollView[@index='0'][android.widget.LinearLayout[@index='0']][android.widget.RelativeLayout[@index ='1'")));       
 		
 		if(!message1.isDisplayed())
 		{
@@ -243,7 +229,4 @@ public class Android_TimeOutTests extends Drivers{
 		more_button().click();
 		logoutAccount();
 	}
-	
-	
-	
 }

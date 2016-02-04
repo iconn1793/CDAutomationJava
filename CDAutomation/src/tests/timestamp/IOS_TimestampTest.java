@@ -2,10 +2,10 @@ package tests.timestamp;
 
 import org.openqa.selenium.WebElement;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_TimestampTest extends AndroidElements {
+public class IOS_TimestampTest extends IOSElements {
 	
 	String account_name = "timestamptest";
 	String account_pw = "password";

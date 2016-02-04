@@ -1,10 +1,10 @@
 package tools;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
 
-public class QuickAccountCreator extends Drivers{
+public class QuickAccountCreator extends AndroidElements {
 	String account_name = "devtest";
 	String account_pw = "devtest";
 	String account_email = "devtest01@cyberdust.com";

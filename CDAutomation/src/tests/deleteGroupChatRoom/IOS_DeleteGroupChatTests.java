@@ -1,5 +1,6 @@
 package tests.deleteGroupChatRoom;
 
+<<<<<<< HEAD
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -16,20 +17,34 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 	
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	AndroidCamera androidCamera = new AndroidCamera();
+=======
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import elements.LoginWith;
+import elements.IOSElements;
+
+public class IOS_DeleteGroupChatTests extends IOSElements {
+>>>>>>> BrantK/master
 	
 	String account_name = "deletegroupchatroom";
 	String account_pw = "password";
 	String friend_account_short = "testaccount";
 	
+<<<<<<< HEAD
 	String text_message = "CyberDust.com";
 	TouchAction action = new TouchAction(driver);
 	IOS_LoginWith loginAs = new IOS_LoginWith();
 	
+=======
+>>>>>>> BrantK/master
 	String account_friend1 = "testaccount1";
 	String account_friend2 = "testaccount2";
 	String account_friend3 = "testaccount3";
 	String account_friend4 = "testaccount4";
 	String account_friend5 = "testaccount5";
+<<<<<<< HEAD
 
 	int sw = driver.manage().window().getSize().getWidth();
 	int sh = driver.manage().window().getSize().getHeight();
@@ -38,6 +53,12 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		driver.closeApp();
 		driver.launchApp();
 	}
+=======
+	
+	String text_message = "CyberDust.com";
+	
+	LoginWith loginAs = new LoginWith();
+>>>>>>> BrantK/master
 	
 	public void test01_delete_all_group_chat_rooms() throws Exception
 	{
@@ -54,7 +75,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
 		back_button().click();    
@@ -70,7 +95,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 2");
         confirm().click();
 		back_button().click();
@@ -86,7 +115,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 3");
         confirm().click();
 		back_button().click();
@@ -101,7 +134,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 4");
         confirm().click();
 		back_button().click();
@@ -116,7 +153,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 5");
         confirm().click();
 		back_button().click();
@@ -131,7 +172,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		
 		
 		action.press(Group1).moveTo(Group5).release().perform();
+<<<<<<< HEAD
 		//delete_all_groups().click();
+=======
+		delete_all_groups().click();
+>>>>>>> BrantK/master
 		yes_button().click();
 		
 		try{
@@ -158,7 +203,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
 		back_button().click();
@@ -174,7 +223,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 2");
         confirm().click();
 		back_button().click();
@@ -190,7 +243,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 3");
         confirm().click();
 		back_button().click();
@@ -205,7 +262,11 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
+<<<<<<< HEAD
         action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+=======
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
+>>>>>>> BrantK/master
         groups_title_field().sendKeys(" Group 4");
         confirm().click();
 		back_button().click();
@@ -214,6 +275,7 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		log("Got group 1");
 		
 		friends_more_button().click();
+<<<<<<< HEAD
 		//delete_group_button().click();
 		friends_more_button().click();
 		//delete_group_button().click();
@@ -221,6 +283,15 @@ public class IOS_DeleteGroupChatTests extends IOSDrivers{
 		//delete_group_button().click();
 		friends_more_button().click();
 		//delete_group_button().click();
+=======
+		delete_group_button().click();
+		friends_more_button().click();
+		delete_group_button().click();
+		friends_more_button().click();
+		delete_group_button().click();
+		friends_more_button().click();
+		delete_group_button().click();
+>>>>>>> BrantK/master
 		
 		
 		try{

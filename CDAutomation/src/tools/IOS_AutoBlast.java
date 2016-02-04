@@ -1,11 +1,11 @@
 package tools;
 
-import elements.IOSDrivers;
+import elements.IOSElements;
 import io.appium.java_client.TouchAction;
 import org.junit.*;
 
 
-public class IOS_AutoBlast extends IOSDrivers {
+public class IOS_AutoBlast extends IOSElements {
 	String blast_recipient = "bktest01";
 	String blast_type = "text";  // Use photo, video, text, or a combination of the 3
 	String blast_text = "Test";  // Only works for text blasts

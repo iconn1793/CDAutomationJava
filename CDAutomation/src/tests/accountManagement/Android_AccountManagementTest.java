@@ -1,9 +1,9 @@
 package tests.accountManagement;
-import elements.Drivers;
-import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_AccountManagementTest extends Drivers {
+import elements.AndroidElements;
+import elements.LoginWith;
+
+public class Android_AccountManagementTest extends AndroidElements {
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
@@ -13,9 +13,8 @@ public class Android_AccountManagementTest extends Drivers {
 	String account_email = "new_testuser_02@cyberdust.com";
 	/////////////////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-
+	
 	public void test01_changing_password() throws Exception {
 		// Logs into existing testing account
 		loginAs.user(account_name, account_pw);

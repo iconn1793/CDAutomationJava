@@ -3,7 +3,7 @@ package tests.reblast;
 import elements.AndroidElements;
 import elements.LoginWith;
 
-public class Android_ReblastTest extends AndroidElements {
+public class IOS_ReblastTest extends AndroidElements {
 
 	//////////////////////////////////
 	String account01 = "blasttest01";

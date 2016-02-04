@@ -4,10 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import elements.AndroidElements;
+import elements.IOSElements;
 import elements.LoginWith;
 
-public class Android_MessagePinningTest extends AndroidElements {
+public class IOS_MessagePinningTest extends IOSElements {
 
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
