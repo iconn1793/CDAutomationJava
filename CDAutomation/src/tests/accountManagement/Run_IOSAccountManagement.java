@@ -11,7 +11,7 @@ public class Run_IOSAccountManagement extends IOS_AccountManagementTest{
 		driver.launchApp();
 	}
 IOSDrivers element = new IOSDrivers();
-	/*
+
 	@Test
 	public void test01_ChangePassword() throws Exception
 	{
@@ -27,7 +27,7 @@ IOSDrivers element = new IOSDrivers();
 		
 		
 		
-	}*/
+	}
 	@Test
 	public void test02_ChangeEmail() throws Exception
 	{
@@ -42,6 +42,8 @@ IOSDrivers element = new IOSDrivers();
 		}
 		
 	}
+
+	
 	@Test
 	public void test03_AccountDeleting() throws Exception
 	{

@@ -5,6 +5,7 @@ import elements.IOSDrivers;
 import elements.IOS_LoginWith;
 import io.appium.java_client.TouchAction;
 
+
 public class IOS_AccountManagementTest extends IOSDrivers {
 
 	/////////////////////////////////////////////////////
@@ -43,14 +44,7 @@ public class IOS_AccountManagementTest extends IOSDrivers {
 		System.out.println("Password reset");
 	}
 
-	public void test02_changing_email() throws Exception {
-		//temp area start
-		loginAs.user(account_name + "\n", account_pw + "\n");
-		System.out.println("Logged In");
-		more_button().click();
-		action.press(followers()).moveTo(close()).release().perform();
-		//temp area end
-		
+	public void test02_changing_email() throws Exception {		
 		change_email_address().click();
 		clear_text_button().click();
 		driver.getKeyboard().sendKeys(account_new_email + "\n");
@@ -78,42 +72,39 @@ public class IOS_AccountManagementTest extends IOSDrivers {
 	public void test03_account_deleting() throws Exception {
 		System.out.println("Deleting");
 		delete_account().click();
-		confirm().click();
+		confirm_delete().click();
+		confirm_delete_account().click();
 		System.out.println("Account Deleted");
-
+		
 		try {
 			login_button().click();
-			login_username().sendKeys(account_name);
-			login_password().click();
-			login_password().sendKeys(account_pw);
-			login_OK().click();
-			invalid_username().isDisplayed();
+			driver.getKeyboard().sendKeys(account_name + "\n");
+			driver.getKeyboard().sendKeys(account_pw + "\n");
+			driver.findElement(By.name("Invalid username & password combination"));
 			System.out.println("Could not login into deleted account");
-			driver.closeApp();
-			driver.launchApp();
-			sign_up_button().click();
+			back_button().click();
 		} catch (Exception e) {
 			System.out.println("Logged in into deleted account");
-			//driver.pressKeyCode(4);
 			sign_up_button().click();
 		}
 
 		// Recreating the account
-		pick_username().sendKeys(account_name);
-		sign_up_OK().click();
-		create_password().sendKeys(account_pw);
-		confirm_password().sendKeys(account_pw);
-		password_OK().click();
-		birthday().click();
-		Thread.sleep(2000);
+		sign_up_button().click();
+		driver.getKeyboard().sendKeys(account_name + "\n");
+		driver.getKeyboard().sendKeys("\n");
+		driver.getKeyboard().sendKeys(account_pw + "\n");
+		driver.getKeyboard().sendKeys(account_pw + "\n");
 
 		System.out.println("Entering birthday");
-		action.longPress(date().getLocation().x, date().getLocation().y, 3000).release().perform();
+		date_year().sendKeys("2003");
 		birthday_done().click();
-		birthday_OK().click();
 		System.out.println("Entering email");
-		email().sendKeys(account_email);
-		email_OK().click();
-		OK_button().click();
+		driver.getKeyboard().sendKeys(account_email + "\n");
+		skip_button().click();
+		skip_button().click();
+		skip_button().click();
+		okay_button().click();
+		skip_button().click();
+		dont_allow().click();
 	}
 }
