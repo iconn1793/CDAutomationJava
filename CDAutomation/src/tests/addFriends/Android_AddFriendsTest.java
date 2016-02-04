@@ -3,13 +3,17 @@ package tests.addFriends;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.AndroidElements;
+import elements.Drivers;
+//import elements.Friend;
 import elements.LoginWith;
+import io.appium.java_client.TouchAction;
 
-public class Android_AddFriendsTest extends AndroidElements {
+public class Android_AddFriendsTest extends Drivers {
 
-	///////////////////////////////////////////////
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	
 	String account_name = "existingtest02";
 	String account_short = "existingtest0";
 	String account_pw = "password";
@@ -17,9 +21,15 @@ public class Android_AddFriendsTest extends AndroidElements {
 	String text_message = "cyber dust";
 	String friend_username = "aaaaa2";
 	String friend_username0 = "aaaaa";
-	//////////////////////////////////////////////
 	
+
+	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
+
+	public static void relaunch() {
+		driver.closeApp();
+		driver.launchApp();
+	}
 	
 	public void test01_addFriend_fromChat() throws Exception {
 		loginAs.user(friend_username, account_pw);
