@@ -1,18 +1,12 @@
 package tests.timestamp;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import elements.AndroidCamera;
-import io.appium.java_client.TouchAction;
 
-public class Android_TimestampTest extends Drivers {
+public class Android_TimestampTest extends AndroidElements {
 	
-	WebDriverWait wait = new WebDriverWait(driver, 20);
 	String account_name = "timestamptest";
 	String account_pw = "password";
 	String account_friend = "timestamptestfriend";
@@ -20,17 +14,8 @@ public class Android_TimestampTest extends Drivers {
 	
 	String friend_account_short ="timestamp";
 	String text_message = "CyberDust.com";
-	TouchAction action = new TouchAction(driver);
-	LoginWith loginAs = new LoginWith();
-	
 
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
-	
-	public static void relaunch() {
-		driver.closeApp();
-		driver.launchApp();
-	}
+	LoginWith loginAs = new LoginWith();
 	
 	public void test01_sent_dust_timestamp() throws Exception {
 		loginAs.user(account_name, account_pw);
@@ -79,7 +64,7 @@ public class Android_TimestampTest extends Drivers {
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
-        action.press((int)(sw/10*4.86), (int)(sh/10*5.07)).release().perform();
+        action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
         groups_title_field().sendKeys(" Group 1");
         confirm().click();
         group_text_field().click();

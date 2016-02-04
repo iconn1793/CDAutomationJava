@@ -1,10 +1,9 @@
 package tests.signUp;
 
 import elements.AndroidCamera;
-import elements.Drivers;
-import io.appium.java_client.TouchAction;
+import elements.AndroidElements;
 
-public class Android_SignUpTest extends Drivers {
+public class Android_SignUpTest extends AndroidElements {
 	
 	/////////////////////////////////////////////////////
 	String account_name = "onboarding001";
@@ -12,7 +11,6 @@ public class Android_SignUpTest extends Drivers {
 	String account_email = "onboarding001@cyberdust.com";
 	/////////////////////////////////////////////////////
 	
-	TouchAction action = new TouchAction(driver);
 	AndroidCamera androidCamera = new AndroidCamera();
 	
 	public void test01_check_logged_out() throws Exception {

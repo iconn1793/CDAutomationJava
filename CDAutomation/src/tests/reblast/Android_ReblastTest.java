@@ -1,10 +1,9 @@
 package tests.reblast;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_ReblastTest extends Drivers {
+public class Android_ReblastTest extends AndroidElements {
 
 	//////////////////////////////////
 	String account01 = "blasttest01";
@@ -16,12 +15,8 @@ public class Android_ReblastTest extends Drivers {
 	String account03 = "blasttest03";
 	String password03 = account03;
 	//////////////////////////////////
-
-	TouchAction action = new TouchAction(driver);
-	LoginWith loginAs = new LoginWith();
 	
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
+	LoginWith loginAs = new LoginWith();
 	
     public void test01_send_text_with_loc () throws Exception {
     	// Login to reblast test accounts
@@ -143,7 +138,7 @@ public class Android_ReblastTest extends Drivers {
     public void test09_reblast_setup() throws Exception {
         loginAs.user(account02, password02);
         blasts_tab();
-        driver.swipe((sw/10), (sh/10*8), (sw/10), (sh/10), 300);
+        driver.swipe((screenWidth/10), (screenHeight/10*8), (screenWidth/10), (screenHeight/10), 300);
         blast_lists().click(); 
         Thread.sleep(2000);
         log("Creating a blast list");
@@ -166,7 +161,7 @@ public class Android_ReblastTest extends Drivers {
         username(account03).click();
         OK_button().click();
         Thread.sleep(500);
-        driver.swipe((sw/10), (sh/10*2), (sw/10), (sh/10*8), 300);
+        driver.swipe((screenWidth/10), (screenHeight/10*2), (screenWidth/10), (screenHeight/10*8), 300);
     }
     
     public void test10_reblast_text_with_loc() throws Exception {
@@ -176,13 +171,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting text to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting text to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -200,13 +195,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting text to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting text to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -224,13 +219,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -248,13 +243,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -271,13 +266,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting giphy to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting giphy to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -294,13 +289,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting giphy to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting giphy to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -317,13 +312,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting video to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting video to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
@@ -340,13 +335,13 @@ public class Android_ReblastTest extends Drivers {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting video to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((sw/10*8),(sh/10*3), (sw/10*1), (sh/10*3), 300);
+        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting video to a friend");
         swipe_view_reblast().click();
         blast_friends().click();

@@ -1,10 +1,9 @@
 package tests.myBlasts;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_MyBlastsTest extends Drivers {
+public class Android_MyBlastsTest extends AndroidElements {
 
 	//////////////////////////////
 	String account01 = "myblaststest01";
@@ -14,20 +13,16 @@ public class Android_MyBlastsTest extends Drivers {
 	String password02 = "myblaststest02";
 	//////////////////////////////
 	
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
 	
 	public void swipeThroughBlasts() throws Exception {
 		screenshot_button().click();
 		Thread.sleep(1000);
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 	
 	public void test01_send_text_blast() throws Exception {
@@ -80,22 +75,22 @@ public class Android_MyBlastsTest extends Drivers {
 		blasts_tab();
 		Thread.sleep(1000);
 		
-		driver.swipe((sw/10*8), (sh/10*5), (sw/10*1), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*5), (screenWidth/10*1), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*8), (sh/10*5), (sw/10*1), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*5), (screenWidth/10*1), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*1), (sh/10*5), (sw/10*8), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*1), (screenHeight/10*5), (screenWidth/10*8), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*1), (sh/10*5), (sw/10*8), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*1), (screenHeight/10*5), (screenWidth/10*8), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
 		
 		dusts_tab().click();
 		blasts_tab().click();
 		Thread.sleep(1000);
 		
-		driver.swipe((sw/10*8), (sh/10*5), (sw/10*1), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*5), (screenWidth/10*1), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
-		driver.swipe((sw/10*1), (sh/10*5), (sw/10*8), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*1), (screenHeight/10*5), (screenWidth/10*8), (screenHeight/10*5), 300);
 		Thread.sleep(1000);
 	}
 	
@@ -104,7 +99,7 @@ public class Android_MyBlastsTest extends Drivers {
 		blasts_tab();
 		homepage_profile_picture().click();
 		profile_blast_image();
-		action.press((int)(sw/10*2.08), (int)(sh/10*8.45)).release().perform();
+		action.press((int)(screenWidth/10*2.08), (int)(screenHeight/10*8.45)).release().perform();
 		swipeThroughBlasts();
 		username(account01).click();
 	}
@@ -112,7 +107,7 @@ public class Android_MyBlastsTest extends Drivers {
 	public void test06_view_blasts_from_swipe_view() throws Exception {
 		log("Viewing blasts from swipe view and taking screenshot");
 		blasts_tab();
-		driver.swipe((sw/10*1), (sh/10*5), (sw/10*8), (sh/10*5), 300);
+		driver.swipe((screenWidth/10*1), (screenHeight/10*5), (screenWidth/10*8), (screenHeight/10*5), 300);
 		username(account01).click();
 		swipeThroughBlasts();
 	}

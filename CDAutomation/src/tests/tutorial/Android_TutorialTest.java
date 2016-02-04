@@ -3,22 +3,17 @@ package tests.tutorial;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
 import elements.LoginWith;
 import elements.AndroidCamera;
-import io.appium.java_client.TouchAction;
+import elements.AndroidElements;
 
+public class Android_TutorialTest extends AndroidElements {
 
-public class Android_TutorialTest extends Drivers{
-
-	WebDriverWait wait = new WebDriverWait(driver, 20);
-	AndroidCamera androidCamera = new AndroidCamera();
-	
 	String account_name = "tutorialtest";
 	String account_pw = "password";
 
+	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_tutorialUI() throws Exception

@@ -3,15 +3,12 @@ package tests.dusts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_dustTest extends Drivers {
+public class Android_dustTest extends AndroidElements {
 
-	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
 	String account_pw = "password";
@@ -22,7 +19,6 @@ public class Android_dustTest extends Drivers {
 	String friend_username2 = "existing02";
 	//////////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 
 	public void test01_chat_from_action_menu() throws Exception {

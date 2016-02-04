@@ -1,15 +1,14 @@
 package tests.followers;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_followersTest extends Drivers {
-	WebDriverWait wait = new WebDriverWait(driver, 20);
+public class Android_followersTest extends AndroidElements {
+	
 	///////////////////////////////////////////////
 	String account_name = "existingTest01";
 	String account_pw = "password";
@@ -18,11 +17,9 @@ public class Android_followersTest extends Drivers {
 
 	//////////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 	
-	
-public void test01_add_friends() throws Exception {
+	public void test01_add_friends() throws Exception {
 		
 		loginAs.user(account_name, account_pw);
 		more_button().click();

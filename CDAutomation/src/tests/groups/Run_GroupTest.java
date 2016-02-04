@@ -3,29 +3,37 @@ package tests.groups;
 import org.junit.*;
 import org.junit.runners.MethodSorters;
 
+import elements.Drivers;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Run_GroupTest extends Android_GroupTest {
-	
-	public static void relaunch() {
-		driver.closeApp();
-		driver.launchApp();
-	}
+public class Run_GroupTest extends Drivers {
 	
 	@Test
 	public void test01_createGroup() throws Exception {
 		log("[Start] Starting group test");
+		
 		try {
 			log("Test01 creating a group");
+			
 			if (Android()) {
 				new Android_GroupTest().test01_create_group();
-			} else if (iOS()) {
+			} else if (IOS()) {
 				new IOS_GroupTest().test01_create_group();
 			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -34,12 +42,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test02_addBlockedUser() throws Exception {
 		try {
 			log("Test02 trying to add blocked user");
-			new Android_GroupTest().test02_add_blocked_user();
+			
+			if (Android()) {
+				new Android_GroupTest().test02_add_blocked_user();
+			} else if (IOS()) {
+				new IOS_GroupTest().test02_add_blocked_user();
+			}
+				
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -48,12 +70,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test03_groupMembers() throws Exception {
 		try {
 			log("Test03 checking group members");
-			new Android_GroupTest().test03_group_members();
+			
+			if (Android()) {
+				new Android_GroupTest().test03_group_members();
+			} else if (IOS()) {
+				new IOS_GroupTest().test03_group_members();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -62,12 +98,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test04_sendUsername() throws Exception {
 		try {
 			log("Test04 sending a +username");
-			new Android_GroupTest().test04_send_username();
+			
+			if (Android()) {
+				new Android_GroupTest().test04_send_username();
+			} else if (IOS()) {
+				new IOS_GroupTest().test04_send_username();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -76,12 +126,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test05_sendPhoto() throws Exception {
 		try {
 			log("Test05 sending a photo");
-			new Android_GroupTest().test05_send_photo();
+			
+			if (Android()) {
+				new Android_GroupTest().test05_send_photo();
+			} else if (IOS()) {
+				new IOS_GroupTest().test05_send_photo();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -90,12 +154,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test06_sendVideo() throws Exception {
 		try {
 			log("Test06 sending a video");
-			new Android_GroupTest().test06_send_video();
+			
+			if (Android()) {
+				new Android_GroupTest().test06_send_video();
+			} else if (IOS()) {
+				new IOS_GroupTest().test06_send_video();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -104,12 +182,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test07_sendGiphy() throws Exception {
 		try {
 			log("Test07 sending a giphy");
-			new Android_GroupTest().test07_send_giphy();
+			
+			if (Android()) {
+				new Android_GroupTest().test07_send_giphy();
+			} else if (IOS()) {
+				new IOS_GroupTest().test07_send_giphy();
+			}
+				
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -118,12 +210,26 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test08_sendGalleryPhoto() throws Exception {
 		try {
 			log("Test08 sending a picture from gallery");
-			new Android_GroupTest().test08_send_gallery_photo();
+			
+			if (Android()) {
+				new Android_GroupTest().test08_send_gallery_photo();
+			} else if (IOS()) {
+				new IOS_GroupTest().test08_send_gallery_photo();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();
-			groups_tab().click();
-			group1().click();
+			
+			if (Android()) {
+				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().group1().click();
+			}
+			if (IOS()) {
+				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().group1().click();
+			}
+			
 			throw e;
 		}
 	}
@@ -132,7 +238,13 @@ public class Run_GroupTest extends Android_GroupTest {
 	public void test09_openGroupMessages() throws Exception {
 		try {
 			log("Test09 checking group messages");
-			new Android_GroupTest().test09_open_group_messages();
+			
+			if (Android()) {
+				new Android_GroupTest().test09_open_group_messages();
+			} else if (IOS()) {
+				new IOS_GroupTest().test09_open_group_messages();
+			}
+			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			relaunch();

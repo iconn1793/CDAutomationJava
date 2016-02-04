@@ -1,10 +1,9 @@
 package tests.managingFriends;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_FriendTest extends Drivers {
+public class Android_FriendTest extends AndroidElements {
 
 	//////////////////////////////////
 	String account01 = "friendtest01";
@@ -26,11 +25,7 @@ public class Android_FriendTest extends Drivers {
 	String password06 = "friendtest06";
 	//////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-	
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
 	
 	// Does a check for blasts from a specified account
 	public void checkForBlastsFrom(String account) throws Exception {
@@ -200,7 +195,7 @@ public class Android_FriendTest extends Drivers {
     	log("Blocking account02 from Dusts tab");
     	dusts_tab().click();
     	Thread.sleep(1000);
-    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+    	action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
     	name("block user").click();
     	confirm().click();
     	
@@ -230,7 +225,7 @@ public class Android_FriendTest extends Drivers {
 //    	Thread.sleep(500);
 //    	
 //    	// Turns off Blast Previews
-//    	driver.swipe((sw/10), (sh/10*7), (sw/10), (sh/10*3), 300);
+//    	driver.swipe((screenWidth/10), (screenHeight/10*7), (screenWidth/10), (screenHeight/10*3), 300);
 //		try {
 //			if (driver.findElement(By.xpath("//android.widget.Switch[@text='ON' and "
 //					+ "@resource-id='com.radicalapps.cyberdust:id/more_fragment_show_preview_switch']")).isDisplayed()) {
@@ -278,7 +273,7 @@ public class Android_FriendTest extends Drivers {
     	log("Muting account01 from Dusts tab");
     	dusts_tab().click();
     	Thread.sleep(1000);
-    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+    	action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
     	name("mute blasts").click();
     	confirm().click();
     	
@@ -299,12 +294,12 @@ public class Android_FriendTest extends Drivers {
     	log("Muting account05 from swipe view");
     	blasts_tab().click();
     	Thread.sleep(1000);
-    	driver.swipe((sw/10), (sh/10*6), (sw/10), (sh/10*3), 300);
+    	driver.swipe((screenWidth/10), (screenHeight/10*6), (screenWidth/10), (screenHeight/10*3), 300);
     	try {
     		waitTime(2);
     		username(account05).click();
     	} catch (Exception e) {
-    		action.press((int)(sw/10*5.17), (int)(sh/10*3.11)).release().perform();
+    		action.press((int)(screenWidth/10*5.17), (int)(screenHeight/10*3.11)).release().perform();
     		waitTime(20);
     	}
     	blasted_by().click();
@@ -543,7 +538,7 @@ public class Android_FriendTest extends Drivers {
     	try {
     		if (name("Delete Empty Rooms").isDisplayed()) {
     			Thread.sleep(500);
-    			driver.swipe((sw/10), (sh/10*3), (sw/10), (sh/10*8), 300);
+    			driver.swipe((screenWidth/10), (screenHeight/10*3), (screenWidth/10), (screenHeight/10*8), 300);
     		}
     	}catch (Exception e) {}
     	waitTime(20);
@@ -553,11 +548,11 @@ public class Android_FriendTest extends Drivers {
     	// Unmute account06 from Dusts tab 
     	try {
 			Thread.sleep(500);
-			action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+			action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
 			name("delete dust").click();
 	    	log("Unmuting account06 from Dusts tab");
 	    	Thread.sleep(500);
-	    	action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+	    	action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
 	    	name("unmute blasts").click();
     	} catch (Exception e) {
     		log("[Warning] Could not tap on dust room more menu");
@@ -580,7 +575,7 @@ public class Android_FriendTest extends Drivers {
 			log("Deleting all remaining dust rooms");
 			for (int i = 0; i < 4; i++) {
 				Thread.sleep(500);
-				action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+				action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
 				name("delete dust").click();
 			}
 		} catch (Exception e) {
@@ -609,7 +604,7 @@ public class Android_FriendTest extends Drivers {
     		waitTime(3);
     		if (name(account01).isDisplayed()) {
     			log("Dust received from account01 after being unblocked");
-    			action.press((int)(sw/10*9.17),(int)(sh/10*1.64)).release().perform();
+    			action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
     			name("delete dust").click();
     		}
     	} catch (Exception e) {

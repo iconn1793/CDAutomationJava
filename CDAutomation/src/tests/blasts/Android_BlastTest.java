@@ -1,10 +1,9 @@
 package tests.blasts;
 
-import elements.Drivers;
+import elements.AndroidElements;
 import elements.LoginWith;
-import io.appium.java_client.TouchAction;
 
-public class Android_BlastTest extends Drivers {
+public class Android_BlastTest extends AndroidElements {
 
 	////////////////////////////////////////
 	String account01 = "blasttest01";
@@ -20,12 +19,8 @@ public class Android_BlastTest extends Drivers {
 	String blast_username = "+" + account01;
 	////////////////////////////////////////
 
-	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
-
-	int sw = driver.manage().window().getSize().getWidth();
-	int sh = driver.manage().window().getSize().getHeight();
-
+	
 	public void test01_create_blast_list() throws Exception {
 		// Logs into blast testing account
 		loginAs.user(account01, password01);
@@ -219,7 +214,7 @@ public class Android_BlastTest extends Drivers {
 		
 		swipe_view_location().click(); Thread.sleep(3000);
 		driver.pressKeyCode(4); Thread.sleep(2000);
-		action.press(sw/10*2, sh/10*2).release().perform(); // taps +username
+		action.press(screenWidth/10*2, screenHeight/10*2).release().perform(); // taps +username
 		
 		try {
 			Thread.sleep(1000);
@@ -232,12 +227,12 @@ public class Android_BlastTest extends Drivers {
 		
 		driver.pressKeyCode(4);
 		Thread.sleep(2000);
-		action.press(sw/10*2, (int)(sh/10*2.9)).release().perform(); // Taps on URL
+		action.press(screenWidth/10*2, (int)(screenHeight/10*2.9)).release().perform(); // Taps on URL
 		// swipe_view_url_card().click(); currently not working over Wifi
 		Thread.sleep(4000);
 		back_button().click(); Thread.sleep(1000);
 		
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 
 	public void test10_open_photo_blast() throws Exception {
@@ -255,7 +250,7 @@ public class Android_BlastTest extends Drivers {
 		back_button().click();
 		Thread.sleep(1000);
 
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 
 	public void test11_open_non_public_blast() throws Exception {
@@ -279,10 +274,10 @@ public class Android_BlastTest extends Drivers {
 			log ("[Warning] +username did not open profile!");
 		}
 		
-		action.press(sw/10*2, sh/10*2).release().perform();
+		action.press(screenWidth/10*2, screenHeight/10*2).release().perform();
 		Thread.sleep(1000);
 
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 
 	public void test12_open_giphy_blast() throws Exception {
@@ -297,7 +292,7 @@ public class Android_BlastTest extends Drivers {
 			log("Giphy was not found");
 		}
 		Thread.sleep(1000);
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 
 	public void test13_open_video_blast() throws Exception {
@@ -321,10 +316,10 @@ public class Android_BlastTest extends Drivers {
 			log ("[Warning] +username did not open profile!");
 		}
 		
-		action.press(sw/10*2, sh/10*2).release().perform();
+		action.press(screenWidth/10*2, screenHeight/10*2).release().perform();
 		Thread.sleep(1000);
 
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 
 		// Opens video with URL
 		swipe_view_text().click();
@@ -332,7 +327,7 @@ public class Android_BlastTest extends Drivers {
 		back_button().click();
 		Thread.sleep(1000);
 
-		driver.swipe((sw/10*8), (sh/10*3), (sw/10*1), (sh/10*3), 300);
+		driver.swipe((screenWidth/10*8), (screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
 	}
 
 	public void test14_reply_to_blast() throws Exception {
