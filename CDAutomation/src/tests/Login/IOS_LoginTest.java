@@ -9,5 +9,6 @@ public class IOS_LoginTest extends IOSDrivers {
 	
 	public void Login() throws Exception {
 		loginAs.user("testacct01\n", "test01\n");
+		Thread.sleep(2000);//for using inspector to view elements
 	}
 }

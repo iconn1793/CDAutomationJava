@@ -98,7 +98,8 @@ public class IOSDrivers {
 	
 	//logs out of the current account
 	public void logoutAccount() {
-		action.press(followers()).moveTo(back_button()).release().perform();
+		more_button().click();
+		action.press(followers()).moveTo(close()).release().perform();
 	    logout().click();
 	    confirm().click();
 	}
@@ -119,7 +120,7 @@ public class IOSDrivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[1]")));
 	}
 	public WebElement confirm() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button1")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Okay")));
 	}
 	public WebElement cancel() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")));
@@ -237,7 +238,7 @@ public class IOSDrivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0'][android.widget.EditText[@index='0']]")));
 	}
 	public WebElement group_three_dotted_menu() {
-		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.LinearLayout[@index='2'][android.widget.ImageButton[@index='0']]")));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[4]")));
 	}
 	public WebElement group1_more_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
@@ -258,20 +259,19 @@ public class IOSDrivers {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_photo_button")));
 	}
 	public WebElement dusting_with() {
-		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/btn_chatting_triangle")));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name("99_reveal_info_arrow_red_btn")));
 	}
 	public WebElement card_view() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/card_view")));
 	}
 	public WebElement more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("profileMore")));
 	}
 	public WebElement action_menu() throws InterruptedException {
-		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[1]")));
 	}
 	public WebElement action_menu_dust() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("dust")));
 	}
 	public WebElement action_menu_group() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='1']]")));
@@ -412,10 +412,10 @@ public class IOSDrivers {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_timer_view")));
 	}
 	public WebElement chat_room_text_box() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_text_box")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextView[1]")));
 	}
 	public WebElement chat_room_send_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_send_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("send")));
 	}
 	public WebElement sent_text_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_bubble_view_message_text")));
@@ -427,7 +427,7 @@ public class IOSDrivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Tap message to unpin")));
 	}
 	public WebElement follow_from_chat_room() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("follow")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]")));
 	}
 	public WebElement unfollow_from_chat_room() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("unfollow")));
@@ -474,7 +474,7 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_email")));
     }
     public WebElement followers() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("5 Followers")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]")));
     }
     public WebElement friends() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
@@ -501,7 +501,7 @@ public class IOSDrivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_show_preview_switch")));
     }
     public WebElement logout() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_logout_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Log Out")));
     }
     public WebElement change_email_address() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
