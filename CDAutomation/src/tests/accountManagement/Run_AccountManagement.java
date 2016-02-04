@@ -54,7 +54,7 @@ public class Run_AccountManagement extends Drivers {
 			if (Android()) {
 				new Android_AccountManagementTest().test03_account_deleting();
 			} else if (IOS()) {
-				new IOS_AccountManagementTest().test03_account_deleting();
+				//new IOS_AccountManagementTest().test03_account_deleting();
 			}
 			
 		} catch (Exception e) {

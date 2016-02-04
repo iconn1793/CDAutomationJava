@@ -63,8 +63,6 @@ public class IOSElements extends Drivers {
 	public WebElement sign_up() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("next arrow grey btn")));
 	}
-	
-	
 	public WebElement push_notifications_OK() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[7]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]")));
 	}
@@ -477,7 +475,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
     }
     public WebElement change_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[14]/UIAStaticText[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Password")));
     }
     public WebElement clear_text_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));

@@ -98,6 +98,7 @@ public class LoginWith extends Drivers {
         	driver.getKeyboard().sendKeys(account + "\n");
         	new IOSElements().login_password().click();
         	driver.getKeyboard().sendKeys(password + "\n");
+                	
         	
         }
     }
