@@ -98,8 +98,12 @@ public void test02_changing_email() throws Exception {
 			//driver.pressKeyCode(4);
 
 			System.out.println("Loged in into deleted account");
+<<<<<<< HEAD
 			//driver.pressKeyCode(4);
 
+=======
+			driver.pressKeyCode(4);
+>>>>>>> BrantK/master
 			sign_up_button().click();
 		}
 

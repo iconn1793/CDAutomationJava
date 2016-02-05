@@ -120,6 +120,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 	}
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public void test02_AddFriend_from_DustsTab() throws Exception
 	{
 		//temp start
@@ -142,6 +143,9 @@ public class IOS_AddFriendsTest extends IOSElements {
 			yes_button().click();
 =======
 	public void logout_account()
+=======
+	public void logout_account() throws Exception
+>>>>>>> BrantK/master
 	{
 		back_button().click();
 		back_button().click();
@@ -230,12 +234,16 @@ public class IOS_AddFriendsTest extends IOSElements {
 		friends_search().sendKeys(friend_username);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//driver.pressKeyCode(66);
 =======
 		driver.pressKeyCode(66);
 >>>>>>> BrantK/master
 =======
 	//	driver.pressKeyCode(66);
+>>>>>>> BrantK/master
+=======
+		//driver.pressKeyCode(66);
 >>>>>>> BrantK/master
 		
 		add_friends_button_inBrowseFriends().click();

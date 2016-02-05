@@ -213,7 +213,7 @@ public class IOS_BlastTest extends IOSElements {
 		name(account01).click(); Thread.sleep(2000);
 		
 		swipe_view_location().click(); Thread.sleep(3000);
-	//	driver.pressKeyCode(4); Thread.sleep(2000);
+		driver.pressKeyCode(4); Thread.sleep(2000);
 		action.press(screenWidth/10*2, screenHeight/10*2).release().perform(); // taps +username
 		
 		try {
@@ -225,7 +225,7 @@ public class IOS_BlastTest extends IOSElements {
 			log ("[Warning] +username did not open profile!");
 		}
 		
-		//driver.pressKeyCode(4);
+		driver.pressKeyCode(4);
 		Thread.sleep(2000);
 		action.press(screenWidth/10*2, (int)(screenHeight/10*2.9)).release().perform(); // Taps on URL
 		// swipe_view_url_card().click(); currently not working over Wifi
