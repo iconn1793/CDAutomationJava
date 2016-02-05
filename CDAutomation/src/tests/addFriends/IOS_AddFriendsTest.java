@@ -229,9 +229,13 @@ public class IOS_AddFriendsTest extends IOSElements {
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//driver.pressKeyCode(66);
 =======
 		driver.pressKeyCode(66);
+>>>>>>> BrantK/master
+=======
+	//	driver.pressKeyCode(66);
 >>>>>>> BrantK/master
 		
 		add_friends_button_inBrowseFriends().click();
@@ -271,6 +275,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		friends_search().click();
 		friends_search().sendKeys(friend_username);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		//driver.pressKeyCode(66);
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
@@ -279,6 +284,9 @@ public class IOS_AddFriendsTest extends IOSElements {
 		action.longPress(first_friend(), 4000).release().perform();
 =======
 		driver.pressKeyCode(66);
+=======
+		//driver.pressKeyCode(66);
+>>>>>>> BrantK/master
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();

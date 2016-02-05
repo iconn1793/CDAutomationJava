@@ -76,9 +76,14 @@ public void test02_changing_email() throws Exception {
 			System.out.println("Could not login into deleted account");
 			back_button().click();
 		} catch (Exception e) {
+<<<<<<< HEAD
 
 			System.out.println("Logged in into deleted account");
 			//driver.pressKeyCode(4);
+=======
+			System.out.println("Loged in into deleted account");
+			//driver.pressKeyCode(4);
+>>>>>>> BrantK/master
 			sign_up_button().click();
 		}
 
