@@ -3,7 +3,6 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -11,13 +10,26 @@ import io.appium.java_client.android.AndroidDriver;
 public class AndroidElements extends Drivers {
 	
 	public AndroidDriver<WebElement> driver;
-	public WebDriverWait wait = new WebDriverWait(Drivers.driver, 20);
 	
 	// Logs out of current account
-	public void logoutAccount() {
-		action.press(followers()).moveTo(back_button()).release().perform();
-	    logout().click();
-	    confirm().click();
+	public void logoutAccount() throws Exception {
+		boolean isLoggedOut;
+		try {
+			log("Checking if logged out");
+			waitTime(8);
+            sign_up_button();
+            isLoggedOut = true;
+        } catch (Exception e) {
+            isLoggedOut = false;
+        }
+		if (!isLoggedOut) {
+            more_button().click(); Thread.sleep(1000);
+            action.press(followers()).moveTo(back_button()).release().perform();
+            Thread.sleep(1000);
+            logout().click();
+            log("Logging out before starting test");
+            confirm().click();
+		}
 	}
 	
 	/******************

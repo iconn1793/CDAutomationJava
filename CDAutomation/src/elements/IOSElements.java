@@ -3,21 +3,30 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.ios.IOSDriver;
 
 public class IOSElements extends Drivers {
-	
-	public IOSDriver<WebElement> driver;
-	public WebDriverWait wait = new WebDriverWait(Drivers.driver, 20);
 
 	// Logs out of current account
-	public void logoutAccount() {
-		action.press(followers()).moveTo(back_button()).release().perform();
-	    logout().click();
-	    confirm().click();
+	public void logoutAccount() throws Exception {
+		boolean isLoggedOut;
+		try {
+			log("Checking if logged out");
+			waitTime(8);
+            sign_up_button();
+            isLoggedOut = true;
+        } catch (Exception e) {
+            isLoggedOut = false;
+        }
+		if (!isLoggedOut) {
+            more_button().click(); Thread.sleep(1000);
+            action.press(followers()).moveTo(back_button()).release().perform();
+            Thread.sleep(1000);
+            logout().click();
+            log("Logging out before starting test");
+            confirm().click();
+		}
 	}
 	
 	/******************
@@ -418,28 +427,28 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")));
     }
     public WebElement enter_bio() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextView[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Enter Bio")));
     }
     public WebElement enter_website() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]/UIATextField[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_url")));
     }
     public WebElement share_twitter() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" twitterIcon")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_twitter")));
     }
     public WebElement share_facebook() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" facebookIcon")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_facebook")));
     }
     public WebElement share_instagram() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" instagramIcon")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_instagram")));
     }
     public WebElement share_email() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" emailIcon")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_email")));
     }
     public WebElement followers() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")));
     }
     public WebElement friends() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(" //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
     }
     public WebElement friend_profile_picture() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_friend_listitem_icon")));
@@ -466,31 +475,31 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_show_preview_switch")));
     }
     public WebElement logout() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Log Out")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("Log Out")));
     }
     public WebElement change_email_address() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Email Address")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
     }
     public WebElement change_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Password")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[14]/UIAStaticText[1]")));
     }
     public WebElement clear_text_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Clear text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));
     }    
     public WebElement validate_mobile() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Validate Mobile #")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_mobile_number_row")));
     }
     public WebElement muted_blocked_users() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Validate Mobile #")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_blocked_users_row")));
     }
     public WebElement user_guides() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" User Guides & Help")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_guide_row")));
     }
     public WebElement tutorial() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Tutorial")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_tutorial_row")));
     }
     public WebElement delete_account() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Delete Account")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_delete_account_row")));
     }
     public WebElement enter_old_password() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]/UIASecureTextField[1]")));
@@ -508,10 +517,10 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
     }
     public WebElement invalid_username() {
-    	return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Invalid username & password combination")));
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
     }
     public WebElement friends_search() {
-    	return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Search for friends, groups, and users")));
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
     }
     public WebElement chat_room_first_friend() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ListView[@index='0'][android.widget.RelativeLayout[@index='0']]")));

@@ -91,7 +91,7 @@ public class IOS_SignUpTest extends IOSElements {
 			if (tutorial_video().isDisplayed()) {
 				Thread.sleep(1000);
 				log("Backing out of tutorial screen");
-				//driver.pressKeyCode(4);
+				driver.pressKeyCode(4);
 			}
 		} catch (Exception e) {
 			log("No tutorial screen");

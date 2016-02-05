@@ -222,7 +222,7 @@ public class Android_TimeoutTests extends AndroidElements {
 
 	}
 		
-	public void logout_account()
+	public void logout_account() throws Exception
 	{
 		back_button().click();
 		back_button().click();

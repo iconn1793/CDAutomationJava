@@ -220,7 +220,7 @@ public class IOS_TimeoutTests extends IOSElements {
 
 	}
 		
-	public void logout_account()
+	public void logout_account() throws Exception
 	{
 		back_button().click();
 		back_button().click();
