@@ -85,10 +85,10 @@ public class LoginWith extends Drivers {
         }
         
         if (already_logged_in && !logged_out) {
-        	new IOSElements().back_button().click();
+        	new IOSElements().close_button().click();
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
-            action.press(new IOSElements().followers()).moveTo(new IOSElements().back_button()).release().perform();
+            action.press(new IOSElements().followers()).moveTo(new IOSElements().close_button()).release().perform();
             try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

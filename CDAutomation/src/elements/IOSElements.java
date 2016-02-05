@@ -36,13 +36,16 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
     public WebElement OK_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("OK"))); 
+    }
+    public WebElement Alert_OK_button() {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]"))); 
     }
     public WebElement done_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("done")));
     }
 	public WebElement back_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("close")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("back arrow red btn")));
 	}
 	public WebElement confirm() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("Okay")));
@@ -52,6 +55,9 @@ public class IOSElements extends Drivers {
 	}
 	public WebElement profile_follow_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_button")));
+	}
+	public WebElement close_button() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name("close")));
 	}
 	
 	/*********************
@@ -481,17 +487,16 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("Log Out")));
     }
     public WebElement change_email_address() {
-<<<<<<< HEAD
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[13]/UIAStaticText[1]")));
     }
     public WebElement change_password() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Password")));
-=======
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
     }
-    public WebElement change_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[14]/UIAStaticText[1]")));
->>>>>>> BrantK/master
+    public WebElement confirm_delete() {
+       return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete")));
+   }
+    public WebElement confirm_delete_again() {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")));
     }
     public WebElement clear_text_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));
@@ -509,7 +514,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_tutorial_row")));
     }
     public WebElement delete_account() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_delete_account_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete Account")));
     }
     public WebElement enter_old_password() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("current password")));
@@ -524,7 +529,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")));
     }
     public WebElement new_email_text_box() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]/UIATextField[1]")));	
+        return driver.findElement(By.className("UIATextField"));	
     }
     public WebElement invalid_username() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
@@ -621,7 +626,10 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("next arrow grey btn")));
     }
     public WebElement birthday_OK() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_3_ok_button")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("next arrow grey btn")));
+    }
+    public WebElement date_year() {
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAPicker[1]/UIAPickerWheel[3]")));
     }
     public WebElement email_OK() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/onboarding_4_ok_button")));

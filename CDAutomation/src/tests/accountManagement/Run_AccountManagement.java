@@ -7,7 +7,7 @@ import elements.Drivers;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Run_AccountManagement extends Drivers {
-/*	
+	
 	@Test
 	public void test01_ChangePassword() throws Exception {
 		try {
@@ -24,7 +24,7 @@ public class Run_AccountManagement extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}*/
+	}
 
 	@Test
 	public void test02_ChangeEmail() throws Exception {
@@ -44,7 +44,7 @@ public class Run_AccountManagement extends Drivers {
 		}	
 	}
 	
-	/*
+	
 	@Test
 	public void test03_AccountDeleting() throws Exception 
 	{
@@ -54,12 +54,12 @@ public class Run_AccountManagement extends Drivers {
 			if (Android()) {
 				new Android_AccountManagementTest().test03_account_deleting();
 			} else if (IOS()) {
-				//new IOS_AccountManagementTest().test03_account_deleting();
+				new IOS_AccountManagementTest().test03_account_deleting();
 			}
 			
 		} catch (Exception e) {
 			log("[Fail] Got exception " + e);
 			throw e;
 		}
-	}*/
+	}
 }
