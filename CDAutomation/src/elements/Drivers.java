@@ -56,17 +56,17 @@ public class Drivers {
 		
 		if(IOSenabled == true)
 		{
-//			if (DeviceReader.runningIOSDevice) {
-//				System.out.println("Running test on iOS device");
-//				capabilities.setCapability("platformName", "IOS");
-//				capabilities.setCapability("platformVersion", "");
-//				capabilities.setCapability("deviceName", "iPhone 6");
-//				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-//				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
-//				driver = new IOSDriver<>(service, capabilities);
-//			}
+			if (DeviceReader.runningIOSDevice) {
+				System.out.println("Running test on iOS device");
+				capabilities.setCapability("platformName", "IOS");
+				capabilities.setCapability("platformVersion", "");
+				capabilities.setCapability("deviceName", "iPhone 6");
+				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
+				driver = new IOSDriver<>(service, capabilities);
+  		}
 			
-			//else if (!DeviceReader.runningAndroidDevice && !DeviceReader.runningAndroidDevice) {
+			else{
 				System.out.println("Running test on iOS simulator");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -76,11 +76,11 @@ public class Drivers {
 				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
 				capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
 				driver = new IOSDriver<>(service, capabilities);
-			//}
+			}
 		}
 		else
 		{
-			//if (DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
+			
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
@@ -88,39 +88,9 @@ public class Drivers {
 				capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
 				capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
 				driver = new AndroidDriver<>(service, capabilities);
-			//}
-		}
-//		if (DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
-//			System.out.println("Running test on Android device");
-//			capabilities.setCapability("platformName", "Android");
-//			capabilities.setCapability("platformVersion", "");
-//			capabilities.setCapability("deviceName", "");
-//			capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
-//			capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
-//			driver = new AndroidDriver<>(service, capabilities);
-//		}
 			
-//		if (DeviceReader.runningIOSDevice) {
-//			System.out.println("Running test on iOS device");
-//			capabilities.setCapability("platformName", "IOS");
-//			capabilities.setCapability("platformVersion", "");
-//			capabilities.setCapability("deviceName", "iPhone 6");
-//			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-//			capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
-//			driver = new IOSDriver<>(service, capabilities);
-//		}
-//		
-//		if (!DeviceReader.runningAndroidDevice && !DeviceReader.runningAndroidDevice) {
-//			System.out.println("Running test on iOS simulator");
-//			capabilities.setCapability("platformName", "IOS");
-//			capabilities.setCapability("platformVersion", "");
-//			capabilities.setCapability("deviceName", "iPhone 6");
-//			capabilities.setCapability("noReset", true);
-//			capabilities.setCapability("nativeInstrumentsLib", true);
-//			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-//			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
-//			driver = new IOSDriver<>(service, capabilities);
-//		}
+		}
+		
 		
 		service.start();
 	}
