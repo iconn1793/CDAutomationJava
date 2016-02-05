@@ -472,17 +472,13 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Log Out")));
     }
     public WebElement change_email_address() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Email Address")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[13]/UIAStaticText[1]")));
     }
     public WebElement change_password() {
-<<<<<<< HEAD
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Password")));
-=======
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Password")));
->>>>>>> BrantK/master
     }
     public WebElement clear_text_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Clear text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));
     }    
     public WebElement validate_mobile() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Validate Mobile #")));
@@ -512,7 +508,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")));
     }
     public WebElement new_email_text_box() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextField[1]/UIATextField[1]")));	
     }
     public WebElement invalid_username() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Invalid username & password combination")));

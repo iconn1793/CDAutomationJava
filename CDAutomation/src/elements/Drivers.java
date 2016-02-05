@@ -74,11 +74,8 @@ public class Drivers {
 			capabilities.setCapability("noReset", true);
 			capabilities.setCapability("nativeInstrumentsLib", true);
 			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-<<<<<<< HEAD
-			capabilities.setCapability("app", "/Users/ianconnelly/Downloads/CyberDust.app"); //Set path here for simulation
-=======
 			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
->>>>>>> BrantK/master
+
 			driver = new IOSDriver<>(service, capabilities);
 		}
 		

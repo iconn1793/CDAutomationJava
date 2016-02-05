@@ -1,5 +1,7 @@
 package tests.accountManagement;
 
+import org.openqa.selenium.By;
+
 import elements.IOSElements;
 import elements.LoginWith;
 
@@ -24,7 +26,9 @@ public class IOS_AccountManagementTest extends IOSElements {
 		// Changes password
 		more_button().click();
 		action.press(followers()).moveTo(back_button()).release().perform();
+		Thread.sleep(1100);
 		change_password().click();
+		//driver.getKeyboard().sendKeys(account_pw + "\n");
 		enter_old_password().sendKeys(account_pw + "\n");
 		enter_new_password().sendKeys(account_new_pw + "\n");
 		confirm_new_password().sendKeys(account_new_pw + "\n");
@@ -35,6 +39,7 @@ public class IOS_AccountManagementTest extends IOSElements {
 		enter_old_password().sendKeys(account_new_pw + "\n");
 		enter_new_password().sendKeys(account_pw + "\n");
 		confirm_new_password().sendKeys(account_pw + "\n");
+		OK_button().click(); 
 		System.out.println("Password reset");
 	}
 
@@ -42,10 +47,21 @@ public class IOS_AccountManagementTest extends IOSElements {
 		
 
 public void test02_changing_email() throws Exception {
+	
+	//temp
+	more_button().click();
+	action.press(followers()).moveTo(back_button()).release().perform();
+	Thread.sleep(1100);
+	
 		
 		change_email_address().click();
-		driver.getKeyboard().sendKeys(account_new_email + "\n");
-
+		clear_text_button().click();
+		System.out.println(driver.getPageSource());
+		//driver.getKeyboard().sendKeys(account_new_email + "\n");
+		Thread.sleep(500);
+		new_email_text_box().sendKeys("hello"); //account_new_email + "\n"
+		OK_button().click();
+		
 		// Reset email address
 		change_email_address().click();
 		try {
@@ -60,12 +76,12 @@ public void test02_changing_email() throws Exception {
 
 		}
 	}
-/*
+
 	public void test03_account_deleting() throws Exception {
 		System.out.println("Deleting");
 		delete_account().click();
-		confirm_delete().click();
-		confirm_delete_account().click();
+		//confirm_delete().click();
+		//confirm_delete_account().click();
 		System.out.println("Account Deleted");
 		
 		try {
@@ -76,14 +92,14 @@ public void test02_changing_email() throws Exception {
 			System.out.println("Could not login into deleted account");
 			back_button().click();
 		} catch (Exception e) {
-<<<<<<< HEAD
+
 
 			System.out.println("Logged in into deleted account");
 			//driver.pressKeyCode(4);
-=======
+
 			System.out.println("Loged in into deleted account");
 			//driver.pressKeyCode(4);
->>>>>>> BrantK/master
+
 			sign_up_button().click();
 		}
 
@@ -95,7 +111,7 @@ public void test02_changing_email() throws Exception {
 		driver.getKeyboard().sendKeys(account_pw + "\n");
 
 		System.out.println("Entering birthday");
-		date_year().sendKeys("2003");
+		//date_year().sendKeys("2003");
 		birthday_done().click();
 		System.out.println("Entering email");
 		driver.getKeyboard().sendKeys(account_email + "\n");
@@ -104,6 +120,6 @@ public void test02_changing_email() throws Exception {
 		skip_button().click();
 		okay_button().click();
 		skip_button().click();
-		dont_allow().click();
-	}*/
+		//dont_allow().click();
+	}
 }
