@@ -132,7 +132,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		add_friends().click();
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
-		driver.pressKeyCode(66);
+		aDriver().pressKeyCode(66);
 		
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
@@ -166,7 +166,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		action_menu_search().click();
 		friends_search().click();
 		friends_search().sendKeys(friend_username);
-		driver.pressKeyCode(66);
+		aDriver().pressKeyCode(66);
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();
