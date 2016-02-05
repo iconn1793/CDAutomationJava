@@ -14,10 +14,24 @@ public class AndroidElements extends Drivers {
 	public WebDriverWait wait = new WebDriverWait(Drivers.driver, 20);
 	
 	// Logs out of current account
-	public void logoutAccount() {
-		action.press(followers()).moveTo(back_button()).release().perform();
-	    logout().click();
-	    confirm().click();
+	public void logoutAccount() throws Exception {
+		boolean isLoggedOut;
+		try {
+			log("Checking if logged out");
+			waitTime(8);
+            sign_up_button();
+            isLoggedOut = true;
+        } catch (Exception e) {
+            isLoggedOut = false;
+        }
+		if (!isLoggedOut) {
+            more_button().click(); Thread.sleep(1000);
+            action.press(followers()).moveTo(back_button()).release().perform();
+            Thread.sleep(1000);
+            logout().click();
+            log("Logging out before starting test");
+            confirm().click();
+		}
 	}
 	
 	/******************

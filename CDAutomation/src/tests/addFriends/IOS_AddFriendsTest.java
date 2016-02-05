@@ -62,7 +62,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		}
 	}
 	
-	public void logout_account()
+	public void logout_account() throws Exception
 	{
 		back_button().click();
 		back_button().click();
@@ -134,7 +134,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		add_friends().click();
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
-		driver.pressKeyCode(66);
+		//driver.pressKeyCode(66);
 		
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
@@ -168,7 +168,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		action_menu_search().click();
 		friends_search().click();
 		friends_search().sendKeys(friend_username);
-		driver.pressKeyCode(66);
+		//driver.pressKeyCode(66);
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();
