@@ -37,6 +37,7 @@ public class Drivers {
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 			new VariableCheck().environmentVariable();
 			new DeviceReader().checkDevice();
+			new AppPath().findApp();
 		} 
 		
 		AppiumDriverLocalService service = AppiumDriverLocalService
@@ -71,8 +72,9 @@ public class Drivers {
 			capabilities.setCapability("platformVersion", "");
 			capabilities.setCapability("deviceName", "iPhone 6");
 			capabilities.setCapability("noReset", true);
+			capabilities.setCapability("nativeInstrumentsLib", true);
 			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-			capabilities.setCapability("app", "/Users/Manjushri/Downloads/CyberDust.app"); //Set path here for simulation
+			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
 			driver = new IOSDriver<>(service, capabilities);
 		}
 		
