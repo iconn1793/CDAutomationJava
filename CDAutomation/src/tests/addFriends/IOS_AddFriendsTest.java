@@ -134,11 +134,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		add_friends().click();
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
-<<<<<<< HEAD
 		//driver.pressKeyCode(66);
-=======
-	//	driver.pressKeyCode(66);
->>>>>>> branch 'master' of https://github.com/brantk/cdautomationjava/
 		
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
