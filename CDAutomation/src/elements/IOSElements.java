@@ -406,7 +406,7 @@ public class IOSElements extends Drivers {
 	 * More page elements*
 	 *********************/
     public WebElement profile_picture() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_picture")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" tap to add profile photo")));
     }
     public WebElement remove_profile_picture() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/button2")));
@@ -421,7 +421,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")));
     }
     public WebElement enter_bio() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_bio")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Enter Bio")));
     }
     public WebElement enter_website() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_url")));
