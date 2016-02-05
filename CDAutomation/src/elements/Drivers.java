@@ -6,11 +6,13 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import application.TestExecuter;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -30,7 +32,7 @@ public class Drivers {
 	public TouchAction action = new TouchAction(driver);
 	public int screenWidth = driver.manage().window().getSize().getWidth();
 	public int screenHeight = driver.manage().window().getSize().getHeight();
-	
+	public static boolean IOSenabled = false;
 	@BeforeClass
 	public static void setUp() throws Exception {
 		
@@ -46,37 +48,79 @@ public class Drivers {
 				.withIPAddress(appiumServerAddress)
 				.usingPort(appiumServerPort));
 		
-		if (DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
-			System.out.println("Running test on Android device");
-			capabilities.setCapability("platformName", "Android");
-			capabilities.setCapability("platformVersion", "");
-			capabilities.setCapability("deviceName", "");
-			capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
-			capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
-			driver = new AndroidDriver<>(service, capabilities);
+		if(TestExecuter.y==1)
+		{
+			IOSenabled = true;
 		}
 			
-		if (DeviceReader.runningIOSDevice) {
-			System.out.println("Running test on iOS device");
-			capabilities.setCapability("platformName", "IOS");
-			capabilities.setCapability("platformVersion", "");
-			capabilities.setCapability("deviceName", "iPhone 6");
-			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-			capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
-			driver = new IOSDriver<>(service, capabilities);
-		}
 		
-		if (!DeviceReader.runningAndroidDevice && !DeviceReader.runningAndroidDevice) {
-			System.out.println("Running test on iOS simulator");
-			capabilities.setCapability("platformName", "IOS");
-			capabilities.setCapability("platformVersion", "");
-			capabilities.setCapability("deviceName", "iPhone 6");
-			capabilities.setCapability("noReset", true);
-			capabilities.setCapability("nativeInstrumentsLib", true);
-			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
-			driver = new IOSDriver<>(service, capabilities);
+		if(IOSenabled == true)
+		{
+//			if (DeviceReader.runningIOSDevice) {
+//				System.out.println("Running test on iOS device");
+//				capabilities.setCapability("platformName", "IOS");
+//				capabilities.setCapability("platformVersion", "");
+//				capabilities.setCapability("deviceName", "iPhone 6");
+//				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+//				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
+//				driver = new IOSDriver<>(service, capabilities);
+//			}
+			
+			//else if (!DeviceReader.runningAndroidDevice && !DeviceReader.runningAndroidDevice) {
+				System.out.println("Running test on iOS simulator");
+				capabilities.setCapability("platformName", "IOS");
+				capabilities.setCapability("platformVersion", "");
+				capabilities.setCapability("deviceName", "iPhone 6");
+				capabilities.setCapability("noReset", true);
+				capabilities.setCapability("nativeInstrumentsLib", true);
+				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+				capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
+				driver = new IOSDriver<>(service, capabilities);
+			//}
 		}
+		else
+		{
+			//if (DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
+				System.out.println("Running test on Android device");
+				capabilities.setCapability("platformName", "Android");
+				capabilities.setCapability("platformVersion", "");
+				capabilities.setCapability("deviceName", "");
+				capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
+				capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
+				driver = new AndroidDriver<>(service, capabilities);
+			//}
+		}
+//		if (DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
+//			System.out.println("Running test on Android device");
+//			capabilities.setCapability("platformName", "Android");
+//			capabilities.setCapability("platformVersion", "");
+//			capabilities.setCapability("deviceName", "");
+//			capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
+//			capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
+//			driver = new AndroidDriver<>(service, capabilities);
+//		}
+			
+//		if (DeviceReader.runningIOSDevice) {
+//			System.out.println("Running test on iOS device");
+//			capabilities.setCapability("platformName", "IOS");
+//			capabilities.setCapability("platformVersion", "");
+//			capabilities.setCapability("deviceName", "iPhone 6");
+//			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+//			capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
+//			driver = new IOSDriver<>(service, capabilities);
+//		}
+//		
+//		if (!DeviceReader.runningAndroidDevice && !DeviceReader.runningAndroidDevice) {
+//			System.out.println("Running test on iOS simulator");
+//			capabilities.setCapability("platformName", "IOS");
+//			capabilities.setCapability("platformVersion", "");
+//			capabilities.setCapability("deviceName", "iPhone 6");
+//			capabilities.setCapability("noReset", true);
+//			capabilities.setCapability("nativeInstrumentsLib", true);
+//			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+//			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
+//			driver = new IOSDriver<>(service, capabilities);
+//		}
 		
 		service.start();
 	}

@@ -14,10 +14,12 @@ public class TestExecuter {
 	private static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	private static JUnitCore junit = new JUnitCore();
 	public static String serverErrorMessage = "";
+	public static int y =0;
 	
 	// Finds test classes with "Run" in the name and adds them to the application
-	public static void runTests (List<String> selectedTests) throws Exception {
+	public static void runTests (List<String> selectedTests,int x) throws Exception {
 		serverErrorMessage = "Failed to establish connection to Appium server.\n";
+		y=x;
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
