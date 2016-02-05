@@ -418,28 +418,28 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/activity_profile_pic_crop_btn")));
     }
     public WebElement enter_bio() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Enter Bio")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextView[1]")));
     }
     public WebElement enter_website() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_url")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextField[1]/UIATextField[1]")));
     }
     public WebElement share_twitter() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_twitter")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" twitterIcon")));
     }
     public WebElement share_facebook() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_facebook")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" facebookIcon")));
     }
     public WebElement share_instagram() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_instagram")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" instagramIcon")));
     }
     public WebElement share_email() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_share_email")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" emailIcon")));
     }
     public WebElement followers() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[2]/UIAStaticText[1]")));
     }
     public WebElement friends() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/browse_friends_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath(" //UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[1]")));
     }
     public WebElement friend_profile_picture() {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_friend_listitem_icon")));
@@ -466,31 +466,31 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_show_preview_switch")));
     }
     public WebElement logout() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("Log Out")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Log Out")));
     }
     public WebElement change_email_address() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Change Email Address")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Email Address")));
     }
     public WebElement change_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[14]/UIAStaticText[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Change Password")));
     }
     public WebElement clear_text_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("Clear text")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Clear text")));
     }    
     public WebElement validate_mobile() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_mobile_number_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Validate Mobile #")));
     }
     public WebElement muted_blocked_users() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_blocked_users_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Validate Mobile #")));
     }
     public WebElement user_guides() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_guide_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" User Guides & Help")));
     }
     public WebElement tutorial() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_tutorial_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Tutorial")));
     }
     public WebElement delete_account() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_delete_account_row")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Delete Account")));
     }
     public WebElement enter_old_password() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]/UIASecureTextField[1]")));
@@ -508,10 +508,10 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/change_email_fragment_newemail_edit_text")));	
     }
     public WebElement invalid_username() {
-    	return wait.until(ExpectedConditions.elementToBeClickable(By.name("Invalid username & password combination")));
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.name(" Invalid username & password combination")));
     }
     public WebElement friends_search() {
-    	return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
+    	return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Search for friends, groups, and users")));
     }
     public WebElement chat_room_first_friend() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ListView[@index='0'][android.widget.RelativeLayout[@index='0']]")));
