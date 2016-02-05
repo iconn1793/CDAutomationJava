@@ -562,10 +562,10 @@ public class IOSElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friend_contacts_listitem_button")));
 	}
     public WebElement discover_tab() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_discover")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Chatters")));
 	}
     public WebElement chatters_tab() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_chatters")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id(" Chatters")));
 	}
     
     /*******************
