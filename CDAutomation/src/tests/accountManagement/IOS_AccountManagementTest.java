@@ -25,16 +25,16 @@ public class IOS_AccountManagementTest extends IOSElements {
 		more_button().click();
 		action.press(followers()).moveTo(back_button()).release().perform();
 		change_password().click();
-		Thread.sleep(3000);
-		driver.getKeyboard().sendKeys(account_pw + "\n");
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
+		enter_old_password().sendKeys(account_pw + "\n");
+		enter_new_password().sendKeys(account_new_pw + "\n");
+		confirm_new_password().sendKeys(account_new_pw + "\n");
+		OK_button().click(); 
 		
 		// Resets Password
 		change_password().click();
-		driver.getKeyboard().sendKeys(account_new_pw + "\n");
-		driver.getKeyboard().sendKeys(account_pw + "\n");
-		driver.getKeyboard().sendKeys(account_pw + "\n");
+		enter_old_password().sendKeys(account_new_pw + "\n");
+		enter_new_password().sendKeys(account_pw + "\n");
+		confirm_new_password().sendKeys(account_pw + "\n");
 		System.out.println("Password reset");
 	}
 

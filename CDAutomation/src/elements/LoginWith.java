@@ -95,9 +95,9 @@ public class LoginWith extends Drivers {
         
         if (logged_out && !already_logged_in) {
         	new IOSElements().login_button().click();
-        	driver.getKeyboard().sendKeys(account + "\n");
+        	new IOSElements().login_username().sendKeys(account + "\n");
         	new IOSElements().login_password().click();
-        	driver.getKeyboard().sendKeys(password + "\n");
+        	new IOSElements().login_username().sendKeys(password + "\n");
                 	
         	
         }

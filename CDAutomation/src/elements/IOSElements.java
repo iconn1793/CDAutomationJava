@@ -6,11 +6,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 
 public class IOSElements extends Drivers {
 	
-	public AndroidDriver<WebElement> driver;
+	public IOSDriver<WebElement> driver;
 	public WebDriverWait wait = new WebDriverWait(Drivers.driver, 20);
 
 	// Logs out of current account
@@ -27,7 +27,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name(name)));
     }
     public WebElement OK_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("OK")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]")));
     }
     public WebElement done_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.name("done")));
@@ -496,13 +496,13 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_delete_account_row")));
     }
     public WebElement enter_old_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[1]/UIASecureTextField[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("current password")));
 	}
     public WebElement enter_new_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[2]/UIASecureTextField[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("new password")));
     }
     public WebElement confirm_new_password() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIASecureTextField[3]/UIASecureTextField[1]")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.id("re-type new password")));
     }
     public WebElement change_password_ok_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")));
