@@ -28,7 +28,7 @@ public class TestExecuter {
 				
 				try {
 					junit.run(myClass);
-					elements.Drivers.callDriver().quit();
+					elements.Drivers.driver.quit();
 				} catch (NullPointerException e) {
 					System.err.println(serverErrorMessage);
 				} catch (Exception e) {
