@@ -4,7 +4,7 @@ public class AndroidCamera extends AndroidElements {
 	
 	public void takePhoto() throws Exception {
 		// Tries to take a photo with several different kinds of android phones
-        driver.pressKeyCode(25); Thread.sleep(1000); driver.pressKeyCode(27); Thread.sleep(5000);
+        aDriver().pressKeyCode(25); Thread.sleep(1000); aDriver().pressKeyCode(27); Thread.sleep(5000);
         
         try {
         	driver.findElementById("com.motorola.camera:id/review_approve").click();  // For Moto phones
@@ -42,7 +42,7 @@ public class AndroidCamera extends AndroidElements {
         } catch (Exception e) {
             log("Could not take a photo, going back");
             for (int i = 0; i < 2; i++) {
-                driver.pressKeyCode(4); Thread.sleep(3000);  // If none of the above works, go back
+                aDriver().pressKeyCode(4); Thread.sleep(3000);  // If none of the above works, go back
             try {
                 skip_button().click();
             } catch (Exception f) {

@@ -184,7 +184,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
 
@@ -208,7 +208,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
  
@@ -232,7 +232,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
 
@@ -256,7 +256,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
     public void test14_reblast_giphy_with_loc() throws Exception {
@@ -279,7 +279,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
     public void test15_reblast_giphy_no_loc() throws Exception {
@@ -302,7 +302,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
     
     public void test16_reblast_video_with_loc() throws Exception {
@@ -325,7 +325,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
     public void test17_reblast_video_no_loc() throws Exception {
@@ -348,7 +348,7 @@ public class IOS_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        //driver.pressKeyCode(4);
     }
 
     public void test18_check_reblast_count() throws Exception {
