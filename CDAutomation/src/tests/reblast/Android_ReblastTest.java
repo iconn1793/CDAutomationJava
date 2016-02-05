@@ -184,7 +184,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
 
@@ -208,7 +208,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
  
@@ -219,20 +219,20 @@ public class Android_ReblastTest extends AndroidElements {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
+        aDriver().swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
+        aDriver().swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
 
@@ -243,20 +243,20 @@ public class Android_ReblastTest extends AndroidElements {
         blast_all_followers().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
+        aDriver().swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to blast list");
         swipe_view_reblast().click();
         send_to_blast_list().click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
+        aDriver().swipe((screenWidth/10*8),(screenHeight/10*3), (screenWidth/10*1), (screenHeight/10*3), 300);
         log("Reblasting photo to a friend");
         swipe_view_reblast().click();
         blast_friends().click();
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
     public void test14_reblast_giphy_with_loc() throws Exception {
@@ -279,7 +279,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
     public void test15_reblast_giphy_no_loc() throws Exception {
@@ -302,7 +302,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
     
     public void test16_reblast_video_with_loc() throws Exception {
@@ -325,7 +325,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
     public void test17_reblast_video_no_loc() throws Exception {
@@ -348,7 +348,7 @@ public class Android_ReblastTest extends AndroidElements {
         username(account03).click();
         blast_Ok_button().click();
         swipe_view_reply();
-        driver.pressKeyCode(4);
+        aDriver().pressKeyCode(4);
     }
 
     public void test18_check_reblast_count() throws Exception {

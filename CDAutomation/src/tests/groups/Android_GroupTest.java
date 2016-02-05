@@ -100,7 +100,7 @@ public class Android_GroupTest extends AndroidElements {
 				photo_save_image().getLocation().x + 50, photo_save_image().getLocation().y + 50, 1000);
 		add_text().click();
 		add_text_field().sendKeys("www.cyberdust.com");
-		driver.pressKeyCode(4);
+		aDriver().pressKeyCode(4);
 		next_button().click();
      }
      

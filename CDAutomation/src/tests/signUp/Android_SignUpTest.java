@@ -91,7 +91,7 @@ public class Android_SignUpTest extends AndroidElements {
 			if (tutorial_video().isDisplayed()) {
 				Thread.sleep(1000);
 				log("Backing out of tutorial screen");
-				driver.pressKeyCode(4);
+				aDriver().pressKeyCode(4);
 			}
 		} catch (Exception e) {
 			log("No tutorial screen");

@@ -150,20 +150,19 @@ public class Drivers {
 		}
 	}
 	
-	// For calling driver from other classes
-	public static AppiumDriver<WebElement> callDriver() {
-		return driver;
+	// For calling the android driver from other classes
+	public static AndroidDriver<WebElement> aDriver() {
+		return (AndroidDriver<WebElement>) driver;
+	}
+	
+	public static IOSDriver<WebElement> iDriver() {
+		return (IOSDriver<WebElement>) driver;
 	}
 	
 	// Relaunches the app
 	public static void relaunch() {
 		driver.closeApp();
 		driver.launchApp();
-	}
-		
-	// For changing the WebDriverWait time from in a test
-	public WebDriverWait waitTime(int x) {
-		return wait = new WebDriverWait(driver, x);
 	}
 	
 	// Prints text to console and to a log file in the project folder / test logs folder
@@ -199,5 +198,4 @@ public class Drivers {
 			e.printStackTrace();
 		}
 	}
-	
 }

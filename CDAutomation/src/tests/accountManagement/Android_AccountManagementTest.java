@@ -89,7 +89,7 @@ public class Android_AccountManagementTest extends AndroidElements {
 			sign_up_button().click();
 		} catch (Exception e) {
 			System.out.println("Loged in into deleted account");
-			driver.pressKeyCode(4);
+			aDriver().pressKeyCode(4);
 			sign_up_button().click();
 		}
 
