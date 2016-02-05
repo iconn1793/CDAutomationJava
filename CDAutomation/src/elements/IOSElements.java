@@ -3,11 +3,19 @@ package elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.TouchAction;
 
 public class IOSElements extends Drivers {
 
+	public WebDriverWait wait = new WebDriverWait(driver, 20);
+	
+	// For changing the WebDriverWait time from in a test
+	public WebDriverWait waitTime(int x) {
+		return wait = new WebDriverWait(driver, x);
+	}
+	
 	// Logs out of current account
 	public void logoutAccount() throws Exception {
 		boolean isLoggedOut;
