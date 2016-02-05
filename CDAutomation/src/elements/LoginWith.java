@@ -89,6 +89,11 @@ public class LoginWith extends Drivers {
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
             action.press(new IOSElements().followers()).moveTo(new IOSElements().back_button()).release().perform();
+            try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				
+			}
             new IOSElements().logout().click();
             new IOSElements().confirm().click();
         }
