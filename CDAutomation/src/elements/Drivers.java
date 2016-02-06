@@ -21,7 +21,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public class Drivers {
+public abstract class Drivers {
 	
 	public static AppiumDriver<WebElement> driver;
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -33,6 +33,7 @@ public class Drivers {
 	public int screenWidth = driver.manage().window().getSize().getWidth();
 	public int screenHeight = driver.manage().window().getSize().getHeight();
 	public static boolean IOSenabled = false;
+	
 	@BeforeClass
 	public static void setUp() throws Exception {
 		
@@ -48,15 +49,11 @@ public class Drivers {
 				.withIPAddress(appiumServerAddress)
 				.usingPort(appiumServerPort));
 		
-		if(TestExecuter.y==1)
-		{
+		if (TestExecuter.y==1) {
 			IOSenabled = true;
 		}
 			
-		
-		if(IOSenabled == true)
-		{
-			if (DeviceReader.runningIOSDevice) {
+		if ((IOSenabled && DeviceReader.runningIOSDevice) || (DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
 				System.out.println("Running test on iOS device");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -64,9 +61,9 @@ public class Drivers {
 				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
 				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
 				driver = new IOSDriver<>(service, capabilities);
-  		}
+			}
 			
-			else{
+		if ((IOSenabled && !DeviceReader.runningIOSDevice) || (!DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
 				System.out.println("Running test on iOS simulator");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -77,10 +74,8 @@ public class Drivers {
 				capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
 				driver = new IOSDriver<>(service, capabilities);
 			}
-		}
-		else
-		{
-			
+		
+		if (!IOSenabled && DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
@@ -88,10 +83,8 @@ public class Drivers {
 				capabilities.setCapability("appPackage", "com.radicalapps.cyberdust");
 				capabilities.setCapability("appActivity", "com.radicalapps.cyberdust.activities.LauncherActivity");
 				driver = new AndroidDriver<>(service, capabilities);
-			
-		}
-		
-		
+			}
+
 		service.start();
 	}
 	
