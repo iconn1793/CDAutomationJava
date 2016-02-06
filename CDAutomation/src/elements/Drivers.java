@@ -54,13 +54,22 @@ public abstract class Drivers {
 		}
 			
 		if ((IOSenabled && DeviceReader.runningIOSDevice) || (DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
-				System.out.println("Running test on iOS device");
-				capabilities.setCapability("platformName", "IOS");
-				capabilities.setCapability("platformVersion", "");
-				capabilities.setCapability("deviceName", "iPhone 6");
-				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
-				driver = new IOSDriver<>(service, capabilities);
+//				System.out.println("Running test on iOS device");
+//				capabilities.setCapability("platformName", "IOS");
+//				capabilities.setCapability("platformVersion", "");
+//				capabilities.setCapability("deviceName", "iPhone 6");
+//				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+//				capabilities.setCapability("udid", "12b78bfcd3c6eb45ac80d9d6038db4f87a64e965");
+//				driver = new IOSDriver<>(service, capabilities);
+			System.out.println("Running test on iOS simulator");
+			capabilities.setCapability("platformName", "IOS");
+			capabilities.setCapability("platformVersion", "");
+			capabilities.setCapability("deviceName", "iPhone 6");
+			capabilities.setCapability("noReset", true);
+			capabilities.setCapability("nativeInstrumentsLib", true);
+			capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
+			capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
+			driver = new IOSDriver<>(service, capabilities);
 			}
 			
 		if ((IOSenabled && !DeviceReader.runningIOSDevice) || (!DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
