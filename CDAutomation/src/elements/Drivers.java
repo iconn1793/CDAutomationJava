@@ -75,7 +75,7 @@ public abstract class Drivers {
 				driver = new IOSDriver<>(service, capabilities);
 			}
 		
-		if (!IOSenabled && DeviceReader.runningAndroidDevice || System.getProperty("os.name").toLowerCase().contains("win")) {
+		if ((!IOSenabled && DeviceReader.runningAndroidDevice) || System.getProperty("os.name").toLowerCase().contains("win")) {
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
