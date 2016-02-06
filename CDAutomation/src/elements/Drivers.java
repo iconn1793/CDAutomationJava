@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -53,7 +52,7 @@ public abstract class Drivers {
 			IOSenabled = true;
 		}
 			
-		if ((IOSenabled && DeviceReader.runningIOSDevice) || (DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
+		if ((IOSenabled && DeviceReader.runningAndroidDevice) || (!IOSenabled && DeviceReader.runningIOSDevice)) {
 				System.out.println("Running test on iOS device");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -63,7 +62,7 @@ public abstract class Drivers {
 				driver = new IOSDriver<>(service, capabilities);
 			}
 			
-		if ((IOSenabled && !DeviceReader.runningIOSDevice) || (!DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
+		if ((IOSenabled && DeviceReader.runningIOSDevice) || (!DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
 				System.out.println("Running test on iOS simulator");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
