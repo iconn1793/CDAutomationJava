@@ -152,6 +152,11 @@ public class AutomationApp {
 		stopButton.setBounds(300, 436, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
+		JToggleButton iOSButton = new JToggleButton("iOS");
+		iOSButton.setBounds(180, 212, 52, 29);
+		myFrame.getContentPane().add(iOSButton);
+		
+		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
 			@Override
@@ -231,9 +236,13 @@ public class AutomationApp {
 						exceptionsMap.remove(testMethodsList.get(i));
 					}
 				}
-				
+				int x = 0;
+				if(iOSButton.isSelected())
+				{
+					x=1;
+				}
 				try {
-					TestExecuter.runTests(testClassList.getSelectedValuesList());
+					TestExecuter.runTests(testClassList.getSelectedValuesList(), x);
 				} catch (StoppedByUserException e) {
 					TestListener.currentTest = "done";
 					System.out.println("Test Stopped");
@@ -285,6 +294,7 @@ public class AutomationApp {
 			}
 		};
 		
+		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new TestExecuter().stopTests();
@@ -306,6 +316,7 @@ public class AutomationApp {
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
 		runButton.addActionListener(runTest);
+		
 		
 		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
@@ -424,5 +435,6 @@ public class AutomationApp {
 				return label;
 			}
 		});
+		
 	}
 }
