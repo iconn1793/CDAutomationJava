@@ -30,11 +30,22 @@ public class IOS_AccountManagementTest extends IOSElements {
 		action.press(followers()).moveTo(close_button()).release().perform();
 		Thread.sleep(1100);
 		change_password().click();
+
 		enter_old_password().sendKeys(account_pw + "\n");
 		enter_new_password().sendKeys(account_new_pw + "\n");
 		confirm_new_password().sendKeys(account_new_pw + "\n");
 		Alert_OK_button().click();
 		System.out.println("Password Changed");
+
+		enter_old_password().click();
+		enter_old_password().sendKeys(account_pw);
+		enter_new_password().click();
+		enter_new_password().sendKeys(account_new_pw);
+		confirm_new_password().click();
+		confirm_new_password().sendKeys(account_new_pw);
+		change_password_ok_button().click();
+
+
 		
 		// Resets Password
 		change_password().click();
