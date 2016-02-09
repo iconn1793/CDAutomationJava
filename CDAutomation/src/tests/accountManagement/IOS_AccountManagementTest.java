@@ -12,8 +12,8 @@ public class IOS_AccountManagementTest extends IOSElements {
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
-	String account_new_pw = "password";
-	String account_pw = "new password";
+	String account_pw = "password";
+	String account_new_pw = "new password";
 	String account_email = "testuser_02@cyberdust.com";
 	String account_new_email = "new_testuser_02@cyberdust.com";
 	/////////////////////////////////////////////////////
@@ -36,16 +36,6 @@ public class IOS_AccountManagementTest extends IOSElements {
 		confirm_new_password().sendKeys(account_new_pw + "\n");
 		Alert_OK_button().click();
 		System.out.println("Password Changed");
-
-		enter_old_password().click();
-		enter_old_password().sendKeys(account_pw);
-		enter_new_password().click();
-		enter_new_password().sendKeys(account_new_pw);
-		confirm_new_password().click();
-		confirm_new_password().sendKeys(account_new_pw);
-		change_password_ok_button().click();
-
-
 		
 		// Resets Password
 		change_password().click();
