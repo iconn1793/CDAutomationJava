@@ -5,8 +5,8 @@ import java.io.InputStreamReader;
 
 public class DeviceReader {
 	
-	public static boolean runningIOSDevice;
-	public static boolean runningAndroidDevice;
+	public static boolean IOSDevice;
+	public static boolean AndroidDevice;
 	public static String IOS_UDID;
 	
 	public void checkDevice () throws Exception {
@@ -18,13 +18,13 @@ public class DeviceReader {
 		
 		while ((output = stdInput.readLine()) != null) {
 			if (output.toLowerCase().contains("iphone")) {
-				runningIOSDevice = true;
-				runningAndroidDevice = false;
+				IOSDevice = true;
+				AndroidDevice = false;
 			}
 			
 			if (output.toLowerCase().contains("android")) {
-				runningAndroidDevice = true;
-				runningIOSDevice = false;
+				AndroidDevice = true;
+				IOSDevice = false;
 			}
 			
 			if (output.toLowerCase().contains("serial") && output.length() > 45) {
