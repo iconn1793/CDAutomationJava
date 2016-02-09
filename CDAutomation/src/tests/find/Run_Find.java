@@ -11,10 +11,10 @@ public class Run_Find extends Drivers {
 	@Test
 	public void test01_ChangePassword() throws Exception {
 		try {
-			log("Starting test - xxx");
+			log("Starting test - ");
 			
 			if (Android()) {
-				//new Android_Find().xxx();
+				new Android_Find().test01_chatterdata();
 			} else if (IOS()) {
 				//new IOS_Find().xxx();
 			}
