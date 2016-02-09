@@ -12,8 +12,8 @@ public class IOS_AccountManagementTest extends IOSElements {
 
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
-	String account_pw = "password";
-	String account_new_pw = "new password";
+	String account_new_pw = "password";
+	String account_pw = "new password";
 	String account_email = "testuser_02@cyberdust.com";
 	String account_new_email = "new_testuser_02@cyberdust.com";
 	/////////////////////////////////////////////////////
@@ -91,15 +91,9 @@ public void test02_changing_email() throws Exception {
 			System.out.println("Could not login into deleted account");
 			back_button().click();
 		} catch (Exception e) {
-<<<<<<< HEAD
 			System.out.println("Logged in into deleted account");
-
-=======
-			System.out.println("Loged in into deleted account");
-			//driver.pressKeyCode(4);
->>>>>>> BrantK/master
 			sign_up_button().click();
-		}//*/
+		}
 
 		// Recreating the account
 		sign_up_button().click();
