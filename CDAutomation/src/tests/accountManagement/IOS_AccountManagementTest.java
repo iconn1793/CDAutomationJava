@@ -32,6 +32,7 @@ public class IOS_AccountManagementTest extends IOSElements {
 		confirm_new_password().sendKeys(account_new_pw);
 		change_password_ok_button().click();
 
+		
 		// Resets Password
 		change_password().click();
 		enter_old_password().sendKeys(account_new_pw);
