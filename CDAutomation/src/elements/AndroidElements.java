@@ -177,9 +177,6 @@ public class AndroidElements extends Drivers {
 	public WebElement delete_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete list")));
 	}
-	public WebElement groups_tab() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("GROUPS")));
-	}
 	public WebElement groups_title_field() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0'][android.widget.EditText[@index='0']]")));
 	}
