@@ -29,8 +29,8 @@ import org.junit.runner.notification.StoppedByUserException;
 public class AutomationApp {
 	private JFrame myFrame;
 	
-	// Launch the application.
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -43,12 +43,11 @@ public class AutomationApp {
 		});
 	}
 
-	// Create the application.
 	public AutomationApp() {
 		initialize();
 	}
 
-	// Initialize the contents of the frame.
+	// Initialize the contents of the frame
 	@SuppressWarnings("serial")
 	private void initialize() {
 		myFrame = new JFrame();
@@ -92,7 +91,7 @@ public class AutomationApp {
 		PrintStream logOutPrintStream = new PrintStream(new ConsoleOutput(consoleOutput));
 		PrintStream logErrPrintStream = new PrintStream(new ConsoleErrorOutput(consoleOutput));
 		consoleOutput.setBackground(Color.WHITE);
-		consoleOutput.setFont(new Font("Arial", Font.PLAIN, 11));
+		consoleOutput.setFont(new Font("Arial", Font.PLAIN, 12));
 		consoleOutput.setEditable(false);
 		consoleScroll.setViewportView(consoleOutput);
 		consoleScroll.setBounds(10, 245, 464, 180);
@@ -104,16 +103,16 @@ public class AutomationApp {
 		JScrollPane serverScroll = new JScrollPane();
 		PrintStream serverOutPrintStream = new PrintStream(new ConsoleOutput(serverOutput));
 		PrintStream serverErrPrintStream = new PrintStream(new ConsoleErrorOutput(serverOutput));
-		serverOutput.setBackground(Color.WHITE);
-		serverOutput.setFont(new Font("Arial", Font.PLAIN, 11));
-		serverOutput.setEditable(false);
-		serverScroll.setViewportView(serverOutput);
-		serverScroll.setBounds(495, 18, 380, 420);
-		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		myFrame.getContentPane().add(serverScroll);
-		
 		System.setOut(serverOutPrintStream);
 		System.setErr(serverErrPrintStream);
+		serverOutput.setBackground(Color.DARK_GRAY.darker());
+		serverOutput.setForeground(Color.WHITE);
+		serverOutput.setFont(new Font("Arial", Font.PLAIN, 12));
+		serverOutput.setEditable(false);
+		serverScroll.setViewportView(serverOutput);
+		serverScroll.setBounds(495, 14, 390, 450);
+		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		myFrame.getContentPane().add(serverScroll);
 		
 		// Exception info window
 		JDialog exceptionWindow = new JDialog(myFrame, "", Dialog.ModalityType.MODELESS);
@@ -228,21 +227,9 @@ public class AutomationApp {
 		Runnable runTestThread = new Runnable() {
 			@Override
 			public void run() {
-				if (executedTests.contains(testClassList.getSelectedValue())) {
-					for (int i = 0; i < testMethodsList.size(); i++) {
-						executedTests.remove(testMethodsList.get(i));
-						passedTests.remove(testMethodsList.get(i));
-						failedTests.remove(testMethodsList.get(i));
-						exceptionsMap.remove(testMethodsList.get(i));
-					}
-				}
-				int x = 0;
-				if(iOSButton.isSelected())
-				{
-					x=1;
-				}
+				
 				try {
-					TestExecuter.runTests(testClassList.getSelectedValuesList(), x);
+					TestExecuter.runTests(testClassList.getSelectedValuesList());
 				} catch (StoppedByUserException e) {
 					TestListener.currentTest = "done";
 					System.out.println("Test Stopped");
@@ -272,6 +259,19 @@ public class AutomationApp {
 			public void actionPerformed(ActionEvent arg0) {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
+				
+				if(iOSButton.isSelected()) {
+					elements.Drivers.IOSEnabled = true;
+				}
+				
+				if (executedTests.contains(testClassList.getSelectedValue())) {
+					for (int i = 0; i < testMethodsList.size(); i++) {
+						executedTests.remove(testMethodsList.get(i));
+						passedTests.remove(testMethodsList.get(i));
+						failedTests.remove(testMethodsList.get(i));
+						exceptionsMap.remove(testMethodsList.get(i));
+					}
+				}
 				
 				if (testThread.getState() == Thread.State.valueOf("NEW")) {
 					methodSelector.start();

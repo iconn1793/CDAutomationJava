@@ -11,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import application.TestExecuter;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -31,7 +30,7 @@ public abstract class Drivers {
 	public TouchAction action = new TouchAction(driver);
 	public int screenWidth = driver.manage().window().getSize().getWidth();
 	public int screenHeight = driver.manage().window().getSize().getHeight();
-	public static boolean IOSenabled = false;
+	public static boolean IOSEnabled = false;
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
@@ -47,12 +46,8 @@ public abstract class Drivers {
 				.withArgument(GeneralServerFlag.LOG_NO_COLORS)
 				.withIPAddress(appiumServerAddress)
 				.usingPort(appiumServerPort));
-		
-		if (TestExecuter.y==1) {
-			IOSenabled = true;
-		}
 			
-		if ((IOSenabled && DeviceReader.runningAndroidDevice) || (!IOSenabled && DeviceReader.runningIOSDevice)) {
+		if (!IOSEnabled && DeviceReader.IOSDevice && !DeviceReader.AndroidDevice) {
 				System.out.println("Running test on iOS device");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -62,7 +57,7 @@ public abstract class Drivers {
 				driver = new IOSDriver<>(service, capabilities);
 			}
 			
-		if ((IOSenabled && DeviceReader.runningIOSDevice) || (!DeviceReader.runningIOSDevice && !DeviceReader.runningAndroidDevice)) {
+		if ((IOSEnabled && (DeviceReader.IOSDevice || DeviceReader.AndroidDevice)) || (!DeviceReader.IOSDevice && !DeviceReader.AndroidDevice)) {
 				System.out.println("Running test on iOS simulator");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
@@ -73,8 +68,8 @@ public abstract class Drivers {
 				capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
 				driver = new IOSDriver<>(service, capabilities);
 			}
-
-		if ((!IOSenabled && DeviceReader.runningAndroidDevice) || System.getProperty("os.name").toLowerCase().contains("win")) {
+		
+		if ((!IOSEnabled && DeviceReader.AndroidDevice) || System.getProperty("os.name").toLowerCase().contains("win")) {
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
