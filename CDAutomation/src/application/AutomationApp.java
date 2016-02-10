@@ -273,6 +273,7 @@ public class AutomationApp {
 					}
 				}
 				
+
 				if (testThread.getState() == Thread.State.valueOf("NEW")) {
 					methodSelector.start();
 					testThread.start();
