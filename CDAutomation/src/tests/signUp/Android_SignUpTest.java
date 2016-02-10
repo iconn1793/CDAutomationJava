@@ -119,7 +119,20 @@ public class Android_SignUpTest extends AndroidElements {
         login_username().sendKeys(account_name.toUpperCase());
         login_password().sendKeys(account_pw);
         login_OK().click();
-        log("Username is not case sensitive");
+        
+        try {
+        	waitTime(8);
+        	if (blasts_tab().isDisplayed()) {
+        		log("Username is not case sensitive");
+        	}
+        } catch (Exception e) {
+        	log("[Warning] Username is case sensitive!");
+        	
+        	login_username().clear();
+        	login_username().sendKeys(account_name);
+        	login_OK().click();
+        }
+        waitTime(20);
 
         // Deletes account
         more_button().click(); Thread.sleep(1000);
