@@ -228,19 +228,6 @@ public class AutomationApp {
 			@Override
 			public void run() {
 				
-				if (executedTests.contains(testClassList.getSelectedValue())) {
-					for (int i = 0; i < testMethodsList.size(); i++) {
-						executedTests.remove(testMethodsList.get(i));
-						passedTests.remove(testMethodsList.get(i));
-						failedTests.remove(testMethodsList.get(i));
-						exceptionsMap.remove(testMethodsList.get(i));
-					}
-				}
-				
-				if(iOSButton.isSelected()) {
-					elements.Drivers.IOSEnabled = true;
-				}
-				
 				try {
 					TestExecuter.runTests(testClassList.getSelectedValuesList());
 				} catch (StoppedByUserException e) {
@@ -272,6 +259,19 @@ public class AutomationApp {
 			public void actionPerformed(ActionEvent arg0) {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
+				
+				if (executedTests.contains(testClassList.getSelectedValue())) {
+					for (int i = 0; i < testMethodsList.size(); i++) {
+						executedTests.remove(testMethodsList.get(i));
+						passedTests.remove(testMethodsList.get(i));
+						failedTests.remove(testMethodsList.get(i));
+						exceptionsMap.remove(testMethodsList.get(i));
+					}
+				}
+				
+				if(iOSButton.isSelected()) {
+					elements.Drivers.IOSEnabled = true;
+				}
 				
 				if (testThread.getState() == Thread.State.valueOf("NEW")) {
 					methodSelector.start();

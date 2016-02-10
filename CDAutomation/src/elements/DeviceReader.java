@@ -20,9 +20,7 @@ public class DeviceReader {
 			if (output.toLowerCase().contains("iphone")) {
 				IOSDevice = true;
 				AndroidDevice = false;
-			}
-			
-			if (output.toLowerCase().contains("android")) {
+			} else {
 				AndroidDevice = true;
 				IOSDevice = false;
 			}
