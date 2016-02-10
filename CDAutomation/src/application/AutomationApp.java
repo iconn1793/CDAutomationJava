@@ -260,6 +260,10 @@ public class AutomationApp {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
 				
+				if(iOSButton.isSelected()) {
+					elements.Drivers.IOSEnabled = true;
+				}
+				
 				if (executedTests.contains(testClassList.getSelectedValue())) {
 					for (int i = 0; i < testMethodsList.size(); i++) {
 						executedTests.remove(testMethodsList.get(i));
@@ -269,10 +273,7 @@ public class AutomationApp {
 					}
 				}
 				
-				if(iOSButton.isSelected()) {
-					elements.Drivers.IOSEnabled = true;
-				}
-				
+
 				if (testThread.getState() == Thread.State.valueOf("NEW")) {
 					methodSelector.start();
 					testThread.start();

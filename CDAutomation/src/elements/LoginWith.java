@@ -85,10 +85,10 @@ public class LoginWith extends Drivers {
         }
         
         if (already_logged_in && !logged_out) {
-        	new IOSElements().back_button().click();
+        	new IOSElements().close_button().click();
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
-            action.press(new IOSElements().followers()).moveTo(new IOSElements().back_button()).release().perform();
+            action.press(new IOSElements().followers()).moveTo(new IOSElements().close_button()).release().perform();
             try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -100,8 +100,8 @@ public class LoginWith extends Drivers {
         
         if (logged_out && !already_logged_in) {
         	new IOSElements().login_button().click();
-        	driver.getKeyboard().sendKeys(account+"\n"+password);
-        	new IOSElements().login_OK().click();
+          	driver.getKeyboard().sendKeys(account+"\n"+password+"\n");
+       
         }
     }
 }
