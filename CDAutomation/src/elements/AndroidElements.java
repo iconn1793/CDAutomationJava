@@ -80,6 +80,9 @@ public class AndroidElements extends Drivers {
 	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
 	}
+	public WebElement find_tab() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("FIND")));
+	}
 	public WebElement dust1_more_button() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='0'][android.widget.ImageView[@index='2' and @resource-id='com.radicalapps.cyberdust:id/more_button']]")));
 	}
@@ -582,6 +585,20 @@ public class AndroidElements extends Drivers {
     public WebElement chatters_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tab_chatters")));
 	}
+    
+    /*******************
+    * Find Tab Elements*
+    *******************/
+    public WebElement chatter_category_menu() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/navigation_drawer_button")));
+	}
+    public WebElement art_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/category_name")));
+	}
+    public WebElement profile_following() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_button")));
+	}
+ 
     
     /*******************
      * Sign up elements*

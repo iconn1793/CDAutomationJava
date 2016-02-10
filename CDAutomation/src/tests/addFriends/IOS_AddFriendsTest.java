@@ -3,12 +3,19 @@ package tests.addFriends;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import elements.IOSElements;
 import elements.LoginWith;
+import io.appium.java_client.TouchAction;
+
+
+
+
 
 public class IOS_AddFriendsTest extends IOSElements {
 
+	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
 	String account_name = "existingtest02";
 	String account_short = "existingtest0";
@@ -18,9 +25,56 @@ public class IOS_AddFriendsTest extends IOSElements {
 	String friend_username = "aaaaa2";
 	String friend_username0 = "aaaaa";
 	//////////////////////////////////////////////
-	
+
+
+	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
+
+	public WebElement first_friend() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+	}
 	
+	public static void relaunch() {
+		driver.closeApp();
+		driver.launchApp();
+	}
+	
+	public void test01_addFriend_fromChat() throws Exception {
+		loginAs.user(friend_username + "\n", account_pw + "\n");
+		action_menu().click();
+		action_menu_dust().click();
+		
+		driver.getKeyboard().sendKeys(account_short);
+		WebElement user = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		user.click();
+		chat_room_text_box().click();
+		driver.getKeyboard().sendKeys(text_message);
+		chat_room_send_button().click();
+		back_button().click();
+		System.out.println("Sent a dust");
+		logoutAccount();
+		//relaunch();
+		loginAs.user(account_name + "\n", account_pw + "\n");
+		dusts_tab().click();
+		
+		first_friend().click();
+		group_three_dotted_menu().click();
+		follow_from_chat_room().click();
+		//unfollow_from_chat_room().click();
+		//yes_button().click();
+		OK_button().click();
+		group_three_dotted_menu().click();
+		try{
+			if(unfollow_from_chat_room().getAttribute("name").equals("unfollow")){
+				System.out.println("Followed from chat room");
+			}
+			unfollow_from_chat_room().click();
+			yes_button().click();
+		}
+		finally {}
+		}
+
+	/*
 	public void test01_addFriend_fromChat() throws Exception {
 		loginAs.user(friend_username, account_pw);
 		Thread.sleep(5000);
@@ -53,16 +107,42 @@ public class IOS_AddFriendsTest extends IOSElements {
 			if(unfollow_from_chat_room().isDisplayed())
 				System.out.println("Followed from chat room");
 			unfollow_from_chat_room().click();
-			okay_button().click();
+
 			
 		}
 		catch(Exception e)
 		{
 			System.out.println("Unable to follow from chat menu");
 		}
+	}*/
+
+	public void test02_AddFriend_from_DustsTab() throws Exception
+	{
+		//temp start
+		loginAs.user(account_name + "\n", account_pw + "\n");
+		dusts_tab().click();
+		//temp end
+		
+		action.press(45, 105).release().perform();//try to click unlabeled prof pic button
+				
+		WebElement follow_firstFriend = wait.until(ExpectedConditions.elementToBeClickable(By.name("Follow" )));
+		follow_firstFriend.click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.name("closeButtonRed" )));
+		first_friend().click();
+		group_three_dotted_menu().click();
+		
+		try{
+			if(unfollow_from_chat_room().getAttribute("name").equals("unfollow"))
+				System.out.println("Followed from dusts tab");
+			unfollow_from_chat_room().click();
+			yes_button().click();
+		}
+		finally{}
 	}
-	
+			
+			
 	public void logout_account() throws Exception
+
 	{
 		back_button().click();
 		back_button().click();
@@ -70,7 +150,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		logoutAccount();
 	}
 
-	public void test02_AddFriend_from_DustsTab() throws Exception
+	public void _test02_AddFriend_from_DustsTab() throws Exception
 	{
 
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
@@ -85,6 +165,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 				System.out.println("Followed from dusts tab");
 			unfollow_from_chat_room().click();
 			okay_button().click();
+
 		}
 		catch(Exception e)
 		{
@@ -97,13 +178,20 @@ public class IOS_AddFriendsTest extends IOSElements {
 
 	{
 
+		back_button().click();
+
 		more_button().click();
 		browse_followers().click();
 		add_friend().click();
 		back_button().click();
 		browse_friends().click();
+
+		//WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		action.longPress(first_friend(), 4000).release().perform();
+
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend, 4000).release().perform();
+
 		try{
 			
 			if(unfollow_button().isDisplayed())
@@ -125,8 +213,13 @@ public class IOS_AddFriendsTest extends IOSElements {
 		
 		back_button().click();
 		back_button().click();
+
+		//WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		action.longPress(first_friend(), 4000).release().perform();
+
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend, 4000).release().perform();
+
 		delete_dust().click();
 		//okay_button().click();
 		more_button().click();
@@ -134,13 +227,18 @@ public class IOS_AddFriendsTest extends IOSElements {
 		add_friends().click();
 		add_friends_search_button_text().click();
 		friends_search().sendKeys(friend_username);
+
 		//driver.pressKeyCode(66);
 		
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		back_button().click();
 		browse_friends().click();
+
+		action.longPress(first_friend(), 4000).release().perform();
+
 		action.longPress(first_friend, 4000).release().perform();
+
 		try{
 			
 			if(unfollow_button().isDisplayed())
@@ -172,8 +270,16 @@ public class IOS_AddFriendsTest extends IOSElements {
 		add_friends_button_inBrowseFriends().click();
 		back_button().click();
 		browse_friends().click();
+		//WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		action.longPress(first_friend(), 4000).release().perform();
+
+		//driver.pressKeyCode(66);
+		add_friends_button_inBrowseFriends().click();
+		back_button().click();
+		browse_friends().click();
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend, 4000).release().perform();
+
 		try{
 			
 			if(unfollow_button().isDisplayed())
