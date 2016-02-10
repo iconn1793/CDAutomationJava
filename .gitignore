@@ -4,7 +4,7 @@
 *.classpath
 *.DS_Store
 *.log
-*.txt
+*.cfg
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
