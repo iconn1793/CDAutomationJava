@@ -109,6 +109,20 @@ public class Android_Find extends AndroidElements {
 		System.out.println(CategoryCheck("Sports"));
 	}
 	
+	public void test05_findtab_menus() throws Exception {
+		
+		System.out.println("Testing menus... (true == pass)");
+		get_discovered().click();
+		boolean menutest = ((get_discovered_popup().getAttribute("name")).equals("findtester"));
+		System.out.println("Get Discovered: " + menutest);
+		x_button().click();
+		
+		people_i_know().click();
+		menutest = ((contacts_with_cd().getAttribute("name")).equals("Contacts with Cyber Dust"));
+		System.out.println("People I Know: " + menutest);
+		addback_button().click();
+	}
+	
 	private String CategoryCheck (String expectedCategory){
 		if ((chatter_category().getAttribute("text")).equals(expectedCategory)){
 			return (expectedCategory + " chatters okay");

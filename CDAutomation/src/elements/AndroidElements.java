@@ -604,6 +604,24 @@ public class AndroidElements extends Drivers {
     public WebElement other_user_prof_pic() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_profile_picture")));
 	}
+    public WebElement people_i_know() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/people_i_know_button")));
+	}
+    public WebElement get_discovered() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Get Discovered")));
+	}
+    public WebElement get_discovered_popup() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/username_text")));
+	}
+    public WebElement contacts_with_cd() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_contacts_button_text")));
+	}
+    public WebElement x_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/close_button")));
+	}
+    public WebElement addback_button() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("android:id/up")));
+	}
     public WebElement business_category() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Business")));
 	}

@@ -79,4 +79,22 @@ public class Run_Find extends Drivers {
 			throw e;
 		}
 	}
+	
+	@Test
+	public void test05_findtab_menus() throws Exception {
+		try {
+			log("Starting test - ");
+			
+			if (Android()) {
+				new Android_Find().test05_findtab_menus();
+			} else if (IOS()) {
+				//new IOS_Find().xxx();
+			}
+			
+		} catch (Exception e) {
+			log("[Fail] Got exception " + e);
+			relaunch();
+			throw e;
+		}
+	}
 }
