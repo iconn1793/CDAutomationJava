@@ -54,7 +54,7 @@ public class AutomationApp {
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
 		myFrame.setTitle("CD Automation");
-		myFrame.setBounds(300, 150, 900, 500);
+		myFrame.setBounds(300, 150, 1000, 500);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
 		
@@ -111,8 +111,8 @@ public class AutomationApp {
 		serverOutput.setFont(new Font("Arial", Font.PLAIN, 12));
 		serverOutput.setEditable(false);
 		serverScroll.setViewportView(serverOutput);
-		serverScroll.setBounds(495, 14, 390, 450);
-		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		serverScroll.setBounds(488, 10, 496, 454);
+		serverScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Appium", TitledBorder.LEFT, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(serverScroll);
 		
 		// Exception info window
@@ -137,31 +137,35 @@ public class AutomationApp {
 		
 		// Buttons
 		JButton selectAllButton = new JButton("Select All");
-		selectAllButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		selectAllButton.setBounds(16, 215, 85, 25);
+		selectAllButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		selectAllButton.setBounds(17, 215, 82, 25);
 		myFrame.getContentPane().add(selectAllButton);
 		
 		JButton logButton = new JButton("Open Log");
-		logButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		logButton.setBounds(99, 215, 85, 25);
+		logButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		logButton.setBounds(101, 215, 82, 25);
 		myFrame.getContentPane().add(logButton);
 		
 		JButton runButton = new JButton("Run");
 		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		runButton.setBounds(198, 437, 90, 25);
+		runButton.setBounds(182, 436, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
 		JButton stopButton = new JButton("Stop");
 		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		stopButton.setBounds(300, 437, 90, 25);
+		stopButton.setBounds(321, 436, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
 		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
-		JToggleButton IOSButton = new JToggleButton("iOS Sim");
-		IOSButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
+		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		IOSButton.setSelected(overrideSetting);
-		IOSButton.setBounds(94, 437, 90, 25);
+		IOSButton.setBounds(56, 436, 90, 25);
 		myFrame.getContentPane().add(IOSButton);
+		
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			IOSButton.setEnabled(false);
+		}
 		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
@@ -240,9 +244,24 @@ public class AutomationApp {
 				
 				try {
 					TestExecuter.runTests(testClassList.getSelectedValuesList());
+					
 				} catch (StoppedByUserException e) {
-					TestListener.currentTest = "done";
 					System.out.println("Test Stopped");
+					TestListener.currentTest = "done";
+					
+				} catch (NullPointerException e) {
+					System.err.println("Failed to establish connection to Appium server.\n");
+					
+					try {
+						Thread.sleep(800);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+					
+					runButton.setEnabled(true);
+					testClassList.setEnabled(true);
+					selectAllButton.setEnabled(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -271,30 +290,32 @@ public class AutomationApp {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
 				
-				runButton.setEnabled(false);
-				testClassList.setEnabled(false);
-				selectAllButton.setEnabled(false);
-				
-				if(IOSButton.isSelected()) {
-					elements.Drivers.IOSEnabled = true;
-				}
-				
-				if (executedTests.contains(testClassList.getSelectedValue())) {
-					for (int i = 0; i < testMethodsList.size(); i++) {
-						executedTests.remove(testMethodsList.get(i));
-						passedTests.remove(testMethodsList.get(i));
-						failedTests.remove(testMethodsList.get(i));
-						exceptionsMap.remove(testMethodsList.get(i));
+				if (!testClassList.isSelectionEmpty()) {
+					
+					runButton.setEnabled(false);
+					testClassList.setEnabled(false);
+					selectAllButton.setEnabled(false);
+					
+					if(IOSButton.isSelected()) {
+						elements.Drivers.IOSEnabled = true;
 					}
-				}
-				
-
-				if (testThread.getState() == Thread.State.valueOf("NEW")) {
-					methodSelector.start();
-					testThread.start();
-				} else {
-					new Thread(methodSelector).start();
-					new Thread(runTestThread).start();
+					
+					if (executedTests.contains(testClassList.getSelectedValue())) {
+						for (int i = 0; i < testMethodsList.size(); i++) {
+							executedTests.remove(testMethodsList.get(i));
+							passedTests.remove(testMethodsList.get(i));
+							failedTests.remove(testMethodsList.get(i));
+							exceptionsMap.remove(testMethodsList.get(i));
+						}
+					}
+					
+					if (testThread.getState() == Thread.State.valueOf("NEW")) {
+						methodSelector.start();
+						testThread.start();
+					} else {
+						new Thread(methodSelector).start();
+						new Thread(runTestThread).start();
+					}
 				}
 			}
 		};
@@ -324,7 +345,9 @@ public class AutomationApp {
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TestExecuter().stopTests();
+				if (!executedTests.isEmpty()) {
+					new TestExecuter().stopTests();
+				}
 			}
 		});
 		
@@ -459,6 +482,5 @@ public class AutomationApp {
 				return label;
 			}
 		});
-		
 	}
 }

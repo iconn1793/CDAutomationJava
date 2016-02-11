@@ -10,6 +10,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 
 public class ConsoleErrorOutput extends OutputStream {
+	
 	private StyleContext context = new StyleContext();
 	private JTextPane textPane;
 	
@@ -20,7 +21,7 @@ public class ConsoleErrorOutput extends OutputStream {
 	@Override
 	public void write(int b) throws IOException {
 		Style style = context.addStyle("errorOutput", null);
-		StyleConstants.setForeground(style, Color.RED.darker());
+		StyleConstants.setForeground(style, Color.RED);
 		try {
 			textPane.getStyledDocument().insertString(textPane.getDocument().getLength(), String.valueOf((char)b), style);
 			textPane.setCaretPosition(textPane.getDocument().getLength());

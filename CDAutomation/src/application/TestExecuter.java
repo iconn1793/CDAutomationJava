@@ -8,16 +8,15 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.RunNotifier;
 
 public class TestExecuter {
+	
 	private static String myDir = Paths.get("").toAbsolutePath().normalize().toString();
 	private static DefaultListModel<String> fileList = new DefaultListModel<String>();
 	private static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	private static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 	private static JUnitCore junit = new JUnitCore();
-	public static String serverErrorMessage = "";
 	
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void runTests (List<String> selectedTests) throws Exception {
-		serverErrorMessage = "Failed to establish connection to Appium server.\n";
 		
 		for (int i = 0; i < simpleList.size(); i++) {
 			
@@ -27,14 +26,8 @@ public class TestExecuter {
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
 				junit.addListener(new application.TestListener());
 				
-				try {
-					junit.run(myClass);
-					elements.Drivers.driver.quit();
-				} catch (NullPointerException e) {
-					System.err.println(serverErrorMessage);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				junit.run(myClass);
+				elements.Drivers.driver.quit();
 			}
 		}
 	}
