@@ -30,6 +30,7 @@ public class AutomationApp {
 	private JFrame myFrame;
 	
 	public static void main(String[] args) {
+		new Settings().loadSettings();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -81,7 +82,7 @@ public class AutomationApp {
 		junitOut.setBackground(Color.WHITE);
 		junitOut.setFocusable(false);
 		junitScroll.setViewportView(junitOut);
-		junitScroll.setBounds(230, 10, 250, 200);
+		junitScroll.setBounds(220, 10, 260, 200);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
 
@@ -129,32 +130,38 @@ public class AutomationApp {
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
-		testProgressBar.setBounds(264, 218, 180, 14);
+		testProgressBar.setBounds(260, 220, 180, 14);
 		testProgressBar.setForeground(Color.GREEN.darker());
 		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
 		// Buttons
 		JButton selectAllButton = new JButton("Select All");
-		selectAllButton.setBounds(54, 216, 90, 20);
+		selectAllButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		selectAllButton.setBounds(16, 215, 85, 25);
 		myFrame.getContentPane().add(selectAllButton);
 		
 		JButton logButton = new JButton("Open Log");
-		logButton.setBounds(100, 436, 90, 25);
+		logButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		logButton.setBounds(99, 215, 85, 25);
 		myFrame.getContentPane().add(logButton);
 		
 		JButton runButton = new JButton("Run");
-		runButton.setBounds(200, 436, 90, 25);
+		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		runButton.setBounds(198, 437, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
 		JButton stopButton = new JButton("Stop");
-		stopButton.setBounds(300, 436, 90, 25);
+		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		stopButton.setBounds(300, 437, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
-		JToggleButton iOSButton = new JToggleButton("iOS");
-		iOSButton.setBounds(180, 212, 52, 29);
-		myFrame.getContentPane().add(iOSButton);
-		
+		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
+		JToggleButton IOSButton = new JToggleButton("iOS Sim");
+		IOSButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		IOSButton.setSelected(overrideSetting);
+		IOSButton.setBounds(94, 437, 90, 25);
+		myFrame.getContentPane().add(IOSButton);
 		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
@@ -216,6 +223,9 @@ public class AutomationApp {
 							}
 
 							junitOut.clearSelection();
+							runButton.setEnabled(true);
+							testClassList.setEnabled(true);
+							selectAllButton.setEnabled(true);
 						}
 					}
 				} catch (Exception e) {
@@ -251,6 +261,7 @@ public class AutomationApp {
 				for (int i = 0; i < allTests.length; i++) {
 					allTests[i] = iterator.next().intValue();
 				}
+				
 				testClassList.setSelectedIndices(allTests);
 			}
 		};
@@ -260,7 +271,11 @@ public class AutomationApp {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
 				
-				if(iOSButton.isSelected()) {
+				runButton.setEnabled(false);
+				testClassList.setEnabled(false);
+				selectAllButton.setEnabled(false);
+				
+				if(IOSButton.isSelected()) {
 					elements.Drivers.IOSEnabled = true;
 				}
 				
@@ -295,6 +310,17 @@ public class AutomationApp {
 			}
 		};
 		
+		IOSButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (IOSButton.isSelected()) {
+					Settings.appSettings.put("IOSOverride", "true");
+				} else {
+					Settings.appSettings.put("IOSOverride", "false");
+				}
+				
+				new Settings().storeSettings();
+			}
+		});
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -322,18 +348,15 @@ public class AutomationApp {
 		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
 		
-		listPopup.add("   Run Test").addActionListener(runTest);
-		listPopup.add("   Open Log").addActionListener(openLog);
-		listPopup.add("   Clear Log").addActionListener(clearLog);
+		listPopup.add(" Run Test").addActionListener(runTest);
+		listPopup.add(" Open Log").addActionListener(openLog);
+		listPopup.add(" Clear Log").addActionListener(clearLog);
 		
 		testClassList.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
 				if (SwingUtilities.isRightMouseButton(e)) {
-					if (selectedTests.isEmpty() || selectedTests.size() == 1) {
-						testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
-						testClassList.setComponentPopupMenu(listPopup);
-					}
+					testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
+					listPopup.show(testClassList, e.getX(), e.getY());
 				}
 			}
 		});
