@@ -17,8 +17,8 @@ public class VariableCheck {
 				Scanner bashProfileScanner = new Scanner(bashProfile);
 				String bashProfileContent = bashProfileScanner.useDelimiter("//Z").next();
 				
-				application.TestExecuter.serverErrorMessage = "\n###### Environment variable updated!\n"
-						+ "###### Please restart your IDE!";
+				System.err.println("\n###### Environment variable updated!\n"
+						+ "###### Please restart your IDE!");
 				
 				if (!bashProfileContent.contains("launchctl setenv ANDROID_HOME $ANDROID_HOME")) {
 					setenvWriter.append("\nlaunchctl setenv ANDROID_HOME $ANDROID_HOME");
