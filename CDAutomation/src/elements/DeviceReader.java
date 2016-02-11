@@ -17,16 +17,33 @@ public class DeviceReader {
 		BufferedReader stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		
 		while ((output = stdInput.readLine()) != null) {
+			
+			if (output.toLowerCase().contains("serial") && output.length() > 45) {
+				IOS_UDID = output.replace("          Serial Number: ", "");
+			}
+			
 			if (output.toLowerCase().contains("iphone")) {
 				IOSDevice = true;
 				AndroidDevice = false;
-			} else {
+			}
+			
+			if (output.toLowerCase().contains("android")) {
 				AndroidDevice = true;
 				IOSDevice = false;
 			}
 			
-			if (output.toLowerCase().contains("serial") && output.length() > 45) {
-				IOS_UDID = output.replace("          Serial Number: ", "");
+		}
+		
+		processBuilder = new ProcessBuilder(System.getenv("ANDROID_HOME")+"/platform-tools/adb", "devices");
+		process = processBuilder.start();
+		stdInput = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		
+		if (!IOSDevice && !AndroidDevice) {
+			while ((output = stdInput.readLine()) != null) {
+				if (!output.contains("List of devices attached") && !output.isEmpty()) {
+					AndroidDevice = true;
+					IOSDevice = false;
+				}
 			}
 		}
 	}

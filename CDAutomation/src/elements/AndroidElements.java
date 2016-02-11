@@ -177,9 +177,6 @@ public class AndroidElements extends Drivers {
 	public WebElement delete_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete list")));
 	}
-	public WebElement groups_tab() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("GROUPS")));
-	}
 	public WebElement groups_title_field() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0'][android.widget.EditText[@index='0']]")));
 	}
@@ -219,7 +216,7 @@ public class AndroidElements extends Drivers {
 	}
 	public WebElement action_menu_dust() throws InterruptedException {
 		Thread.sleep(500);
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='6'][android.widget.ImageView[@index='1']]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='4'][android.widget.ImageView[@index='1']]")));
 	}
 	public WebElement action_menu_group() throws InterruptedException {
 		Thread.sleep(500);
@@ -231,15 +228,7 @@ public class AndroidElements extends Drivers {
 	}
 	public WebElement action_menu_media() throws InterruptedException {
 		Thread.sleep(500);
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='4'][android.widget.ImageView[@index='1']]")));
-	}
-	public WebElement action_menu_discover() throws InterruptedException {
-		Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='5'][android.widget.ImageView[@index='1']]")));
-	}
-	public WebElement action_menu_search() throws InterruptedException {
-		Thread.sleep(500);
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='8'][android.widget.ImageView[@index='1']]")));
 	}
 	public WebElement action_menu_close() throws InterruptedException {
 		Thread.sleep(500);

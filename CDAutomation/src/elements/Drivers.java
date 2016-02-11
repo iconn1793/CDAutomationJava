@@ -61,11 +61,11 @@ public abstract class Drivers {
 				System.out.println("Running test on iOS simulator");
 				capabilities.setCapability("platformName", "IOS");
 				capabilities.setCapability("platformVersion", "");
-				capabilities.setCapability("deviceName", "iPhone 6");
+				capabilities.setCapability("deviceName", "");
 				capabilities.setCapability("noReset", true);
 				capabilities.setCapability("nativeInstrumentsLib", true);
 				capabilities.setCapability("bundleId", "com.mentionmobile.cyberdust");
-				capabilities.setCapability("app", AppPath.localAppPath); //Set path here for simulation
+				capabilities.setCapability("app", AppPath.localAppPath);
 				driver = new IOSDriver<>(service, capabilities);
 			}
 		
@@ -107,11 +107,12 @@ public abstract class Drivers {
 		}
 	}
 	
-	// For calling the android driver from other classes
+	// For calling the Android driver from other classes
 	public static AndroidDriver<WebElement> aDriver() {
 		return (AndroidDriver<WebElement>) driver;
 	}
 	
+	// For calling the iOS driver from other class
 	public static IOSDriver<WebElement> iDriver() {
 		return (IOSDriver<WebElement>) driver;
 	}

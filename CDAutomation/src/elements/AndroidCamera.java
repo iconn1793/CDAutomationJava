@@ -4,7 +4,11 @@ public class AndroidCamera extends AndroidElements {
 	
 	public void takePhoto() throws Exception {
 		// Tries to take a photo with several different kinds of android phones
-        aDriver().pressKeyCode(25); Thread.sleep(1000); aDriver().pressKeyCode(27); Thread.sleep(5000);
+		Thread.sleep(1000);
+        aDriver().pressKeyCode(25); 
+        Thread.sleep(1000); 
+        aDriver().pressKeyCode(27); 
+        Thread.sleep(5000);
         
         try {
         	driver.findElementById("com.motorola.camera:id/review_approve").click();  // For Moto phones
@@ -22,17 +26,20 @@ public class AndroidCamera extends AndroidElements {
         	
         }
         try {
+        	Thread.sleep(1000);
         	driver.findElementByName("OK").click();  // For Galaxy Note 4
         } catch (Exception e) {
         	
         }
         try {
+        	Thread.sleep(1000);
         	driver.findElementByName("Save").click();  // For Galaxy Note 3
         	
         } catch (Exception e) {
         	
         }
         try {
+        	Thread.sleep(1000);
         	driver.findElementById("com.android.camera2:id/done_butto").click();  // For Nexus phones
         } catch (Exception e) {
         	
