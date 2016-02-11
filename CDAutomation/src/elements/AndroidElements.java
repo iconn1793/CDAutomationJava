@@ -589,16 +589,53 @@ public class AndroidElements extends Drivers {
     /*******************
     * Find Tab Elements*
     *******************/
-    public WebElement chatter_category_menu() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/navigation_drawer_button")));
+    public TouchAction open_chatter_category_menu() {
+    	return action.longPress(10, 340).release().perform();
 	}
-    public WebElement art_category() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/category_name")));
+    public WebElement feed_list() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/feeds_button")));
 	}
     public WebElement profile_following() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_button")));
 	}
- 
+    public WebElement feed_following() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("following")));
+	}
+    public WebElement other_user_prof_pic() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/overlay_profile_picture")));
+	}
+    public WebElement business_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Business")));
+	}
+    public WebElement chatting_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Chatting")));
+	}
+    public WebElement entertainment_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Entertainment")));
+	}
+    public WebElement health_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Health & Wellness")));
+	}
+    public WebElement music_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Music")));
+	}
+    public WebElement sports_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Sports")));
+	}
+    public WebElement startups_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Start-Ups")));
+	}
+    public WebElement technology_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Technology")));
+	}
+    public WebElement chatter_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chatter_topic_text")));
+	}
+    public WebElement news_category() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("News")));
+	}
+    
+    
     
     /*******************
      * Sign up elements*
