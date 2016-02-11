@@ -160,7 +160,7 @@ public class AutomationApp {
 		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
 		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		IOSButton.setSelected(overrideSetting);
-		IOSButton.setBounds(56, 436, 90, 25);
+		IOSButton.setBounds(42, 436, 98, 25);
 		myFrame.getContentPane().add(IOSButton);
 		
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
@@ -248,6 +248,7 @@ public class AutomationApp {
 				} catch (StoppedByUserException e) {
 					System.out.println("Test Stopped");
 					TestListener.currentTest = "done";
+					stopButton.setEnabled(true);
 					
 				} catch (NullPointerException e) {
 					System.err.println("Failed to establish connection to Appium server.\n");
@@ -346,6 +347,8 @@ public class AutomationApp {
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!executedTests.isEmpty()) {
+					stopButton.setEnabled(false);
+					System.out.println("Stopping test...");
 					new TestExecuter().stopTests();
 				}
 			}
