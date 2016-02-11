@@ -30,6 +30,7 @@ public class AutomationApp {
 	private JFrame myFrame;
 	
 	public static void main(String[] args) {
+		new Settings().loadSettings();
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,7 +54,7 @@ public class AutomationApp {
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
 		myFrame.setTitle("CD Automation");
-		myFrame.setBounds(300, 150, 900, 500);
+		myFrame.setBounds(300, 150, 1000, 500);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
 		
@@ -81,7 +82,7 @@ public class AutomationApp {
 		junitOut.setBackground(Color.WHITE);
 		junitOut.setFocusable(false);
 		junitScroll.setViewportView(junitOut);
-		junitScroll.setBounds(230, 10, 250, 200);
+		junitScroll.setBounds(220, 10, 260, 200);
 		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(junitScroll);
 
@@ -110,8 +111,8 @@ public class AutomationApp {
 		serverOutput.setFont(new Font("Arial", Font.PLAIN, 12));
 		serverOutput.setEditable(false);
 		serverScroll.setViewportView(serverOutput);
-		serverScroll.setBounds(495, 14, 390, 450);
-		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		serverScroll.setBounds(488, 10, 496, 454);
+		serverScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Appium", TitledBorder.LEFT, TitledBorder.TOP, null, Color.GRAY));
 		myFrame.getContentPane().add(serverScroll);
 		
 		// Exception info window
@@ -129,32 +130,42 @@ public class AutomationApp {
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
-		testProgressBar.setBounds(264, 218, 180, 14);
+		testProgressBar.setBounds(260, 220, 180, 14);
 		testProgressBar.setForeground(Color.GREEN.darker());
 		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
 		// Buttons
 		JButton selectAllButton = new JButton("Select All");
-		selectAllButton.setBounds(54, 216, 90, 20);
+		selectAllButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		selectAllButton.setBounds(17, 215, 82, 25);
 		myFrame.getContentPane().add(selectAllButton);
 		
 		JButton logButton = new JButton("Open Log");
-		logButton.setBounds(100, 436, 90, 25);
+		logButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		logButton.setBounds(101, 215, 82, 25);
 		myFrame.getContentPane().add(logButton);
 		
 		JButton runButton = new JButton("Run");
-		runButton.setBounds(200, 436, 90, 25);
+		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		runButton.setBounds(182, 436, 90, 25);
 		myFrame.getContentPane().add(runButton);
 		
 		JButton stopButton = new JButton("Stop");
-		stopButton.setBounds(300, 436, 90, 25);
+		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		stopButton.setBounds(321, 436, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
-		JToggleButton iOSButton = new JToggleButton("iOS");
-		iOSButton.setBounds(180, 212, 52, 29);
-		myFrame.getContentPane().add(iOSButton);
+		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
+		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
+		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
+		IOSButton.setSelected(overrideSetting);
+		IOSButton.setBounds(42, 436, 98, 25);
+		myFrame.getContentPane().add(IOSButton);
 		
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			IOSButton.setEnabled(false);
+		}
 		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
@@ -216,6 +227,9 @@ public class AutomationApp {
 							}
 
 							junitOut.clearSelection();
+							runButton.setEnabled(true);
+							testClassList.setEnabled(true);
+							selectAllButton.setEnabled(true);
 						}
 					}
 				} catch (Exception e) {
@@ -230,9 +244,25 @@ public class AutomationApp {
 				
 				try {
 					TestExecuter.runTests(testClassList.getSelectedValuesList());
+					
 				} catch (StoppedByUserException e) {
-					TestListener.currentTest = "done";
 					System.out.println("Test Stopped");
+					TestListener.currentTest = "done";
+					stopButton.setEnabled(true);
+					
+				} catch (NullPointerException e) {
+					System.err.println("Failed to establish connection to Appium server.\n");
+					
+					try {
+						Thread.sleep(800);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+					
+					runButton.setEnabled(true);
+					testClassList.setEnabled(true);
+					selectAllButton.setEnabled(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -251,6 +281,7 @@ public class AutomationApp {
 				for (int i = 0; i < allTests.length; i++) {
 					allTests[i] = iterator.next().intValue();
 				}
+				
 				testClassList.setSelectedIndices(allTests);
 			}
 		};
@@ -260,26 +291,32 @@ public class AutomationApp {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
 				
-				if(iOSButton.isSelected()) {
-					elements.Drivers.IOSEnabled = true;
-				}
-				
-				if (executedTests.contains(testClassList.getSelectedValue())) {
-					for (int i = 0; i < testMethodsList.size(); i++) {
-						executedTests.remove(testMethodsList.get(i));
-						passedTests.remove(testMethodsList.get(i));
-						failedTests.remove(testMethodsList.get(i));
-						exceptionsMap.remove(testMethodsList.get(i));
+				if (!testClassList.isSelectionEmpty()) {
+					
+					runButton.setEnabled(false);
+					testClassList.setEnabled(false);
+					selectAllButton.setEnabled(false);
+					
+					if(IOSButton.isSelected()) {
+						elements.Drivers.IOSEnabled = true;
 					}
-				}
-				
-
-				if (testThread.getState() == Thread.State.valueOf("NEW")) {
-					methodSelector.start();
-					testThread.start();
-				} else {
-					new Thread(methodSelector).start();
-					new Thread(runTestThread).start();
+					
+					if (executedTests.contains(testClassList.getSelectedValue())) {
+						for (int i = 0; i < testMethodsList.size(); i++) {
+							executedTests.remove(testMethodsList.get(i));
+							passedTests.remove(testMethodsList.get(i));
+							failedTests.remove(testMethodsList.get(i));
+							exceptionsMap.remove(testMethodsList.get(i));
+						}
+					}
+					
+					if (testThread.getState() == Thread.State.valueOf("NEW")) {
+						methodSelector.start();
+						testThread.start();
+					} else {
+						new Thread(methodSelector).start();
+						new Thread(runTestThread).start();
+					}
 				}
 			}
 		};
@@ -295,10 +332,25 @@ public class AutomationApp {
 			}
 		};
 		
+		IOSButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (IOSButton.isSelected()) {
+					Settings.appSettings.put("IOSOverride", "true");
+				} else {
+					Settings.appSettings.put("IOSOverride", "false");
+				}
+				
+				new Settings().storeSettings();
+			}
+		});
 		
 		stopButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new TestExecuter().stopTests();
+				if (!executedTests.isEmpty()) {
+					stopButton.setEnabled(false);
+					System.out.println("Stopping test...");
+					new TestExecuter().stopTests();
+				}
 			}
 		});
 		
@@ -322,18 +374,15 @@ public class AutomationApp {
 		// Right-click menu
 		JPopupMenu listPopup = new JPopupMenu();
 		
-		listPopup.add("   Run Test").addActionListener(runTest);
-		listPopup.add("   Open Log").addActionListener(openLog);
-		listPopup.add("   Clear Log").addActionListener(clearLog);
+		listPopup.add(" Run Test").addActionListener(runTest);
+		listPopup.add(" Open Log").addActionListener(openLog);
+		listPopup.add(" Clear Log").addActionListener(clearLog);
 		
 		testClassList.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				List<String> selectedTests = testClassList.getSelectedValuesList();
 				if (SwingUtilities.isRightMouseButton(e)) {
-					if (selectedTests.isEmpty() || selectedTests.size() == 1) {
-						testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
-						testClassList.setComponentPopupMenu(listPopup);
-					}
+					testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
+					listPopup.show(testClassList, e.getX(), e.getY());
 				}
 			}
 		});
@@ -436,6 +485,5 @@ public class AutomationApp {
 				return label;
 			}
 		});
-		
 	}
 }
