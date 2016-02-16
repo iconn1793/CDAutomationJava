@@ -31,18 +31,20 @@ public class IOS_ProfileBioTest extends IOSElements {
 		close_button().click();
 		more_button().click();
 		WebElement bio = driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextView[1]"));
-		if ((bio.getAttribute("value")).equals("Cyberdust1 ")) {
-			System.out.println("Text bio successful");
+		try{
+			if ((bio.getAttribute("value")).equals("Cyberdust1 ")) {
+				System.out.println("Text bio successful");
+			}
+			else{
+				System.out.println("Text bio failed");
+			}
+			
 			action.longPress(345, 300).release().perform();
 			action.longPress(delete_button(), 3000).release().perform();
 			action.longPress(delete_button(), 3000).release().perform();
-			//Thread.sleep(5000);
-			
+			close_button().click();
 		}
-		else{
-			System.out.println("Text bio failed");
-		}
-	
+		finally {}
 		
 	}
 	

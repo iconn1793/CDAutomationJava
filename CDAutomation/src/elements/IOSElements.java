@@ -315,7 +315,7 @@ public class IOSElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/edit_text_overlay")));
 	}
 	public WebElement next_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/action_next")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("next")));
 	}
 	public WebElement make_public() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_public_button_check")));
@@ -335,8 +335,12 @@ public class IOSElements extends Drivers {
 	public WebElement create_blast_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Create Blast List")));
 	}
-	public WebElement send_to_blast_list() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/action_check")));
+	public WebElement select_blast_list() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("qa blast")));
+	}
+	public TouchAction send_to_blast_list() {
+	    //return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableGroup[1]/UIAStaticText[2]")));
+		return action.longPress(325, 210).release().perform();
 	}
 	public WebElement blast_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableGroup[1]/UIASegmentedControl[1]/UIAStaticText[2]")));
