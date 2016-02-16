@@ -381,8 +381,10 @@ public class AutomationApp {
 		testClassList.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (SwingUtilities.isRightMouseButton(e)) {
-					testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
-					listPopup.show(testClassList, e.getX(), e.getY());
+					if (testClassList.isEnabled()) {
+						testClassList.setSelectedIndex(testClassList.locationToIndex(e.getPoint()));
+						listPopup.show(testClassList, e.getX(), e.getY());
+					}
 				}
 			}
 		});
