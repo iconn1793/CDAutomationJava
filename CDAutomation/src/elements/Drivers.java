@@ -41,6 +41,10 @@ public abstract class Drivers {
 			new AppPath().findApp();
 		} 
 		
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			DeviceReader.AndroidDevice = true;
+		}
+		
 		AppiumDriverLocalService service = AppiumDriverLocalService
 				.buildService(new AppiumServiceBuilder()
 				.withArgument(GeneralServerFlag.LOG_NO_COLORS)
@@ -69,7 +73,7 @@ public abstract class Drivers {
 				driver = new IOSDriver<>(service, capabilities);
 			}
 		
-		if ((!IOSEnabled && DeviceReader.AndroidDevice) || System.getProperty("os.name").toLowerCase().contains("win")) {
+		if (!IOSEnabled && DeviceReader.AndroidDevice) {
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
