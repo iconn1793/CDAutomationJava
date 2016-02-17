@@ -10,11 +10,11 @@ import elements.LoginWith;
 public class Android_MessagePinningTest extends AndroidElements {
 
 	///////////////////////////////////////////////
-	String account_name = "existingTest01";
+	String account_name = "messagepinning";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
+	String friend_username = "messagepinningfriend";
 	//////////////////////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();

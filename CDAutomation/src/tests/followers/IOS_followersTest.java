@@ -10,10 +10,10 @@ import elements.LoginWith;
 public class IOS_followersTest extends IOSElements {
 	
 	///////////////////////////////////////////////
-	String account_name = "existingTest01";
+	String account_name = "followerstest";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
-	String friend_username = "aaaaa2";
+	String friend_username = "followersfriendtest";
 
 	//////////////////////////////////////////////
 
