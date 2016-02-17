@@ -52,8 +52,9 @@ public class IOSElements extends Drivers {
     public WebElement done_button() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("Done")));
     }
-	public WebElement back_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("close")));
+	public WebElement back_button() throws InterruptedException {
+		Thread.sleep(1000);
+	    return driver.findElement(By.name("Back"));
 	}
 	public WebElement confirm() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("OK")));
@@ -125,6 +126,13 @@ public class IOSElements extends Drivers {
 	public WebElement new_dust() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/tap_to_compose_button")));
 	}
+	
+	
+	
+	/**********************
+	 * Blast Tab Elements
+	 *********************/
+	
 	public WebElement blasts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("BLASTS")));
 	}
@@ -197,12 +205,12 @@ public class IOSElements extends Drivers {
 	public WebElement blast_list_field() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/name_edit_text")));
 	}
-	public TouchAction blast_list_expand() {
-	    WebElement el = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ExpandableListView[@index='0'][android.widget.RelativeLayout]")));
-	    return action.press(el.getLocation().x, el.getLocation().y).release().perform();
+	public TouchAction blast_list_expand() throws InterruptedException {
+		Thread.sleep(500);
+		return action.press(driver.findElement(By.name("99 reveal info arrow red btn"))).release().perform();
 	}
 	public WebElement blast_list_edit() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_groups_list_item_edit_action")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("edit")));
 	}
 	public WebElement blast_list_more() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.ImageButton")));
@@ -210,12 +218,23 @@ public class IOSElements extends Drivers {
 	public WebElement rename_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Rename list")));
 	}
-	public WebElement rename_blast_list() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText")));
+	public TouchAction rename_blast_list() throws InterruptedException {
+		Thread.sleep(1000);
+	    //return driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIATextField[1]/UIATextField[1]"));
+		return action.longPress(238, 20).release().perform();
 	}
 	public WebElement delete_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete list")));
 	}
+	public WebElement blast_alert_OK_button() throws InterruptedException {
+		Thread.sleep(500);
+        return driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")); 
+    }
+	
+	/************************
+	 * Groups tab elements
+	 ***********************/
+	
 	public WebElement groups_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("GROUPS")));
 	}
@@ -253,6 +272,10 @@ public class IOSElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("profileMore")));
 	}
 
+	
+	/************************
+	 * Action menu elements
+	 ***********************/
 	public WebElement action_menu() {
 		//Thread.sleep(500);
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("center")));
@@ -264,12 +287,11 @@ public class IOSElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[4]/UIAImage[1]")));
 	}
 	public WebElement action_menu_text() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("///UIAApplication[1]/UIAWindow[1]/UIAImage[2]/UIAImage[1]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[2]/UIAImage[1]")));
 	}
 	public WebElement action_menu_media() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[3]/UIAImage[1]")));
 	}
-
 	public WebElement action_menu_discover() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[8]/UIAImage[1]")));
 	}
@@ -282,6 +304,11 @@ public class IOSElements extends Drivers {
 	public WebElement dust_blast_field() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextView[1]")));
 	}
+	
+	/************************
+	 * Photo/video elements
+	 ***********************/
+	
 	public WebElement photo_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("btn camera shutter")));
 	}
@@ -340,7 +367,7 @@ public class IOSElements extends Drivers {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/image")));
 	}
 	public WebElement blast_all_followers() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_followers_button_plus")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("All Followers")));
 	}
 	public WebElement blast_all_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_friends_button_plus")));
@@ -358,6 +385,15 @@ public class IOSElements extends Drivers {
 	public WebElement blast_friends() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableGroup[1]/UIASegmentedControl[1]/UIAStaticText[2]")));
 	}
+	public TouchAction send_blast() {
+	    //return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableGroup[1]/UIAButton[2]")));
+		return action.longPress(340, 230).release().perform();
+	}
+	
+	
+	
+	
+	
 	public WebElement swipe_view_add() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friend")));
 	}
@@ -487,7 +523,7 @@ public class IOSElements extends Drivers {
         return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIATextView[1]")));
     }
     public WebElement delete_button() {
-        return wait.until(ExpectedConditions.elementToBeClickable(By.name("delete")));
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[5]/UIAKeyboard[1]/UIAKey[27]")));
     }
     public WebElement enter_website() {
         return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/more_fragment_url")));

@@ -26,7 +26,7 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}*/
+	}
 	
 	@Test
 	public void test02_sendTextBlasts() throws Exception {
@@ -44,7 +44,7 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}
+	}*/
 	
 	@Test
 	public void test03_sendPhotoBlast1() throws Exception {

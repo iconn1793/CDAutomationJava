@@ -44,53 +44,63 @@ public class IOS_BlastTest extends IOSElements {
 	}
 	
 	public void test02_send_text_blasts() throws Exception {
-		// Sends text blast with +username, URL, and location to blast list
+		
+		/*/ Sends text blast with +username, URL, and location to blast list
 		log("Sending text blast to blast list");
 		//blasts_tab();
 		action_menu().click();
-		//Thread.sleep(500);
 		action_menu_text().click();
 		dust_blast_field().sendKeys(blast_username + " " + blast_url);
 		next_button().click();
 		select_blast_list().click();
-		Thread.sleep(800);
-		send_to_blast_list();
+		Thread.sleep(500);
+		send_to_blast_list();*/
 
 		// Edits participants and renames blast list
 		log("Editing blast list");
 		blast_lists().click();
 		blast_list_expand(); // Doesn't need .click(); attribute
 		blast_list_edit().click();
-		username(account03).click();
-		blast_list_more().click();
-		rename_list().click();
-		rename_blast_list().sendKeys("Edited blast list");
-		OK_button().click();
+		rename_blast_list();
+		action.longPress(delete_button(), 3000).release().perform();
+		action.longPress(delete_button(), 1000).release().perform();
+		driver.getKeyboard().sendKeys("Edited blast list\n");
+		username(account03).click();		
 		Thread.sleep(1000);
-		OK_button().click();
-		back_button().click();
+		action.longPress(35, 120).release().perform(); //"okay to add"
+		blast_alert_OK_button().click(); //okay in the pop up window
+		//back_button().click();
+		action.longPress(driver.findElement(By.name("back arrow red btn"))).release().perform(); //clicks back
 	}
 
 	public void test03_send_photo_blast_01() throws Exception {
+		//temp
+		loginAs.user(account01, password01);
+		
 		// Sends photo blast with drawing and URL to all followers
 		log("Sending photo blast with drawing and text to all followers");
-		blasts_tab();
+		//blasts_tab();
 		action_menu().click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		action_menu_media().click();
-		photo_button().click();
+		photo_gallery().click();
+		camera_roll().click();
+		camera_roll_photo1().click();
+		
+		Thread.sleep(300);
 		photo_pen().click();
 		driver.swipe(photo_back_button().getLocation().x + 50, photo_back_button().getLocation().y - 50,
 				photo_pen().getLocation().x, photo_pen().getLocation().y + 50, 1000);
 		photo_color().click();
-		driver.swipe(next_button().getLocation().x + 100, next_button().getLocation().y - 50,
-				photo_location_button().getLocation().x + 50, photo_location_button().getLocation().y + 50, 1000);
+		driver.swipe(photo_back_button().getLocation().x + 80, photo_back_button().getLocation().y - 50,
+				photo_pen().getLocation().x, photo_pen().getLocation().y + 50, 1000);
 		add_text().click();
 		add_text_field().sendKeys(blast_url);
 		done_button().click();
-		next_button().click();
+		(driver.findElement(By.name("btn photo next"))).click();
 		blast_all_followers().click();
-		blast_Ok_button().click();
+		Thread.sleep(1000);
+		send_blast();
 	}
 
 	public void test04_send_photo_blast_02() throws Exception {
