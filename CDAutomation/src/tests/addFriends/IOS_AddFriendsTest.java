@@ -17,13 +17,13 @@ public class IOS_AddFriendsTest extends IOSElements {
 
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	///////////////////////////////////////////////
-	String account_name = "existingtest02";
-	String account_short = "existingtest02";
+	String account_name = "addfriends";
+	String account_short = "addfriend";
 	String account_pw = "password";
-	String account_email = "existing02@cyberdust.com";
+	String account_email = "addfriend@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
-	String friend_username0 = "aaaaa";
+	String friend_username = "friends1";
+	String friend_username0 = "friends";
 	//////////////////////////////////////////////
 
 

@@ -9,13 +9,13 @@ import elements.LoginWith;
 
 public class Android_AddFriendsTest extends AndroidElements {
 
-	String account_name = "existingtest02";
+	String account_name = "addfriends";
 	String account_short = "existingtest0";
 	String account_pw = "password";
 	String account_email = "existing02@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
-	String friend_username0 = "aaaaa";
+	String friend_username = "friends1";
+	String friend_username0 = "friends";
 
 	LoginWith loginAs = new LoginWith();
 	

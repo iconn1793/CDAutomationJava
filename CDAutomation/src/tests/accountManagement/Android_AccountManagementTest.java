@@ -6,7 +6,7 @@ import elements.LoginWith;
 public class Android_AccountManagementTest extends AndroidElements {
 
 	/////////////////////////////////////////////////////
-	String account_name = "existing02";
+	String account_name = "accountmanagement";
 	String account_pw = "password";
 	String account_new_pw = "new password";
 	String account_email = "testuser_02@cyberdust.com";

@@ -10,7 +10,7 @@ import elements.LoginWith;
 public class IOS_AccountManagementTest extends IOSElements {
 
 	/////////////////////////////////////////////////////
-	String account_name = "existing02";
+	String account_name = "accountmanagement";
 	String account_pw = "password";
 	String account_new_pw = "new password";
 	String account_email = "testuser_02@cyberdust.com";
@@ -89,7 +89,7 @@ public class IOS_AccountManagementTest extends IOSElements {
 			back_button().click();
 		} catch (Exception e) {
 			System.out.println("Logged in into deleted account");
-			sign_up_button().click();
+			//sign_up_button().click();
 		}
 
 		// Recreating the account
