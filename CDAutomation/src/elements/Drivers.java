@@ -24,7 +24,7 @@ public abstract class Drivers {
 	public static AppiumDriver<WebElement> driver;
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 	public static String appiumServerAddress = "127.0.0.1";
-	public static int appiumServerPort = 4723;
+	public static String appiumServerPort = "4723";
 	
 	public WebDriverWait wait = new WebDriverWait(driver, 20);
 	public TouchAction action = new TouchAction(driver);
@@ -49,7 +49,7 @@ public abstract class Drivers {
 				.buildService(new AppiumServiceBuilder()
 				.withArgument(GeneralServerFlag.LOG_NO_COLORS)
 				.withIPAddress(appiumServerAddress)
-				.usingPort(appiumServerPort));
+				.usingPort(Integer.parseInt(appiumServerPort)));
 			
 		if (!IOSEnabled && DeviceReader.IOSDevice && !DeviceReader.AndroidDevice) {
 				System.out.println("Running test on iOS device");
