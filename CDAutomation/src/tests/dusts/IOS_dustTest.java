@@ -10,13 +10,13 @@ import elements.LoginWith;
 public class IOS_dustTest extends IOSElements {
 
 	///////////////////////////////////////////////
-	String account_name = "existingTest01";
+	String account_name = "dusttest";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
-	String friend_username0 = "aaaaa";
-	String friend_username2 = "existing02";
+	String friend_username = "dustfriend1";
+	String friend_username0 = "dustfriend";
+	String friend_username2 = "dustfriend2";
 	//////////////////////////////////////////////
 
 	LoginWith loginAs = new LoginWith();
