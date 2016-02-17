@@ -15,7 +15,7 @@ public class Run_DustTest extends Drivers {
 			log("Test01: Start a chat from Dusts tab from the floating action menu: +dust");
 			
 			if (Android()) {
-				new Android_dustTest().test01_chat_from_action_menu();
+				new Android_DustTest().test01_chat_from_action_menu();
 			} else if (IOS()) {
 				new IOS_dustTest().test01_chat_from_action_menu();
 			}
@@ -33,7 +33,7 @@ public class Run_DustTest extends Drivers {
 			log("Test02: Start a chat from Dusts tab - you already have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test02_chat_from_dust_room();
+				new Android_DustTest().test02_chat_from_dust_room();
 			} else if (IOS()) {
 				new IOS_dustTest().test02_chat_from_dust_room();
 			}
@@ -51,7 +51,7 @@ public class Run_DustTest extends Drivers {
 			log("Test03: Start a chat from Dusts tab (using search) - you already have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test03_chat_from_search_bar();
+				new Android_DustTest().test03_chat_from_search_bar();
 			} else if (IOS()) {
 				new IOS_dustTest().test03_chat_from_search_bar();
 			}
@@ -69,7 +69,7 @@ public class Run_DustTest extends Drivers {
 			log("Test04 Start a chat from Dusts tab (using search) - you dont have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test04_chat_from_search_bar();
+				new Android_DustTest().test04_chat_from_search_bar();
 			} else if (IOS()) {
 				new IOS_dustTest().test04_chat_from_search_bar();
 			}
@@ -87,7 +87,7 @@ public class Run_DustTest extends Drivers {
 			log("Test05: Start a chat from Friends page (using search) - you already have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test05_chat_from_friend_list();
+				new Android_DustTest().test05_chat_from_friend_list();
 			} else if (IOS()) {
 				new IOS_dustTest().test05_chat_from_friend_list();
 			}
@@ -105,7 +105,7 @@ public class Run_DustTest extends Drivers {
 			log("Test06: Start a chat from Friends page (using search) - you dont have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test06_chat_from_friend_list();
+				new Android_DustTest().test06_chat_from_friend_list();
 			} else if (IOS()) {
 				new IOS_dustTest().test06_chat_from_friend_list();
 			}
@@ -123,7 +123,7 @@ public class Run_DustTest extends Drivers {
 			log("Test07: Start a chat from Friends page - you already have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test07_chat_from_friend_list();
+				new Android_DustTest().test07_chat_from_friend_list();
 			} else if (IOS()) {
 				new IOS_dustTest().test07_chat_from_friend_list();
 			}
@@ -141,7 +141,7 @@ public class Run_DustTest extends Drivers {
 			log("Test08: Start a chat from Friends page - you dont have a dust room with that person.");
 
 			if (Android()) {
-				new Android_dustTest().test08_chat_from_friend_list();
+				new Android_DustTest().test08_chat_from_friend_list();
 			} else if (IOS()) {
 				new IOS_dustTest().test08_chat_from_friend_list();
 			}

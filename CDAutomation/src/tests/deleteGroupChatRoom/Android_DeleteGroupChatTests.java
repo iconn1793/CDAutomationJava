@@ -106,16 +106,16 @@ public class Android_DeleteGroupChatTests extends AndroidElements {
 		back_button().click();
 		log("Fifth group created");
 		
-		groups_tab().click();
+		dusts_tab().click();
 		WebElement Group1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(" Group 1")));
 		log("Got group 1");
 		
 		WebElement Group5 = wait.until(ExpectedConditions.elementToBeClickable(By.name(" Group 5")));
-		log("Got group 1");
+		log("Got group 5");
 		
 		
 		action.press(Group1).moveTo(Group5).release().perform();
-		delete_all_groups().click();
+		delete_all_dusts().click();
 		yes_button().click();
 		
 		try{

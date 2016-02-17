@@ -1,5 +1,7 @@
 package tests.find;
 
+import org.openqa.selenium.By;
+
 import elements.AndroidElements;
 import elements.LoginWith;
 import io.appium.java_client.TouchAction;
@@ -70,7 +72,7 @@ public class Android_Find extends AndroidElements {
 	
 	public void test03_followfeedlist() throws Exception {
 		
-		//follows a Feed
+		//follows a Feed acct
 		System.out.println("Checking feed categories...");
 		open_chatter_category_menu();
 		feed_list().click();
@@ -83,7 +85,7 @@ public class Android_Find extends AndroidElements {
 		System.out.println("Followed acct from Feed stream: " + followed);
 		profile_following().click();
 		okay_button().click();
-		System.out.println("Feed unfollowed.");
+		System.out.println("Feed acct unfollowed.");
 		other_user_prof_pic().click();	
 		
 	}
@@ -123,6 +125,19 @@ public class Android_Find extends AndroidElements {
 		addback_button().click();
 	}
 	
+	public void test06_searchbar(){
+		/*temp
+		loginAs.user(account_name, account_pw);
+		System.out.println("Logged In");
+		find_tab().click();
+		*/
+		System.out.println("Testing dynamic search...");
+		open_searchbar().click();
+		use_searchbar().sendKeys("test");
+		driver.findElement(By.name("testacct01"));
+		System.out.println("Dynamic search successfull");
+		
+	}
 	private String CategoryCheck (String expectedCategory){
 		if ((chatter_category().getAttribute("text")).equals(expectedCategory)){
 			return (expectedCategory + " chatters okay");

@@ -33,9 +33,9 @@ public class Android_AddFriendsTest extends AndroidElements {
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		chat_room_send_button().click();
-		System.out.println("Sent a dust");
-		logout_account();
-		//relaunch();
+		log("Sent a dust");
+		back_button().click();
+		back_button().click();
 		loginAs.user(account_name, account_pw);
 		dusts_tab().click();
 		
@@ -49,14 +49,14 @@ public class Android_AddFriendsTest extends AndroidElements {
 		group_three_dotted_menu().click();
 		try{
 			if(unfollow_from_chat_room().isDisplayed())
-				System.out.println("Followed from chat room");
+				log("Followed from chat room");
 			unfollow_from_chat_room().click();
 			okay_button().click();
 			
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to follow from chat menu");
+			log("Unable to follow from chat menu");
 		}
 	}
 	
@@ -80,13 +80,13 @@ public class Android_AddFriendsTest extends AndroidElements {
 		
 		try{
 			if(unfollow_from_chat_room().isDisplayed())
-				System.out.println("Followed from dusts tab");
+				log("Followed from dusts tab");
 			unfollow_from_chat_room().click();
 			okay_button().click();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to follow from dust room");
+			log("Unable to follow from dust room");
 		}
 		
 	}
@@ -105,7 +105,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		try{
 			
 			if(unfollow_button().isDisplayed())
-				System.out.println("Added a friend from search bar");
+				log("Added a friend from search bar");
 			unfollow_button().click();
 			okay_button().click();
 			
@@ -114,11 +114,12 @@ public class Android_AddFriendsTest extends AndroidElements {
 
 		catch (Exception e) {
 
-			System.out.println("Unable to add a friend from search bar");
+			log("Unable to add a friend from search bar");
 
 		}
 
 	}
+	
 	public void test04_Follow_from_AddFriends() throws Exception{
 		
 		back_button().click();
@@ -142,14 +143,14 @@ public class Android_AddFriendsTest extends AndroidElements {
 		try{
 			
 			if(unfollow_button().isDisplayed())
-				System.out.println("Added a friend from search bar");
+				log("Added a friend from search bar");
 			unfollow_button().click();
 			okay_button().click();
 			
 		}
 		catch (Exception e) {
 
-			System.out.println("Unable to add a friend from search bar");
+			log("Unable to add a friend from search bar");
 
 		}
 		
@@ -160,14 +161,15 @@ public class Android_AddFriendsTest extends AndroidElements {
 	{
 
 		back_button().click();
-		back_button().click();
-		action_menu().click();
-		Thread.sleep(2000);
-		action_menu_search().click();
+		Thread.sleep(1000);
+		action.press(share_twitter()).moveTo(enter_bio()).release().perform();
+		add_friends().click();
+		add_friends_search_button_text().click();
 		friends_search().click();
 		friends_search().sendKeys(friend_username);
 		aDriver().pressKeyCode(66);
 		add_friends_button_inBrowseFriends().click();
+		back_button().click();
 		back_button().click();
 		browse_friends().click();
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
@@ -175,7 +177,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		try{
 			
 			if(unfollow_button().isDisplayed())
-				System.out.println("Added a friend from search bar");
+				log("Added a friend from search bar");
 			unfollow_button().click();
 			okay_button().click();
 			
@@ -183,76 +185,8 @@ public class Android_AddFriendsTest extends AndroidElements {
 
 		catch (Exception e) {
 
-			System.out.println("Unable to add a friend from search bar");
+			log("Unable to add a friend from search bar");
 
-		}
-		
-	}
-	public void test06_popular_page() throws Exception
-
-	{
-
-		
-		action_menu().click();
-		Thread.sleep(2000);
-		action_menu_discover().click();
-		Thread.sleep(4000);
-	
-		try{
-			
-			if(discover_tab().isDisplayed())
-				System.out.println("Popular tab is accessible");
-			}
-
-		catch (Exception e) {
-
-			System.out.println("Discover tab is not accessible");
-
-		}
-		
-	}
-	
-	public void test07_chatters_page() throws Exception
-	{
-		try{
-			if(chatters_tab().isDisplayed())
-				System.out.println("Chatters tab is accessible");
-		}
-
-		catch (Exception e) {
-			System.out.println("Discover tab is not accessible");
-
-		}
-		
-	}
-	
-	public void test08_Popular_page() throws Exception
-
-	{
-
-	
-		try{
-			
-			if(chatters_tab().isDisplayed())
-			{
-				
-				WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.RelativeLayout[@index='3']")));
-				first_friend.click();
-				yes_button().click();
-				Thread.sleep(2000);
-				first_friend.click();
-				yes_button().click();
-				
-				if(Friend_already_added().isDisplayed())
-				{
-					System.out.println("Popular page - a user can be added");
-				}
-			}
-		}
-		catch (Exception e) {
-
-			System.out.println("Discover tab is not accessible");
-		
 		}
 	}
 }

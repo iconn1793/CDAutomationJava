@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import elements.AndroidElements;
 import elements.LoginWith;
 
-public class Android_dustTest extends AndroidElements {
+public class Android_DustTest extends AndroidElements {
 
 	///////////////////////////////////////////////
-	String account_name = "existingTest01";
+	String account_name = "existingtest01";
 	String account_pw = "password";
 	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
@@ -31,12 +31,12 @@ public class Android_dustTest extends AndroidElements {
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		chat_room_send_button().click();
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 		try {
 			if (sent_text_dust().isDisplayed())
-				System.out.println("Started a chat from floating action menu");
+				log("Started a chat from floating action menu");
 		} catch (Exception e) {
-			System.out.println("Unable to start a chat from floating action menu");
+			log("Unable to start a chat from floating action menu");
 		}
 
 	}
@@ -46,36 +46,27 @@ public class Android_dustTest extends AndroidElements {
 	{
 
 		back_button().click();
-
 		back_button().click();
-
 		dusts_tab().click();
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from dust room");
+				log("Started a chat from dust room");
 
 		}
 
 		catch (Exception e) {
 
-			System.out.println("Unable to start a chat from dust room");
+			log("Unable to start a chat from dust room");
 
 		}
 
@@ -86,40 +77,32 @@ public class Android_dustTest extends AndroidElements {
 	{
 
 		back_button().click();
-
-		action_menu().click();
-
-		action_menu_search().click();
-
+		more_button().click();
+		action.press(share_twitter()).moveTo(enter_bio()).release().perform();
+		add_friends().click();
+		add_friends_search_button_text().click();
+		
 		friends_search().click();
-
 		friends_search().sendKeys(friend_username0);
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from action menu search bar");
+				log("Started a chat from action menu search bar");
 
 		}
 
 		catch (Exception e) {
 
-			System.out.println("Unable to start a chat from action menu search bar");
+			log("Unable to start a chat from action menu search bar");
 
 		}
 
@@ -130,42 +113,36 @@ public class Android_dustTest extends AndroidElements {
 	{
 
 		// you don't have a dust room with that person.
-
+		back_button().click();
+		back_button().click();
 		remove_dustroom();
-
-		action_menu().click();
-
-		action_menu_search().click();
-
+		
+		more_button().click();
+		action.press(share_twitter()).moveTo(enter_bio()).release().perform();
+		add_friends().click();
+		add_friends_search_button_text().click();
+		
 		friends_search().click();
-
 		friends_search().sendKeys(friend_username0);
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from action menu search bar");
+				log("Started a chat from action menu search bar");
 
 		}
 
 		catch (Exception e) {
 
-			System.out.println("Unable to start a chat from action menu search bar");
+			log("Unable to start a chat from action menu search bar");
 
 		}
 
@@ -177,38 +154,28 @@ public class Android_dustTest extends AndroidElements {
 
 		back_button().click();
 		back_button().click();
-
-		more_button().click();
-
+		back_button().click();
 		friends().click();
-
 		friends_list_search().sendKeys(friend_username0);
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from floating action menu");
+				log("Started a chat from floating action menu");
 
 		}
 
 		catch (Exception e) {
 
-			System.out.println("Unable to start a chat from floating action menu");
+			log("Unable to start a chat from floating action menu");
 
 		}
 
@@ -222,36 +189,26 @@ public class Android_dustTest extends AndroidElements {
 		remove_dustroom();
 		blasts_tab().click();
 		more_button().click();
-
 		friends().click();
-
 		friends_list_search().sendKeys(friend_username0);
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from floating action menu");
+				log("Started a chat from floating action menu");
 
 		}
 
 		catch (Exception e) {
-
-			System.out.println("Unable to start a chat from floating action menu");
+			log("Unable to start a chat from floating action menu");
 
 		}
 
@@ -262,36 +219,26 @@ public class Android_dustTest extends AndroidElements {
 		back_button().click();
 		back_button().click();
 		back_button().click();
-
 		more_button().click();
-
 		friends().click();
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from floating action menu");
+				log("Started a chat from floating action menu");
 
 		}
 
 		catch (Exception e) {
-
-			System.out.println("Unable to start a chat from floating action menu");
+			log("Unable to start a chat from floating action menu");
 
 		}
 
@@ -306,38 +253,27 @@ public class Android_dustTest extends AndroidElements {
 		remove_dustroom();
 		blasts_tab();
 		more_button().click();
-
 		friends().click();
-
 		friends_list_search().click();
-
 		friends_list_search().sendKeys(friend_username0);
-
 		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
-
 		first_friend.click();
-
 		chat_room_text_box().click();
-
 		chat_room_text_box().sendKeys(text_message);
-
 		chat_room_send_button().click();
-
-		System.out.println("Sent a dust");
+		log("Sent a dust");
 
 		try
 
 		{
 
 			if (sent_text_dust().isDisplayed())
-
-				System.out.println("Started a chat from floating action menu");
+				log("Started a chat from floating action menu");
 
 		}
 
 		catch (Exception e) {
-
-			System.out.println("Unable to start a chat from floating action menu");
+			log("Unable to start a chat from floating action menu");
 
 		}
 

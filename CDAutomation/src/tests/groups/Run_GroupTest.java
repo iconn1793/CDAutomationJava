@@ -26,11 +26,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -54,11 +54,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -82,11 +82,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -110,11 +110,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -138,11 +138,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -166,11 +166,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -194,11 +194,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			
@@ -222,11 +222,11 @@ public class Run_GroupTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_GroupTest().groups_tab().click();
+				new Android_GroupTest().dusts_tab().click();
 				new Android_GroupTest().group1().click();
 			}
 			if (IOS()) {
-				new IOS_GroupTest().groups_tab().click();
+				new IOS_GroupTest().dusts_tab().click();
 				new IOS_GroupTest().group1().click();
 			}
 			

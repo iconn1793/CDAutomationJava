@@ -641,8 +641,12 @@ public class AndroidElements extends Drivers {
     public WebElement news_category() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("News")));
 	}
-    
-    
+    public WebElement open_searchbar() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/search_bar")));
+	}
+    public WebElement use_searchbar() {
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_friends_fragment_search_box")));
+	}
     
     /*******************
      * Sign up elements*
