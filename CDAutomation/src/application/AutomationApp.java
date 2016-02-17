@@ -225,11 +225,14 @@ public class AutomationApp {
 							if (!passedTests.contains(t.passedTests())) {
 								passedTests.add(t.passedTests());
 							}
-
+							
+							if (TestExecuter.completedTests.size() == testClassList.getSelectedValuesList().size()) {
+								runButton.setEnabled(true);
+								testClassList.setEnabled(true);
+								selectAllButton.setEnabled(true);
+							}
+							
 							junitOut.clearSelection();
-							runButton.setEnabled(true);
-							testClassList.setEnabled(true);
-							selectAllButton.setEnabled(true);
 						}
 					}
 				} catch (Exception e) {
@@ -290,7 +293,7 @@ public class AutomationApp {
 			public void actionPerformed(ActionEvent arg0) {
 				Thread methodSelector = new Thread(testMethodSelector);
 				Thread testThread = new Thread(runTestThread);
-				
+
 				if (!testClassList.isSelectionEmpty()) {
 					
 					runButton.setEnabled(false);
@@ -310,13 +313,8 @@ public class AutomationApp {
 						}
 					}
 					
-					if (testThread.getState() == Thread.State.valueOf("NEW")) {
-						methodSelector.start();
-						testThread.start();
-					} else {
-						new Thread(methodSelector).start();
-						new Thread(runTestThread).start();
-					}
+					methodSelector.start();
+					testThread.start();
 				}
 			}
 		};
