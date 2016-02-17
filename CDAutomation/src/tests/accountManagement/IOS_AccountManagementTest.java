@@ -9,7 +9,6 @@ import elements.LoginWith;
 
 public class IOS_AccountManagementTest extends IOSElements {
 
-
 	/////////////////////////////////////////////////////
 	String account_name = "existing02";
 	String account_pw = "password";
@@ -46,10 +45,7 @@ public class IOS_AccountManagementTest extends IOSElements {
 		System.out.println("Password reset");
 	}
 
-
-		
-
-public void test02_changing_email() throws Exception {
+	public void test02_changing_email() throws Exception {
 		
 		change_email_address().click();
 		clear_text_button().click();
