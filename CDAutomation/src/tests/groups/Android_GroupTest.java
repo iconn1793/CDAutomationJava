@@ -145,7 +145,7 @@ public class Android_GroupTest extends AndroidElements {
 		loginAs.user(account02, password02);
 		
 		// Check if all group messages were received from account01
-		groups_tab().click();
+		dusts_tab().click();
 		group1().click();
 		
 		try {
