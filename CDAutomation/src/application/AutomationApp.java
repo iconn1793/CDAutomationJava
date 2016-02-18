@@ -308,6 +308,9 @@ public class AutomationApp {
 					System.out.println("Test Stopped");
 					TestListener.currentTest = "done";
 					stopButton.setEnabled(true);
+					runButton.setEnabled(true);
+					testClassList.setEnabled(true);
+					selectAllButton.setEnabled(true);
 					
 				} catch (NullPointerException e) {
 					System.err.println("Failed to establish connection to Appium server.\n");
