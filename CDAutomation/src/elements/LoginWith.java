@@ -9,12 +9,15 @@ public class LoginWith extends Drivers {
 	public void user(String account, String password) {
 		if (Android()) {
 			loginAndroid(account, password);
-		} else if (IOS()) {
+		}
+		
+		if (IOS()) {
 			loginIOS(account, password);
 		}
 	}
 
 	private void loginAndroid(String account, String password) {
+		AndroidElements android = new AndroidElements();
 		boolean already_logged_in = false;
         boolean logged_out = false;
 
@@ -29,7 +32,7 @@ public class LoginWith extends Drivers {
         }
         
         if (!logged_out) {
-            new AndroidElements().more_button().click();
+            android.more_button().click();
             try {
             	//name(account);
             	if (new WebDriverWait(driver, 2).until(ExpectedConditions.elementToBeClickable(By.name(account))).isDisplayed()) {
@@ -41,24 +44,25 @@ public class LoginWith extends Drivers {
         }
         
         if (already_logged_in && !logged_out) {
-        	new AndroidElements().back_button().click();
+        	android.back_button().click();
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
-            action.press(new AndroidElements().followers()).moveTo(new AndroidElements().back_button()).release().perform();
-            new AndroidElements().logout().click();
-            new AndroidElements().confirm().click();
+            action.press(android.followers()).moveTo(android.back_button()).release().perform();
+            android.logout().click();
+            android.confirm().click();
         }
         
         if (logged_out && !already_logged_in) {
-        	new AndroidElements().login_button().click();
-        	new AndroidElements().login_username().sendKeys(account);
-        	new AndroidElements().login_password().click();
-        	new AndroidElements().login_password().sendKeys(password);
-        	new AndroidElements().login_OK().click();
+        	android.login_button().click();
+        	android.login_username().sendKeys(account);
+        	android.login_password().click();
+        	android.login_password().sendKeys(password);
+        	android.login_OK().click();
         }
 	}
 	
 	private void loginIOS(String account, String password) {
+		IOSElements ios = new IOSElements();
 		boolean already_logged_in = false;
         boolean logged_out = false;
 
@@ -73,7 +77,7 @@ public class LoginWith extends Drivers {
         }
         
         if (!logged_out) {
-            new IOSElements().more_button().click();
+            ios.more_button().click();
             try {
             	//name(account);
             	if ((driver.findElement(By.name(account)).getAttribute("name")).equals(account)) {
@@ -85,23 +89,22 @@ public class LoginWith extends Drivers {
         }
         
         if (already_logged_in && !logged_out) {
-        	new IOSElements().close_button().click();
+        	ios.close_button().click();
         } else if (!already_logged_in && !logged_out) {
             logged_out = true;
-            action.press(new IOSElements().followers()).moveTo(new IOSElements().close_button()).release().perform();
+            action.press(ios.followers()).moveTo(ios.close_button()).release().perform();
             try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				
 			}
-            new IOSElements().logout().click();
-            new IOSElements().confirm().click();
+            ios.logout().click();
+            ios.confirm().click();
         }
         
         if (logged_out && !already_logged_in) {
-        	new IOSElements().login_button().click();
-          	driver.getKeyboard().sendKeys(account+"\n"+password+"\n");
-       
+        	ios.login_button().click();
+          	driver.getKeyboard().sendKeys(account+"\n"+password);
         }
     }
 }

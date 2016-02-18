@@ -19,7 +19,7 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public abstract class Drivers {
+public abstract class Drivers extends TestAccounts {
 	
 	public static AppiumDriver<WebElement> driver;
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();

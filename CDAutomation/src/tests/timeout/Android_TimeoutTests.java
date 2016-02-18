@@ -40,7 +40,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		group_text_send().click();
-		logout_account();
+		backToHome();
 		
 		loginAs.user(friends_account_name2, account_pw);
 		Thread.sleep(2000);
@@ -53,7 +53,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys("+technology");
 		group_text_send().click();
-		logout_account();
+		backToHome();
 		
 		loginAs.user(friends_account_name3, account_pw);
 		Thread.sleep(2000);
@@ -67,7 +67,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		switch_emoji_keyboard().click();
 		swipe_view_monkey().click();
 		switch_text_keyboard().click();
-		logout_account();
+		backToHome();
 		
 		loginAs.user(friends_account_name4, account_pw);
 		Thread.sleep(2000);
@@ -89,7 +89,7 @@ public class Android_TimeoutTests extends AndroidElements {
         add_text_field().sendKeys(text_message);
 		done_button().click();
 		next_button().click();
-		logout_account();
+		backToHome();
 		
 		loginAs.user(friends_account_name5, account_pw);
 		Thread.sleep(2000);
@@ -109,7 +109,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		Thread.sleep(2000);
 
 		
-		logout_account();
+		backToHome();
 		loginAs.user(account_name, account_pw);
 		dusts_tab().click();
 		
@@ -122,7 +122,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		Thread.sleep(60000);
 		if(!message1.isDisplayed())
 		{
-			System.out.println("Message deleted after 60 seconds");
+			log("Message deleted after 60 seconds");
 			back_button().click();
 			action.longPress(first_friend, 3000).release().perform();
 			delete_dust().click();
@@ -130,7 +130,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			log("ERROR: Message is not deleted after 60 seconds");
 			
 		}
 	}
@@ -144,7 +144,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		Thread.sleep(60000);
 		if(!message1.isDisplayed())
 		{
-			System.out.println("Message deleted after 60 seconds");
+			log("Message deleted after 60 seconds");
 			back_button().click();
 			action.longPress(second_friend, 3000).release().perform();
 			delete_dust().click();
@@ -152,7 +152,7 @@ public class Android_TimeoutTests extends AndroidElements {
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			log("ERROR: Message is not deleted after 60 seconds");
 			
 		}
 //		WebElement message11 = wait.until(ExpectedConditions.elementToBeClickable(By.name(text_message)));
@@ -162,33 +162,33 @@ public class Android_TimeoutTests extends AndroidElements {
 		
 		if(!message1.isDisplayed())
 		{
-			System.out.println("Message deleted after 60 seconds");
+			log("Message deleted after 60 seconds");
 			
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			log("ERROR: Message is not deleted after 60 seconds");
 			
 		}
 
 		if(!message1.isDisplayed())
 		{
-			System.out.println("Message deleted after 20 seconds");
+			log("Message deleted after 20 seconds");
 			
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 20 seconds");
+			log("ERROR: Message is not deleted after 20 seconds");
 			
 		}
 		if(!swipe_view_monkey().isDisplayed())
 		{
-			System.out.println("Message deleted after 20 seconds");
+			log("Message deleted after 20 seconds");
 			
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 20 seconds");
+			log("ERROR: Message is not deleted after 20 seconds");
 			
 		}
 		
@@ -198,35 +198,33 @@ public class Android_TimeoutTests extends AndroidElements {
 		Thread.sleep(40000);
 		if(!message4.isDisplayed())
 		{
-			System.out.println("Message deleted after 60 seconds");
+			log("Message deleted after 60 seconds");
 			
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			log("ERROR: Message is not deleted after 60 seconds");
 			
 		}
 		
 		Thread.sleep(40000);
 		if(!message3.isDisplayed())
 		{
-			System.out.println("Message deleted after 60 seconds");
+			log("Message deleted after 60 seconds");
 			
 		}
 		else
 		{	
-			System.out.println("ERROR: Message is not deleted after 60 seconds");
+			log("ERROR: Message is not deleted after 60 seconds");
 			
 		}
 
 
 	}
 		
-	public void logout_account() throws Exception
+	public void backToHome() throws Exception
 	{
 		back_button().click();
 		back_button().click();
-		more_button().click();
-		logoutAccount();
 	}
 }
