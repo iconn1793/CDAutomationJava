@@ -25,16 +25,16 @@ public class Android_DeleteGroupChatTests extends AndroidElements {
 	
 	public void test01_delete_all_group_chat_rooms() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		loginAs.user(deletegroup_account, deletegroup_password);
 		Thread.sleep(5000);
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_group().click();
-		search_friends().sendKeys(friend_account_short);
+		//search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
