@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -157,15 +158,30 @@ public class AutomationApp {
 		exceptionWindow.setResizable(false);
 		
 		// General settings window
+		JPanel generalSettings = new JPanel();
 		JTextField addressField = new JTextField(8);
 		JTextField portField = new JTextField(5);
-		JPanel generalSettings = new JPanel();
 		addressField.setText(Settings.appSettings.getProperty("address"));
 		portField.setText(Settings.appSettings.getProperty("port"));
 		generalSettings.add(new JLabel("Address:"));
 		generalSettings.add(addressField);
 		generalSettings.add(new JLabel("Port:"));
 		generalSettings.add(portField);
+		
+		// Options window
+		JPanel optionsWindow = new JPanel(new GridLayout(0, 2, 20, 20));
+		JCheckBox IOSCheckBox = new JCheckBox();
+		JComboBox<Object> accountSets = new JComboBox<>();
+		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
+		IOSCheckBox.setSelected(overrideSetting);
+		accountSets.addItem("Set 1");
+		accountSets.addItem("Set 2");
+		optionsWindow.setBounds(100, 200, 100, 200);
+		optionsWindow.add(new JLabel("Use iOS simulator:"));
+		optionsWindow.add(IOSCheckBox);
+		optionsWindow.add(new JLabel("   Use account set:"));
+		optionsWindow.add(accountSets);
+		optionsWindow.add(Box.createVerticalStrut(1));
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
@@ -186,15 +202,20 @@ public class AutomationApp {
 		logButton.setBounds(101, 215, 82, 25);
 		myFrame.getContentPane().add(logButton);
 		
-		JButton runButton = new JButton("Run");
-		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		runButton.setBounds(182, 486, 90, 25);
-		myFrame.getContentPane().add(runButton);
-		
 		JButton stopButton = new JButton("Stop");
 		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		stopButton.setBounds(321, 486, 90, 25);
+		stopButton.setBounds(330, 486, 90, 25);
 		myFrame.getContentPane().add(stopButton);
+		
+		JButton runButton = new JButton("Run");
+		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		runButton.setBounds(190, 486, 90, 25);
+		myFrame.getContentPane().add(runButton);
+		
+		JButton optionsButton = new JButton("Options");
+		optionsButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		optionsButton.setBounds(50, 486, 90, 25);
+		myFrame.getContentPane().add(optionsButton);
 		
 		JButton androidButton = new JButton(androidIcon);
 		androidButton.setBounds(680, 1, 48, 35);
@@ -212,15 +233,8 @@ public class AutomationApp {
 		clearOutputButton.setBounds(990, 1, 48, 35);
 		myFrame.getContentPane().add(clearOutputButton);
 		
-		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
-		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
-		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		IOSButton.setSelected(overrideSetting);
-		IOSButton.setBounds(42, 486, 98, 25);
-		myFrame.getContentPane().add(IOSButton);
-		
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			IOSButton.setEnabled(false);
+			IOSCheckBox.setEnabled(false);
 		}
 		
 		// Runnables
@@ -343,7 +357,7 @@ public class AutomationApp {
 					testClassList.setEnabled(false);
 					selectAllButton.setEnabled(false);
 					
-					if(IOSButton.isSelected()) {
+					if(IOSCheckBox.isSelected()) {
 						elements.Drivers.IOSEnabled = true;
 					}
 					
@@ -402,7 +416,7 @@ public class AutomationApp {
 		
 		ActionListener IOSOverride = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (IOSButton.isSelected()) {
+				if (IOSCheckBox.isSelected()) {
 					Settings.appSettings.put("IOSOverride", "true");
 				} else {
 					Settings.appSettings.put("IOSOverride", "false");
@@ -419,6 +433,19 @@ public class AutomationApp {
 					System.out.println("Stopping test...");
 					new TestExecuter().stopTests();
 				}
+			}
+		};
+		
+		ActionListener clearServerOutput = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				serverOutput.setText(null);
+			}
+		};
+		
+		ActionListener openOptions = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showOptionDialog(null, optionsWindow, "Run Options",
+						JOptionPane.PLAIN_MESSAGE, 0, settingsIcon, null, null);
 			}
 		};
 		
@@ -454,18 +481,13 @@ public class AutomationApp {
 			}
 		};
 		
-		ActionListener clearServerOutput = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				serverOutput.setText(null);
-			}
-		};
-		
 		// Add listeners to buttons
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
+		optionsButton.addActionListener(openOptions);
 		runButton.addActionListener(runTest);
 		stopButton.addActionListener(stopTests);
-		IOSButton.addActionListener(IOSOverride);
+		IOSCheckBox.addActionListener(IOSOverride);
 		settingsButton.addActionListener(openSettings);
 		clearOutputButton.addActionListener(clearServerOutput);
 		
