@@ -625,11 +625,11 @@ public class AutomationApp {
 			IOSCheckBox.setEnabled(false);
 		}
 		
-		if (!Settings.appSettings.getProperty("address").isEmpty()) {
+		if (Settings.appSettings.getProperty("address") != null) {
 			elements.Drivers.appiumServerAddress = Settings.appSettings.getProperty("address");
 		}
 		
-		if (!Settings.appSettings.getProperty("port").isEmpty()) {
+		if (Settings.appSettings.getProperty("port") != null) {
 			elements.Drivers.appiumServerPort = Settings.appSettings.getProperty("port");
 		}
 		
