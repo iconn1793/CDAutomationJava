@@ -1,8 +1,8 @@
 package elements;
 
 public abstract class TestAccounts {
-	boolean accountSet1 = true;
-	boolean accountSet2;
+	public static boolean accountSet1;
+	public static boolean accountSet2;
 	
 	/**************************
 	 * Account variable names *
@@ -196,10 +196,6 @@ public abstract class TestAccounts {
 		
 		addfriend_email = "existing02@cyberdust.com";
 		
-		// Bio
-		bio_account = "testprofilebio";
-		bio_password = "password";
-		
 		// Blasts //
 		blasts_account01 = "blasttest01";
 		blasts_password01 = "blasttest01";
@@ -297,6 +293,10 @@ public abstract class TestAccounts {
 		
 		myblasts_account02 = "myblaststest02";
 		myblasts_password02 = "myblaststest02";
+		
+		// ProfileBioTest //
+		bio_account = "testprofilebio";
+		bio_password = "password";
 		
 		// Reblast //
 		reblast_account01 = "blasttest01";
@@ -370,10 +370,6 @@ public abstract class TestAccounts {
 		
 		addfriend_email = "existing02@cyberdust.com";
 		
-		// Bio
-		bio_account = "testprofilebio";
-		bio_password = "password";
-		
 		// Blasts //
 		blasts_account01 = "blasttest01";
 		blasts_password01 = "blasttest01";
@@ -471,6 +467,10 @@ public abstract class TestAccounts {
 		
 		myblasts_account02 = "myblaststest02";
 		myblasts_password02 = "myblaststest02";
+		
+		// ProfileBioTest //
+		bio_account = "testprofilebio";
+		bio_password = "password";
 		
 		// Reblast //
 		reblast_account01 = "blasttest01";
