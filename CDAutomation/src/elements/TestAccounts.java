@@ -182,7 +182,7 @@ public abstract class TestAccounts {
 	 * Account Set 1 *
 	 *****************/
 		
-	if (accountSet1) {
+	if (accountSet1 || (!accountSet1 && !accountSet2)) {
 		// AccountManagement //
 		acctmgnt_account01 = "accountmanagement";
 		acctmgnt_password01 = "password";
