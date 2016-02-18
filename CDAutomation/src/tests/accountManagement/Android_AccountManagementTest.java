@@ -6,8 +6,6 @@ import elements.LoginWith;
 public class Android_AccountManagementTest extends AndroidElements {
 
 	/////////////////////////////////////////////////////
-	String account_name = "accountmanagement";
-	String account_pw = "password";
 	String account_new_pw = "new password";
 	String account_email = "testuser_02@cyberdust.com";
 	String account_new_email = "new_testuser_02@cyberdust.com";
@@ -17,7 +15,7 @@ public class Android_AccountManagementTest extends AndroidElements {
 	
 	public void test01_changing_password() throws Exception {
 		// Logs into existing testing account
-		loginAs.user(account_name, account_pw);
+		loginAs.user(acctmgnt_account01, acctmgnt_password01);
 
 		// Changes password
 		log("Changing password");
@@ -25,7 +23,7 @@ public class Android_AccountManagementTest extends AndroidElements {
 		action.press(followers()).moveTo(back_button()).release().perform();
 		change_password().click();
 		enter_old_password().click();
-		enter_old_password().sendKeys(account_pw);
+		enter_old_password().sendKeys(acctmgnt_password01);
 		enter_new_password().click();
 		enter_new_password().sendKeys(account_new_pw);
 		confirm_new_password().click();
@@ -36,9 +34,9 @@ public class Android_AccountManagementTest extends AndroidElements {
 		change_password().click();
 		enter_old_password().sendKeys(account_new_pw);
 		enter_new_password().click();
-		enter_new_password().sendKeys(account_pw);
+		enter_new_password().sendKeys(acctmgnt_password01);
 		confirm_new_password().click();
-		confirm_new_password().sendKeys(account_pw);
+		confirm_new_password().sendKeys(acctmgnt_password01);
 		change_password_ok_button().click();
 		log("Password reset");
 	}
@@ -71,9 +69,9 @@ public class Android_AccountManagementTest extends AndroidElements {
 
 		try {
 			login_button().click();
-			login_username().sendKeys(account_name);
+			login_username().sendKeys(acctmgnt_account01);
 			login_password().click();
-			login_password().sendKeys(account_pw);
+			login_password().sendKeys(acctmgnt_account01);
 			login_OK().click();
 			invalid_username().isDisplayed();
 			log("Could not log into deleted account");
@@ -91,10 +89,10 @@ public class Android_AccountManagementTest extends AndroidElements {
 		// Recreating the account
 		log("Recreating account");
 		sign_up_button().click();
-		pick_username().sendKeys(account_name);
+		pick_username().sendKeys(acctmgnt_account01);
 		sign_up_OK().click();
-		create_password().sendKeys(account_pw);
-		confirm_password().sendKeys(account_pw);
+		create_password().sendKeys(acctmgnt_password01);
+		confirm_password().sendKeys(acctmgnt_password01);
 		password_OK().click();
 		birthday().click();
 		Thread.sleep(2000);

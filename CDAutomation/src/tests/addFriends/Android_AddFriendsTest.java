@@ -9,7 +9,7 @@ import elements.LoginWith;
 
 public class Android_AddFriendsTest extends AndroidElements {
 
-	String account_name = "addfriends";
+	
 	String account_short = "existingtest0";
 	String account_pw = "password";
 	String account_email = "existing02@cyberdust.com";
@@ -28,7 +28,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		Thread.sleep(5000);
 
 		search_friends().sendKeys(account_short);
-		WebElement user = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		WebElement user = wait.until(ExpectedConditions.elementToBeClickable(By.name(addfriend_account01)));
 		user.click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
@@ -36,7 +36,7 @@ public class Android_AddFriendsTest extends AndroidElements {
 		log("Sent a dust");
 		back_button().click();
 		back_button().click();
-		loginAs.user(account_name, account_pw);
+		loginAs.user(addfriend_account01, account_pw);
 		dusts_tab().click();
 		
 		
