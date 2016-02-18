@@ -21,10 +21,6 @@ public abstract class TestAccounts {
 	
 	public String addfriend_email;
 	
-	// ProfileBioTest //
-	public String bio_account;
-	public String bio_password;
-	
 	// BlastTest //
 	public String blasts_account01;
 	public String blasts_password01;
@@ -64,7 +60,7 @@ public abstract class TestAccounts {
 	public String dusts_account03;
 	public String dusts_password03;
 	
-	public String account_email;
+	public String dusts_email;
 	
 	// FindTest //
 	public String find_account01;
@@ -122,6 +118,10 @@ public abstract class TestAccounts {
 	
 	public String myblasts_account02;
 	public String myblasts_password02;
+	
+	// ProfileBioTest //
+	public String bio_account;
+	public String bio_password;
 	
 	// ReblastTest //
 	public String reblast_account01;
@@ -239,7 +239,7 @@ public abstract class TestAccounts {
 		dusts_account03 = "dustfriend2";
 		dusts_password03 = "password";
 		
-		account_email = "existing02@cyberdust.com";
+		dusts_email = "existing02@cyberdust.com";
 		
 		// Find //
 		find_account01 = "findtester";
@@ -413,7 +413,7 @@ public abstract class TestAccounts {
 		dusts_account03 = "dustfriend2";
 		dusts_password03 = "password";
 		
-		account_email = "existing02@cyberdust.com";
+		dusts_email = "existing02@cyberdust.com";
 		
 		// Find //
 		find_account01 = "findtester";
