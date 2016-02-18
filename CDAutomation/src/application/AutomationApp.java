@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -157,15 +158,29 @@ public class AutomationApp {
 		exceptionWindow.setResizable(false);
 		
 		// General settings window
+		JPanel generalSettings = new JPanel();
 		JTextField addressField = new JTextField(8);
 		JTextField portField = new JTextField(5);
-		JPanel generalSettings = new JPanel();
 		addressField.setText(Settings.appSettings.getProperty("address"));
 		portField.setText(Settings.appSettings.getProperty("port"));
 		generalSettings.add(new JLabel("Address:"));
 		generalSettings.add(addressField);
 		generalSettings.add(new JLabel("Port:"));
 		generalSettings.add(portField);
+		
+		// Options window
+		JPanel optionsWindow = new JPanel(new GridLayout(0, 2, 10, 20));
+		JCheckBox IOSCheckBox = new JCheckBox();
+		JComboBox<Object> accountSettings = new JComboBox<>();
+		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
+		IOSCheckBox.setSelected(overrideSetting);
+		accountSettings.addItem("Set 1");
+		accountSettings.addItem("Set 2");
+		optionsWindow.setBounds(100, 200, 100, 200);
+		optionsWindow.add(new JLabel("Use iOS simulator:"));
+		optionsWindow.add(IOSCheckBox);
+		optionsWindow.add(new JLabel("       Use accounts:"));
+		optionsWindow.add(accountSettings);
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
@@ -186,15 +201,20 @@ public class AutomationApp {
 		logButton.setBounds(101, 215, 82, 25);
 		myFrame.getContentPane().add(logButton);
 		
-		JButton runButton = new JButton("Run");
-		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		runButton.setBounds(182, 486, 90, 25);
-		myFrame.getContentPane().add(runButton);
-		
 		JButton stopButton = new JButton("Stop");
 		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		stopButton.setBounds(321, 486, 90, 25);
+		stopButton.setBounds(330, 486, 90, 25);
 		myFrame.getContentPane().add(stopButton);
+		
+		JButton runButton = new JButton("Run");
+		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		runButton.setBounds(190, 486, 90, 25);
+		myFrame.getContentPane().add(runButton);
+		
+		JButton optionsButton = new JButton("Options");
+		optionsButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		optionsButton.setBounds(50, 486, 90, 25);
+		myFrame.getContentPane().add(optionsButton);
 		
 		JButton androidButton = new JButton(androidIcon);
 		androidButton.setBounds(680, 1, 48, 35);
@@ -211,17 +231,6 @@ public class AutomationApp {
 		JButton clearOutputButton = new JButton(trashIcon);
 		clearOutputButton.setBounds(990, 1, 48, 35);
 		myFrame.getContentPane().add(clearOutputButton);
-		
-		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
-		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
-		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		IOSButton.setSelected(overrideSetting);
-		IOSButton.setBounds(42, 486, 98, 25);
-		myFrame.getContentPane().add(IOSButton);
-		
-		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			IOSButton.setEnabled(false);
-		}
 		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
@@ -284,6 +293,7 @@ public class AutomationApp {
 							
 							if (TestExecuter.completedTests.size() == testClassList.getSelectedValuesList().size()) {
 								runButton.setEnabled(true);
+								optionsButton.setEnabled(true);
 								testClassList.setEnabled(true);
 								selectAllButton.setEnabled(true);
 							}
@@ -309,6 +319,7 @@ public class AutomationApp {
 					TestListener.currentTest = "done";
 					stopButton.setEnabled(true);
 					runButton.setEnabled(true);
+					optionsButton.setEnabled(true);
 					testClassList.setEnabled(true);
 					selectAllButton.setEnabled(true);
 					
@@ -322,6 +333,7 @@ public class AutomationApp {
 					}
 					
 					runButton.setEnabled(true);
+					optionsButton.setEnabled(true);
 					testClassList.setEnabled(true);
 					selectAllButton.setEnabled(true);
 					
@@ -338,14 +350,10 @@ public class AutomationApp {
 				Thread testThread = new Thread(runTestThread);
 
 				if (!testClassList.isSelectionEmpty()) {
-					
 					runButton.setEnabled(false);
+					optionsButton.setEnabled(false);
 					testClassList.setEnabled(false);
 					selectAllButton.setEnabled(false);
-					
-					if(IOSButton.isSelected()) {
-						elements.Drivers.IOSEnabled = true;
-					}
 					
 					if (executedTests.contains(testClassList.getSelectedValue())) {
 						for (int i = 0; i < testMethodsList.size(); i++) {
@@ -402,13 +410,13 @@ public class AutomationApp {
 		
 		ActionListener IOSOverride = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (IOSButton.isSelected()) {
+				if (IOSCheckBox.isSelected()) {
 					Settings.appSettings.put("IOSOverride", "true");
+					elements.Drivers.IOSEnabled = true;
 				} else {
 					Settings.appSettings.put("IOSOverride", "false");
+					elements.Drivers.IOSEnabled = false;
 				}
-				
-				new Settings().storeSettings();
 			}
 		};
 		
@@ -419,6 +427,38 @@ public class AutomationApp {
 					System.out.println("Stopping test...");
 					new TestExecuter().stopTests();
 				}
+			}
+		};
+		
+		ActionListener clearServerOutput = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				serverOutput.setText(null);
+			}
+		};
+		
+		ActionListener openOptions = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (Settings.appSettings.getProperty("accountset") != null) {
+					accountSettings.setSelectedIndex(Integer.parseInt(Settings.appSettings.getProperty("accountset"))-1);
+				}
+				int savedOptions = JOptionPane.showOptionDialog(null, optionsWindow, "Run Options",
+						JOptionPane.PLAIN_MESSAGE, 0, settingsIcon, null, null);
+				
+				if (savedOptions == JOptionPane.OK_OPTION) {
+					if (accountSettings.getSelectedItem().toString().contains("1")) {
+						Settings.appSettings.put("accountset", "1");
+						elements.TestAccounts.accountSet2 = false;
+						elements.TestAccounts.accountSet1 = true;
+					}
+					
+					if (accountSettings.getSelectedItem().toString().contains("2")) {
+						Settings.appSettings.put("accountset", "2");
+						elements.TestAccounts.accountSet1 = false;
+						elements.TestAccounts.accountSet2 = true;
+					}
+				}
+				
+				new Settings().storeSettings();
 			}
 		};
 		
@@ -454,18 +494,13 @@ public class AutomationApp {
 			}
 		};
 		
-		ActionListener clearServerOutput = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				serverOutput.setText(null);
-			}
-		};
-		
 		// Add listeners to buttons
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
+		optionsButton.addActionListener(openOptions);
 		runButton.addActionListener(runTest);
 		stopButton.addActionListener(stopTests);
-		IOSButton.addActionListener(IOSOverride);
+		IOSCheckBox.addActionListener(IOSOverride);
 		settingsButton.addActionListener(openSettings);
 		clearOutputButton.addActionListener(clearServerOutput);
 		
@@ -584,5 +619,30 @@ public class AutomationApp {
 				return label;
 			}
 		});
+		
+		// Conditions to check when app is launched
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			IOSCheckBox.setEnabled(false);
+		}
+		
+		if (!Settings.appSettings.getProperty("address").isEmpty()) {
+			elements.Drivers.appiumServerAddress = Settings.appSettings.getProperty("address");
+		}
+		
+		if (!Settings.appSettings.getProperty("port").isEmpty()) {
+			elements.Drivers.appiumServerPort = Settings.appSettings.getProperty("port");
+		}
+		
+		if (Settings.appSettings.getProperty("accountset") != null) {
+			if (Settings.appSettings.getProperty("accountset").contains("1")) {
+				elements.TestAccounts.accountSet2 = false;
+				elements.TestAccounts.accountSet1 = true;
+			}
+			
+			if (Settings.appSettings.getProperty("accountset").contains("2")) {
+				elements.TestAccounts.accountSet1 = false;
+				elements.TestAccounts.accountSet2 = true;
+			}
+		}
 	}
 }
