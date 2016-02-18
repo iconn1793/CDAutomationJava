@@ -169,19 +169,18 @@ public class AutomationApp {
 		generalSettings.add(portField);
 		
 		// Options window
-		JPanel optionsWindow = new JPanel(new GridLayout(0, 2, 20, 20));
+		JPanel optionsWindow = new JPanel(new GridLayout(0, 2, 10, 20));
 		JCheckBox IOSCheckBox = new JCheckBox();
-		JComboBox<Object> accountSets = new JComboBox<>();
+		JComboBox<Object> accountSettings = new JComboBox<>();
 		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
 		IOSCheckBox.setSelected(overrideSetting);
-		accountSets.addItem("Set 1");
-		accountSets.addItem("Set 2");
+		accountSettings.addItem("Set 1");
+		accountSettings.addItem("Set 2");
 		optionsWindow.setBounds(100, 200, 100, 200);
 		optionsWindow.add(new JLabel("Use iOS simulator:"));
 		optionsWindow.add(IOSCheckBox);
-		optionsWindow.add(new JLabel("   Use account set:"));
-		optionsWindow.add(accountSets);
-		optionsWindow.add(Box.createVerticalStrut(1));
+		optionsWindow.add(new JLabel("       Use accounts:"));
+		optionsWindow.add(accountSettings);
 		
 		// Progress bar
 		JProgressBar testProgressBar = new JProgressBar();
@@ -352,14 +351,9 @@ public class AutomationApp {
 				Thread testThread = new Thread(runTestThread);
 
 				if (!testClassList.isSelectionEmpty()) {
-					
 					runButton.setEnabled(false);
 					testClassList.setEnabled(false);
 					selectAllButton.setEnabled(false);
-					
-					if(IOSCheckBox.isSelected()) {
-						elements.Drivers.IOSEnabled = true;
-					}
 					
 					if (executedTests.contains(testClassList.getSelectedValue())) {
 						for (int i = 0; i < testMethodsList.size(); i++) {
@@ -418,11 +412,11 @@ public class AutomationApp {
 			public void actionPerformed(ActionEvent arg0) {
 				if (IOSCheckBox.isSelected()) {
 					Settings.appSettings.put("IOSOverride", "true");
+					elements.Drivers.IOSEnabled = true;
 				} else {
 					Settings.appSettings.put("IOSOverride", "false");
+					elements.Drivers.IOSEnabled = false;
 				}
-				
-				new Settings().storeSettings();
 			}
 		};
 		
@@ -444,8 +438,27 @@ public class AutomationApp {
 		
 		ActionListener openOptions = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showOptionDialog(null, optionsWindow, "Run Options",
+				if (Settings.appSettings.getProperty("accountset") != null) {
+					accountSettings.setSelectedIndex(Integer.parseInt(Settings.appSettings.getProperty("accountset"))-1);
+				}
+				int savedOptions = JOptionPane.showOptionDialog(null, optionsWindow, "Run Options",
 						JOptionPane.PLAIN_MESSAGE, 0, settingsIcon, null, null);
+				
+				if (savedOptions == JOptionPane.OK_OPTION) {
+					if (accountSettings.getSelectedItem().toString().contains("1")) {
+						Settings.appSettings.put("accountset", "1");
+						elements.TestAccounts.accountSet2 = false;
+						elements.TestAccounts.accountSet1 = true;
+					}
+					
+					if (accountSettings.getSelectedItem().toString().contains("2")) {
+						Settings.appSettings.put("accountset", "2");
+						elements.TestAccounts.accountSet1 = false;
+						elements.TestAccounts.accountSet2 = true;
+					}
+				}
+				
+				new Settings().storeSettings();
 			}
 		};
 		
