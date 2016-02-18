@@ -232,10 +232,6 @@ public class AutomationApp {
 		clearOutputButton.setBounds(990, 1, 48, 35);
 		myFrame.getContentPane().add(clearOutputButton);
 		
-		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			IOSCheckBox.setEnabled(false);
-		}
-		
 		// Runnables
 		Runnable testMethodSelector = new Runnable() {
 			@Override
@@ -297,6 +293,7 @@ public class AutomationApp {
 							
 							if (TestExecuter.completedTests.size() == testClassList.getSelectedValuesList().size()) {
 								runButton.setEnabled(true);
+								optionsButton.setEnabled(true);
 								testClassList.setEnabled(true);
 								selectAllButton.setEnabled(true);
 							}
@@ -322,6 +319,7 @@ public class AutomationApp {
 					TestListener.currentTest = "done";
 					stopButton.setEnabled(true);
 					runButton.setEnabled(true);
+					optionsButton.setEnabled(true);
 					testClassList.setEnabled(true);
 					selectAllButton.setEnabled(true);
 					
@@ -335,6 +333,7 @@ public class AutomationApp {
 					}
 					
 					runButton.setEnabled(true);
+					optionsButton.setEnabled(true);
 					testClassList.setEnabled(true);
 					selectAllButton.setEnabled(true);
 					
@@ -352,6 +351,7 @@ public class AutomationApp {
 
 				if (!testClassList.isSelectionEmpty()) {
 					runButton.setEnabled(false);
+					optionsButton.setEnabled(false);
 					testClassList.setEnabled(false);
 					selectAllButton.setEnabled(false);
 					
@@ -619,5 +619,30 @@ public class AutomationApp {
 				return label;
 			}
 		});
+		
+		// Conditions to check when app is launched
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			IOSCheckBox.setEnabled(false);
+		}
+		
+		if (!Settings.appSettings.getProperty("address").isEmpty()) {
+			elements.Drivers.appiumServerAddress = Settings.appSettings.getProperty("address");
+		}
+		
+		if (!Settings.appSettings.getProperty("port").isEmpty()) {
+			elements.Drivers.appiumServerPort = Settings.appSettings.getProperty("port");
+		}
+		
+		if (Settings.appSettings.getProperty("accountset") != null) {
+			if (Settings.appSettings.getProperty("accountset").contains("1")) {
+				elements.TestAccounts.accountSet2 = false;
+				elements.TestAccounts.accountSet1 = true;
+			}
+			
+			if (Settings.appSettings.getProperty("accountset").contains("2")) {
+				elements.TestAccounts.accountSet1 = false;
+				elements.TestAccounts.accountSet2 = true;
+			}
+		}
 	}
 }
