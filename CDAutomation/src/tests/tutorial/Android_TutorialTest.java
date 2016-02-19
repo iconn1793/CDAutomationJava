@@ -16,8 +16,10 @@ public class Android_TutorialTest extends AndroidElements {
 	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 	
+	
 	public void test01_tutorialUI() throws Exception
 	{
+		int x =0 ;
 		loginAs.user(account_name, account_pw);
 		Thread.sleep(5000);
 		

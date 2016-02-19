@@ -5,26 +5,7 @@ import elements.LoginWith;
 
 public class IOS_FriendTest extends IOSElements {
 
-	//////////////////////////////////
-	String account01 = "friendtest01";
-	String password01 = "friendtest01";
 	
-	String account02 = "friendtest02";
-	String password02 = "friendtest02";
-	
-	String account03 = "friendtest03";
-	String password03 = "friendtest03";
-	
-	String account04 = "friendtest04";
-	String password04 = "friendtest04";
-	
-	String account05 = "friendtest05";
-	String password05 = "friendtest05";
-	
-	String account06 = "friendtest06";
-	String password06 = "friendtest06";
-	//////////////////////////////////
-
 	LoginWith loginAs = new LoginWith();
 	
 	// Does a check for blasts from a specified account
@@ -125,7 +106,7 @@ public class IOS_FriendTest extends IOSElements {
 
 	// Start of test //
     public void test01_blast_for_blasts_tab() throws Exception {
-    	loginAs.user(account04, password04);
+    	loginAs.user(friends_account04, friends_password04);
     	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
@@ -134,13 +115,13 @@ public class IOS_FriendTest extends IOSElements {
     	dust_blast_field().sendKeys("Block/mute from blasts tab");
     	OK_button().click();
     	blast_friends().click();
-    	username(account01).click();
-    	username(account02).click();
+    	username(friends_account01).click();
+    	username(friends_account02).click();
     	blast_Ok_button().click();
     }
     
     public void test02_blast_for_swipe_view() throws Exception {
-    	loginAs.user(account05, password05);
+    	loginAs.user(friends_account05, friends_password05);
     	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
@@ -149,15 +130,15 @@ public class IOS_FriendTest extends IOSElements {
     	dust_blast_field().sendKeys("Block/mute from swipe view");
     	OK_button().click();
     	blast_friends().click();
-    	username(account01).click();
-    	username(account02).click();
-    	username(account03).click();
+    	username(friends_account01).click();
+    	username(friends_account02).click();
+    	username(friends_account03).click();
     	blast_Ok_button().click();
     	
     }
     
     public void test03_block_all_accounts() throws Exception {
-    	loginAs.user(account01, password01);
+    	loginAs.user(friends_account01, friends_account01);
 
     	// Send account02 blast before blocking
     	blasts_tab();
@@ -168,7 +149,7 @@ public class IOS_FriendTest extends IOSElements {
     	dust_blast_field().sendKeys("Before blocking/muting");
     	OK_button().click();
     	blast_friends().click();
-    	username(account02).click();
+    	username(friends_account02).click();
     	blast_Ok_button().click();
     	
     	// Send account02 dust before blocking
@@ -177,7 +158,7 @@ public class IOS_FriendTest extends IOSElements {
     	Thread.sleep(500);
     	log("Sending dust to account02 for testing later");
     	action_menu_dust().click();
-    	name(account02).click();
+    	name(friends_account02).click();
     	chat_room_text_box().clear();
     	chat_room_text_box().sendKeys("Before blocking");
     	chat_room_send_button().click();
@@ -185,7 +166,7 @@ public class IOS_FriendTest extends IOSElements {
     	
     	// Block account03 from inside dust room
     	log("Blocking account03 from inside dust room");
-		name(account03).click();
+		name(friends_account03).click();
 		dust_three_dotted_menu().click();
 		name("block friend").click();
 		confirm().click();
@@ -202,7 +183,7 @@ public class IOS_FriendTest extends IOSElements {
     	// Block account05 from swipe view
     	log("Blocking account05 from swipe view");
     	blasts_tab().click();
-    	username(account05).click();
+    	username(friends_account05).click();
     	blasted_by().click();
     	blasted_by_block().click();
     	confirm().click();
@@ -218,7 +199,7 @@ public class IOS_FriendTest extends IOSElements {
     	more_button().click();
     	log("Blocking account06 from More/friends menu");
     	friends().click();
-    	action.longPress(username(account06), 2000).release().perform();
+    	action.longPress(username(friends_account06), 2000).release().perform();
     	name("block user").click();
     	confirm().click();
     	back_button().click();
@@ -267,7 +248,7 @@ public class IOS_FriendTest extends IOSElements {
     }
     
     public void test05_mute_all_accounts() throws Exception {
-    	loginAs.user(account02, password02);
+    	loginAs.user(friends_account02, friends_password02);
     	
     	// Mute account01 from Dusts tab
     	log("Muting account01 from Dusts tab");
@@ -283,7 +264,7 @@ public class IOS_FriendTest extends IOSElements {
     	Thread.sleep(500);
     	log("Muting account03 from inside dust room");
     	action_menu_dust().click();
-		name(account03).click();
+		name(friends_account03).click();
 		dust_three_dotted_menu().click();
 		name("mute blasts").click();
 		confirm().click();
@@ -297,7 +278,7 @@ public class IOS_FriendTest extends IOSElements {
     	driver.swipe((screenWidth/10), (screenHeight/10*6), (screenWidth/10), (screenHeight/10*3), 300);
     	try {
     		waitTime(2);
-    		username(account05).click();
+    		username(friends_account05).click();
     	} catch (Exception e) {
     		action.press((int)(screenWidth/10*5.17), (int)(screenHeight/10*3.11)).release().perform();
     		waitTime(20);
@@ -305,7 +286,7 @@ public class IOS_FriendTest extends IOSElements {
     	blasted_by().click();
     	blasted_by_mute().click();
     	confirm().click();
-    	username(account05).click();
+    	username(friends_account05).click();
     	swipe_view_exit().click();
     	
     	// Mute account04 from Blasts Tab
@@ -314,7 +295,7 @@ public class IOS_FriendTest extends IOSElements {
     	blast_more_button().click();
     	blast_more_mute().click();
     	confirm().click();
-    	username(account04).click();
+    	username(friends_account04).click();
     	swipe_view_exit().click();
     	
     	// Mute account06 from More / Friends
@@ -322,7 +303,7 @@ public class IOS_FriendTest extends IOSElements {
     	more_button().click();
     	log("Muting account06 from More/friends menu");
     	friends().click();
-    	action.longPress(username(account06), 2000).release().perform();
+    	action.longPress(username(friends_account06), 2000).release().perform();
     	name("mute blasts").click();
     	confirm().click();
     	back_button().click();
@@ -334,9 +315,9 @@ public class IOS_FriendTest extends IOSElements {
     	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
-    	log("Sending dust to "+account01);
+    	log("Sending dust to "+friends_account01);
     	action_menu_dust().click();
-    	username(account01).click();
+    	username(friends_account01).click();
     	chat_room_text_box().clear();
     	chat_room_text_box().sendKeys("Test");
     	chat_room_send_button().click();
@@ -347,17 +328,17 @@ public class IOS_FriendTest extends IOSElements {
     	blasts_tab();
     	action_menu().click();
     	Thread.sleep(500);
-    	log("Sending blasts to "+account01);
+    	log("Sending blasts to "+friends_account01);
     	action_menu_text().click();
        	dust_blast_field().sendKeys("Test");
     	OK_button().click();
     	blast_friends().click();
-    	username(account01).click();
+    	username(friends_account01).click();
     	blast_Ok_button().click();
     }
     
     public void test07_unfollow_accounts() throws Exception {
-    	loginAs.user(account03, password03);
+    	loginAs.user(friends_account03, friends_account03);
     	
     	// Unfollow account04 from inside dust room
     	blasts_tab();
@@ -365,7 +346,7 @@ public class IOS_FriendTest extends IOSElements {
     	Thread.sleep(500);
     	log("Unfollowing account04 from inside dust room");
     	action_menu_dust().click();
-    	username(account04).click();
+    	username(friends_account04).click();
     	dust_three_dotted_menu().click();
 		name("unfollow").click();
 		confirm().click();
@@ -373,7 +354,7 @@ public class IOS_FriendTest extends IOSElements {
 		
 		// Unfollow account05 from swipe view
 		log("Unfollowing account05 from swipe view");
-		username(account05).click();
+		username(friends_account05).click();
 		blasted_by().click();
 		blasted_by_unfollow().click();
 		confirm().click();
@@ -382,7 +363,7 @@ public class IOS_FriendTest extends IOSElements {
     	more_button().click();
     	log("Unfollowing account06 from More/friends menu");
     	friends().click();
-    	action.longPress(username(account06), 2000).release().perform();
+    	action.longPress(username(friends_account06), 2000).release().perform();
     	name("unfollow user").click();
     	confirm().click();
     	back_button().click();
@@ -390,34 +371,34 @@ public class IOS_FriendTest extends IOSElements {
     }
     
     public void test08_dusts_and_blasts_03() throws Exception {
-    	checkForBlastsFrom(account01);
-    	sendDustsTo(account01, account02);
-    	sendBlastsTo(account01, account02);
+    	checkForBlastsFrom(friends_account01);
+    	sendDustsTo(friends_account01, friends_account02);
+    	sendBlastsTo(friends_account01, friends_account02);
     }
     
     public void test09_dusts_and_blasts_04() throws Exception {
-    	loginAs.user(account04, password04);
-    	checkForBlastsFrom(account01);
-    	sendDustsTo(account01, account02);
-    	checkFriendsThenBlast(account01, account02, account03);
+    	loginAs.user(friends_account04, friends_password04);
+    	checkForBlastsFrom(friends_account01);
+    	sendDustsTo(friends_account01, friends_account02);
+    	checkFriendsThenBlast(friends_account01, friends_account02, friends_account03);
     }
     
     public void test10_dusts_and_blasts_05() throws Exception {
-    	loginAs.user(account05, password05);
-    	checkForBlastsFrom(account01);
-    	sendDustsTo(account01, account02);
-    	checkFriendsThenBlast(account01, account02, account03);
+    	loginAs.user(friends_account05, friends_password05);
+    	checkForBlastsFrom(friends_account01);
+    	sendDustsTo(friends_account01, friends_account02);
+    	checkFriendsThenBlast(friends_account01, friends_account02, friends_account03);
     }
     
     public void test11_dusts_and_blasts_06() throws Exception {
-    	loginAs.user(account06, password06);
-    	checkForBlastsFrom(account01);
-    	sendDustsTo(account01, account02);
-    	checkFriendsThenBlast(account01, account02, account03);
+    	loginAs.user(friends_account06, friends_password06);
+    	checkForBlastsFrom(friends_account01);
+    	sendDustsTo(friends_account01, friends_account02);
+    	checkFriendsThenBlast(friends_account01, friends_account02, friends_account03);
     }
     
     public void test12_check_msg_from_blocked() throws Exception {
-    	loginAs.user(account01, password01);
+    	loginAs.user(friends_account01, friends_password01);
     	for (int i = 2; i <= 6; i++) {
 	    	checkForBlastsFrom("friendtest0"+i);
 	    	checkForDustsFrom("friendtest0"+i);
@@ -429,7 +410,7 @@ public class IOS_FriendTest extends IOSElements {
     	more_button().click();
     	log("Unblocking account02 from More/friends menu");
     	friends().click();
-    	action.longPress(username(account02), 2000).release().perform();
+    	action.longPress(username(friends_account02), 2000).release().perform();
     	name("unblock user").click();
     	back_button().click();
     	
@@ -443,12 +424,12 @@ public class IOS_FriendTest extends IOSElements {
     	}
     	back_button().click();
     	back_button().click();
-    	sendDustsTo(account02, account03);
-    	sendBlastsTo(account02, account03);
+    	sendDustsTo(friends_account02, friends_account03);
+    	sendBlastsTo(friends_account02, friends_account03);
     }
     
     public void test14_check_msg_from_muted() throws Exception {
-    	loginAs.user(account02, password02);
+    	loginAs.user(friends_account02, friends_password02);
     	
     	// Checks for blasts from muted users
     	boolean mutedBlastsReceived = false;
@@ -472,10 +453,10 @@ public class IOS_FriendTest extends IOSElements {
     	waitTime(1);
     	
     	try {
-    		if (name(account01).isDisplayed() && name(account05).isDisplayed() && name(account06).isDisplayed()) {
-    			action.press(name(account06)).moveTo(dusts_tab()).release().perform();
+    		if (name(friends_account01).isDisplayed() && name(friends_account05).isDisplayed() && name(friends_account06).isDisplayed()) {
+    			action.press(name(friends_account06)).moveTo(dusts_tab()).release().perform();
     			
-    			if (name(account04).isDisplayed() && name(account03).isDisplayed()) {
+    			if (name(friends_account04).isDisplayed() && name(friends_account03).isDisplayed()) {
     				log("Dusts successfully received from all muted users");
     			}
     		} 
@@ -489,7 +470,7 @@ public class IOS_FriendTest extends IOSElements {
     	
     	// Unmute account01 from swipe view
     	log("Unmuting account01 from swipe view");
-    	username(account01).click();
+    	username(friends_account01).click();
     	blasted_by().click();
     	blasted_by_mute().click();
     	
@@ -502,13 +483,13 @@ public class IOS_FriendTest extends IOSElements {
     		}
     	} catch (Exception e) {}
     	
-    	username(account01).click();
+    	username(friends_account01).click();
     	swipe_view_exit().click();
     	
     	try {
     		waitTime(1);
-    		if (username(account01).isDisplayed()) {
-    			log("[Warning] blast received from muted user "+account01);
+    		if (username(friends_account01).isDisplayed()) {
+    			log("[Warning] blast received from muted user "+friends_account01);
     		}
     	} catch (Exception e) {}
     }
@@ -518,7 +499,7 @@ public class IOS_FriendTest extends IOSElements {
     	more_button().click();
     	log("Unmuting account03 from More/friends menu");
     	friends().click();
-    	action.longPress(username(account03), 2000).release().perform();
+    	action.longPress(username(friends_account03), 2000).release().perform();
     	name("unmute blasts").click();
     	back_button().click();
 
@@ -526,7 +507,7 @@ public class IOS_FriendTest extends IOSElements {
     	log("Unmuting account04 from More/muted and blocked users");
     	action.press(followers()).moveTo(back_button()).release().perform();
     	muted_blocked_users().click();
-    	username(account04).click();
+    	username(friends_account04).click();
     	back_button().click();
     	back_button().click();
     }
@@ -564,7 +545,7 @@ public class IOS_FriendTest extends IOSElements {
     	Thread.sleep(500);
 		log("Unmuting account05 from inside dust room");
     	action_menu_dust().click();
-    	username(account05).click();
+    	username(friends_account05).click();
     	dust_three_dotted_menu().click();
 		name("unmute blasts").click();
 		back_button().click();
@@ -584,12 +565,12 @@ public class IOS_FriendTest extends IOSElements {
     }
     
     public void test18_add_accounts() throws Exception {
-    	loginAs.user(account03, account03);
+    	loginAs.user(friends_account03, friends_password03);
     	blasts_tab();
     	
     	try {
     		waitTime(3);
-    		if (name(account01).isDisplayed()) {
+    		if (name(friends_account01).isDisplayed()) {
     			log("Blast received from account01 after being unblocked");
     			blast_more_button().click();
     			name("delete blast").click();
@@ -602,7 +583,7 @@ public class IOS_FriendTest extends IOSElements {
     	
     	try {
     		waitTime(3);
-    		if (name(account01).isDisplayed()) {
+    		if (name(friends_account01).isDisplayed()) {
     			log("Dust received from account01 after being unblocked");
     			action.press((int)(screenWidth/10*9.17),(int)(screenHeight/10*1.64)).release().perform();
     			name("delete dust").click();
