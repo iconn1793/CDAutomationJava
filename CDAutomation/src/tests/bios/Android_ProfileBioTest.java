@@ -23,6 +23,7 @@ public class Android_ProfileBioTest extends AndroidElements {
 	    edit_textbox().clear();
 		edit_textbox().sendKeys(text_bio);
 		save_button().click();
+		Thread.sleep(2000);
 		WebElement bio = wait.until(ExpectedConditions.elementToBeClickable(By.name(text_bio)));
 		bio.isDisplayed();
 		bio.click();

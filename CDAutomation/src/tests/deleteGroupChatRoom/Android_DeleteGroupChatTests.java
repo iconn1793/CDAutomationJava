@@ -9,17 +9,9 @@ import elements.AndroidElements;
 
 public class Android_DeleteGroupChatTests extends AndroidElements {
 	
-	String account_name = "deletegroupchatroom";
-	String account_pw = "password";
-	String friend_account_short = "testaccount";
-	
-	String account_friend1 = "testaccount1";
-	String account_friend2 = "testaccount2";
-	String account_friend3 = "testaccount3";
-	String account_friend4 = "testaccount4";
-	String account_friend5 = "testaccount5";
 	
 	String text_message = "CyberDust.com";
+	String friend_account_short = deletegroup_account;
 	
 	LoginWith loginAs = new LoginWith();
 	
@@ -136,9 +128,9 @@ public class Android_DeleteGroupChatTests extends AndroidElements {
 		action_menu_group().click();
 		search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
