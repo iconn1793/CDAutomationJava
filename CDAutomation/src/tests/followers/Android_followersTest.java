@@ -8,20 +8,11 @@ import elements.AndroidElements;
 import elements.LoginWith;
 
 public class Android_followersTest extends AndroidElements {
-	
-	///////////////////////////////////////////////
-	String account_name = "followerstest";
-	String account_pw = "password";
-	String account_email = "new_existing@cyberdust.com";
-	String friend_username = "followerstestfriend";
-
-	//////////////////////////////////////////////
-
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_add_friends() throws Exception {
 		
-		loginAs.user(account_name, account_pw);
+		loginAs.user(followers_account01, followers_password01);
 		more_button().click();
 		followers().click();
 		add_friend().click();
@@ -38,7 +29,7 @@ public class Android_followersTest extends AndroidElements {
 		back_button().click();
 		more_button().click();
 		friends().click();
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(followers_account02)));
 		action.longPress(first_friend,3000).release().perform();
 		unfollow_button().click();
 		okay_button().click();
@@ -49,7 +40,7 @@ public class Android_followersTest extends AndroidElements {
 	public void test02_add_friends() throws Exception {
 		
 		followers().click();
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(followers_account02)));
 		action.longPress(first_friend, 3000).release().perform();
 		
 		blast_more_block().click();

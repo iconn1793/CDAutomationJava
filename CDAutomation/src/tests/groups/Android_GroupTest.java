@@ -6,33 +6,21 @@ import elements.LoginWith;
 
 public class Android_GroupTest extends AndroidElements {
 
-	//////////////////////////////////
-	String account01 = "grouptest01";
-	String password01 = account01;
-
-	String account02 = "grouptest02";
-	String password02 = account02;
-
-	String account03 = "grouptest03";
-	String password03 = account03;
-	
-	String blocked_account = "grouptest04";
-	/////////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();
 	
     public void test01_create_group() throws Exception {
 		// Log into account01
     	log("Running login method");
-		loginAs.user(account01, password01);
+		loginAs.user(groups_account01, groups_password01);
 		log("Ran login method");
 		
 		// Adds test accounts to group
 		blasts_tab();
     	action_menu().click();
         action_menu_group().click();
-        username(account02).click();
-        username(account03).click();
+        username(groups_account02).click();
+        username(groups_account03).click();
         OK_button().click();
         Thread.sleep(500);
         action.press((int)(screenWidth/10*4.86), (int)(screenHeight/10*5.07)).release().perform();
@@ -44,7 +32,7 @@ public class Android_GroupTest extends AndroidElements {
         // Tries to add blocked account to group
         group_three_dotted_menu().click();
         name("add friends to room").click();
-        name(blocked_account).click();
+        name(groups_blocked_account).click();
         OK_button().click();
         
 		try {
@@ -64,14 +52,14 @@ public class Android_GroupTest extends AndroidElements {
 		
 		try {
 			waitTime(2);
-			if (name(account01).isDisplayed()) {
+			if (name(groups_account01).isDisplayed()) {
 				log("User who created group is displayed!");
 			}
 		} catch (Exception e) {
 			
 		}
 		try {
-			if (name(account02).isDisplayed() && name(account03).isDisplayed()) {
+			if (name(groups_account02).isDisplayed() && name(groups_account03).isDisplayed()) {
 				log("User who created group not listed.");
 			}
 		} catch (Exception e) {
@@ -142,7 +130,7 @@ public class Android_GroupTest extends AndroidElements {
 	
 	public void test09_open_group_messages() throws Exception {
 		// Log into account02
-		loginAs.user(account02, password02);
+		loginAs.user(groups_account02, groups_password02);
 		
 		// Check if all group messages were received from account01
 		dusts_tab().click();
