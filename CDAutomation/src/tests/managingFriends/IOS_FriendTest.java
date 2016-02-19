@@ -5,26 +5,7 @@ import elements.LoginWith;
 
 public class IOS_FriendTest extends IOSElements {
 
-	//////////////////////////////////
-	String account01 = "friendtest01";
-	String password01 = "friendtest01";
 	
-	String account02 = "friendtest02";
-	String password02 = "friendtest02";
-	
-	String account03 = "friendtest03";
-	String password03 = "friendtest03";
-	
-	String account04 = "friendtest04";
-	String password04 = "friendtest04";
-	
-	String account05 = "friendtest05";
-	String password05 = "friendtest05";
-	
-	String account06 = "friendtest06";
-	String password06 = "friendtest06";
-	//////////////////////////////////
-
 	LoginWith loginAs = new LoginWith();
 	
 	// Does a check for blasts from a specified account
