@@ -423,23 +423,23 @@ public abstract class TestAccounts {
 		followers_password02 = "password";
 		
 		// Friends //
-		friends_account01 = "friendtest01";
-		friends_password01 = "friendtest01";
+		friends_account01 = "friendtest21";
+		friends_password01 = "friendtest21";
 		
-		friends_account02 = "friendtest02";
-		friends_password02 = "friendtest02";
+		friends_account02 = "friendtest22";
+		friends_password02 = "friendtest22";
 			
-		friends_account03 = "friendtest03";
-		friends_password03 = "friendtest03";
+		friends_account03 = "friendtest23";
+		friends_password03 = "friendtest23";
 		
-		friends_account04 = "friendtest04";
-		friends_password04 = "friendtest04";
+		friends_account04 = "friendtest24";
+		friends_password04 = "friendtest24";
 		
-		friends_account05 = "friendtest05";
-		friends_password05 = "friendtest05";
+		friends_account05 = "friendtest25";
+		friends_password05 = "friendtest25";
 		
-		friends_account06 = "friendtest06";
-		friends_password06 = "friendtest06";
+		friends_account06 = "friendtest26";
+		friends_password06 = "friendtest26";
 		
 		// Groups //
 		groups_account01 = "grouptest01";
@@ -454,7 +454,7 @@ public abstract class TestAccounts {
 		groups_blocked_account = "grouptest04";
 		groups_blocked_password = "grouptest04";
 		
-		// MessagePinning
+		// MessagePinning //
 		pin_account01 = "messagepinning";
 		pin_password01 = "password";
 		
@@ -462,11 +462,11 @@ public abstract class TestAccounts {
 		pin_password02 = "password";
 		
 		// MyBlasts //
-		myblasts_account01 = "myblaststest01";
-		myblasts_password01 = "myblaststest01";
+		myblasts_account01 = "myblaststest21";
+		myblasts_password01 = "myblaststest21";
 		
-		myblasts_account02 = "myblaststest02";
-		myblasts_password02 = "myblaststest02";
+		myblasts_account02 = "myblaststest22";
+		myblasts_password02 = "myblaststest22";
 		
 		// ProfileBioTest //
 		bio_account = "testprofilebio";
