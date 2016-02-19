@@ -121,6 +121,7 @@ public class Android_FriendTest extends AndroidElements {
     	username(recipient1).click();
     	username(recipient2).click();
     	blast_Ok_button().click();
+    	int y = 0;
 	}
 
 	// Start of test //
