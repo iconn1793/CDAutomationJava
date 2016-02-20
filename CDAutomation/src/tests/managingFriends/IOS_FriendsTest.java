@@ -3,7 +3,7 @@ package tests.managingFriends;
 import elements.IOSElements;
 import elements.LoginWith;
 
-public class IOS_FriendTest extends IOSElements {
+public class IOS_FriendsTest extends IOSElements {
 
 	
 	LoginWith loginAs = new LoginWith();
