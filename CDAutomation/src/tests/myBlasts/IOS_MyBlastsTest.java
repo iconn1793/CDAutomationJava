@@ -5,12 +5,12 @@ import elements.LoginWith;
 
 public class IOS_MyBlastsTest extends IOSElements {
 
-	//////////////////////////////
-	String account01 = "myblaststest01";
-	String password01 = "myblaststest01";
-	
-	String account02 = "myblaststest02";
-	String password02 = "myblaststest02";
+//	//////////////////////////////
+//	String account01 = "myblaststest01";
+//	String password01 = "myblaststest01";
+//	
+//	String account02 = "myblaststest02";
+//	String password02 = "myblaststest02";
 	//////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();
@@ -26,7 +26,7 @@ public class IOS_MyBlastsTest extends IOSElements {
 	}
 	
 	public void test01_send_text_blast() throws Exception {
-		loginAs.user(account01, password01);
+		loginAs.user(myblasts_account01, myblasts_password01);
 		log("Sending text blast to account02");
 		blasts_tab();
 		action_menu().click();
@@ -34,7 +34,7 @@ public class IOS_MyBlastsTest extends IOSElements {
 		dust_blast_field().sendKeys("Test");
 		OK_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(myblasts_account02).click();
 		blast_Ok_button().click();
 	}
 	
@@ -52,7 +52,7 @@ public class IOS_MyBlastsTest extends IOSElements {
 				photo_location_button().getLocation().x + 50, photo_location_button().getLocation().y + 50, 1000);
 		next_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(myblasts_account02).click();
 		blast_Ok_button().click();
 	}
 	
@@ -65,12 +65,12 @@ public class IOS_MyBlastsTest extends IOSElements {
 		action.longPress(photo_button(), 5000).release().perform();
 		next_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(myblasts_account02).click();
 		blast_Ok_button().click();
 	}
 	
 	public void test04_view_blasts_from_homepage() throws Exception {
-		loginAs.user(account02, password02);
+		loginAs.user(myblasts_account02, myblasts_password02);
 		log("Viewing blasts from homepage");
 		blasts_tab();
 		Thread.sleep(1000);
@@ -101,19 +101,19 @@ public class IOS_MyBlastsTest extends IOSElements {
 		profile_blast_image();
 		action.press((int)(screenWidth/10*2.08), (int)(screenHeight/10*8.45)).release().perform();
 		swipeThroughBlasts();
-		username(account01).click();
+		username(myblasts_account01).click();
 	}
 	
 	public void test06_view_blasts_from_swipe_view() throws Exception {
 		log("Viewing blasts from swipe view and taking screenshot");
 		blasts_tab();
 		driver.swipe((screenWidth/10*1), (screenHeight/10*5), (screenWidth/10*8), (screenHeight/10*5), 300);
-		username(account01).click();
+		username(myblasts_account01).click();
 		swipeThroughBlasts();
 	}
 	
 	public void test07_check_views_and_screenshots() throws Exception {
-		loginAs.user(account01, password01);
+		loginAs.user(myblasts_account01, myblasts_password01);
 		log("Checking view count and screenshot count");
 		blasts_tab();
 		waitTime(2);
@@ -176,11 +176,11 @@ public class IOS_MyBlastsTest extends IOSElements {
 		}
 		
 		try {
-			if (username(account02).isDisplayed()) {
-				log(account02+" is listed under Screenshots");
+			if (username(myblasts_account02).isDisplayed()) {
+				log(myblasts_account02+" is listed under Screenshots");
 			}
 		} catch (Exception e) {
-			log("[Warning] "+account02+" is not listed under Screenshots!");
+			log("[Warning] "+myblasts_account02+" is not listed under Screenshots!");
 		}
 		
 		swipe_view_exit().click();
@@ -207,8 +207,8 @@ public class IOS_MyBlastsTest extends IOSElements {
 		}
 		
 		try {
-			if (username(account02).isDisplayed()) {
-				log("[Warning] "+account02+" is listed under Screenshots!");
+			if (username(myblasts_account02).isDisplayed()) {
+				log("[Warning] "+myblasts_account02+" is listed under Screenshots!");
 			}
 		} catch (Exception e) {
 			log("No one listed under Screenshots");
@@ -238,11 +238,11 @@ public class IOS_MyBlastsTest extends IOSElements {
 		}
 		
 		try {
-			if (username(account02).isDisplayed()) {
-				log(account02+" is listed under Screenshots");
+			if (username(myblasts_account02).isDisplayed()) {
+				log(myblasts_account02+" is listed under Screenshots");
 			}
 		} catch (Exception e) {
-			log("[Warning] "+account02+" is not listed under Screenshots!");
+			log("[Warning] "+myblasts_account02+" is not listed under Screenshots!");
 		}
 		
 		swipe_view_exit().click();
