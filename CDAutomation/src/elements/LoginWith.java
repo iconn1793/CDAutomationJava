@@ -23,7 +23,7 @@ public class LoginWith extends Drivers {
 
         try {
         	//login_button();
-        	if (new WebDriverWait(driver, 4).until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_login_button"))).isDisplayed()) {
+        	if (new WebDriverWait(driver, 4).until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_login_button"))).isDisplayed()) {
             	logged_out = true;
             	already_logged_in = false;
         	}

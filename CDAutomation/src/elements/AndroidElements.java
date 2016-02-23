@@ -66,16 +66,16 @@ public class AndroidElements extends Drivers {
 	 * Home page elements  	
 	 *********************/	
 	public WebElement login_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_screen_login_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/splash_login_button")));
 	}
 	public WebElement login_username() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_username_edit_text")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_username")));
 	}
 	public WebElement login_password() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_password_edit_text")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_password")));
 	}
 	public WebElement login_OK() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_frag_ok_button")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/login_button")));
 	}
 	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
