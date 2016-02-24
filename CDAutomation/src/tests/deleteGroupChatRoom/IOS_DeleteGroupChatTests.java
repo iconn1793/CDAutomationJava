@@ -16,15 +16,10 @@ public class IOS_DeleteGroupChatTests extends IOSElements{
 	WebDriverWait wait = new WebDriverWait(driver, 20);
 	AndroidCamera androidCamera = new AndroidCamera();
 	
-	String account_name = "deletegroupchatroom";
-	String account_pw = "password";
+	
 	String friend_account_short = "testaccount";
 
-	String account_friend1 = "testaccount1";
-	String account_friend2 = "testaccount2";
-	String account_friend3 = "testaccount3";
-	String account_friend4 = "testaccount4";
-	String account_friend5 = "testaccount5";
+	
 
 
 	int sw = driver.manage().window().getSize().getWidth();
@@ -41,16 +36,16 @@ public class IOS_DeleteGroupChatTests extends IOSElements{
 
 	public void test01_delete_all_group_chat_rooms() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		loginAs.user(deletegroup_account, deletegroup_password);
 		Thread.sleep(5000);
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_group().click();
 		search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
@@ -173,9 +168,9 @@ public class IOS_DeleteGroupChatTests extends IOSElements{
 		action_menu_group().click();
 		search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);

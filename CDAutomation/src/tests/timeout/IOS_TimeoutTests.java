@@ -9,15 +9,15 @@ import elements.IOSElements;
 
 public class IOS_TimeoutTests extends IOSElements {
 	
-	String account_name = "timeouttest";
-	String account_short = "timeouttes";
-	String account_pw = "password";
+//	String account_name = "timeouttest";
+//	String account_short = "timeouttes";
+//	String account_pw = "password";
 	
-	String friends_account_name1 = "timeoutfriend1";
-	String friends_account_name2 = "timeoutfriend2";
-	String friends_account_name3 = "timeoutfriend3";
-	String friends_account_name4 = "timeoutfriend4";
-	String friends_account_name5 = "timeoutfriend5";
+//	String friends_account_name1 = "timeoutfriend1";
+//	String friends_account_name2 = "timeoutfriend2";
+//	String friends_account_name3 = "timeoutfriend3";
+//	String friends_account_name4 = "timeoutfriend4";
+//	String friends_account_name5 = "timeoutfriend5";
 	
 	String text_message = "Cyber Dust";
 	
@@ -25,41 +25,41 @@ public class IOS_TimeoutTests extends IOSElements {
 
 	public void test01_video_timeout() throws Exception
 	{
-		loginAs.user(friends_account_name1, account_pw);
+		loginAs.user(timeout_account01, timeout_password01);
 		Thread.sleep(5000);
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_dust().click();
 		
 
-		search_friends().sendKeys(account_short);
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		search_friends().sendKeys(timeout_account.substring(0, timeout_account.length()-1));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account)));
 		user1.click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
 		group_text_send().click();
 		logout_account();
 		
-		loginAs.user(friends_account_name2, account_pw);
+		loginAs.user(timeout_account02, timeout_password02);
 		Thread.sleep(2000);
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_dust().click();
-		search_friends().sendKeys(account_short);
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		search_friends().sendKeys(timeout_account.substring(0, timeout_account.length()-1));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account)));
 		user2.click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys("+technology");
 		group_text_send().click();
 		logout_account();
 		
-		loginAs.user(friends_account_name3, account_pw);
+		loginAs.user(timeout_account03, timeout_password03);
 		Thread.sleep(2000);
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_dust().click();
-		search_friends().sendKeys(account_short);
-		WebElement user3 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		search_friends().sendKeys(timeout_account.substring(0, timeout_account.length()-1));
+		WebElement user3 = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account)));
 		user3.click();
 		chat_room_text_box().click();
 		switch_emoji_keyboard().click();
@@ -67,13 +67,13 @@ public class IOS_TimeoutTests extends IOSElements {
 		switch_text_keyboard().click();
 		logout_account();
 		
-		loginAs.user(friends_account_name4, account_pw);
+		loginAs.user(timeout_account04, timeout_password04);
 		Thread.sleep(2000);
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_dust().click();
-		search_friends().sendKeys(account_short);
-		WebElement user4 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		search_friends().sendKeys(timeout_account.substring(0, timeout_account.length()-1));
+		WebElement user4 = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account)));
 		user4.click();
 		chat_room_text_box().click();
 		group_camera_button().click(); 
@@ -89,13 +89,13 @@ public class IOS_TimeoutTests extends IOSElements {
 		next_button().click();
 		logout_account();
 		
-		loginAs.user(friends_account_name5, account_pw);
+		loginAs.user(timeout_password05, timeout_password05);
 		Thread.sleep(2000);
 		action_menu().click();
 		Thread.sleep(2000);
 		action_menu_dust().click();
-		search_friends().sendKeys(account_short);
-		WebElement user5 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		search_friends().sendKeys(timeout_account.substring(0, timeout_account.length()-1));
+		WebElement user5 = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account)));
 		user5.click();
 		group_camera_button().click();
 		video_button().click();
@@ -108,11 +108,11 @@ public class IOS_TimeoutTests extends IOSElements {
 
 		
 		logout_account();
-		loginAs.user(account_name, account_pw);
+		loginAs.user(timeout_account, timeout_password);
 		dusts_tab().click();
 		
 		
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friends_account_name5)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account05)));
 		first_friend.click();
 		Thread.sleep(60000);
 		log("Testing a video message");
@@ -135,7 +135,7 @@ public class IOS_TimeoutTests extends IOSElements {
 	
 	public void test02_photo_timeout() throws Exception
 	{ 
-		WebElement second_friend =wait.until(ExpectedConditions.elementToBeClickable(By.name(friends_account_name4)));
+		WebElement second_friend =wait.until(ExpectedConditions.elementToBeClickable(By.name(timeout_account04)));
 		second_friend.click();
 		Thread.sleep(60000);
 		WebElement message1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/photo_view_image")));

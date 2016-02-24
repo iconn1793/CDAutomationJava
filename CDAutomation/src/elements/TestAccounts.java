@@ -14,10 +14,13 @@ public abstract class TestAccounts {
 	
 	public String accmgnt_email;
 	public String accmgnt_new_email;
+	public String accmgnt_new_password;
 	
 	// AddFriendsTest //
 	public String addfriend_account01;
 	public String addfriend_password01;
+	public String addfriend_account02;
+	public String addfriend_password02;
 	
 	public String addfriend_email;
 	
@@ -186,14 +189,15 @@ public abstract class TestAccounts {
 		// AccountManagement //
 		acctmgnt_account01 = "accountmanagement";
 		acctmgnt_password01 = "password";
-		
+		accmgnt_new_password = "new password";
 		accmgnt_email = "testuser_02@cyberdust.com";
 		accmgnt_new_email = "new_testuser_02@cyberdust.com";
 		
 		// AddFriends //
 		addfriend_account01 = "addfriends";
 		addfriend_password01 = "password";
-		
+		addfriend_account02 ="friends1";
+		addfriend_password02 = "password";		
 		addfriend_email = "existing02@cyberdust.com";
 		
 		// Blasts //
@@ -216,14 +220,7 @@ public abstract class TestAccounts {
 		deletegroup_account02 = "testaccount02";
 		deletegroup_password02 = "password";
 		
-		deletegroup_account03 = "testaccount03";
-		deletegroup_password03 = "password";
 		
-		deletegroup_account04 = "testaccount04";
-		deletegroup_password04 = "password";
-		
-		deletegroup_account05 = "testaccount05";
-		deletegroup_password05 = "password";
 		
 		// Dusts //
 		dusts_account01 = "dusttest";

@@ -5,16 +5,6 @@ import elements.LoginWith;
 
 public class Android_ReblastTest extends AndroidElements {
 
-//	//////////////////////////////////
-//	String account01 = "blasttest01";
-//	String reblast_password02 = account01;
-//	
-//	String reblast_reblast_account02 = "blasttest02";
-//	String password02 = reblast_reblast_account02;
-//	
-//	String account03 = "blasttest03";
-//	String password03 = account03;
-	//////////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();
 	
