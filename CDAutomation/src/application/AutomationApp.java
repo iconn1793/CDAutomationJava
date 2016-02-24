@@ -159,7 +159,7 @@ public class AutomationApp {
 		exceptionWindow.setSize(525, 200);
 		exceptionWindow.setResizable(false);
 		
-		// General settings window
+		// General settings window //
 		JPanel generalSettings = new JPanel();
 		JTextField addressField = new JTextField(8);
 		JTextField portField = new JTextField(5);
@@ -350,6 +350,10 @@ public class AutomationApp {
 						return null;
 					}
 				};
+				
+				if (IOSCheckBox.isSelected()) {
+					elements.Drivers.IOSEnabled = true;
+				}
 				
 				try {
 					newTestWorker.execute();
