@@ -14,6 +14,7 @@ public abstract class TestAccounts {
 	
 	public String accmgnt_email;
 	public String accmgnt_new_email;
+	public String accmgnt_new_password;
 	
 	// AddFriendsTest //
 	public String addfriend_account01;
@@ -186,7 +187,7 @@ public abstract class TestAccounts {
 		// AccountManagement //
 		acctmgnt_account01 = "accountmanagement";
 		acctmgnt_password01 = "password";
-		
+		accmgnt_new_password = "new password";
 		accmgnt_email = "testuser_02@cyberdust.com";
 		accmgnt_new_email = "new_testuser_02@cyberdust.com";
 		
