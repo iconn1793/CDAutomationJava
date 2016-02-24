@@ -14,11 +14,12 @@ public class TestExecuter {
 	private static DefaultListModel<String> fileList = new DefaultListModel<String>();
 	private static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	private static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-	private static JUnitCore junit = new JUnitCore();
 	public static List<String> completedTests = new ArrayList<String>();
+	public static JUnitCore junit;
 	
 	// Finds test classes with "Run" in the name and adds them to the application
 	public static void runTests (List<String> selectedTests) throws Exception {
+		JUnitCore newJunit = new JUnitCore();
 		
 		if (!completedTests.isEmpty()) {
 			for (int i = 0; i < simpleList.size(); i++) {
@@ -32,9 +33,9 @@ public class TestExecuter {
 				System.out.println("[Application]: Starting "+simpleList.get(i));
 
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
-				junit.addListener(new application.TestListener());
-				
-				junit.run(myClass);
+				newJunit.addListener(new application.TestListener());
+				junit = newJunit;
+				newJunit.run(myClass);
 				completedTests.add(simpleList.get(i));
 				elements.Drivers.driver.quit();
 			}
