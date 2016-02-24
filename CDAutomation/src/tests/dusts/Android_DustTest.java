@@ -9,12 +9,8 @@ import elements.LoginWith;
 
 public class Android_DustTest extends AndroidElements {
 
-	///////////////////////////////////////////////
 	
-	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-	
-	//////////////////////////////////////////////
 
 	LoginWith loginAs = new LoginWith();
 

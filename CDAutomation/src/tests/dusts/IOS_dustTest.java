@@ -9,24 +9,19 @@ import elements.LoginWith;
 
 public class IOS_dustTest extends IOSElements {
 
-	///////////////////////////////////////////////
-	String account_name = "dusttest";
-	String account_pw = "password";
-	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "dustfriend1";
-	String friend_username0 = "dustfriend";
-	String friend_username2 = "dustfriend2";
+	
+	
 	//////////////////////////////////////////////
 
 	LoginWith loginAs = new LoginWith();
 
 	public void test01_chat_from_action_menu() throws Exception {
-		loginAs.user(account_name, account_pw);
+		loginAs.user(dusts_account01, dusts_password01);
 		action_menu().click();
 		action_menu_dust().click();
 		Thread.sleep(5000);
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 		first_friend.click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
@@ -51,7 +46,7 @@ public class IOS_dustTest extends IOSElements {
 
 		dusts_tab().click();
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -93,9 +88,9 @@ public class IOS_dustTest extends IOSElements {
 
 		friends_search().click();
 
-		friends_search().sendKeys(friend_username0);
+		friends_search().sendKeys(dusts_account02.substring(0, dusts_account02.length()-1));
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -139,9 +134,9 @@ public class IOS_dustTest extends IOSElements {
 
 		friends_search().click();
 
-		friends_search().sendKeys(friend_username0);
+		friends_search().sendKeys(dusts_account02.substring(0, dusts_account02.length()-1));
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -182,9 +177,9 @@ public class IOS_dustTest extends IOSElements {
 
 		friends().click();
 
-		friends_list_search().sendKeys(friend_username0);
+		friends_list_search().sendKeys(dusts_account02.substring(0, dusts_account02.length()-1));
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -225,9 +220,9 @@ public class IOS_dustTest extends IOSElements {
 
 		friends().click();
 
-		friends_list_search().sendKeys(friend_username0);
+		friends_list_search().sendKeys(dusts_account02.substring(0, dusts_account02.length()-1));
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -267,7 +262,7 @@ public class IOS_dustTest extends IOSElements {
 
 		friends().click();
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
@@ -311,9 +306,9 @@ public class IOS_dustTest extends IOSElements {
 
 		friends_list_search().click();
 
-		friends_list_search().sendKeys(friend_username0);
+		friends_list_search().sendKeys(dusts_account02.substring(0, dusts_account02.length()-1));
 
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(dusts_account02)));
 
 		first_friend.click();
 
