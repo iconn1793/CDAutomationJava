@@ -34,6 +34,9 @@ public abstract class Drivers extends TestAccounts {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
+		DeviceReader.AndroidDevice = false;
+		DeviceReader.IOSDevice = false;
+		resetCapabilities();
 		
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 			new VariableCheck().environmentVariable();
@@ -91,6 +94,18 @@ public abstract class Drivers extends TestAccounts {
 		AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
 		service.stop();
 		driver.quit();
+	}
+	
+	// Resets capabilities to default
+	private static void resetCapabilities() {
+		capabilities.setCapability("platformName", "");
+		capabilities.setCapability("platformVersion","");
+		capabilities.setCapability("deviceName","");
+		capabilities.setCapability("bundleId","");
+		capabilities.setCapability("udid","");
+		capabilities.setCapability("app","");
+		capabilities.setCapability("appPackage","");
+		capabilities.setCapability("appActivity","");
 	}
 	
 	// Checks if device is Android
@@ -158,7 +173,6 @@ public abstract class Drivers extends TestAccounts {
 				System.out.print(dateTime + testName + text + "\n");
 			}
 		} 
-		
 		
 		try {
 			FileWriter myWriter = new FileWriter(logLocation, true);
