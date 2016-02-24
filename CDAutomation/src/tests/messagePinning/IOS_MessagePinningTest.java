@@ -9,13 +9,8 @@ import elements.LoginWith;
 
 public class IOS_MessagePinningTest extends IOSElements {
 
-//	///////////////////////////////////////////////
-//	String account_name = "messagepinning";
-//	String account_pw = "password";
-//	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-//	String friend_username = "messagepinningfriend";
-//	//////////////////////////////////////////////
+
 	
 	LoginWith loginAs = new LoginWith();
 

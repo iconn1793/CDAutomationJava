@@ -9,17 +9,13 @@ import io.appium.java_client.TouchAction;
 
 public class Android_Find extends AndroidElements {
 	
-	////////////////////////////////////
-	String account_name = "findtester";
-	String account_pw = "password";
-	////////////////////////////////////
-
+	
 	LoginWith loginAs = new LoginWith();
 	TouchAction taction = new TouchAction(null);
 	
 	public void test01_followChatter() throws Exception {
 		
-		loginAs.user(account_name, account_pw);
+		loginAs.user(find_account01, find_password01);
 		System.out.println("Logged In");
 		
 		find_tab().click();

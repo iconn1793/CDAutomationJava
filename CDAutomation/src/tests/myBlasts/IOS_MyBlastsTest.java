@@ -5,14 +5,6 @@ import elements.LoginWith;
 
 public class IOS_MyBlastsTest extends IOSElements {
 
-//	//////////////////////////////
-//	String account01 = "myblaststest01";
-//	String password01 = "myblaststest01";
-//	
-//	String account02 = "myblaststest02";
-//	String password02 = "myblaststest02";
-	//////////////////////////////
-	
 	LoginWith loginAs = new LoginWith();
 	
 	public void swipeThroughBlasts() throws Exception {
