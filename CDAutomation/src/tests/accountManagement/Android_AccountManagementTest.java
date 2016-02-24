@@ -5,9 +5,7 @@ import elements.LoginWith;
 
 public class Android_AccountManagementTest extends AndroidElements {
 
-	String account_new_pw = "new password";
-	String account_email = "testuser_02@cyberdust.com";
-	String account_new_email = "new_testuser_02@cyberdust.com";
+	
 
 	LoginWith loginAs = new LoginWith();
 	
@@ -23,14 +21,14 @@ public class Android_AccountManagementTest extends AndroidElements {
 		enter_old_password().click();
 		enter_old_password().sendKeys(acctmgnt_password01);
 		enter_new_password().click();
-		enter_new_password().sendKeys(account_new_pw);
+		enter_new_password().sendKeys(accmgnt_new_password);
 		confirm_new_password().click();
-		confirm_new_password().sendKeys(account_new_pw);
+		confirm_new_password().sendKeys(accmgnt_new_password);
 		change_password_ok_button().click();
 
 		// Resets Password
 		change_password().click();
-		enter_old_password().sendKeys(account_new_pw);
+		enter_old_password().sendKeys(accmgnt_new_password);
 		enter_new_password().click();
 		enter_new_password().sendKeys(acctmgnt_password01);
 		confirm_new_password().click();
@@ -42,15 +40,15 @@ public class Android_AccountManagementTest extends AndroidElements {
 	public void test02_changing_email() throws Exception {
 		
 		change_email_address().click();
-		new_email_text_box().sendKeys(account_new_email);
+		new_email_text_box().sendKeys(accmgnt_new_password);
 		change_password_ok_button().click();
 
 		// Reset email address
 		change_email_address().click();
 		try {
-			if (name(account_new_email).isDisplayed()) {
+			if (name(accmgnt_new_email).isDisplayed()) {
 				log("Email address changed");
-				new_email_text_box().sendKeys(account_email);
+				new_email_text_box().sendKeys(accmgnt_email);
 				change_password_ok_button().click();
 				log("Email address reset");
 			}
@@ -98,7 +96,7 @@ public class Android_AccountManagementTest extends AndroidElements {
 		action.longPress(date().getLocation().x, date().getLocation().y, 3000).release().perform();
 		birthday_done().click();
 		birthday_OK().click();
-		email().sendKeys(account_email);
+		email().sendKeys(accmgnt_email);
 		email_OK().click();
 		OK_button().click();
 		

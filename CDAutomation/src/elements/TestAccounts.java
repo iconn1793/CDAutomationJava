@@ -19,6 +19,8 @@ public abstract class TestAccounts {
 	// AddFriendsTest //
 	public String addfriend_account01;
 	public String addfriend_password01;
+	public String addfriend_account02;
+	public String addfriend_password02;
 	
 	public String addfriend_email;
 	
@@ -194,7 +196,8 @@ public abstract class TestAccounts {
 		// AddFriends //
 		addfriend_account01 = "addfriends";
 		addfriend_password01 = "password";
-		
+		addfriend_account02 ="friends1";
+		addfriend_password02 = "password";		
 		addfriend_email = "existing02@cyberdust.com";
 		
 		// Blasts //
