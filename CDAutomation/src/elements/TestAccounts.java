@@ -220,14 +220,7 @@ public abstract class TestAccounts {
 		deletegroup_account02 = "testaccount02";
 		deletegroup_password02 = "password";
 		
-		deletegroup_account03 = "testaccount03";
-		deletegroup_password03 = "password";
 		
-		deletegroup_account04 = "testaccount04";
-		deletegroup_password04 = "password";
-		
-		deletegroup_account05 = "testaccount05";
-		deletegroup_password05 = "password";
 		
 		// Dusts //
 		dusts_account01 = "dusttest";

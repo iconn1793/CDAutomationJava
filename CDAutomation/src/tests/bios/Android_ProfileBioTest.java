@@ -8,10 +8,8 @@ import elements.AndroidElements;
 import elements.LoginWith;
 
 public class Android_ProfileBioTest extends AndroidElements {
-	
-//	///////////////////////////////////////////////
+
 	String text_bio = "Cyberdust1 ";
-	//////////////////////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();
 	
