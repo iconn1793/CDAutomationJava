@@ -8,13 +8,9 @@ import org.openqa.selenium.WebElement;
 
 public class Android_URLShortenerTest extends AndroidElements {
 
-//	///////////////////////////////////////////////
-//	String account_name = "urlshorttest";
-//	String account_pw = "password";
-//	String account_email = "new_existing@cyberdust.com";
 	String account_website = "www.cyberdust.com ";
 	String shortned_website = "cyberdust.com";
-//	//////////////////////////////////////////////
+
 
 	LoginWith loginAs = new LoginWith();
 	

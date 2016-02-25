@@ -10,9 +10,6 @@ import elements.AndroidElements;
 
 public class Android_TutorialTest extends AndroidElements {
 
-//	String account_name = "tutorialtest";
-//	String account_pw = "password";
-
 	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 	

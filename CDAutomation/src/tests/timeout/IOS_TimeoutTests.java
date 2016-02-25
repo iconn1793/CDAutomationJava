@@ -8,17 +8,7 @@ import elements.LoginWith;
 import elements.IOSElements;
 
 public class IOS_TimeoutTests extends IOSElements {
-	
-//	String account_name = "timeouttest";
-//	String account_short = "timeouttes";
-//	String account_pw = "password";
-	
-//	String friends_account_name1 = "timeoutfriend1";
-//	String friends_account_name2 = "timeoutfriend2";
-//	String friends_account_name3 = "timeoutfriend3";
-//	String friends_account_name4 = "timeoutfriend4";
-//	String friends_account_name5 = "timeoutfriend5";
-	
+
 	String text_message = "Cyber Dust";
 	
 	LoginWith loginAs = new LoginWith();

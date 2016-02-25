@@ -6,26 +6,20 @@ import elements.IOSElements;
 import elements.LoginWith;
 
 public class IOS_TimestampTest extends IOSElements {
-	
-	String account_name = "timestamptest";
-	String account_pw = "password";
-	String account_friend = "timestamptestfriend";
-	String account_friend2 = "timestampfriend2";
-	
-	String friend_account_short ="timestamp";
+
 	String text_message = "CyberDust.com";
 
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_sent_dust_timestamp() throws Exception {
-		loginAs.user(account_name, account_pw);
+		loginAs.user(timestamp_account, timestamp_password);
 		Thread.sleep(5000);
 		action_menu().click();
 		
 		Thread.sleep(1000);
 		action_menu_dust().click();
-		search_friends().sendKeys(friend_account_short);
-		WebElement user1 = name(account_friend);
+		search_friends().sendKeys(timestamp_account01.substring(0, timestamp_account01.length()-1));
+		WebElement user1 = name(timestamp_account01);
 		user1.click();
 		chat_room_text_box().click();
 		chat_room_text_box().sendKeys(text_message);
@@ -58,8 +52,8 @@ public class IOS_TimestampTest extends IOSElements {
 		
 		Thread.sleep(1000);
 		action_menu_group().click();
-		WebElement user1 = name(account_friend);
-		WebElement user2 = name(account_friend2);
+		WebElement user1 = name(timestamp_account01);
+		WebElement user2 = name(timestamp_account02);
 		user1.click();
 		user2.click();
 		OK_button().click();
@@ -97,7 +91,7 @@ public class IOS_TimestampTest extends IOSElements {
 	
 	public void test03_received_dust_timestamp() throws Exception {
 		
-		loginAs.user(account_friend, account_pw);
+		loginAs.user(timestamp_account01, timestamp_password01);
 		Thread.sleep(5000);
 		
 		

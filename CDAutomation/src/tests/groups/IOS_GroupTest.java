@@ -6,19 +6,6 @@ import elements.AndroidAlbum;
 
 public class IOS_GroupTest extends IOSElements {
 
-//	//////////////////////////////////
-//	String groups_account01 = "grouptest01";
-//	String groups_password01 = account01;
-//
-//	String account02 = "grouptest02";
-//	String password02 = account02;
-//
-//	String account03 = "grouptest03";
-//	String password03 = account03;
-//	
-//	String blocked_account = "grouptest04";
-//	/////////////////////////////////
-
 	LoginWith loginAs = new LoginWith();
 	
     public void test01_create_group() throws Exception {

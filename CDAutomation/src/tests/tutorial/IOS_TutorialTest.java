@@ -9,9 +9,6 @@ import elements.IOSElements;
 
 public class IOS_TutorialTest extends IOSElements {
 
-//	String account_name = "tutorialtest";
-//	String account_pw = "password";
-
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_tutorialUI() throws Exception
