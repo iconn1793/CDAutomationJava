@@ -8,7 +8,6 @@ import elements.Drivers;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class Run_BlastTest extends Drivers {
 	
-	/*
 	@Test
 	public void test01_createBlastList() throws Exception {
 		log("[Start] Starting blast test");
@@ -172,10 +171,10 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 
 			if (Android()) {
-				new Android_BlastTest().name(new Android_BlastTest().account01).click(); 
+				new Android_BlastTest().name(new Android_BlastTest().blasts_account01).click(); 
 			}
 			if (IOS()) {
-				new IOS_BlastTest().name(new IOS_BlastTest().account01).click(); 
+				new IOS_BlastTest().name(new IOS_BlastTest().blasts_account01).click(); 
 			}
 			
 			Thread.sleep(1000);
@@ -199,10 +198,10 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			
 			if (Android()) {
-				new Android_BlastTest().name(new Android_BlastTest().account01).click(); 
+				new Android_BlastTest().name(new Android_BlastTest().blasts_account01).click(); 
 			}
 			if (IOS()) {
-				new IOS_BlastTest().name(new IOS_BlastTest().account01).click(); 
+				new IOS_BlastTest().name(new IOS_BlastTest().blasts_account01).click(); 
 			}
 			
 			Thread.sleep(1000);
@@ -226,10 +225,10 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 
 			if (Android()) {
-				new Android_BlastTest().name(new Android_BlastTest().account01).click(); 
+				new Android_BlastTest().name(new Android_BlastTest().blasts_account01).click(); 
 			}
 			if (IOS()) {
-				new IOS_BlastTest().name(new IOS_BlastTest().account01).click(); 
+				new IOS_BlastTest().name(new IOS_BlastTest().blasts_account01).click(); 
 			}
 			
 			Thread.sleep(1000);
@@ -253,10 +252,10 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 
 			if (Android()) {
-				new Android_BlastTest().name(new Android_BlastTest().account01).click(); 
+				new Android_BlastTest().name(new Android_BlastTest().blasts_account01).click(); 
 			}
 			if (IOS()) {
-				new IOS_BlastTest().name(new IOS_BlastTest().account01).click(); 
+				new IOS_BlastTest().name(new IOS_BlastTest().blasts_account01).click(); 
 			}
 			
 			Thread.sleep(1000);
@@ -280,10 +279,10 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 
 			if (Android()) {
-				new Android_BlastTest().name(new Android_BlastTest().account01).click(); 
+				new Android_BlastTest().name(new Android_BlastTest().blasts_account01).click(); 
 			}
 			if (IOS()) {
-				new IOS_BlastTest().name(new IOS_BlastTest().account01).click(); 
+				new IOS_BlastTest().name(new IOS_BlastTest().blasts_account01).click(); 
 			}
 			
 			Thread.sleep(1000);

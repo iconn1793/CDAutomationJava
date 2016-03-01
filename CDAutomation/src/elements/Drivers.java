@@ -19,12 +19,12 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
-public abstract class Drivers {
+public abstract class Drivers extends TestAccounts {
 	
 	public static AppiumDriver<WebElement> driver;
 	public static DesiredCapabilities capabilities = new DesiredCapabilities();
 	public static String appiumServerAddress = "127.0.0.1";
-	public static int appiumServerPort = 4723;
+	public static String appiumServerPort = "4723";
 	
 	public WebDriverWait wait = new WebDriverWait(driver, 20);
 	public TouchAction action = new TouchAction(driver);
@@ -34,6 +34,9 @@ public abstract class Drivers {
 	
 	@BeforeClass
 	public static void setUp() throws Exception {
+		DeviceReader.AndroidDevice = false;
+		DeviceReader.IOSDevice = false;
+		resetCapabilities();
 		
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 			new VariableCheck().environmentVariable();
@@ -41,11 +44,15 @@ public abstract class Drivers {
 			new AppPath().findApp();
 		} 
 		
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			DeviceReader.AndroidDevice = true;
+		}
+		
 		AppiumDriverLocalService service = AppiumDriverLocalService
 				.buildService(new AppiumServiceBuilder()
 				.withArgument(GeneralServerFlag.LOG_NO_COLORS)
 				.withIPAddress(appiumServerAddress)
-				.usingPort(appiumServerPort));
+				.usingPort(Integer.parseInt(appiumServerPort)));
 			
 		if (!IOSEnabled && DeviceReader.IOSDevice && !DeviceReader.AndroidDevice) {
 				System.out.println("Running test on iOS device");
@@ -69,7 +76,7 @@ public abstract class Drivers {
 				driver = new IOSDriver<>(service, capabilities);
 			}
 		
-		if ((!IOSEnabled && DeviceReader.AndroidDevice) || System.getProperty("os.name").toLowerCase().contains("win")) {
+		if (!IOSEnabled && DeviceReader.AndroidDevice) {
 				System.out.println("Running test on Android device");
 				capabilities.setCapability("platformName", "Android");
 				capabilities.setCapability("platformVersion", "");
@@ -87,6 +94,18 @@ public abstract class Drivers {
 		AppiumDriverLocalService service = AppiumDriverLocalService.buildDefaultService();
 		service.stop();
 		driver.quit();
+	}
+	
+	// Resets capabilities to default
+	private static void resetCapabilities() {
+		capabilities.setCapability("platformName", "");
+		capabilities.setCapability("platformVersion","");
+		capabilities.setCapability("deviceName","");
+		capabilities.setCapability("bundleId","");
+		capabilities.setCapability("udid","");
+		capabilities.setCapability("app","");
+		capabilities.setCapability("appPackage","");
+		capabilities.setCapability("appActivity","");
 	}
 	
 	// Checks if device is Android
@@ -141,16 +160,27 @@ public abstract class Drivers {
 			logLocation = projectPath+"\\testlogs\\"+logName+".log";
 		}
 		
-		if (text.toLowerCase().contains("fail") || text.toLowerCase().contains("exception") 
-				|| text.toLowerCase().contains("warning") || text.toLowerCase().contains("error")) {
-			System.err.print(dateTime + testName + text + "\n");
-		} else {
-			System.out.print(dateTime + testName + text + "\n");
-		}
+		if (text.contains("org.openqa.selenium.remote.SessionNotFoundException")) {
+			System.err.print("Test Stopped" + "\n");	
+		} 
+		
+		if (!text.contains("org.openqa.selenium.remote.SessionNotFoundException")) {
+			if (text.toLowerCase().contains("fail") || text.toLowerCase().contains("exception") 
+					|| text.toLowerCase().contains("warning") || text.toLowerCase().contains("error")) {
+				System.err.print(dateTime + testName + text + "\n");
+			
+			} else {
+				System.out.print(dateTime + testName + text + "\n");
+			}
+		} 
 		
 		try {
 			FileWriter myWriter = new FileWriter(logLocation, true);
-			myWriter.append(dateTime + testName + text + "\n");
+			
+			if (!text.contains("org.openqa.selenium.remote.SessionNotFoundException")) {
+				myWriter.append(dateTime + testName + text + "\n");
+			}
+			
 			myWriter.close();
 		} catch (Exception e) {
 			e.printStackTrace();

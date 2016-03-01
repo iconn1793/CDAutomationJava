@@ -100,10 +100,8 @@ public class IOSElements extends Drivers {
 	 * @throws InterruptedException 
 	 ********************/
 	
-	public WebElement dusts_tab() throws InterruptedException {
-		//Thread.sleep(500);
+	public WebElement dusts_tab() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("DUSTS")));
-
 	}
 	public TouchAction dust_text_box() {
 	    	return action.longPress(150, 640).release().perform();
@@ -459,9 +457,8 @@ public class IOSElements extends Drivers {
 	public WebElement message_timer() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_timer_view")));
 	}
-	public TouchAction chat_room_text_box() throws InterruptedException {
-		Thread.sleep(500);
-	    return action.press(50,650).release().perform();
+	public WebElement chat_room_text_box() {
+		return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATextView[1]")));
 	}
 	public WebElement chat_room_send_button() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/chat_room_fragment_send_button")));
@@ -739,4 +736,3 @@ public class IOSElements extends Drivers {
     	return wait.until(ExpectedConditions.elementToBeClickable(By.id("replay")));
     }
 }
-

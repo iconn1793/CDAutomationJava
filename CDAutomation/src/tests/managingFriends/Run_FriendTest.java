@@ -15,9 +15,9 @@ public class Run_FriendTest extends Drivers {
 			log("[Test01]");
 			
 			if (Android()) {
-				new Android_FriendTest().test01_blast_for_blasts_tab();
+				new Android_FriendsTest().test01_blast_for_blasts_tab();
 			} else if (IOS()) {
-				new IOS_FriendTest().test01_blast_for_blasts_tab();
+				new IOS_FriendsTest().test01_blast_for_blasts_tab();
 			}
 			
 		} catch (Exception e) {
@@ -33,9 +33,9 @@ public class Run_FriendTest extends Drivers {
 			log("[Test02]");
 
 			if (Android()) {
-				new Android_FriendTest().test02_blast_for_swipe_view();
+				new Android_FriendsTest().test02_blast_for_swipe_view();
 			} else if (IOS()) {
-				new IOS_FriendTest().test02_blast_for_swipe_view();
+				new IOS_FriendsTest().test02_blast_for_swipe_view();
 			}
 			
 		} catch (Exception e) {
@@ -51,9 +51,9 @@ public class Run_FriendTest extends Drivers {
 			log("[Test03]");
 			
 			if (Android()) {
-				new Android_FriendTest().test03_block_all_accounts();
+				new Android_FriendsTest().test03_block_all_accounts();
 			} else if (IOS()) {
-				new IOS_FriendTest().test03_block_all_accounts();
+				new IOS_FriendsTest().test03_block_all_accounts();
 			}
 			
 		} catch (Exception e) {
@@ -69,9 +69,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test04");
 
 			if (Android()) {
-				new Android_FriendTest().test04_message_to_blocked();
+				new Android_FriendsTest().test04_message_to_blocked();
 			} else if (IOS()) {
-				new IOS_FriendTest().test04_message_to_blocked();
+				new IOS_FriendsTest().test04_message_to_blocked();
 			}
 			
 		} catch (Exception e) {
@@ -87,9 +87,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test05");
 
 			if (Android()) {
-				new Android_FriendTest().test05_mute_all_accounts();
+				new Android_FriendsTest().test05_mute_all_accounts();
 			} else if (IOS()) {
-				new IOS_FriendTest().test05_mute_all_accounts();
+				new IOS_FriendsTest().test05_mute_all_accounts();
 			}
 			
 		} catch (Exception e) {
@@ -105,9 +105,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test06");
 
 			if (Android()) {
-				new Android_FriendTest().test06_dusts_and_blasts_02();
+				new Android_FriendsTest().test06_dusts_and_blasts_02();
 			} else if (IOS()) {
-				new IOS_FriendTest().test06_dusts_and_blasts_02();
+				new IOS_FriendsTest().test06_dusts_and_blasts_02();
 			}
 			
 		} catch (Exception e) {
@@ -123,9 +123,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test07");
 
 			if (Android()) {
-				new Android_FriendTest().test07_unfollow_accounts();
+				new Android_FriendsTest().test07_unfollow_accounts();
 			} else if (IOS()) {
-				new IOS_FriendTest().test07_unfollow_accounts();
+				new IOS_FriendsTest().test07_unfollow_accounts();
 			}
 			
 		} catch (Exception e) {
@@ -141,9 +141,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test08");
 
 			if (Android()) {
-				new Android_FriendTest().test08_dusts_and_blasts_03();
+				new Android_FriendsTest().test08_dusts_and_blasts_03();
 			} else if (IOS()) {
-				new IOS_FriendTest().test08_dusts_and_blasts_03();
+				new IOS_FriendsTest().test08_dusts_and_blasts_03();
 			}
 			
 		} catch (Exception e) {
@@ -159,9 +159,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test09");
 
 			if (Android()) {
-				new Android_FriendTest().test09_dusts_and_blasts_04();
+				new Android_FriendsTest().test09_dusts_and_blasts_04();
 			} else if (IOS()) {
-				new IOS_FriendTest().test09_dusts_and_blasts_04();
+				new IOS_FriendsTest().test09_dusts_and_blasts_04();
 			}
 			
 		} catch (Exception e) {
@@ -177,9 +177,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test10");
 
 			if (Android()) {
-				new Android_FriendTest().test10_dusts_and_blasts_05();
+				new Android_FriendsTest().test10_dusts_and_blasts_05();
 			} else if (IOS()) {
-				new IOS_FriendTest().test10_dusts_and_blasts_05();
+				new IOS_FriendsTest().test10_dusts_and_blasts_05();
 			}
 			
 		} catch (Exception e) {
@@ -195,9 +195,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test11");
 
 			if (Android()) {
-				new Android_FriendTest().test11_dusts_and_blasts_06();
+				new Android_FriendsTest().test11_dusts_and_blasts_06();
 			} else if (IOS()) {
-				new IOS_FriendTest().test11_dusts_and_blasts_06();
+				new IOS_FriendsTest().test11_dusts_and_blasts_06();
 			}
 			
 		} catch (Exception e) {
@@ -213,9 +213,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test12");
 
 			if (Android()) {
-				new Android_FriendTest().test12_check_msg_from_blocked();
+				new Android_FriendsTest().test12_check_msg_from_blocked();
 			} else if (IOS()) {
-				new IOS_FriendTest().test12_check_msg_from_blocked();
+				new IOS_FriendsTest().test12_check_msg_from_blocked();
 			}
 			
 		} catch (Exception e) {
@@ -231,9 +231,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test13");
 
 			if (Android()) {
-				new Android_FriendTest().test13_unblock_accounts();
+				new Android_FriendsTest().test13_unblock_accounts();
 			} else if (IOS()) {
-				new IOS_FriendTest().test13_unblock_accounts();
+				new IOS_FriendsTest().test13_unblock_accounts();
 			}
 			
 		} catch (Exception e) {
@@ -249,9 +249,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test14");
 
 			if (Android()) {
-				new Android_FriendTest().test14_check_msg_from_muted();
+				new Android_FriendsTest().test14_check_msg_from_muted();
 			} else if (IOS()) {
-				new IOS_FriendTest().test14_check_msg_from_muted();
+				new IOS_FriendsTest().test14_check_msg_from_muted();
 			}
 			
 		} catch (Exception e) {
@@ -267,9 +267,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test15");
 
 			if (Android()) {
-				new Android_FriendTest().test15_unmute_account01();
+				new Android_FriendsTest().test15_unmute_account01();
 			} else if (IOS()) {
-				new IOS_FriendTest().test15_unmute_account01();
+				new IOS_FriendsTest().test15_unmute_account01();
 			}
 			
 		} catch (Exception e) {
@@ -285,9 +285,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test16");
 
 			if (Android()) {
-				new Android_FriendTest().test16_unmute_account03_and_04();
+				new Android_FriendsTest().test16_unmute_account03_and_04();
 			} else if (IOS()) {
-				new IOS_FriendTest().test16_unmute_account03_and_04();
+				new IOS_FriendsTest().test16_unmute_account03_and_04();
 			}
 			
 		} catch (Exception e) {
@@ -303,9 +303,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test17");
 
 			if (Android()) {
-				new Android_FriendTest().test17_unmute_account05_and_06();
+				new Android_FriendsTest().test17_unmute_account05_and_06();
 			} else if (IOS()) {
-				new IOS_FriendTest().test17_unmute_account05_and_06();
+				new IOS_FriendsTest().test17_unmute_account05_and_06();
 			}
 			
 		} catch (Exception e) {
@@ -321,9 +321,9 @@ public class Run_FriendTest extends Drivers {
 			log("Test18");
 
 			if (Android()) {
-				new Android_FriendTest().test18_add_accounts();
+				new Android_FriendsTest().test18_add_accounts();
 			} else if (IOS()) {
-				new IOS_FriendTest().test18_add_accounts();
+				new IOS_FriendsTest().test18_add_accounts();
 			}
 			
 		} catch (Exception e) {

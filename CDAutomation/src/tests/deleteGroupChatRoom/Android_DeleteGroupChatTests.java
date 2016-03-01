@@ -9,32 +9,24 @@ import elements.AndroidElements;
 
 public class Android_DeleteGroupChatTests extends AndroidElements {
 	
-	String account_name = "deletegroupchatroom";
-	String account_pw = "password";
-	String friend_account_short = "testaccount";
-	
-	String account_friend1 = "testaccount1";
-	String account_friend2 = "testaccount2";
-	String account_friend3 = "testaccount3";
-	String account_friend4 = "testaccount4";
-	String account_friend5 = "testaccount5";
 	
 	String text_message = "CyberDust.com";
+	String friend_account_short = deletegroup_account;
 	
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_delete_all_group_chat_rooms() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		loginAs.user(deletegroup_account, deletegroup_password);
 		Thread.sleep(5000);
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_group().click();
-		search_friends().sendKeys(friend_account_short);
+		//search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);
@@ -106,16 +98,16 @@ public class Android_DeleteGroupChatTests extends AndroidElements {
 		back_button().click();
 		log("Fifth group created");
 		
-		groups_tab().click();
+		dusts_tab().click();
 		WebElement Group1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(" Group 1")));
 		log("Got group 1");
 		
 		WebElement Group5 = wait.until(ExpectedConditions.elementToBeClickable(By.name(" Group 5")));
-		log("Got group 1");
+		log("Got group 5");
 		
 		
 		action.press(Group1).moveTo(Group5).release().perform();
-		delete_all_groups().click();
+		delete_all_dusts().click();
 		yes_button().click();
 		
 		try{
@@ -136,9 +128,9 @@ public class Android_DeleteGroupChatTests extends AndroidElements {
 		action_menu_group().click();
 		search_friends().sendKeys(friend_account_short);
 		
-		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend1)));
+		WebElement user1 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account01)));
 		user1.click();
-		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_friend2)));
+		WebElement user2 = wait.until(ExpectedConditions.elementToBeClickable(By.name(deletegroup_account02)));
 		user2.click();
 		OK_button().click();
         Thread.sleep(500);

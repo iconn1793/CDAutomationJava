@@ -9,24 +9,19 @@ import elements.LoginWith;
 
 public class IOS_MessagePinningTest extends IOSElements {
 
-	///////////////////////////////////////////////
-	String account_name = "existingTest01";
-	String account_pw = "password";
-	String account_email = "new_existing@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
-	//////////////////////////////////////////////
+
 	
 	LoginWith loginAs = new LoginWith();
 
 	public void test01_pinning_messages() throws Exception {
 		// Logs into existing testing account
-		loginAs.user(account_name, account_pw);
+		loginAs.user(pin_account01, pin_password01);
 	
 		action_menu().click();
 		action_menu_dust().click();
 		Thread.sleep(5000);
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(pin_account02)));
 	
 		first_friend.click();
 		chat_room_text_box().click();
@@ -65,7 +60,7 @@ public class IOS_MessagePinningTest extends IOSElements {
 			System.out.println("Message is disappeared");
 		}
 		System.out.println("Checking if new messages appear below pinned messages");
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(pin_account02)));
 	
 		first_friend.click();
 		chat_room_text_box().sendKeys(text_message);

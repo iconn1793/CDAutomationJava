@@ -8,26 +8,20 @@ import elements.AndroidElements;
 import elements.LoginWith;
 
 public class Android_ProfileBioTest extends AndroidElements {
-	
-	///////////////////////////////////////////////
-	String account_name = "testProfilebio";
-	String account_pw = "password";
+
 	String text_bio = "Cyberdust1 ";
-	//////////////////////////////////////////////
 	
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_text_bio() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		loginAs.user(bio_account, bio_password);
 		more_button().click();
 		enter_bio().click();
-		
-		int unicode = 0x1F60A;
-	    String text = String.valueOf(Character.toChars(unicode));
-	    //inputConnection.commitText(text, mComposing.length());
-		edit_textbox().sendKeys(text);
+	    edit_textbox().clear();
+		edit_textbox().sendKeys(text_bio);
 		save_button().click();
+		Thread.sleep(2000);
 		WebElement bio = wait.until(ExpectedConditions.elementToBeClickable(By.name(text_bio)));
 		bio.isDisplayed();
 		bio.click();

@@ -4,26 +4,13 @@ import elements.AndroidElements;
 import elements.LoginWith;
 
 public class Android_BlastTest extends AndroidElements {
-
-	////////////////////////////////////////
-	String account01 = "blasttest01";
-	String password01 = account01;
-
-	String account02 = "blasttest02";
-	String password02 = account02;
-
-	String account03 = "blasttest03";
-	String password03 = account03;
-
 	String blast_url = "www.cyberdust.com";
-	String blast_username = "+" + account01;
-	////////////////////////////////////////
-
+	String blast_username = "+" + blasts_account01;
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_create_blast_list() throws Exception {
 		// Logs into blast testing account
-		loginAs.user(account01, password01);
+		loginAs.user(blasts_account01, blasts_password01);
 
 		// Creates a blast list
 		blast_lists().click();
@@ -44,8 +31,8 @@ public class Android_BlastTest extends AndroidElements {
 		}
 		blast_list_field().sendKeys("List from Blasts tab");
 		OK_button().click();
-		username(account02).click();
-		username(account03).click();
+		username(blasts_account02).click();
+		username(blasts_account03).click();
 		OK_button().click();
 	}
 	
@@ -68,7 +55,7 @@ public class Android_BlastTest extends AndroidElements {
 		blast_lists().click();
 		blast_list_expand(); // Doesn't need .click(); attribute
 		blast_list_edit().click();
-		username(account03).click();
+		username(blasts_account03).click();
 		blast_list_more().click();
 		rename_list().click();
 		rename_blast_list().sendKeys("Edited blast list");
@@ -136,7 +123,7 @@ public class Android_BlastTest extends AndroidElements {
 		dust_blast_field().sendKeys(":giphy cats");
 		OK_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		blast_Ok_button().click();
 	}
 
@@ -156,8 +143,8 @@ public class Android_BlastTest extends AndroidElements {
 		create_blast_list().click();
 		blast_list_field().sendKeys("My Test List");
 		OK_button().click();
-		username(account02).click();
-		username(account03).click();
+		username(blasts_account02).click();
+		username(blasts_account03).click();
 		OK_button().click();
 		send_to_blast_list().click();
 		blast_Ok_button().click();
@@ -177,7 +164,7 @@ public class Android_BlastTest extends AndroidElements {
 		done_button().click();
 		next_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		blast_Ok_button().click();
 	}
 
@@ -191,7 +178,7 @@ public class Android_BlastTest extends AndroidElements {
 		dust_blast_field().sendKeys("Reply test");
 		OK_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		blast_Ok_button().click();
 
 		// Deletes blast list
@@ -205,12 +192,12 @@ public class Android_BlastTest extends AndroidElements {
 	}
 
 	public void test09_open_text_blast() throws Exception {
-		loginAs.user(account02, password02);
+		loginAs.user(blasts_account02, blasts_password02);
 
 		// Opens text blast with +username, URL, and location
 		log("Opening text blast and checking +username, URL, and location");
 		blasts_tab();
-		name(account01).click(); Thread.sleep(2000);
+		name(blasts_account01).click(); Thread.sleep(2000);
 		
 		swipe_view_location().click(); Thread.sleep(3000);
 		aDriver().pressKeyCode(4); Thread.sleep(2000);
@@ -367,11 +354,11 @@ public class Android_BlastTest extends AndroidElements {
 
 	public void test15_check_replies() throws Exception {
 		// Login with account01 to check replies
-		loginAs.user(account01, password01);
+		loginAs.user(blasts_account01, blasts_password01);
 
-		// Opens replies from account02 and does a check to see if they were all received
+		// Opens replies from blasts_account02 and does a check to see if they were all received
 		dusts_tab().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		log("Checking if all replies were successful");
 		try {
 			Thread.sleep(2000);
@@ -379,7 +366,7 @@ public class Android_BlastTest extends AndroidElements {
 					&& driver.findElementById("com.radicalapps.cyberdust:id/emoji_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/photo_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/video_play_button").isDisplayed()) {
-				log("All replies successfully received from " + account02);
+				log("All replies successfully received from " + blasts_account02);
 			}
 		} catch (Exception e) {
 			log("[Warning] All replies were not received");

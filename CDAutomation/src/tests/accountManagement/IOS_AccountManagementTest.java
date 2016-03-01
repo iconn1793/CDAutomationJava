@@ -10,19 +10,11 @@ import elements.LoginWith;
 public class IOS_AccountManagementTest extends IOSElements {
 
 
-	/////////////////////////////////////////////////////
-	String account_name = "existing02";
-	String account_pw = "password";
-	String account_new_pw = "new password";
-	String account_email = "testuser_02@cyberdust.com";
-	String account_new_email = "new_testuser_02@cyberdust.com";
-	/////////////////////////////////////////////////////
-
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_changing_password() throws Exception {
 		// Logs into existing testing account
-		loginAs.user(account_name, account_pw);
+		loginAs.user(acctmgnt_account01, acctmgnt_password01);
 		System.out.println("Logged In");
 
 		// Changes password
@@ -31,29 +23,26 @@ public class IOS_AccountManagementTest extends IOSElements {
 		Thread.sleep(1100);
 		change_password().click();
 
-		enter_old_password().sendKeys(account_pw + "\n");
-		enter_new_password().sendKeys(account_new_pw + "\n");
-		confirm_new_password().sendKeys(account_new_pw + "\n");
+		enter_old_password().sendKeys(acctmgnt_password01 + "\n");
+		enter_new_password().sendKeys(accmgnt_new_password + "\n");
+		confirm_new_password().sendKeys(accmgnt_new_password + "\n");
 		Alert_OK_button().click();
 		System.out.println("Password Changed");
 		
 		// Resets Password
 		change_password().click();
-		enter_old_password().sendKeys(account_new_pw + "\n");
-		enter_new_password().sendKeys(account_pw + "\n");
-		confirm_new_password().sendKeys(account_pw + "\n");
+		enter_old_password().sendKeys(accmgnt_new_password + "\n");
+		enter_new_password().sendKeys(acctmgnt_password01 + "\n");
+		confirm_new_password().sendKeys(acctmgnt_password01 + "\n");
 		Alert_OK_button().click(); 
 		System.out.println("Password reset");
 	}
 
-
-		
-
-public void test02_changing_email() throws Exception {
+	public void test02_changing_email() throws Exception {
 		
 		change_email_address().click();
 		clear_text_button().click();
-		driver.getKeyboard().sendKeys(account_new_email + "\n");
+		driver.getKeyboard().sendKeys(accmgnt_new_email + "\n");
 		OK_button().click();
 		Alert_OK_button().click();
 				
@@ -61,10 +50,10 @@ public void test02_changing_email() throws Exception {
 		change_email_address().click();
 		
 		try {
-			if (driver.findElement(By.id(account_new_email)).isDisplayed()) {
+			if (driver.findElement(By.id(accmgnt_new_email)).isDisplayed()) {
 				System.out.println("Email address changed");
 				clear_text_button().click();
-				new_email_text_box().sendKeys(account_email + "\n");
+				new_email_text_box().sendKeys(accmgnt_email + "\n");
 				OK_button().click();
 				Alert_OK_button().click();
 				System.out.println("Email address reset");
@@ -86,26 +75,26 @@ public void test02_changing_email() throws Exception {
 		
 		try {
 			login_button().click();
-			driver.getKeyboard().sendKeys(account_name + "\n");
-			driver.getKeyboard().sendKeys(account_pw + "\n");
+			driver.getKeyboard().sendKeys(acctmgnt_account01 + "\n");
+			driver.getKeyboard().sendKeys(acctmgnt_password01 + "\n");
 			driver.findElement(By.name("Invalid username & password combination"));
 			System.out.println("Could not login into deleted account");
 			back_button().click();
 		} catch (Exception e) {
 			System.out.println("Logged in into deleted account");
-			sign_up_button().click();
+			//sign_up_button().click();
 		}
 
 		// Recreating the account
 		sign_up_button().click();
-		driver.getKeyboard().sendKeys(account_name + "\n");
-		driver.getKeyboard().sendKeys("\n" + account_pw + "\n" + account_pw + "\n");
+		driver.getKeyboard().sendKeys(acctmgnt_account01 + "\n");
+		driver.getKeyboard().sendKeys("\n" + acctmgnt_password01 + "\n" + acctmgnt_password01 + "\n");
 
 		System.out.println("Entering birthday");
 		date_year().sendKeys("2003");
 		birthday_OK().click();
 		System.out.println("Entering email");
-		driver.getKeyboard().sendKeys(account_email + "\n");
+		driver.getKeyboard().sendKeys(accmgnt_email + "\n");
 		skip_button().click();
 		Thread.sleep(1000);
 		skip_button().click();

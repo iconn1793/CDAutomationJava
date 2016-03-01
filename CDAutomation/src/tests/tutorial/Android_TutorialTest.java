@@ -10,15 +10,14 @@ import elements.AndroidElements;
 
 public class Android_TutorialTest extends AndroidElements {
 
-	String account_name = "tutorialtest";
-	String account_pw = "password";
-
 	AndroidCamera androidCamera = new AndroidCamera();
 	LoginWith loginAs = new LoginWith();
 	
+	
 	public void test01_tutorialUI() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		int x =0 ;
+		loginAs.user(tutorial_account, tutorial_password);
 		Thread.sleep(5000);
 		
 		more_button().click();

@@ -7,25 +7,18 @@ import elements.LoginWith;
 
 public class IOS_BlastTest extends IOSElements {
 
-	////////////////////////////////////////
-	String account01 = "blasttest01";
-	String password01 = account01;
-
-	String account02 = "blasttest02";
-	String password02 = account02;
-
 	String account03 = "blasttest03";
 	String password03 = account03;
 
 	String blast_url = "www.cyberdust.com";
-	String blast_username = "+" + account01;
+	String blast_username = "+" + blasts_account01;
 	////////////////////////////////////////
 
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_create_blast_list() throws Exception {
 		// Logs into blast testing account
-		loginAs.user(account01, password01);
+		loginAs.user(blasts_account01, blasts_password01);
 
 		// Creates a blast list
 		blast_lists().click();
@@ -34,7 +27,7 @@ public class IOS_BlastTest extends IOSElements {
 		
 		OK_button().click();
 		driver.getKeyboard().sendKeys("QA blast\n");	
-		username(account02).click();
+		username(blasts_account02).click();
 		username(account03).click();
 		Thread.sleep(500);
 		action.press(driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableGroup[1]/UIAButton[1]"))).release().perform();
@@ -150,10 +143,15 @@ public class IOS_BlastTest extends IOSElements {
 		dust_blast_field().sendKeys(" cats");
 		next_button().click();
 		blast_friends().click();
+<<<<<<< HEAD
 		username(account02).click();
 		Thread.sleep(500);
 		send_blast();
 		//Thread.sleep(500);
+=======
+		username(blasts_account02).click();
+		blast_Ok_button().click();
+>>>>>>> BrantK/master
 	}
 
 	public void test06_send_video_blast_01() throws Exception {//can't be done on simulated device
@@ -172,7 +170,7 @@ public class IOS_BlastTest extends IOSElements {
 		create_blast_list().click();
 		blast_list_field().sendKeys("My Test List");
 		OK_button().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		username(account03).click();
 		OK_button().click();
 		//send_to_blast_list().click();
@@ -193,7 +191,7 @@ public class IOS_BlastTest extends IOSElements {
 		done_button().click();
 		next_button().click();
 		blast_friends().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		blast_Ok_button().click();
 	}
 
@@ -207,9 +205,14 @@ public class IOS_BlastTest extends IOSElements {
 		dust_blast_field().sendKeys("Reply test");
 		next_button().click();
 		blast_friends().click();
+<<<<<<< HEAD
 		username(account02).click();
 		Thread.sleep(500);
 		send_blast();
+=======
+		username(blasts_account02).click();
+		blast_Ok_button().click();
+>>>>>>> BrantK/master
 
 		/*// Deletes blast list
 		log("Deleting blast list");
@@ -221,12 +224,12 @@ public class IOS_BlastTest extends IOSElements {
 	}
 
 	public void test09_open_text_blast() throws Exception {
-		loginAs.user(account02, password02);
+		loginAs.user(blasts_account02, blasts_password02);
 
 		// Opens text blast with +username, URL, and location
 		log("Opening text blast and checking +username, URL, and location");
 		blasts_tab();
-		name(account01).click(); Thread.sleep(2000);
+		name(blasts_account01).click(); Thread.sleep(2000);
 		
 		swipe_view_location().click(); Thread.sleep(3000);
 		//driver.pressKeyCode(4); Thread.sleep(2000);
@@ -382,12 +385,12 @@ public class IOS_BlastTest extends IOSElements {
 	}
 
 	public void test15_check_replies() throws Exception {
-		// Login with account01 to check replies
-		loginAs.user(account01, password01);
+		// Login with blasts_account01 to check replies
+		loginAs.user(blasts_account01, blasts_password01);
 
-		// Opens replies from account02 and does a check to see if they were all received
+		// Opens replies from blasts_account02 and does a check to see if they were all received
 		dusts_tab().click();
-		username(account02).click();
+		username(blasts_account02).click();
 		log("Checking if all replies were successful");
 		try {
 			Thread.sleep(2000);
@@ -395,7 +398,7 @@ public class IOS_BlastTest extends IOSElements {
 					&& driver.findElementById("com.radicalapps.cyberdust:id/emoji_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/photo_view_image").isDisplayed()
 					&& driver.findElementById("com.radicalapps.cyberdust:id/video_play_button").isDisplayed()) {
-				log("All replies successfully received from " + account02);
+				log("All replies successfully received from " + blasts_account02);
 			}
 		} catch (Exception e) {
 			log("[Warning] All replies were not received");

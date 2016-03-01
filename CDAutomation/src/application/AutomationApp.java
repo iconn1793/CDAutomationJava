@@ -5,6 +5,7 @@ import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 import application.TestListener;
 
@@ -24,13 +26,16 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.junit.runner.notification.StoppedByUserException;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.CompoundBorder;
 
 public class AutomationApp {
 	private JFrame myFrame;
+	private SwingWorker<Void, Void> threadCollector;
 	
 	public static void main(String[] args) {
 		new Settings().loadSettings();
+		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -48,17 +53,38 @@ public class AutomationApp {
 		initialize();
 	}
 
-	// Initialize the contents of the frame
-	@SuppressWarnings("serial")
 	private void initialize() {
+		// Button icons
+		String filePath = Paths.get("").toAbsolutePath().normalize().toString();
+		String iconLocation = "";
+		
+		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+			iconLocation = filePath+"/icons/";
+		}
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			iconLocation = filePath+"\\icons\\";
+		}
+		
+		Icon appiumIcon = new ImageIcon(new ImageIcon(iconLocation+"appium.png")
+				.getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+		Icon settingsIcon = new ImageIcon(new ImageIcon(iconLocation+"settings.png")
+				.getImage().getScaledInstance(30,  30, java.awt.Image.SCALE_SMOOTH));
+		Icon appleIcon = new ImageIcon(new ImageIcon(iconLocation+"apple.png")
+				.getImage().getScaledInstance(30,  30, java.awt.Image.SCALE_SMOOTH));
+		Icon androidIcon = new ImageIcon(new ImageIcon(iconLocation+"android.png")
+				.getImage().getScaledInstance(30,  30, java.awt.Image.SCALE_SMOOTH));
+		Icon trashIcon = new ImageIcon(new ImageIcon(iconLocation+"trash.png")
+				.getImage().getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH));
+		
+		// Frame //
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
 		myFrame.setTitle("CD Automation");
-		myFrame.setBounds(300, 150, 1000, 500);
+		myFrame.setBounds(150, 150, 1050, 550);
 		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		myFrame.getContentPane().setLayout(null);
 		
-		// List of test files
+		// List of test files //
 		DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
 		JList<String> testClassList = new JList<String>(simpleList);
 		JScrollPane testListScroll = new JScrollPane();
@@ -66,10 +92,10 @@ public class AutomationApp {
 		testClassList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		testListScroll.setViewportView(testClassList);
 		testListScroll.setBounds(10, 10, 180, 200);
-		testListScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128)));
+		testListScroll.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "Tests", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128))));
 		myFrame.getContentPane().add(testListScroll);
 		
-		// JUnit output window
+		// JUnit output window //
 		DefaultListModel<String> testMethodsList = new DefaultListModel<String>();
 		List<String> failedTests = new ArrayList<String>();
 		List<String> passedTests = new ArrayList<String>();
@@ -83,23 +109,29 @@ public class AutomationApp {
 		junitOut.setFocusable(false);
 		junitScroll.setViewportView(junitOut);
 		junitScroll.setBounds(220, 10, 260, 200);
-		junitScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, Color.GRAY));
+		junitScroll.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null), new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null), "JUnit", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(128, 128, 128))));
 		myFrame.getContentPane().add(junitScroll);
 
-		// Console output window
+		// Console output window //
 		JTextPane consoleOutput = new JTextPane();
 		JScrollPane consoleScroll = new JScrollPane();
 		PrintStream logOutPrintStream = new PrintStream(new ConsoleOutput(consoleOutput));
 		PrintStream logErrPrintStream = new PrintStream(new ConsoleErrorOutput(consoleOutput));
 		consoleOutput.setBackground(Color.WHITE);
-		consoleOutput.setFont(new Font("Arial", Font.PLAIN, 12));
+		consoleOutput.setFont(new Font("Arial", Font.PLAIN, 11));
 		consoleOutput.setEditable(false);
 		consoleScroll.setViewportView(consoleOutput);
-		consoleScroll.setBounds(10, 245, 464, 180);
+		consoleScroll.setBounds(10, 245, 470, 226);
 		consoleScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(consoleScroll);
 		
-		// Server output window
+		// Server output window //
+		JLabel serverTitle = new JLabel("Appium");
+		serverTitle.setForeground(Color.GRAY);
+		serverTitle.setFont(new Font("Lucida Grande", Font.BOLD, 14));
+		serverTitle.setBounds(490, 10, 80, 20);
+		serverTitle.setIcon(appiumIcon);
+		myFrame.getContentPane().add(serverTitle);
 		JTextPane serverOutput = new JTextPane();
 		JScrollPane serverScroll = new JScrollPane();
 		PrintStream serverOutPrintStream = new PrintStream(new ConsoleOutput(serverOutput));
@@ -108,14 +140,14 @@ public class AutomationApp {
 		System.setErr(serverErrPrintStream);
 		serverOutput.setBackground(Color.DARK_GRAY.darker());
 		serverOutput.setForeground(Color.WHITE);
-		serverOutput.setFont(new Font("Arial", Font.PLAIN, 12));
+		serverOutput.setFont(new Font("Menlo", Font.PLAIN, 12));
 		serverOutput.setEditable(false);
 		serverScroll.setViewportView(serverOutput);
-		serverScroll.setBounds(488, 10, 496, 454);
-		serverScroll.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Appium", TitledBorder.LEFT, TitledBorder.TOP, null, Color.GRAY));
+		serverScroll.setBounds(488, 34, 556, 488);
+		serverScroll.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		myFrame.getContentPane().add(serverScroll);
 		
-		// Exception info window
+		// Exception info window //
 		JDialog exceptionWindow = new JDialog(myFrame, "", Dialog.ModalityType.MODELESS);
 		JScrollPane exceptionScroll = new JScrollPane();
 		JTextPane exceptionText = new JTextPane();
@@ -127,7 +159,32 @@ public class AutomationApp {
 		exceptionWindow.setSize(525, 200);
 		exceptionWindow.setResizable(false);
 		
-		// Progress bar
+		// General settings window //
+		JPanel generalSettings = new JPanel();
+		JTextField addressField = new JTextField(8);
+		JTextField portField = new JTextField(5);
+		addressField.setText(Settings.appSettings.getProperty("address"));
+		portField.setText(Settings.appSettings.getProperty("port"));
+		generalSettings.add(new JLabel("Address:"));
+		generalSettings.add(addressField);
+		generalSettings.add(new JLabel("Port:"));
+		generalSettings.add(portField);
+		
+		// Options window //
+		JPanel optionsWindow = new JPanel(new GridLayout(0, 2, 10, 20));
+		JCheckBox IOSCheckBox = new JCheckBox();
+		JComboBox<Object> accountSettings = new JComboBox<>();
+		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
+		IOSCheckBox.setSelected(overrideSetting);
+		accountSettings.addItem("Set 1");
+		accountSettings.addItem("Set 2");
+		optionsWindow.setBounds(100, 200, 100, 200);
+		optionsWindow.add(new JLabel("Use iOS simulator:"));
+		optionsWindow.add(IOSCheckBox);
+		optionsWindow.add(new JLabel("       Use accounts:"));
+		optionsWindow.add(accountSettings);
+		
+		// Progress bar //
 		JProgressBar testProgressBar = new JProgressBar();
 		testProgressBar.setMinimum(0);
 		testProgressBar.setBounds(260, 220, 180, 14);
@@ -135,7 +192,7 @@ public class AutomationApp {
 		testProgressBar.setFont(new Font("Arial", Font.PLAIN, 10));
 		myFrame.getContentPane().add(testProgressBar);
 		
-		// Buttons
+		// Buttons //
 		JButton selectAllButton = new JButton("Select All");
 		selectAllButton.setFont(new Font("Arial", Font.PLAIN, 11));
 		selectAllButton.setBounds(17, 215, 82, 25);
@@ -146,46 +203,99 @@ public class AutomationApp {
 		logButton.setBounds(101, 215, 82, 25);
 		myFrame.getContentPane().add(logButton);
 		
-		JButton runButton = new JButton("Run");
-		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		runButton.setBounds(182, 436, 90, 25);
-		myFrame.getContentPane().add(runButton);
-		
 		JButton stopButton = new JButton("Stop");
 		stopButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		stopButton.setBounds(321, 436, 90, 25);
+		stopButton.setBounds(330, 486, 90, 25);
 		myFrame.getContentPane().add(stopButton);
 		
-		Boolean overrideSetting = Boolean.valueOf(Settings.appSettings.getProperty("IOSOverride"));
-		JCheckBox IOSButton = new JCheckBox("iOS Simulator");
-		IOSButton.setFont(new Font("Arial", Font.PLAIN, 11));
-		IOSButton.setSelected(overrideSetting);
-		IOSButton.setBounds(42, 436, 98, 25);
-		myFrame.getContentPane().add(IOSButton);
+		JToggleButton pauseButton = new JToggleButton("Pause");
+		pauseButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		pauseButton.setBounds(330, 486, 90, 25);
+		//myFrame.getContentPane().add(pauseButton);
 		
-		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			IOSButton.setEnabled(false);
-		}
+		JButton runButton = new JButton("Run");
+		runButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		runButton.setBounds(190, 486, 90, 25);
+		myFrame.getContentPane().add(runButton);
 		
-		// Runnables
-		Runnable testMethodSelector = new Runnable() {
-			@Override
-			public void run() {
-				TestListener t = new TestListener();
+		JButton optionsButton = new JButton("Options");
+		optionsButton.setFont(new Font("Arial", Font.PLAIN, 12));
+		optionsButton.setBounds(50, 486, 90, 25);
+		myFrame.getContentPane().add(optionsButton);
+		
+		JButton androidButton = new JButton(androidIcon);
+		androidButton.setBounds(680, 1, 48, 35);
+		myFrame.getContentPane().add(androidButton);
+		
+		JButton appleButton = new JButton(appleIcon);
+		appleButton.setBounds(750, 1, 48, 35);
+		myFrame.getContentPane().add(appleButton);
+		
+		JButton settingsButton = new JButton(settingsIcon);
+		settingsButton.setBounds(820, 1, 48, 35);
+		myFrame.getContentPane().add(settingsButton);
+		
+		JButton clearOutputButton = new JButton(trashIcon);
+		clearOutputButton.setBounds(990, 1, 48, 35);
+		myFrame.getContentPane().add(clearOutputButton);
+		
+		// Highlights the currently running test //
+		Function<Void, Void> runMethodSelector = (methodSelect) -> {{
+			
+			TestListener t = new TestListener();
 				testProgressBar.setMaximum(testMethodsList.size()-1);
 				List<String> selectedTests = testClassList.getSelectedValuesList();
+				boolean stopped = false;
 				
-				try {
-					while (testMethodsList.contains(t.runningTest())) {
-						junitOut.setSelectedValue(t.runningTest(), true);
+				while (testMethodsList.contains(t.runningTest())) {
+					junitOut.setSelectedValue(t.runningTest(), true);
+					System.setOut(logOutPrintStream);
+					System.setErr(logErrPrintStream);
+					
+					testProgressBar.setStringPainted(true);
+					testProgressBar.setString("Test Progress");
+					testProgressBar.setValue((junitOut.getSelectedIndex()));
+			
+					if (!failedTests.contains(t.failedTests())){
+						failedTests.add(t.failedTests());
+						exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
+					}
+					
+					if (!passedTests.contains(t.passedTests())) {
+						passedTests.add(t.passedTests());
+					}
+					
+					if (testMethodsList.contains(testClassList.getSelectedValue())) {
+						for (int i = 0; i < selectedTests.size(); i++) {
+							if (!executedTests.contains(selectedTests.get(i))) {
+								executedTests.add(selectedTests.get(i));
+							}
+						}
+					}
 						
-						System.setOut(logOutPrintStream);
-						System.setErr(logErrPrintStream);
+					try {
+						Thread.sleep(300);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					if (!stopButton.isEnabled() && !stopped) {
+						stopButton.setEnabled(true);
+						stopped = true;
+					}
+					
+					// After all tests have been completed
+					if (TestListener.currentTest.equals("done")) {
+						System.setOut(serverOutPrintStream);
+						System.setErr(serverErrPrintStream);
 						
-						testProgressBar.setStringPainted(true);
-						testProgressBar.setString("Test Progress");
-						testProgressBar.setValue((junitOut.getSelectedIndex()));
-				
+						testProgressBar.setValue(testProgressBar.getValue()+1);
+						
+						if (testProgressBar.getValue() == testMethodsList.size()-1) {
+							testProgressBar.setValue(testMethodsList.size());
+							testProgressBar.setString("Complete");
+						}
+						
 						if (!failedTests.contains(t.failedTests())){
 							failedTests.add(t.failedTests());
 							exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
@@ -195,60 +305,59 @@ public class AutomationApp {
 							passedTests.add(t.passedTests());
 						}
 						
-						if (testMethodsList.contains(testClassList.getSelectedValue())) {
-							for (int i = 0; i < selectedTests.size(); i++) {
-								if (!executedTests.contains(selectedTests.get(i))) {
-									executedTests.add(selectedTests.get(i));
-								}
-							}
-						}
-
-						Thread.sleep(300);
-						
-						// After all tests have been completed
-						if (TestListener.currentTest.equals("done")) {
-							System.setOut(serverOutPrintStream);
-							System.setErr(serverErrPrintStream);
-							
-							testProgressBar.setValue(testProgressBar.getValue()+1);
-							
-							if (testProgressBar.getValue() == testMethodsList.size()-1) {
-								testProgressBar.setValue(testMethodsList.size());
-								testProgressBar.setString("Complete");
-							}
-							
-							if (!failedTests.contains(t.failedTests())){
-								failedTests.add(t.failedTests());
-								exceptionsMap.put(t.failedTests(), TestListener.exceptionResult);
-							}
-							
-							if (!passedTests.contains(t.passedTests())) {
-								passedTests.add(t.passedTests());
-							}
-
-							junitOut.clearSelection();
+						if (TestExecuter.completedTests.size() == testClassList.getSelectedValuesList().size()) {
 							runButton.setEnabled(true);
+							optionsButton.setEnabled(true);
 							testClassList.setEnabled(true);
 							selectAllButton.setEnabled(true);
 						}
+						
+						if (!stopButton.isEnabled()) {
+							System.err.println("Stopping test...");
+
+							stopButton.setEnabled(true);
+							runButton.setEnabled(true);
+							optionsButton.setEnabled(true);
+							testClassList.setEnabled(true);
+							selectAllButton.setEnabled(true);
+							
+							elements.Drivers.tearDown();
+						}
+							
+						junitOut.clearSelection();
+						threadCollector.cancel(true);
 					}
-				} catch (Exception e) {
-					e.printStackTrace();	
 				}
 			}
+			
+			return null;
 		};
-		
-		Runnable runTestThread = new Runnable() {
-			@Override
-			public void run() {
+
+		// Listeners //
+		ActionListener runTest = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				SwingWorker<Void, Void> newTestWorker = new SwingWorker<Void, Void>() {
+					public Void doInBackground() throws Exception {
+						TestExecuter.runTests(testClassList.getSelectedValuesList());
+						return null;
+					}
+				};
+				
+				SwingWorker<Void, Void> newMethodWorker = new SwingWorker<Void, Void>() {
+					public Void doInBackground() throws Exception {
+						runMethodSelector.apply(null);
+						return null;
+					}
+				};
+				
+				if (IOSCheckBox.isSelected()) {
+					elements.Drivers.IOSEnabled = true;
+				}
 				
 				try {
-					TestExecuter.runTests(testClassList.getSelectedValuesList());
-					
-				} catch (StoppedByUserException e) {
-					System.out.println("Test Stopped");
-					TestListener.currentTest = "done";
-					stopButton.setEnabled(true);
+					newTestWorker.execute();
+					newMethodWorker.execute();
 					
 				} catch (NullPointerException e) {
 					System.err.println("Failed to establish connection to Appium server.\n");
@@ -259,17 +368,35 @@ public class AutomationApp {
 						e1.printStackTrace();
 					}
 					
+					stopButton.setEnabled(true);
 					runButton.setEnabled(true);
+					optionsButton.setEnabled(true);
 					testClassList.setEnabled(true);
 					selectAllButton.setEnabled(true);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+					
+				if (!testClassList.isSelectionEmpty()) {
+					runButton.setEnabled(false);
+					stopButton.setEnabled(false);
+					optionsButton.setEnabled(false);
+					testClassList.setEnabled(false);
+					selectAllButton.setEnabled(false);
+					
+					if (executedTests.contains(testClassList.getSelectedValue())) {
+						for (int i = 0; i < testMethodsList.size(); i++) {
+							executedTests.remove(testMethodsList.get(i));
+							passedTests.remove(testMethodsList.get(i));
+							failedTests.remove(testMethodsList.get(i));
+							exceptionsMap.remove(testMethodsList.get(i));
+						}
+					}
+				}
 			}
 		};
 		
-		// Listeners
 		ActionListener selectAll = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<Integer> selectAllList = new ArrayList<Integer>();
@@ -286,41 +413,6 @@ public class AutomationApp {
 			}
 		};
 		
-		ActionListener runTest = new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				Thread methodSelector = new Thread(testMethodSelector);
-				Thread testThread = new Thread(runTestThread);
-				
-				if (!testClassList.isSelectionEmpty()) {
-					
-					runButton.setEnabled(false);
-					testClassList.setEnabled(false);
-					selectAllButton.setEnabled(false);
-					
-					if(IOSButton.isSelected()) {
-						elements.Drivers.IOSEnabled = true;
-					}
-					
-					if (executedTests.contains(testClassList.getSelectedValue())) {
-						for (int i = 0; i < testMethodsList.size(); i++) {
-							executedTests.remove(testMethodsList.get(i));
-							passedTests.remove(testMethodsList.get(i));
-							failedTests.remove(testMethodsList.get(i));
-							exceptionsMap.remove(testMethodsList.get(i));
-						}
-					}
-					
-					if (testThread.getState() == Thread.State.valueOf("NEW")) {
-						methodSelector.start();
-						testThread.start();
-					} else {
-						new Thread(methodSelector).start();
-						new Thread(runTestThread).start();
-					}
-				}
-			}
-		};
-		
 		ActionListener openLog = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
@@ -331,28 +423,6 @@ public class AutomationApp {
 				}
 			}
 		};
-		
-		IOSButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (IOSButton.isSelected()) {
-					Settings.appSettings.put("IOSOverride", "true");
-				} else {
-					Settings.appSettings.put("IOSOverride", "false");
-				}
-				
-				new Settings().storeSettings();
-			}
-		});
-		
-		stopButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if (!executedTests.isEmpty()) {
-					stopButton.setEnabled(false);
-					System.out.println("Stopping test...");
-					new TestExecuter().stopTests();
-				}
-			}
-		});
 		
 		ActionListener clearLog = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -365,13 +435,114 @@ public class AutomationApp {
 			}
 		};
 		
-		// Add listeners to buttons
+		ActionListener IOSOverride = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (IOSCheckBox.isSelected()) {
+					Settings.appSettings.put("IOSOverride", "true");
+					elements.Drivers.IOSEnabled = true;
+				} else {
+					Settings.appSettings.put("IOSOverride", "false");
+					elements.Drivers.IOSEnabled = false;
+				}
+			}
+		};
+		
+		ActionListener pauseTests = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (pauseButton.isSelected()) {
+					
+				}
+			}
+		};
+		
+		ActionListener stopTests = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (!TestListener.currentTest.isEmpty() && !TestListener.currentTest.equals("done")) {
+					//testWorker.cancel(true);
+					//methodWorker.cancel(true);
+					new TestExecuter().stopTests();
+					TestListener.currentTest = "done";
+					stopButton.setEnabled(false);
+				}
+			}
+		};
+		
+		ActionListener clearServerOutput = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				serverOutput.setText(null);
+			}
+		};
+		
+		ActionListener openOptions = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (Settings.appSettings.getProperty("accountset") != null) {
+					accountSettings.setSelectedIndex(Integer.parseInt(Settings.appSettings.getProperty("accountset"))-1);
+				}
+				int savedOptions = JOptionPane.showOptionDialog(null, optionsWindow, "Run Options",
+						JOptionPane.PLAIN_MESSAGE, 0, settingsIcon, null, null);
+				
+				if (savedOptions == JOptionPane.OK_OPTION) {
+					if (accountSettings.getSelectedItem().toString().contains("1")) {
+						Settings.appSettings.put("accountset", "1");
+						elements.TestAccounts.accountSet2 = false;
+						elements.TestAccounts.accountSet1 = true;
+					}
+					
+					if (accountSettings.getSelectedItem().toString().contains("2")) {
+						Settings.appSettings.put("accountset", "2");
+						elements.TestAccounts.accountSet1 = false;
+						elements.TestAccounts.accountSet2 = true;
+					}
+				}
+				
+				new Settings().storeSettings();
+			}
+		};
+		
+		ActionListener openSettings = new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if (addressField.getText().isEmpty()) {
+					addressField.setText(elements.Drivers.appiumServerAddress);
+				}
+				
+				if (portField.getText().isEmpty()) {
+					portField.setText(elements.Drivers.appiumServerPort);
+				}
+				
+				int savedSettings = JOptionPane.showOptionDialog(null, generalSettings, "Settings", 
+						JOptionPane.PLAIN_MESSAGE, 0, settingsIcon, null, null);
+				
+				if (savedSettings == JOptionPane.OK_OPTION) {
+					if (addressField.getText().isEmpty()) {
+						addressField.setText(elements.Drivers.appiumServerAddress);
+					}
+					
+					if (portField.getText().isEmpty()) {
+						portField.setText(elements.Drivers.appiumServerPort);
+					}
+
+					elements.Drivers.appiumServerAddress = addressField.getText();
+					elements.Drivers.appiumServerPort = portField.getText();
+					Settings.appSettings.put("address", addressField.getText());
+					Settings.appSettings.put("port", portField.getText());
+					
+					new Settings().storeSettings();
+				}
+			}
+		};
+		
+		// Add listeners to buttons //
 		selectAllButton.addActionListener(selectAll);
 		logButton.addActionListener(openLog);
+		optionsButton.addActionListener(openOptions);
 		runButton.addActionListener(runTest);
+		stopButton.addActionListener(stopTests);
+		pauseButton.addActionListener(pauseTests);
+		IOSCheckBox.addActionListener(IOSOverride);
+		settingsButton.addActionListener(openSettings);
+		clearOutputButton.addActionListener(clearServerOutput);
 		
-		
-		// Right-click menu
+		// Right-click menu //
 		JPopupMenu listPopup = new JPopupMenu();
 		
 		listPopup.add(" Run Test").addActionListener(runTest);
@@ -389,7 +560,7 @@ public class AutomationApp {
 			}
 		});
 		
-		// Shows the exception and stack trace of a failed test
+		// Shows the exception and stack trace of a failed test //
 		junitOut.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				if (e.getClickCount() == 2) {
@@ -406,11 +577,7 @@ public class AutomationApp {
 			}
 		});
 		
-		// Drag and drop to rearrange list
-		testClassList.setDropMode(DropMode.INSERT);
-		testClassList.setDragEnabled(true);
-		
-		// Shows the test methods in a test class when selected
+		// Shows the test methods in a test class when selected //
 		testClassList.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent arg0) {
 				List<String> selectedTests = testClassList.getSelectedValuesList();
@@ -442,17 +609,20 @@ public class AutomationApp {
 			}
 		});
 		
-		// Test methods cell renderer
+		// Test methods cell renderer //
 		junitOut.setCellRenderer(new DefaultListCellRenderer() {
+			private static final long serialVersionUID = 1L;
+
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 				JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 				
 				String filePath = Paths.get("").toAbsolutePath().normalize().toString();
 				String iconLocation = "";
 				
-				if (filePath.contains("/")) {
+				if (System.getProperty("os.name").toLowerCase().contains("mac")) {
 					iconLocation = filePath+"/icons/";
-				} else {
+				}
+				if (System.getProperty("os.name").toLowerCase().contains("win")) {
 					iconLocation = filePath+"\\icons\\";
 				}
 				
@@ -487,5 +657,30 @@ public class AutomationApp {
 				return label;
 			}
 		});
+		
+		// Conditions to check when app is launched //
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			IOSCheckBox.setEnabled(false);
+		}
+		
+		if (Settings.appSettings.getProperty("address") != null) {
+			elements.Drivers.appiumServerAddress = Settings.appSettings.getProperty("address");
+		}
+		
+		if (Settings.appSettings.getProperty("port") != null) {
+			elements.Drivers.appiumServerPort = Settings.appSettings.getProperty("port");
+		}
+		
+		if (Settings.appSettings.getProperty("accountset") != null) {
+			if (Settings.appSettings.getProperty("accountset").contains("1")) {
+				elements.TestAccounts.accountSet2 = false;
+				elements.TestAccounts.accountSet1 = true;
+			}
+			
+			if (Settings.appSettings.getProperty("accountset").contains("2")) {
+				elements.TestAccounts.accountSet1 = false;
+				elements.TestAccounts.accountSet2 = true;
+			}
+		}
 	}
 }

@@ -9,14 +9,11 @@ import elements.IOSElements;
 
 public class IOS_TutorialTest extends IOSElements {
 
-	String account_name = "tutorialtest";
-	String account_pw = "password";
-
 	LoginWith loginAs = new LoginWith();
 	
 	public void test01_tutorialUI() throws Exception
 	{
-		loginAs.user(account_name, account_pw);
+		loginAs.user(tutorial_account, tutorial_password);
 		Thread.sleep(5000);
 		
 		more_button().click();

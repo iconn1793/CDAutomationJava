@@ -16,22 +16,12 @@ import io.appium.java_client.TouchAction;
 public class IOS_AddFriendsTest extends IOSElements {
 
 	WebDriverWait wait = new WebDriverWait(driver, 20);
-	///////////////////////////////////////////////
-	String account_name = "existingtest02";
-	String account_short = "existingtest02";
-	String account_pw = "password";
-	String account_email = "existing02@cyberdust.com";
 	String text_message = "cyber dust";
-	String friend_username = "aaaaa2";
-	String friend_username0 = "aaaaa";
-	//////////////////////////////////////////////
-
-
 	TouchAction action = new TouchAction(driver);
 	LoginWith loginAs = new LoginWith();
 
 	public WebElement first_friend() {
-		return wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
+		return wait.until(ExpectedConditions.elementToBeClickable(By.name(addfriend_account02)));
 	}
 	
 	public static void relaunch() {
@@ -40,12 +30,12 @@ public class IOS_AddFriendsTest extends IOSElements {
 	}
 	
 	public void test01_addFriend_fromChat() throws Exception {
-		loginAs.user(friend_username, account_pw);
+		loginAs.user(addfriend_account02, addfriend_password01);
 		action_menu().click();
 		action_menu_dust().click();
 		
-		driver.getKeyboard().sendKeys(account_short);
-		WebElement user = wait.until(ExpectedConditions.elementToBeClickable(By.name(account_name)));
+		driver.getKeyboard().sendKeys(addfriend_account02.substring(0, addfriend_account02.length()-1));
+		WebElement user = wait.until(ExpectedConditions.elementToBeClickable(By.name(addfriend_account01)));
 		user.click();
 		chat_room_text_box();
 		dust_text_box();
@@ -54,7 +44,7 @@ public class IOS_AddFriendsTest extends IOSElements {
 		back_button().click();
 		System.out.println("Sent a dust");
 		
-		loginAs.user(account_name + "\n", account_pw + "\n");
+		loginAs.user(addfriend_account01 + "\n", addfriend_password01 + "\n");
 		dusts_tab().click();
 		first_friend().click();
 		group_three_dotted_menu().click();
@@ -110,8 +100,6 @@ public class IOS_AddFriendsTest extends IOSElements {
 		OK_button().click();
 		back_button().click();
 		browse_friends().click();
-
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend()).release().perform();
 		group_three_dotted_menu().click();
 		
@@ -138,13 +126,11 @@ public class IOS_AddFriendsTest extends IOSElements {
 		browse_friends().click();
 		Thread.sleep(1500);
 		action.longPress(75, 85).release().perform();//clicks in search bar
-		driver.getKeyboard().sendKeys(friend_username);	
+		driver.getKeyboard().sendKeys(addfriend_account02);	
 		add_friends_button_inBrowseFriends().click();
 		clear_friends_searchbar().click();
 		back_button().click();
 		browse_friends().click();
-
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend()).release().perform();
 		group_three_dotted_menu().click();
 
@@ -174,12 +160,11 @@ public class IOS_AddFriendsTest extends IOSElements {
 		Thread.sleep(2000);
 		action_menu_search().click();
 		//friends_search().click();
-		driver.getKeyboard().sendKeys(friend_username);
+		driver.getKeyboard().sendKeys(addfriend_account02);
 		add_friends_button_inBrowseFriends().click();
 		clear_friends_searchbar().click();
 		more_button().click();
 		browse_friends().click();
-		WebElement first_friend = wait.until(ExpectedConditions.elementToBeClickable(By.name(friend_username)));
 		action.longPress(first_friend(), 4000).release().perform();
 		group_three_dotted_menu().click();
 		

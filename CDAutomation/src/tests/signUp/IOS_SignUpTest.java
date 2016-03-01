@@ -5,12 +5,6 @@ import elements.IOSElements;
 
 public class IOS_SignUpTest extends IOSElements {
 	
-	/////////////////////////////////////////////////////
-	String account_name = "onboarding001";
-	String account_pw = "onboarding001";
-	String account_email = "onboarding001@cyberdust.com";
-	/////////////////////////////////////////////////////
-	
 	AndroidCamera androidCamera = new AndroidCamera();
 	
 	public void test01_check_logged_out() throws Exception {
@@ -37,7 +31,7 @@ public class IOS_SignUpTest extends IOSElements {
 	public void test02_sign_up() throws Exception {
 		// Create new account and check if special characters can be used
 	    sign_up_button().click();
-	    pick_username().sendKeys(account_name + "!@//$");
+	    pick_username().sendKeys(signup_account + "!@//$");
 	    try {
 	    	waitTime(3);
 	        sign_up_OK().click();
@@ -46,10 +40,10 @@ public class IOS_SignUpTest extends IOSElements {
 	        log("Could not use special characters in username");
 	    }
 	    waitTime(20);
-	    pick_username().sendKeys(account_name);
+	    pick_username().sendKeys(signup_account);
 	    sign_up_OK().click();
-	    create_password().sendKeys(account_pw);
-	    confirm_password().sendKeys(account_pw);
+	    create_password().sendKeys(signup_password);
+	    confirm_password().sendKeys(signup_password);
 	    password_OK().click();
 	    birthday().click(); Thread.sleep(2000);
 	    		
@@ -61,7 +55,7 @@ public class IOS_SignUpTest extends IOSElements {
 
         // Enters email
         log("Entering email");
-        email().sendKeys(account_email);
+        email().sendKeys(signup_email);
         email_OK().click();
         OK_button().click();
 	}
@@ -116,8 +110,8 @@ public class IOS_SignUpTest extends IOSElements {
         logout().click();
         confirm().click();
         login_button().click();
-        login_username().sendKeys(account_name.toUpperCase());
-        login_password().sendKeys(account_pw);
+        login_username().sendKeys(signup_account.toUpperCase());
+        login_password().sendKeys(signup_password);
         login_OK().click();
         log("Username is not case sensitive");
 
