@@ -99,7 +99,7 @@ public class IOS_BlastTest extends IOSElements {
 		done_button().click();
 		(driver.findElement(By.name("btn photo next"))).click();
 		blast_all_followers().click();
-		Thread.sleep(1000);
+		Thread.sleep(500); 
 		send_blast();
 	}
 
@@ -108,25 +108,32 @@ public class IOS_BlastTest extends IOSElements {
 		log("Sending non public photo blast");
 		blasts_tab();
 		action_menu().click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		action_menu_media().click();
-		photo_button().click();
+		Thread.sleep(500);
+		photo_gallery().click();
+		camera_roll().click();
+		camera_roll_photo1().click();
 		add_text().click();
 		add_text_field().sendKeys(blast_username);
+		
 		done_button().click();
-		next_button().click();
+		(driver.findElement(By.name("btn photo next"))).click();
+		Thread.sleep(500);
+		blast_all_followers().click();
+		Thread.sleep(300);
 		make_public().click();
-		//send_to_blast_list().click();
-		blast_Ok_button().click();
+		send_blast();
+		Thread.sleep(500);
 
 		// Deletes blast list
 		log("Deleting renamed blast list");
 		blast_lists().click();
+		Thread.sleep(1000);
 		blast_list_expand();
 		blast_list_edit().click();
-		blast_list_more().click();
 		delete_list().click();
-		confirm().click();
+		delete_list_OK_button().click(); 
 	}
 
 	public void test05_send_giphy_blast() throws Exception {
@@ -136,19 +143,25 @@ public class IOS_BlastTest extends IOSElements {
 		action_menu().click();
 		Thread.sleep(1000);
 		action_menu_text().click();
-		dust_blast_field().sendKeys(":giphy cats");
-		OK_button().click();
+		dust_blast_field().sendKeys(":giphy");
+		Thread.sleep(1000);
+		action.longPress(50, 420).release().perform();
+		//(driver.findElement(By.id("\"giphy\""))).click();
+		dust_blast_field().sendKeys(" cats");
+		next_button().click();
 		blast_friends().click();
 		username(account02).click();
-		blast_Ok_button().click();
+		Thread.sleep(500);
+		send_blast();
+		//Thread.sleep(500);
 	}
 
-	public void test06_send_video_blast_01() throws Exception {
+	public void test06_send_video_blast_01() throws Exception {//can't be done on simulated device
 		// Takes video, adds +username, creates blast list, then sends to that blast list
 		log("Sending video to newly created blast list");
-		blasts_tab();
+		//blasts_tab();
 		action_menu().click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		action_menu_media().click();
 		video_button().click();
 		action.longPress(photo_button(), 5000).release().perform();
@@ -187,24 +200,24 @@ public class IOS_BlastTest extends IOSElements {
 	public void test08_send_text_for_replies() throws Exception {
 		// Sends text blast for reply test on other account
 		log("Sending text blast for reply test");
-		blasts_tab();
+		//blasts_tab();
 		action_menu().click();
-		Thread.sleep(1000);
+		//Thread.sleep(1000);
 		action_menu_text().click();
 		dust_blast_field().sendKeys("Reply test");
-		OK_button().click();
+		next_button().click();
 		blast_friends().click();
 		username(account02).click();
-		blast_Ok_button().click();
+		Thread.sleep(500);
+		send_blast();
 
-		// Deletes blast list
+		/*// Deletes blast list
 		log("Deleting blast list");
 		blast_lists().click();
 		blast_list_expand();
 		blast_list_edit().click();
 		blast_list_more().click();
-		delete_list().click();
-		confirm().click();
+		delete_list().click();*/
 	}
 
 	public void test09_open_text_blast() throws Exception {

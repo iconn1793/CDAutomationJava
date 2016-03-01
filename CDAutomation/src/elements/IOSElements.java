@@ -224,12 +224,17 @@ public class IOSElements extends Drivers {
 		return action.longPress(238, 20).release().perform();
 	}
 	public WebElement delete_list() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Delete list")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIANavigationBar[1]/UIAButton[3]")));
 	}
 	public WebElement blast_alert_OK_button() throws InterruptedException {
 		Thread.sleep(500);
         return driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[1]/UIAButton[1]")); 
     }
+	public WebElement delete_list_OK_button() throws InterruptedException {
+		//Thread.sleep(500);
+        return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[4]/UIAAlert[1]/UIACollectionView[1]/UIACollectionCell[2]/UIAButton[1]"))); 
+    }
+	
 	
 	/************************
 	 * Groups tab elements
@@ -358,7 +363,7 @@ public class IOSElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("next")));
 	}
 	public WebElement make_public() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/blast_public_button_check")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.name("Make Public")));
 	}
 	public WebElement homepage_profile_picture() {
 		return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/profile_picture")));

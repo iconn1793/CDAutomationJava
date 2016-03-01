@@ -44,7 +44,7 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}*/
+	}
 	
 	@Test
 	public void test03_sendPhotoBlast1() throws Exception {
@@ -82,6 +82,7 @@ public class Run_BlastTest extends Drivers {
 		}
 	}
 	
+	
 	@Test
 	public void test05_sendGiphyBlast() throws Exception {
 		try {
@@ -98,8 +99,9 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}
+	}*/
 	
+	/*			///Need a real device for video tests///
 	@Test
 	public void test06_sendVideoBlast1() throws Exception {
 		try {
@@ -134,7 +136,7 @@ public class Run_BlastTest extends Drivers {
 			relaunch();
 			throw e;
 		}
-	}
+	}*/
 	
 	@Test
 	public void test08_sendTextForReplies() throws Exception {
