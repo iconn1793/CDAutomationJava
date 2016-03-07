@@ -56,12 +56,21 @@ public class AutomationApp {
 		String iconLocation = "";
 
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-			iconLocation = filePath+ "/CDAutomation/icons/";
-		}
-		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			iconLocation = filePath+"\\CDAutomation\\icons\\";
+			if (!filePath.toLowerCase().contains("/cdautomation")) {
+				iconLocation = filePath + "/CDAutomation/icons/";
+			} else {
+				iconLocation = filePath + "/icons/";
+			}
 		}
 		
+		if (System.getProperty("os.name").toLowerCase().contains("win")) {
+			if (!filePath.toLowerCase().contains("\\cdautomation")) {
+				iconLocation = filePath + "\\CDAutomation\\icons\\";
+			} else {
+				iconLocation = filePath + "\\icons\\";
+			}
+		}
+
 		Icon appiumIcon = new ImageIcon(new ImageIcon(iconLocation+"appium.png")
 				.getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
 		Icon settingsIcon = new ImageIcon(new ImageIcon(iconLocation+"settings.png")
@@ -617,10 +626,19 @@ public class AutomationApp {
 				String iconLocation = "";
 				
 				if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-					iconLocation = filePath+ "/CDAutomation/icons/";
+					if (!filePath.toLowerCase().contains("/cdautomation")) {
+						iconLocation = filePath + "/CDAutomation/icons/";
+					} else {
+						iconLocation = filePath + "/icons/";
+					}
 				}
+				
 				if (System.getProperty("os.name").toLowerCase().contains("win")) {
-					iconLocation = filePath+"\\CDAutomation\\icons\\";
+					if (!filePath.toLowerCase().contains("\\cdautomation")) {
+						iconLocation = filePath + "\\CDAutomation\\icons\\";
+					} else {
+						iconLocation = filePath + "\\icons\\";
+					}
 				}
 				
 				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
