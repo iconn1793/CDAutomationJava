@@ -18,8 +18,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
-import application.TestListener;
-
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
@@ -35,7 +33,6 @@ public class AutomationApp {
 	
 	public static void main(String[] args) {
 		new Settings().loadSettings();
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -57,12 +54,12 @@ public class AutomationApp {
 		// Button icons
 		String filePath = Paths.get("").toAbsolutePath().normalize().toString();
 		String iconLocation = "";
-		
+
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-			iconLocation = filePath+"/icons/";
+			iconLocation = filePath+ "/CDAutomation/icons/";
 		}
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			iconLocation = filePath+"\\icons\\";
+			iconLocation = filePath+"\\CDAutomation\\icons\\";
 		}
 		
 		Icon appiumIcon = new ImageIcon(new ImageIcon(iconLocation+"appium.png")
@@ -75,7 +72,7 @@ public class AutomationApp {
 				.getImage().getScaledInstance(30,  30, java.awt.Image.SCALE_SMOOTH));
 		Icon trashIcon = new ImageIcon(new ImageIcon(iconLocation+"trash.png")
 				.getImage().getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH));
-		
+
 		// Frame //
 		myFrame = new JFrame();
 		myFrame.setResizable(false);
@@ -305,7 +302,7 @@ public class AutomationApp {
 							passedTests.add(t.passedTests());
 						}
 						
-						if (TestExecuter.completedTests.size() == testClassList.getSelectedValuesList().size()) {
+						if (TestRunner.completedTests.size() == testClassList.getSelectedValuesList().size()) {
 							runButton.setEnabled(true);
 							optionsButton.setEnabled(true);
 							testClassList.setEnabled(true);
@@ -339,7 +336,7 @@ public class AutomationApp {
 				
 				SwingWorker<Void, Void> newTestWorker = new SwingWorker<Void, Void>() {
 					public Void doInBackground() throws Exception {
-						TestExecuter.runTests(testClassList.getSelectedValuesList());
+						TestRunner.runTests(testClassList.getSelectedValuesList());
 						return null;
 					}
 				};
@@ -460,7 +457,7 @@ public class AutomationApp {
 				if (!TestListener.currentTest.isEmpty() && !TestListener.currentTest.equals("done")) {
 					//testWorker.cancel(true);
 					//methodWorker.cancel(true);
-					new TestExecuter().stopTests();
+					new TestRunner().stopTests();
 					TestListener.currentTest = "done";
 					stopButton.setEnabled(false);
 				}
@@ -620,10 +617,10 @@ public class AutomationApp {
 				String iconLocation = "";
 				
 				if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-					iconLocation = filePath+"/icons/";
+					iconLocation = filePath+ "/CDAutomation/icons/";
 				}
 				if (System.getProperty("os.name").toLowerCase().contains("win")) {
-					iconLocation = filePath+"\\icons\\";
+					iconLocation = filePath+"\\CDAutomation\\icons\\";
 				}
 				
 				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
