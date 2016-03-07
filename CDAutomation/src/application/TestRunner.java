@@ -8,13 +8,13 @@ import javax.swing.DefaultListModel;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.notification.RunNotifier;
 
-public class TestExecuter {
+public class TestRunner {
 	
 	private static String myDir = Paths.get("").toAbsolutePath().normalize().toString();
-	private static DefaultListModel<String> fileList = new DefaultListModel<String>();
+	private static DefaultListModel<String> fileList = new DefaultListModel<>();
 	private static DefaultListModel<String> rawList = new FileFinder().testFilePath(myDir, fileList);
 	private static DefaultListModel<String> simpleList = new FileFinder().simpleFileList();
-	public static List<String> completedTests = new ArrayList<String>();
+	public static List<String> completedTests = new ArrayList<>();
 	public static JUnitCore junit;
 	
 	// Finds test classes with "Run" in the name and adds them to the application
@@ -30,7 +30,7 @@ public class TestExecuter {
 		for (int i = 0; i < simpleList.size(); i++) {
 			
 			if (selectedTests.contains(simpleList.get(i))) {
-				System.out.println("[Application]: Starting "+simpleList.get(i));
+				System.out.println("Starting "+simpleList.get(i));
 
 				Class<?> myClass = Class.forName((rawList.get(i).substring(rawList.get(i).indexOf("tests"), rawList.get(i).length()).replace("\\", ".").replace("/", ".")));
 				newJunit.addListener(new application.TestListener());
