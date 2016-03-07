@@ -56,15 +56,15 @@ public class AutomationApp {
 		String iconLocation = "";
 
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-			if (!filePath.toLowerCase().contains("/cdautomation") && !filePath.toLowerCase().contains("/cdautomation/")) {
+			if (!filePath.replace("/cdautomation", "/cdautomation/").toLowerCase().contains("/cdautomation/")) {
 				iconLocation = filePath + "/CDAutomation/icons/";
 			} else {
 				iconLocation = filePath + "/icons/";
 			}
 		}
-		
+
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			if (!filePath.toLowerCase().contains("\\cdautomation") && !filePath.toLowerCase().contains("\\cdautomation\\")) {
+			if (!filePath.replace("\\cdautomation", "\\cdautomation\\").toLowerCase().contains("\\cdautomation\\")) {
 				iconLocation = filePath + "\\CDAutomation\\icons\\";
 			} else {
 				iconLocation = filePath + "\\icons\\";
@@ -625,21 +625,21 @@ public class AutomationApp {
 				String filePath = Paths.get("").toAbsolutePath().normalize().toString();
 				String iconLocation = "";
 
-				if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-					if (!filePath.toLowerCase().contains("/cdautomation") && !filePath.toLowerCase().contains("/cdautomation/")) {
-						iconLocation = filePath + "/CDAutomation/icons/";
-					} else {
-						iconLocation = filePath + "/icons/";
-					}
-				}
+                if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+                    if (!filePath.replace("/cdautomation", "/cdautomation/").toLowerCase().contains("/cdautomation/")) {
+                        iconLocation = filePath + "/CDAutomation/icons/";
+                    } else {
+                        iconLocation = filePath + "/icons/";
+                    }
+                }
 
-				if (System.getProperty("os.name").toLowerCase().contains("win")) {
-					if (!filePath.toLowerCase().contains("\\cdautomation") && !filePath.toLowerCase().contains("\\cdautomation\\")) {
-						iconLocation = filePath + "\\CDAutomation\\icons\\";
-					} else {
-						iconLocation = filePath + "\\icons\\";
-					}
-				}
+                if (System.getProperty("os.name").toLowerCase().contains("win")) {
+                    if (!filePath.replace("\\cdautomation", "\\cdautomation\\").toLowerCase().contains("\\cdautomation\\")) {
+                        iconLocation = filePath + "\\CDAutomation\\icons\\";
+                    } else {
+                        iconLocation = filePath + "\\icons\\";
+                    }
+                }
 				
 				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
 				Icon tSuiteIcon = new ImageIcon(iconLocation+"tsuite.gif");
