@@ -56,7 +56,7 @@ public class AutomationApp {
 		String iconLocation = "";
 
 		if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-			if (!filePath.toLowerCase().contains("/cdautomation") || !filePath.toLowerCase().contains("/cdautomation/")) {
+			if (!filePath.toLowerCase().contains("/cdautomation") && !filePath.toLowerCase().contains("/cdautomation/")) {
 				iconLocation = filePath + "/CDAutomation/icons/";
 			} else {
 				iconLocation = filePath + "/icons/";
@@ -64,7 +64,7 @@ public class AutomationApp {
 		}
 		
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			if (!filePath.toLowerCase().contains("\\cdautomation") || !filePath.toLowerCase().contains("\\cdautomation\\")) {
+			if (!filePath.toLowerCase().contains("\\cdautomation") && !filePath.toLowerCase().contains("\\cdautomation\\")) {
 				iconLocation = filePath + "\\CDAutomation\\icons\\";
 			} else {
 				iconLocation = filePath + "\\icons\\";
@@ -626,7 +626,7 @@ public class AutomationApp {
 				String iconLocation = "";
 
 				if (System.getProperty("os.name").toLowerCase().contains("mac")) {
-					if (!filePath.toLowerCase().contains("/cdautomation") || !filePath.toLowerCase().contains("/cdautomation/")) {
+					if (!filePath.toLowerCase().contains("/cdautomation") && !filePath.toLowerCase().contains("/cdautomation/")) {
 						iconLocation = filePath + "/CDAutomation/icons/";
 					} else {
 						iconLocation = filePath + "/icons/";
@@ -634,7 +634,7 @@ public class AutomationApp {
 				}
 
 				if (System.getProperty("os.name").toLowerCase().contains("win")) {
-					if (!filePath.toLowerCase().contains("\\cdautomation") || !filePath.toLowerCase().contains("\\cdautomation\\")) {
+					if (!filePath.toLowerCase().contains("\\cdautomation") && !filePath.toLowerCase().contains("\\cdautomation\\")) {
 						iconLocation = filePath + "\\CDAutomation\\icons\\";
 					} else {
 						iconLocation = filePath + "\\icons\\";
