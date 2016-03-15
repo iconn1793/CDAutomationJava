@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
+
 import io.appium.java_client.TouchAction;
 
 public class AndroidElements extends Drivers {
@@ -208,11 +210,11 @@ public class AndroidElements extends Drivers {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/card_view")));
 	}
 	public WebElement more_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='3'][android.widget.ImageView[@index='0']]")));
 	}
 	public WebElement action_menu() throws InterruptedException {
 		Thread.sleep(500);
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='1'][android.widget.ImageView[@index='0']]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='2'][android.widget.ImageView[@index='0']]")));
 	}
 	public WebElement action_menu_dust() throws InterruptedException {
 		Thread.sleep(500);
@@ -584,6 +586,15 @@ public class AndroidElements extends Drivers {
     public WebElement feed_list() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/feeds_button")));
 	}
+    public TouchAction follow_chatter_icon() throws InterruptedException {
+    	Thread.sleep(800);
+		return action.longPress((int) (screenWidth*0.3), (int) (screenHeight*0.68)).release().perform();
+	}
+    public WebElement open_chatter_profile() {
+	    //return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/chatters_vertical_card_view'][android.widget.ImageView[@index='0' and @resource-id='com.radicalapps.cyberdust:id/chatter_card_profile_picture']]")));
+    	return driver.findElement(By.xpath("//android.widget.FrameLayout[@index='0' and @resource-id='com.radicalapps.cyberdust:id/chatters_vertical_card_view'][android.widget.ImageView[@index='0' and @resource-id='com.radicalapps.cyberdust:id/chatter_card_profile_picture']]"));
+    	
+    }
     public WebElement profile_following() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("com.radicalapps.cyberdust:id/add_button")));
 	}

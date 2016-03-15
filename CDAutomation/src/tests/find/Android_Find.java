@@ -19,14 +19,18 @@ public class Android_Find extends AndroidElements {
 		System.out.println("Logged In");
 		
 		find_tab().click();
+		System.out.println("Width: " + screenWidth + " Height: " + screenHeight + "/nClicking on: " + (screenWidth*0.3) + ", " + (screenHeight*0.68));
 		
+	
 		//follow user from chatter stream
 		System.out.println("Following user from chatter stream.");		
-		Thread.sleep(300);
-		action.press(650, 510).release().perform();//follows first user
-		Thread.sleep(300);
-		action.press(50, 600).release().perform();//opens profile view
-		boolean followed = (profile_following().isDisplayed());
+		//follow_chatter_icon().click();
+		Thread.sleep(800);
+		action.longPress(320, 1250).release().perform();
+		//Thread.sleep(800);
+		//action.longPress(207, 130).release().perform();
+		//open_chatter_profile().click();
+		boolean followed = ((profile_following().getAttribute("text")).equals("following"));
 		System.out.println("Followed from chatter stream: " + followed);
 		profile_following().click();
 		okay_button().click();
