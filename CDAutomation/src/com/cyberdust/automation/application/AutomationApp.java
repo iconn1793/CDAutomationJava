@@ -61,9 +61,9 @@ public class AutomationApp {
 				iconLocation = filePath + "/icons/";
 			}
 		}
-
+		
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
-			if (!filePath.replace("\\cdautomation", "\\cdautomation\\").toLowerCase().contains("\\cdautomation\\")) {
+			if (!filePath.toLowerCase().contains("\\cdautomation")) {
 				iconLocation = filePath + "\\CDAutomation\\icons\\";
 			} else {
 				iconLocation = filePath + "\\icons\\";
@@ -618,7 +618,6 @@ public class AutomationApp {
 		junitOut.setCellRenderer(new DefaultListCellRenderer() {
 			private static final long serialVersionUID = 1L;
 
-			@SuppressWarnings("SuspiciousMethodCalls")
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 				JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 				
@@ -634,12 +633,12 @@ public class AutomationApp {
                 }
 
                 if (System.getProperty("os.name").toLowerCase().contains("win")) {
-                    if (!filePath.replace("\\cdautomation", "\\cdautomation\\").toLowerCase().contains("\\cdautomation\\")) {
-                        iconLocation = filePath + "\\CDAutomation\\icons\\";
-                    } else {
-                        iconLocation = filePath + "\\icons\\";
-                    }
-                }
+        			if (!filePath.toLowerCase().contains("\\cdautomation")) {
+        				iconLocation = filePath + "\\CDAutomation\\icons\\";
+        			} else {
+        				iconLocation = filePath + "\\icons\\";
+        			}
+        		}
 				
 				Icon runningIcon = new ImageIcon(iconLocation+"running.gif");
 				Icon tSuiteIcon = new ImageIcon(iconLocation+"tsuite.gif");
