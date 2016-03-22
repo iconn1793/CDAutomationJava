@@ -72,7 +72,7 @@ public class IOSElements extends Drivers {
 	 * Home page elements *  	
 	 **********************/
 	public WebElement login_button() {
-	    return wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]")));
+	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("login")));
 	}
 	public WebElement login_username() {
 	    return wait.until(ExpectedConditions.elementToBeClickable(By.id("  username")));
