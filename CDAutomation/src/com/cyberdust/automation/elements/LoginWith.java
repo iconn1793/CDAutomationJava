@@ -1,9 +1,5 @@
 package com.cyberdust.automation.elements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 public class LoginWith extends Drivers {
 	
 	public void user(String account, String password) {
