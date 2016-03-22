@@ -499,11 +499,11 @@ public class AutomationApp {
 						com.cyberdust.automation.elements.TestAccounts.accountSet2 = true;
 					}
 				}
-				
+
 				new Settings().storeSettings();
 			}
 		};
-		
+
 		ActionListener openSettings = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (addressField.getText().isEmpty()) {
@@ -667,11 +667,11 @@ public class AutomationApp {
 				if (passedTests.contains(value)) {
 					setIcon(passIcon);
 				}
-				
+
 				return label;
 			}
 		});
-		
+
 		// Conditions to check when app is launched //
 		if (System.getProperty("os.name").toLowerCase().contains("win")) {
 			IOSCheckBox.setEnabled(false);
